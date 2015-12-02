@@ -39,7 +39,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ModuloAndar\Andar.cs" />
+    <Compile Include="ModuloColaborador\Colaborador.cs" />
+    <Compile Include="ModuloGerente\Gerente.cs" />
+    <Compile Include="ModuloMaquina\Maquina.cs" />
+    <Compile Include="ModuloMesa\Mesa.cs" />
+    <Compile Include="ModuloRamal\Ramal.cs" />
+    <Compile Include="ModuloSede\Sede.cs" />
+    <Compile Include="ModuloUsuario\Permissao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ModuloUsuario\Usuario.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InfraMap.Comum\InfraMap.Comum.csproj">
+      <Project>{2015aff6-2bcc-4e28-ba0a-b4f9258662b2}</Project>
+      <Name>InfraMap.Comum</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
