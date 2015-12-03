@@ -1,0 +1,28 @@
+﻿@model InfraMap.Web.MVC.Models.LoginModel
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "form" }))
+{
+    @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
+
+    <div class="col-md-3 col-centered">
+        <div class="form-group">
+            <label for="login">Login:</label>
+            <input type="text" class="form-control" name="login" value="" />
+            @Html.ValidationMessageFor(m => m.Login)
+        </div>
+        <div class="form-group">
+            <label for="senha">Senha:</label>
+            <input type="password" class="form-control" name="senha" value="" />
+            @Html.ValidationMessageFor(m => m.Senha)
+        </div>
+
+        <div class="text-center">
+            <input class="btn btn-default" type="submit" name="enviar" value="Login" />
+        </div>
+    </div>
+}
+
