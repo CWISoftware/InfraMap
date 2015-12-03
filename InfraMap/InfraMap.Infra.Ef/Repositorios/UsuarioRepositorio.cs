@@ -1,4 +1,5 @@
 ﻿using InfraMap.Dominio.ModuloUsuario;
+using InfraMap.Dominio.ModuloUsuario.Queries;
 using InfraMap.Dominio.Repositorio;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace InfraMap.Infraestrutura.Ef.Repositorios
 {
-    public class UsuarioRepositorio : IUsuarioRepositorio
+    public class UsuarioRepositorio : RepositorioBase<Usuario>, IUsuarioRepositorio
     {
         public Usuario BuscarPorLogin(string login)
         {
@@ -16,6 +17,11 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
             {
                 return db.Usuario.Include("Permissoes").FirstOrDefault(p => p.Login == login);
             }
+        }
+
+        public IList<Usuario> BuscarPorNome(string nome)
+        {
+            return this.Buscar(new BuscarUsuarioPorNomeQuery(nome));
         }
     }
 }
