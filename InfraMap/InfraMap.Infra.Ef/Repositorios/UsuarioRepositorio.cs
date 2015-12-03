@@ -12,7 +12,7 @@ namespace InfraMap.Infra.Ef.Repositorios
     {
         public Usuario BuscarPorLogin(string login)
         {
-            using (var db = new CodeFirst())
+            using (var db = new DataBaseContext())
             {
                 return db.Usuario.Include("Permissoes").FirstOrDefault(p => p.Login == login);
             }
