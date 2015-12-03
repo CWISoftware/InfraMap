@@ -44,6 +44,7 @@
     <Compile Include="ModuloAndar\IAndarRepositorio.cs" />
     <Compile Include="ModuloColaborador\Colaborador.cs" />
     <Compile Include="ModuloColaborador\IColaboradorRepositorio.cs" />
+    <Compile Include="ModuloColaborador\Queries\BuscarColaboradorPorNomeQuery.cs" />
     <Compile Include="ModuloGerente\Gerente.cs" />
     <Compile Include="ModuloGerente\IGerenteRepositorio.cs" />
     <Compile Include="ModuloMaquina\IMaquinaRepositorio.cs" />

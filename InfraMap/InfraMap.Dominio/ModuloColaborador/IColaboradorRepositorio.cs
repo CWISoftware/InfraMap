@@ -9,5 +9,6 @@ namespace InfraMap.Dominio.ModuloColaborador
 {
     public interface IColaboradorRepositorio : IRepositorio<Colaborador>
     {
+        IList<Colaborador> BuscarPorNome(string nome);
     }
 }
