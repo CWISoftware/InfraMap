@@ -1,8 +1,10 @@
-﻿using System;
+﻿using InfraMap.Web.MVC.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Optimization;
 using System.Web.Routing;
 
 namespace InfraMap.Web.MVC
@@ -13,6 +15,8 @@ namespace InfraMap.Web.MVC
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            //BundleTable.EnableOptimizations = true;
         }
     }
 }
