@@ -20,26 +20,6 @@ namespace InfraMap.Infraestrutura.Ef.Migrations
                 .Index(t => t.Sede_Id);
             
             CreateTable(
-                "dbo.Sede",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Nome = c.String(nullable: false),
-                        NomeCidade = c.String(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "dbo.Maquina",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Nome = c.String(nullable: false),
-                        Tipo = c.String(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
                 "dbo.Mesa",
                 c => new
                     {
@@ -47,16 +27,19 @@ namespace InfraMap.Infraestrutura.Ef.Migrations
                         Colaborador_Id = c.Int(),
                         Maquina_Id = c.Int(),
                         Ramal_Id = c.Int(),
+                        Andar_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Andar", t => t.Id)
                 .ForeignKey("dbo.Usuario", t => t.Colaborador_Id)
                 .ForeignKey("dbo.Maquina", t => t.Maquina_Id)
                 .ForeignKey("dbo.Ramal", t => t.Ramal_Id)
+                .ForeignKey("dbo.Andar", t => t.Andar_Id)
                 .Index(t => t.Id)
                 .Index(t => t.Colaborador_Id)
                 .Index(t => t.Maquina_Id)
-                .Index(t => t.Ramal_Id);
+                .Index(t => t.Ramal_Id)
+                .Index(t => t.Andar_Id);
             
             CreateTable(
                 "dbo.Usuario",
@@ -82,12 +65,32 @@ namespace InfraMap.Infraestrutura.Ef.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
+                "dbo.Maquina",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Nome = c.String(nullable: false),
+                        Tipo = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.Ramal",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Tipo = c.String(nullable: false),
                         Numero = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Sede",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Nome = c.String(nullable: false),
+                        NomeCidade = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -108,29 +111,31 @@ namespace InfraMap.Infraestrutura.Ef.Migrations
         
         public override void Down()
         {
+            DropForeignKey("dbo.Andar", "Sede_Id", "dbo.Sede");
+            DropForeignKey("dbo.Mesa", "Andar_Id", "dbo.Andar");
             DropForeignKey("dbo.Mesa", "Ramal_Id", "dbo.Ramal");
             DropForeignKey("dbo.Mesa", "Maquina_Id", "dbo.Maquina");
             DropForeignKey("dbo.Mesa", "Colaborador_Id", "dbo.Usuario");
-            DropForeignKey("dbo.Usuario", "Gerente_Id", "dbo.Usuario");
             DropForeignKey("dbo.UsuarioPermissao", "Permissao_Id", "dbo.Permissao");
             DropForeignKey("dbo.UsuarioPermissao", "Usuario_Id", "dbo.Usuario");
+            DropForeignKey("dbo.Usuario", "Gerente_Id", "dbo.Usuario");
             DropForeignKey("dbo.Mesa", "Id", "dbo.Andar");
-            DropForeignKey("dbo.Andar", "Sede_Id", "dbo.Sede");
             DropIndex("dbo.UsuarioPermissao", new[] { "Permissao_Id" });
             DropIndex("dbo.UsuarioPermissao", new[] { "Usuario_Id" });
             DropIndex("dbo.Usuario", new[] { "Gerente_Id" });
+            DropIndex("dbo.Mesa", new[] { "Andar_Id" });
             DropIndex("dbo.Mesa", new[] { "Ramal_Id" });
             DropIndex("dbo.Mesa", new[] { "Maquina_Id" });
             DropIndex("dbo.Mesa", new[] { "Colaborador_Id" });
             DropIndex("dbo.Mesa", new[] { "Id" });
             DropIndex("dbo.Andar", new[] { "Sede_Id" });
             DropTable("dbo.UsuarioPermissao");
+            DropTable("dbo.Sede");
             DropTable("dbo.Ramal");
+            DropTable("dbo.Maquina");
             DropTable("dbo.Permissao");
             DropTable("dbo.Usuario");
             DropTable("dbo.Mesa");
-            DropTable("dbo.Maquina");
-            DropTable("dbo.Sede");
             DropTable("dbo.Andar");
         }
     }

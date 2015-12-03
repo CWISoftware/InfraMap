@@ -13,7 +13,7 @@ namespace InfraMap.Infraestrutura.Ef.Mapeamento
         {
             HasMany(t => t.Permissoes).WithMany(t => t.Usuarios);
 
-            HasRequired(t => t.Usuarios).WithMany().Map(t => t.MapKey("Gerente_Id"));
+            HasRequired(t => t.ColaboradoresVinculados).WithMany().Map(t => t.MapKey("Gerente_Id"));
         }
     }
 }
