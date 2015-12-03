@@ -1,4 +1,5 @@
 ﻿using InfraMap.Comum;
+using InfraMap.Dominio.ModuloMesa;
 using InfraMap.Dominio.ModuloSede;
 using System;
 using System.Collections.Generic;
@@ -15,5 +16,7 @@ namespace InfraMap.Dominio.ModuloAndar
 
         [Required]
         public String Descricao { get; set; }
+
+        public ICollection<Mesa> Mesas { get; set; }
     }
 }
