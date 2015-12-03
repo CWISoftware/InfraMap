@@ -13,10 +13,10 @@ namespace InfraMap.Infraestrutura.EntityModel
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class InfraMapDbEntities : DbContext
+    public partial class InfraMapDbEntities2 : DbContext
     {
-        public InfraMapDbEntities()
-            : base("name=InfraMapDbEntities")
+        public InfraMapDbEntities2()
+            : base("name=InfraMapDbEntities2")
         {
         }
     
@@ -26,8 +26,6 @@ namespace InfraMap.Infraestrutura.EntityModel
         }
     
         public virtual DbSet<Andar> Andar { get; set; }
-        public virtual DbSet<Colaborador> Colaborador { get; set; }
-        public virtual DbSet<Gerente> Gerente { get; set; }
         public virtual DbSet<Maquina> Maquina { get; set; }
         public virtual DbSet<Mesa> Mesa { get; set; }
         public virtual DbSet<Permissao> Permissao { get; set; }

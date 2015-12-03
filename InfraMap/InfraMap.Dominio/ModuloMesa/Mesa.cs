@@ -1,8 +1,8 @@
 ﻿using InfraMap.Comum;
 using InfraMap.Dominio.ModuloAndar;
-using InfraMap.Dominio.ModuloColaborador;
 using InfraMap.Dominio.ModuloMaquina;
 using InfraMap.Dominio.ModuloRamal;
+using InfraMap.Dominio.ModuloUsuario;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +15,7 @@ namespace InfraMap.Dominio.ModuloMesa
     {
         public Andar Andar { get; set; }
 
-        public Colaborador Colaborador { get; set; }
+        public Usuario Colaborador { get; set; }
 
         public Maquina Maquina { get; set; }
 

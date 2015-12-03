@@ -12,6 +12,8 @@ namespace InfraMap.Infraestrutura.Ef.Mapeamento
         public MapeamentoUsuario()
         {
             HasMany(t => t.Permissoes).WithMany(t => t.Usuarios);
+
+            HasRequired(t => t.Usuarios).WithMany().Map(t => t.MapKey("Gerente_Id"));
         }
     }
 }
