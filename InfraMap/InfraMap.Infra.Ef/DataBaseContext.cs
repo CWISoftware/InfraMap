@@ -5,8 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using InfraMap.Dominio.ModuloUsuario;
-using InfraMap.Dominio.ModuloColaborador;
-using InfraMap.Dominio.ModuloGerente;
 using InfraMap.Dominio.ModuloMesa;
 using InfraMap.Dominio.ModuloMaquina;
 using InfraMap.Dominio.ModuloRamal;
@@ -25,8 +23,6 @@ namespace InfraMap.Infraestrutura.Ef
         }
 
         public DbSet<Usuario> Usuario { get; set; }
-        public DbSet<Colaborador> Colaborador { get; set; }
-        public DbSet<Gerente> Gerente { get; set; }
         public DbSet<Permissao> Permissao { get; set; }
         public DbSet<Mesa> Mesa { get; set; }
         public DbSet<Maquina> Maquina { get; set; }
@@ -38,8 +34,6 @@ namespace InfraMap.Infraestrutura.Ef
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Configurations.Add(new Mapeamento.MapeamentoUsuario());
-            modelBuilder.Configurations.Add(new Mapeamento.MapeamentoColaborador());
-            modelBuilder.Configurations.Add(new Mapeamento.MapeamentoGerente());
             modelBuilder.Configurations.Add(new Mapeamento.MapeamentoPermissao());
             modelBuilder.Configurations.Add(new Mapeamento.MapeamentoMesa());
             modelBuilder.Configurations.Add(new Mapeamento.MapeamentoMaquina());

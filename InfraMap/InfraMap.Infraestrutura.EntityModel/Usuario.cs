@@ -17,8 +17,8 @@ namespace InfraMap.Infraestrutura.EntityModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Usuario()
         {
-            this.Colaborador = new HashSet<Colaborador>();
-            this.Gerente = new HashSet<Gerente>();
+            this.Mesa = new HashSet<Mesa>();
+            this.Usuario1 = new HashSet<Usuario>();
             this.Permissao = new HashSet<Permissao>();
         }
     
@@ -26,11 +26,13 @@ namespace InfraMap.Infraestrutura.EntityModel
         public string Nome { get; set; }
         public string Login { get; set; }
         public string Senha { get; set; }
+        public int Gerente_Id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Colaborador> Colaborador { get; set; }
+        public virtual ICollection<Mesa> Mesa { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Gerente> Gerente { get; set; }
+        public virtual ICollection<Usuario> Usuario1 { get; set; }
+        public virtual Usuario Usuario2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Permissao> Permissao { get; set; }
     }

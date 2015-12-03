@@ -52,18 +52,16 @@
   <ItemGroup>
     <Compile Include="DataBaseContext.cs" />
     <Compile Include="Mapeamento\MapeamentoAndar.cs" />
-    <Compile Include="Mapeamento\MapeamentoColaborador.cs" />
     <Compile Include="Mapeamento\MapeamentoEntidade.cs" />
-    <Compile Include="Mapeamento\MapeamentoGerente.cs" />
     <Compile Include="Mapeamento\MapeamentoMaquina.cs" />
     <Compile Include="Mapeamento\MapeamentoMesa.cs" />
     <Compile Include="Mapeamento\MapeamentoPermissao.cs" />
     <Compile Include="Mapeamento\MapeamentoRamal.cs" />
     <Compile Include="Mapeamento\MapeamentoSede.cs" />
     <Compile Include="Mapeamento\MapeamentoUsuario.cs" />
-    <Compile Include="Migrations\201512030203098_Initial.cs" />
-    <Compile Include="Migrations\201512030203098_Initial.Designer.cs">
-      <DependentUpon>201512030203098_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201512031631326_Initial.cs" />
+    <Compile Include="Migrations\201512031631326_Initial.Designer.cs">
+      <DependentUpon>201512031631326_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,8 +71,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Repositorios\AndarRepositorio.cs" />
-    <Compile Include="Repositorios\ColaboradorRepositorio.cs" />
-    <Compile Include="Repositorios\GerenteRepositorio.cs" />
     <Compile Include="Repositorios\MaquinaRepositorio.cs" />
     <Compile Include="Repositorios\MesaRepositorio.cs" />
     <Compile Include="Repositorios\RamalRepositorio.cs" />
@@ -100,14 +96,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201512030203098_Initial.resx">
-      <DependentUpon>201512030203098_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201512031631326_Initial.resx">
+      <DependentUpon>201512031631326_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

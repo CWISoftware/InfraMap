@@ -20,5 +20,7 @@ namespace InfraMap.Dominio.ModuloUsuario
         public String Senha { get; set; }
 
         public ICollection<Permissao> Permissoes { get; set; }
+
+        public ICollection<Usuario> Usuarios { get; set; } 
     }
 }

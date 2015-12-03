@@ -13,21 +13,6 @@
           <Property Name="Descricao" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Sede_Id" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Colaborador">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Gerente_Id" Type="int" Nullable="false" />
-          <Property Name="Usuario_Id" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Gerente">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Usuario_Id" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="Maquina">
           <Key>
             <PropertyRef Name="Id" />
@@ -76,6 +61,7 @@
           <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Login" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Senha" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Gerente_Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="UsuarioPermissao">
           <Key>
@@ -99,46 +85,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_dbo_Colaborador_dbo_Gerente_Gerente_Id">
-          <End Role="Gerente" Type="Self.Gerente" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Colaborador" Type="Self.Colaborador" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Gerente">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Colaborador">
-              <PropertyRef Name="Gerente_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_Colaborador_dbo_Usuario_Usuario_Id">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Colaborador" Type="Self.Colaborador" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Colaborador">
-              <PropertyRef Name="Usuario_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_Gerente_dbo_Usuario_Usuario_Id">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
-          <End Role="Gerente" Type="Self.Gerente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Gerente">
-              <PropertyRef Name="Usuario_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_dbo_Mesa_dbo_Andar_Id">
           <End Role="Andar" Type="Self.Andar" Multiplicity="1" />
           <End Role="Mesa" Type="Self.Mesa" Multiplicity="0..1" />
@@ -148,18 +94,6 @@
             </Principal>
             <Dependent Role="Mesa">
               <PropertyRef Name="Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_Mesa_dbo_Colaborador_Colaborador_Id">
-          <End Role="Colaborador" Type="Self.Colaborador" Multiplicity="0..1" />
-          <End Role="Mesa" Type="Self.Mesa" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Colaborador">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Mesa">
-              <PropertyRef Name="Colaborador_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -184,6 +118,30 @@
             </Principal>
             <Dependent Role="Mesa">
               <PropertyRef Name="Ramal_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Mesa_dbo_Usuario_Colaborador_Id">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Mesa" Type="Self.Mesa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Mesa">
+              <PropertyRef Name="Colaborador_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Usuario_dbo_Usuario_Gerente_Id">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Usuario1" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usuario1">
+              <PropertyRef Name="Gerente_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -217,8 +175,6 @@
         </Association>
         <EntityContainer Name="InfraMapDbModelStoreContainer">
           <EntitySet Name="Andar" EntityType="Self.Andar" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Colaborador" EntityType="Self.Colaborador" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Gerente" EntityType="Self.Gerente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Maquina" EntityType="Self.Maquina" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Mesa" EntityType="Self.Mesa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Permissao" EntityType="Self.Permissao" Schema="dbo" store:Type="Tables" />
@@ -230,24 +186,8 @@
             <End Role="Sede" EntitySet="Sede" />
             <End Role="Andar" EntitySet="Andar" />
           </AssociationSet>
-          <AssociationSet Name="FK_dbo_Colaborador_dbo_Gerente_Gerente_Id" Association="Self.FK_dbo_Colaborador_dbo_Gerente_Gerente_Id">
-            <End Role="Gerente" EntitySet="Gerente" />
-            <End Role="Colaborador" EntitySet="Colaborador" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_Colaborador_dbo_Usuario_Usuario_Id" Association="Self.FK_dbo_Colaborador_dbo_Usuario_Usuario_Id">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="Colaborador" EntitySet="Colaborador" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_Gerente_dbo_Usuario_Usuario_Id" Association="Self.FK_dbo_Gerente_dbo_Usuario_Usuario_Id">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="Gerente" EntitySet="Gerente" />
-          </AssociationSet>
           <AssociationSet Name="FK_dbo_Mesa_dbo_Andar_Id" Association="Self.FK_dbo_Mesa_dbo_Andar_Id">
             <End Role="Andar" EntitySet="Andar" />
-            <End Role="Mesa" EntitySet="Mesa" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_Mesa_dbo_Colaborador_Colaborador_Id" Association="Self.FK_dbo_Mesa_dbo_Colaborador_Colaborador_Id">
-            <End Role="Colaborador" EntitySet="Colaborador" />
             <End Role="Mesa" EntitySet="Mesa" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_Mesa_dbo_Maquina_Maquina_Id" Association="Self.FK_dbo_Mesa_dbo_Maquina_Maquina_Id">
@@ -257,6 +197,14 @@
           <AssociationSet Name="FK_dbo_Mesa_dbo_Ramal_Ramal_Id" Association="Self.FK_dbo_Mesa_dbo_Ramal_Ramal_Id">
             <End Role="Ramal" EntitySet="Ramal" />
             <End Role="Mesa" EntitySet="Mesa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Mesa_dbo_Usuario_Colaborador_Id" Association="Self.FK_dbo_Mesa_dbo_Usuario_Colaborador_Id">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Mesa" EntitySet="Mesa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Usuario_dbo_Usuario_Gerente_Id" Association="Self.FK_dbo_Usuario_dbo_Usuario_Gerente_Id">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Usuario1" EntitySet="Usuario" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_UsuarioPermissao_dbo_Permissao_Permissao_Id" Association="Self.FK_dbo_UsuarioPermissao_dbo_Permissao_Permissao_Id">
             <End Role="Permissao" EntitySet="Permissao" />
@@ -282,26 +230,6 @@
           <NavigationProperty Name="Sede" Relationship="Self.FK_dbo_Andar_dbo_Sede_Sede_Id" FromRole="Andar" ToRole="Sede" />
           <NavigationProperty Name="Mesa" Relationship="Self.FK_dbo_Mesa_dbo_Andar_Id" FromRole="Andar" ToRole="Mesa" />
         </EntityType>
-        <EntityType Name="Colaborador">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Gerente_Id" Type="Int32" Nullable="false" />
-          <Property Name="Usuario_Id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Gerente" Relationship="Self.FK_dbo_Colaborador_dbo_Gerente_Gerente_Id" FromRole="Colaborador" ToRole="Gerente" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK_dbo_Colaborador_dbo_Usuario_Usuario_Id" FromRole="Colaborador" ToRole="Usuario" />
-          <NavigationProperty Name="Mesa" Relationship="Self.FK_dbo_Mesa_dbo_Colaborador_Colaborador_Id" FromRole="Colaborador" ToRole="Mesa" />
-        </EntityType>
-        <EntityType Name="Gerente">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Usuario_Id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Colaborador" Relationship="Self.FK_dbo_Colaborador_dbo_Gerente_Gerente_Id" FromRole="Gerente" ToRole="Colaborador" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK_dbo_Gerente_dbo_Usuario_Usuario_Id" FromRole="Gerente" ToRole="Usuario" />
-        </EntityType>
         <EntityType Name="Maquina">
           <Key>
             <PropertyRef Name="Id" />
@@ -320,9 +248,9 @@
           <Property Name="Maquina_Id" Type="Int32" />
           <Property Name="Ramal_Id" Type="Int32" />
           <NavigationProperty Name="Andar" Relationship="Self.FK_dbo_Mesa_dbo_Andar_Id" FromRole="Mesa" ToRole="Andar" />
-          <NavigationProperty Name="Colaborador" Relationship="Self.FK_dbo_Mesa_dbo_Colaborador_Colaborador_Id" FromRole="Mesa" ToRole="Colaborador" />
           <NavigationProperty Name="Maquina" Relationship="Self.FK_dbo_Mesa_dbo_Maquina_Maquina_Id" FromRole="Mesa" ToRole="Maquina" />
           <NavigationProperty Name="Ramal" Relationship="Self.FK_dbo_Mesa_dbo_Ramal_Ramal_Id" FromRole="Mesa" ToRole="Ramal" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_dbo_Mesa_dbo_Usuario_Colaborador_Id" FromRole="Mesa" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="Permissao">
           <Key>
@@ -358,8 +286,10 @@
           <Property Name="Nome" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Senha" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Colaborador" Relationship="Self.FK_dbo_Colaborador_dbo_Usuario_Usuario_Id" FromRole="Usuario" ToRole="Colaborador" />
-          <NavigationProperty Name="Gerente" Relationship="Self.FK_dbo_Gerente_dbo_Usuario_Usuario_Id" FromRole="Usuario" ToRole="Gerente" />
+          <Property Name="Gerente_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Mesa" Relationship="Self.FK_dbo_Mesa_dbo_Usuario_Colaborador_Id" FromRole="Usuario" ToRole="Mesa" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.FK_dbo_Usuario_dbo_Usuario_Gerente_Id" FromRole="Usuario" ToRole="Usuario1" />
+          <NavigationProperty Name="Usuario2" Relationship="Self.FK_dbo_Usuario_dbo_Usuario_Gerente_Id" FromRole="Usuario1" ToRole="Usuario" />
           <NavigationProperty Name="Permissao" Relationship="Self.UsuarioPermissao" FromRole="Usuario" ToRole="Permissao" />
         </EntityType>
         <Association Name="FK_dbo_Andar_dbo_Sede_Sede_Id">
@@ -388,58 +318,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_dbo_Colaborador_dbo_Gerente_Gerente_Id">
-          <End Role="Gerente" Type="Self.Gerente" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Colaborador" Type="Self.Colaborador" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Gerente">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Colaborador">
-              <PropertyRef Name="Gerente_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_Colaborador_dbo_Usuario_Usuario_Id">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Colaborador" Type="Self.Colaborador" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Colaborador">
-              <PropertyRef Name="Usuario_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_Mesa_dbo_Colaborador_Colaborador_Id">
-          <End Role="Colaborador" Type="Self.Colaborador" Multiplicity="0..1" />
-          <End Role="Mesa" Type="Self.Mesa" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Colaborador">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Mesa">
-              <PropertyRef Name="Colaborador_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_Gerente_dbo_Usuario_Usuario_Id">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
-          <End Role="Gerente" Type="Self.Gerente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Gerente">
-              <PropertyRef Name="Usuario_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_dbo_Mesa_dbo_Maquina_Maquina_Id">
           <End Role="Maquina" Type="Self.Maquina" Multiplicity="0..1" />
           <End Role="Mesa" Type="Self.Mesa" Multiplicity="*" />
@@ -464,14 +342,36 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_dbo_Mesa_dbo_Usuario_Colaborador_Id">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Mesa" Type="Self.Mesa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Mesa">
+              <PropertyRef Name="Colaborador_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Usuario_dbo_Usuario_Gerente_Id">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Usuario1" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usuario1">
+              <PropertyRef Name="Gerente_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="UsuarioPermissao">
           <End Role="Permissao" Type="Self.Permissao" Multiplicity="*" />
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="InfraMapDbEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="InfraMapDbEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Andar" EntityType="Self.Andar" />
-          <EntitySet Name="Colaborador" EntityType="Self.Colaborador" />
-          <EntitySet Name="Gerente" EntityType="Self.Gerente" />
           <EntitySet Name="Maquina" EntityType="Self.Maquina" />
           <EntitySet Name="Mesa" EntityType="Self.Mesa" />
           <EntitySet Name="Permissao" EntityType="Self.Permissao" />
@@ -486,22 +386,6 @@
             <End Role="Andar" EntitySet="Andar" />
             <End Role="Mesa" EntitySet="Mesa" />
           </AssociationSet>
-          <AssociationSet Name="FK_dbo_Colaborador_dbo_Gerente_Gerente_Id" Association="Self.FK_dbo_Colaborador_dbo_Gerente_Gerente_Id">
-            <End Role="Gerente" EntitySet="Gerente" />
-            <End Role="Colaborador" EntitySet="Colaborador" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_Colaborador_dbo_Usuario_Usuario_Id" Association="Self.FK_dbo_Colaborador_dbo_Usuario_Usuario_Id">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="Colaborador" EntitySet="Colaborador" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_Mesa_dbo_Colaborador_Colaborador_Id" Association="Self.FK_dbo_Mesa_dbo_Colaborador_Colaborador_Id">
-            <End Role="Colaborador" EntitySet="Colaborador" />
-            <End Role="Mesa" EntitySet="Mesa" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_Gerente_dbo_Usuario_Usuario_Id" Association="Self.FK_dbo_Gerente_dbo_Usuario_Usuario_Id">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="Gerente" EntitySet="Gerente" />
-          </AssociationSet>
           <AssociationSet Name="FK_dbo_Mesa_dbo_Maquina_Maquina_Id" Association="Self.FK_dbo_Mesa_dbo_Maquina_Maquina_Id">
             <End Role="Maquina" EntitySet="Maquina" />
             <End Role="Mesa" EntitySet="Mesa" />
@@ -509,6 +393,14 @@
           <AssociationSet Name="FK_dbo_Mesa_dbo_Ramal_Ramal_Id" Association="Self.FK_dbo_Mesa_dbo_Ramal_Ramal_Id">
             <End Role="Ramal" EntitySet="Ramal" />
             <End Role="Mesa" EntitySet="Mesa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Mesa_dbo_Usuario_Colaborador_Id" Association="Self.FK_dbo_Mesa_dbo_Usuario_Colaborador_Id">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Mesa" EntitySet="Mesa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Usuario_dbo_Usuario_Gerente_Id" Association="Self.FK_dbo_Usuario_dbo_Usuario_Gerente_Id">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Usuario1" EntitySet="Usuario" />
           </AssociationSet>
           <AssociationSet Name="UsuarioPermissao" Association="Self.UsuarioPermissao">
             <End Role="Permissao" EntitySet="Permissao" />
@@ -520,30 +412,13 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="InfraMapDbModelStoreContainer" CdmEntityContainer="InfraMapDbEntities">
+        <EntityContainerMapping StorageEntityContainer="InfraMapDbModelStoreContainer" CdmEntityContainer="InfraMapDbEntities2">
           <EntitySetMapping Name="Andar">
             <EntityTypeMapping TypeName="InfraMapDbModel.Andar">
               <MappingFragment StoreEntitySet="Andar">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Descricao" ColumnName="Descricao" />
                 <ScalarProperty Name="Sede_Id" ColumnName="Sede_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Colaborador">
-            <EntityTypeMapping TypeName="InfraMapDbModel.Colaborador">
-              <MappingFragment StoreEntitySet="Colaborador">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Gerente_Id" ColumnName="Gerente_Id" />
-                <ScalarProperty Name="Usuario_Id" ColumnName="Usuario_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Gerente">
-            <EntityTypeMapping TypeName="InfraMapDbModel.Gerente">
-              <MappingFragment StoreEntitySet="Gerente">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Usuario_Id" ColumnName="Usuario_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -599,6 +474,7 @@
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Senha" ColumnName="Senha" />
+                <ScalarProperty Name="Gerente_Id" ColumnName="Gerente_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

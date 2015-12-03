@@ -20,8 +20,8 @@ namespace InfraMap.Infraestrutura.EntityModel
         public Nullable<int> Ramal_Id { get; set; }
     
         public virtual Andar Andar { get; set; }
-        public virtual Colaborador Colaborador { get; set; }
         public virtual Maquina Maquina { get; set; }
         public virtual Ramal Ramal { get; set; }
+        public virtual Usuario Usuario { get; set; }
     }
 }
