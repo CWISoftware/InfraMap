@@ -12,7 +12,6 @@ namespace InfraMap.Infra.Ef.Mapeamento
         public MapeamentoColaborador()
         {
             HasRequired(t => t.Usuario).WithMany();
-
             HasRequired(t => t.Gerente).WithMany();
         }
     }

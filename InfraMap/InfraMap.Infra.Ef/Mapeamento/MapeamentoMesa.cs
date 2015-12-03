@@ -11,10 +11,10 @@ namespace InfraMap.Infra.Ef.Mapeamento
     {
         public MapeamentoMesa()
         {
-            HasRequired(t => t.Andar).WithMany();
-            HasOptional(t => t.Colaborador).WithMany();
-            HasOptional(t => t.Maquina).WithMany();
-            HasOptional(t => t.Ramal).WithMany();
+            HasRequired(t => t.Andar).WithRequiredDependent();
+            HasOptional(t => t.Colaborador).WithOptionalDependent();
+            HasOptional(t => t.Maquina).WithOptionalDependent();
+            HasOptional(t => t.Ramal).WithOptionalDependent();
         }
     }
 }

@@ -9,5 +9,9 @@ namespace InfraMap.Infra.Ef.Mapeamento
 {
     public class MapeamentoUsuario : MapeamentoEntidade<Usuario>
     {
+        public MapeamentoUsuario()
+        {
+            HasMany(t => t.Permissoes).WithMany(t => t.Usuarios);
+        }
     }
 }

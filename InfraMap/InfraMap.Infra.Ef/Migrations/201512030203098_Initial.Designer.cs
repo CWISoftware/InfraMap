@@ -13,7 +13,7 @@ namespace InfraMap.Infra.Ef.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201512022328435_Initial"; }
+            get { return "201512030203098_Initial"; }
         }
         
         string IMigrationMetadata.Source
