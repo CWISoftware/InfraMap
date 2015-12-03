@@ -5,6 +5,7 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
+    margin-top: 25px;
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -16,3 +17,23 @@ textarea {
     max-width: 280px;
 }
 
+.logo {
+    width: 208px;
+    height: 60px;
+    margin: 5px 0 0;
+    background: url('img/logoCWI.png') no-repeat;
+}
+
+.color-menu{
+    background-color: #A5BDCD;
+}
+.footer {
+    margin-top: 50px;
+    padding: 10px 15px 15px;
+    color: #444;
+    background: #efefef;
+}
+
+.icon-bar {
+   background-color:black !important;
+}
