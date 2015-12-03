@@ -1,0 +1,636 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="InfraMapDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Andar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descricao" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Sede_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Colaborador">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gerente_Id" Type="int" Nullable="false" />
+          <Property Name="Usuario_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gerente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Usuario_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Maquina">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Tipo" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mesa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Colaborador_Id" Type="int" />
+          <Property Name="Maquina_Id" Type="int" />
+          <Property Name="Ramal_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Permissao">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Texto" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Ramal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Numero" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sede">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NomeCidade" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Login" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Senha" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsuarioPermissao">
+          <Key>
+            <PropertyRef Name="Usuario_Id" />
+            <PropertyRef Name="Permissao_Id" />
+          </Key>
+          <Property Name="Usuario_Id" Type="int" Nullable="false" />
+          <Property Name="Permissao_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_Andar_dbo_Sede_Sede_Id">
+          <End Role="Sede" Type="Self.Sede" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Andar" Type="Self.Andar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sede">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Andar">
+              <PropertyRef Name="Sede_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Colaborador_dbo_Gerente_Gerente_Id">
+          <End Role="Gerente" Type="Self.Gerente" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Colaborador" Type="Self.Colaborador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gerente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Colaborador">
+              <PropertyRef Name="Gerente_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Colaborador_dbo_Usuario_Usuario_Id">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Colaborador" Type="Self.Colaborador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Colaborador">
+              <PropertyRef Name="Usuario_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Gerente_dbo_Usuario_Usuario_Id">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Gerente" Type="Self.Gerente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Gerente">
+              <PropertyRef Name="Usuario_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Mesa_dbo_Andar_Id">
+          <End Role="Andar" Type="Self.Andar" Multiplicity="1" />
+          <End Role="Mesa" Type="Self.Mesa" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Andar">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Mesa">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Mesa_dbo_Colaborador_Colaborador_Id">
+          <End Role="Colaborador" Type="Self.Colaborador" Multiplicity="0..1" />
+          <End Role="Mesa" Type="Self.Mesa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colaborador">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Mesa">
+              <PropertyRef Name="Colaborador_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Mesa_dbo_Maquina_Maquina_Id">
+          <End Role="Maquina" Type="Self.Maquina" Multiplicity="0..1" />
+          <End Role="Mesa" Type="Self.Mesa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Maquina">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Mesa">
+              <PropertyRef Name="Maquina_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Mesa_dbo_Ramal_Ramal_Id">
+          <End Role="Ramal" Type="Self.Ramal" Multiplicity="0..1" />
+          <End Role="Mesa" Type="Self.Mesa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ramal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Mesa">
+              <PropertyRef Name="Ramal_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UsuarioPermissao_dbo_Permissao_Permissao_Id">
+          <End Role="Permissao" Type="Self.Permissao" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UsuarioPermissao" Type="Self.UsuarioPermissao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permissao">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsuarioPermissao">
+              <PropertyRef Name="Permissao_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UsuarioPermissao_dbo_Usuario_Usuario_Id">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UsuarioPermissao" Type="Self.UsuarioPermissao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsuarioPermissao">
+              <PropertyRef Name="Usuario_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="InfraMapDbModelStoreContainer">
+          <EntitySet Name="Andar" EntityType="Self.Andar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Colaborador" EntityType="Self.Colaborador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gerente" EntityType="Self.Gerente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Maquina" EntityType="Self.Maquina" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mesa" EntityType="Self.Mesa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permissao" EntityType="Self.Permissao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ramal" EntityType="Self.Ramal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sede" EntityType="Self.Sede" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsuarioPermissao" EntityType="Self.UsuarioPermissao" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_Andar_dbo_Sede_Sede_Id" Association="Self.FK_dbo_Andar_dbo_Sede_Sede_Id">
+            <End Role="Sede" EntitySet="Sede" />
+            <End Role="Andar" EntitySet="Andar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Colaborador_dbo_Gerente_Gerente_Id" Association="Self.FK_dbo_Colaborador_dbo_Gerente_Gerente_Id">
+            <End Role="Gerente" EntitySet="Gerente" />
+            <End Role="Colaborador" EntitySet="Colaborador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Colaborador_dbo_Usuario_Usuario_Id" Association="Self.FK_dbo_Colaborador_dbo_Usuario_Usuario_Id">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Colaborador" EntitySet="Colaborador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Gerente_dbo_Usuario_Usuario_Id" Association="Self.FK_dbo_Gerente_dbo_Usuario_Usuario_Id">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Gerente" EntitySet="Gerente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Mesa_dbo_Andar_Id" Association="Self.FK_dbo_Mesa_dbo_Andar_Id">
+            <End Role="Andar" EntitySet="Andar" />
+            <End Role="Mesa" EntitySet="Mesa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Mesa_dbo_Colaborador_Colaborador_Id" Association="Self.FK_dbo_Mesa_dbo_Colaborador_Colaborador_Id">
+            <End Role="Colaborador" EntitySet="Colaborador" />
+            <End Role="Mesa" EntitySet="Mesa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Mesa_dbo_Maquina_Maquina_Id" Association="Self.FK_dbo_Mesa_dbo_Maquina_Maquina_Id">
+            <End Role="Maquina" EntitySet="Maquina" />
+            <End Role="Mesa" EntitySet="Mesa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Mesa_dbo_Ramal_Ramal_Id" Association="Self.FK_dbo_Mesa_dbo_Ramal_Ramal_Id">
+            <End Role="Ramal" EntitySet="Ramal" />
+            <End Role="Mesa" EntitySet="Mesa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UsuarioPermissao_dbo_Permissao_Permissao_Id" Association="Self.FK_dbo_UsuarioPermissao_dbo_Permissao_Permissao_Id">
+            <End Role="Permissao" EntitySet="Permissao" />
+            <End Role="UsuarioPermissao" EntitySet="UsuarioPermissao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UsuarioPermissao_dbo_Usuario_Usuario_Id" Association="Self.FK_dbo_UsuarioPermissao_dbo_Usuario_Usuario_Id">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="UsuarioPermissao" EntitySet="UsuarioPermissao" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="InfraMapDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Andar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sede_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Sede" Relationship="Self.FK_dbo_Andar_dbo_Sede_Sede_Id" FromRole="Andar" ToRole="Sede" />
+          <NavigationProperty Name="Mesa" Relationship="Self.FK_dbo_Mesa_dbo_Andar_Id" FromRole="Andar" ToRole="Mesa" />
+        </EntityType>
+        <EntityType Name="Colaborador">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gerente_Id" Type="Int32" Nullable="false" />
+          <Property Name="Usuario_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Gerente" Relationship="Self.FK_dbo_Colaborador_dbo_Gerente_Gerente_Id" FromRole="Colaborador" ToRole="Gerente" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_dbo_Colaborador_dbo_Usuario_Usuario_Id" FromRole="Colaborador" ToRole="Usuario" />
+          <NavigationProperty Name="Mesa" Relationship="Self.FK_dbo_Mesa_dbo_Colaborador_Colaborador_Id" FromRole="Colaborador" ToRole="Mesa" />
+        </EntityType>
+        <EntityType Name="Gerente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usuario_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Colaborador" Relationship="Self.FK_dbo_Colaborador_dbo_Gerente_Gerente_Id" FromRole="Gerente" ToRole="Colaborador" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_dbo_Gerente_dbo_Usuario_Usuario_Id" FromRole="Gerente" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Maquina">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tipo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Mesa" Relationship="Self.FK_dbo_Mesa_dbo_Maquina_Maquina_Id" FromRole="Maquina" ToRole="Mesa" />
+        </EntityType>
+        <EntityType Name="Mesa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Colaborador_Id" Type="Int32" />
+          <Property Name="Maquina_Id" Type="Int32" />
+          <Property Name="Ramal_Id" Type="Int32" />
+          <NavigationProperty Name="Andar" Relationship="Self.FK_dbo_Mesa_dbo_Andar_Id" FromRole="Mesa" ToRole="Andar" />
+          <NavigationProperty Name="Colaborador" Relationship="Self.FK_dbo_Mesa_dbo_Colaborador_Colaborador_Id" FromRole="Mesa" ToRole="Colaborador" />
+          <NavigationProperty Name="Maquina" Relationship="Self.FK_dbo_Mesa_dbo_Maquina_Maquina_Id" FromRole="Mesa" ToRole="Maquina" />
+          <NavigationProperty Name="Ramal" Relationship="Self.FK_dbo_Mesa_dbo_Ramal_Ramal_Id" FromRole="Mesa" ToRole="Ramal" />
+        </EntityType>
+        <EntityType Name="Permissao">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Texto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Usuario" Relationship="Self.UsuarioPermissao" FromRole="Permissao" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Ramal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Numero" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Mesa" Relationship="Self.FK_dbo_Mesa_dbo_Ramal_Ramal_Id" FromRole="Ramal" ToRole="Mesa" />
+        </EntityType>
+        <EntityType Name="Sede">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NomeCidade" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Andar" Relationship="Self.FK_dbo_Andar_dbo_Sede_Sede_Id" FromRole="Sede" ToRole="Andar" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Senha" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Colaborador" Relationship="Self.FK_dbo_Colaborador_dbo_Usuario_Usuario_Id" FromRole="Usuario" ToRole="Colaborador" />
+          <NavigationProperty Name="Gerente" Relationship="Self.FK_dbo_Gerente_dbo_Usuario_Usuario_Id" FromRole="Usuario" ToRole="Gerente" />
+          <NavigationProperty Name="Permissao" Relationship="Self.UsuarioPermissao" FromRole="Usuario" ToRole="Permissao" />
+        </EntityType>
+        <Association Name="FK_dbo_Andar_dbo_Sede_Sede_Id">
+          <End Role="Sede" Type="Self.Sede" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Andar" Type="Self.Andar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sede">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Andar">
+              <PropertyRef Name="Sede_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Mesa_dbo_Andar_Id">
+          <End Role="Andar" Type="Self.Andar" Multiplicity="1" />
+          <End Role="Mesa" Type="Self.Mesa" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Andar">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Mesa">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Colaborador_dbo_Gerente_Gerente_Id">
+          <End Role="Gerente" Type="Self.Gerente" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Colaborador" Type="Self.Colaborador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gerente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Colaborador">
+              <PropertyRef Name="Gerente_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Colaborador_dbo_Usuario_Usuario_Id">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Colaborador" Type="Self.Colaborador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Colaborador">
+              <PropertyRef Name="Usuario_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Mesa_dbo_Colaborador_Colaborador_Id">
+          <End Role="Colaborador" Type="Self.Colaborador" Multiplicity="0..1" />
+          <End Role="Mesa" Type="Self.Mesa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colaborador">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Mesa">
+              <PropertyRef Name="Colaborador_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Gerente_dbo_Usuario_Usuario_Id">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Gerente" Type="Self.Gerente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Gerente">
+              <PropertyRef Name="Usuario_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Mesa_dbo_Maquina_Maquina_Id">
+          <End Role="Maquina" Type="Self.Maquina" Multiplicity="0..1" />
+          <End Role="Mesa" Type="Self.Mesa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Maquina">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Mesa">
+              <PropertyRef Name="Maquina_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Mesa_dbo_Ramal_Ramal_Id">
+          <End Role="Ramal" Type="Self.Ramal" Multiplicity="0..1" />
+          <End Role="Mesa" Type="Self.Mesa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ramal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Mesa">
+              <PropertyRef Name="Ramal_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UsuarioPermissao">
+          <End Role="Permissao" Type="Self.Permissao" Multiplicity="*" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="InfraMapDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Andar" EntityType="Self.Andar" />
+          <EntitySet Name="Colaborador" EntityType="Self.Colaborador" />
+          <EntitySet Name="Gerente" EntityType="Self.Gerente" />
+          <EntitySet Name="Maquina" EntityType="Self.Maquina" />
+          <EntitySet Name="Mesa" EntityType="Self.Mesa" />
+          <EntitySet Name="Permissao" EntityType="Self.Permissao" />
+          <EntitySet Name="Ramal" EntityType="Self.Ramal" />
+          <EntitySet Name="Sede" EntityType="Self.Sede" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK_dbo_Andar_dbo_Sede_Sede_Id" Association="Self.FK_dbo_Andar_dbo_Sede_Sede_Id">
+            <End Role="Sede" EntitySet="Sede" />
+            <End Role="Andar" EntitySet="Andar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Mesa_dbo_Andar_Id" Association="Self.FK_dbo_Mesa_dbo_Andar_Id">
+            <End Role="Andar" EntitySet="Andar" />
+            <End Role="Mesa" EntitySet="Mesa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Colaborador_dbo_Gerente_Gerente_Id" Association="Self.FK_dbo_Colaborador_dbo_Gerente_Gerente_Id">
+            <End Role="Gerente" EntitySet="Gerente" />
+            <End Role="Colaborador" EntitySet="Colaborador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Colaborador_dbo_Usuario_Usuario_Id" Association="Self.FK_dbo_Colaborador_dbo_Usuario_Usuario_Id">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Colaborador" EntitySet="Colaborador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Mesa_dbo_Colaborador_Colaborador_Id" Association="Self.FK_dbo_Mesa_dbo_Colaborador_Colaborador_Id">
+            <End Role="Colaborador" EntitySet="Colaborador" />
+            <End Role="Mesa" EntitySet="Mesa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Gerente_dbo_Usuario_Usuario_Id" Association="Self.FK_dbo_Gerente_dbo_Usuario_Usuario_Id">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Gerente" EntitySet="Gerente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Mesa_dbo_Maquina_Maquina_Id" Association="Self.FK_dbo_Mesa_dbo_Maquina_Maquina_Id">
+            <End Role="Maquina" EntitySet="Maquina" />
+            <End Role="Mesa" EntitySet="Mesa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Mesa_dbo_Ramal_Ramal_Id" Association="Self.FK_dbo_Mesa_dbo_Ramal_Ramal_Id">
+            <End Role="Ramal" EntitySet="Ramal" />
+            <End Role="Mesa" EntitySet="Mesa" />
+          </AssociationSet>
+          <AssociationSet Name="UsuarioPermissao" Association="Self.UsuarioPermissao">
+            <End Role="Permissao" EntitySet="Permissao" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="InfraMapDbModelStoreContainer" CdmEntityContainer="InfraMapDbEntities">
+          <EntitySetMapping Name="Andar">
+            <EntityTypeMapping TypeName="InfraMapDbModel.Andar">
+              <MappingFragment StoreEntitySet="Andar">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="Sede_Id" ColumnName="Sede_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Colaborador">
+            <EntityTypeMapping TypeName="InfraMapDbModel.Colaborador">
+              <MappingFragment StoreEntitySet="Colaborador">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Gerente_Id" ColumnName="Gerente_Id" />
+                <ScalarProperty Name="Usuario_Id" ColumnName="Usuario_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gerente">
+            <EntityTypeMapping TypeName="InfraMapDbModel.Gerente">
+              <MappingFragment StoreEntitySet="Gerente">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Usuario_Id" ColumnName="Usuario_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Maquina">
+            <EntityTypeMapping TypeName="InfraMapDbModel.Maquina">
+              <MappingFragment StoreEntitySet="Maquina">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mesa">
+            <EntityTypeMapping TypeName="InfraMapDbModel.Mesa">
+              <MappingFragment StoreEntitySet="Mesa">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Colaborador_Id" ColumnName="Colaborador_Id" />
+                <ScalarProperty Name="Maquina_Id" ColumnName="Maquina_Id" />
+                <ScalarProperty Name="Ramal_Id" ColumnName="Ramal_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permissao">
+            <EntityTypeMapping TypeName="InfraMapDbModel.Permissao">
+              <MappingFragment StoreEntitySet="Permissao">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Texto" ColumnName="Texto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ramal">
+            <EntityTypeMapping TypeName="InfraMapDbModel.Ramal">
+              <MappingFragment StoreEntitySet="Ramal">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sede">
+            <EntityTypeMapping TypeName="InfraMapDbModel.Sede">
+              <MappingFragment StoreEntitySet="Sede">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="NomeCidade" ColumnName="NomeCidade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="InfraMapDbModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Senha" ColumnName="Senha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="UsuarioPermissao" TypeName="InfraMapDbModel.UsuarioPermissao" StoreEntitySet="UsuarioPermissao">
+            <EndProperty Name="Permissao">
+              <ScalarProperty Name="Id" ColumnName="Permissao_Id" />
+            </EndProperty>
+            <EndProperty Name="Usuario">
+              <ScalarProperty Name="Id" ColumnName="Usuario_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

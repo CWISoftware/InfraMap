@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfraMap.Web.MVC", "InfraMa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfraMap.Infraestrutura.Servicos", "InfraMap.Infraestrutura.Servicos\InfraMap.Infraestrutura.Servicos.csproj", "{16C216C7-2A37-4A41-A6FB-239C6E70FD06}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfraMap.Infraestrutura.EntityModel", "InfraMap.Infraestrutura.EntityModel\InfraMap.Infraestrutura.EntityModel.csproj", "{2C7D65C3-9705-46DD-8DB5-DF85E1B441BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{16C216C7-2A37-4A41-A6FB-239C6E70FD06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16C216C7-2A37-4A41-A6FB-239C6E70FD06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16C216C7-2A37-4A41-A6FB-239C6E70FD06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C7D65C3-9705-46DD-8DB5-DF85E1B441BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C7D65C3-9705-46DD-8DB5-DF85E1B441BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C7D65C3-9705-46DD-8DB5-DF85E1B441BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C7D65C3-9705-46DD-8DB5-DF85E1B441BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
