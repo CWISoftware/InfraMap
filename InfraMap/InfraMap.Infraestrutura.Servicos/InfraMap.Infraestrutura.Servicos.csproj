@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{107B3517-A282-44B0-9E96-8E9790962547}</ProjectGuid>
+    <ProjectGuid>{16C216C7-2A37-4A41-A6FB-239C6E70FD06}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>InfraMap.Dominio</RootNamespace>
-    <AssemblyName>InfraMap.Dominio</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>InfraMap.Infraestrutura.Servicos</RootNamespace>
+    <AssemblyName>InfraMap.Infraestrutura.Servicos</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -31,33 +31,22 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ModuloAndar\Andar.cs" />
-    <Compile Include="ModuloColaborador\Colaborador.cs" />
-    <Compile Include="ModuloGerente\Gerente.cs" />
-    <Compile Include="ModuloMaquina\Maquina.cs" />
-    <Compile Include="ModuloMesa\Mesa.cs" />
-    <Compile Include="ModuloRamal\Ramal.cs" />
-    <Compile Include="ModuloSede\Sede.cs" />
-    <Compile Include="ModuloUsuario\Permissao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ModuloUsuario\Usuario.cs" />
-    <Compile Include="Repositorio\IUsuarioRepositorio.cs" />
-    <Compile Include="Servicos\IServicoCriptografia.cs" />
-    <Compile Include="Servicos\ServicoAutenticacao.cs" />
+    <Compile Include="ServicoCriptografia.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\InfraMap.Comum\InfraMap.Comum.csproj">
-      <Project>{2015aff6-2bcc-4e28-ba0a-b4f9258662b2}</Project>
-      <Name>InfraMap.Comum</Name>
+    <ProjectReference Include="..\InfraMap.Dominio\InfraMap.Dominio.csproj">
+      <Project>{107b3517-a282-44b0-9e96-8e9790962547}</Project>
+      <Name>InfraMap.Dominio</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

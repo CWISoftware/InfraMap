@@ -122,8 +122,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\FabricaDeModulos.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Seguranca\Autorizador.cs" />
+    <Compile Include="Seguranca\ControleDeSessao.cs" />
+    <Compile Include="Seguranca\UsuarioLogado.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -144,6 +148,24 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InfraMap.Comum\InfraMap.Comum.csproj">
+      <Project>{2015AFF6-2BCC-4E28-BA0A-B4F9258662B2}</Project>
+      <Name>InfraMap.Comum</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InfraMap.Dominio\InfraMap.Dominio.csproj">
+      <Project>{107b3517-a282-44b0-9e96-8e9790962547}</Project>
+      <Name>InfraMap.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InfraMap.Infra.Ef\InfraMap.Infraestrutura.Ef.csproj">
+      <Project>{ff25dfba-b351-470a-b978-5f4561997042}</Project>
+      <Name>InfraMap.Infraestrutura.Ef</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InfraMap.Infraestrutura.Servicos\InfraMap.Infraestrutura.Servicos.csproj">
+      <Project>{16c216c7-2a37-4a41-a6fb-239c6e70fd06}</Project>
+      <Name>InfraMap.Infraestrutura.Servicos</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
