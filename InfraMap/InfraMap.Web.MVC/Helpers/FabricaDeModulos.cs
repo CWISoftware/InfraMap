@@ -1,6 +1,6 @@
 ﻿using InfraMap.Dominio.Repositorio;
 using InfraMap.Dominio.Servicos;
-using InfraMap.Infra.Ef.Repositorios;
+using InfraMap.Infraestrutura.Ef.Repositorios;
 using InfraMap.Infraestrutura.Servicos;
 using System;
 using System.Collections.Generic;

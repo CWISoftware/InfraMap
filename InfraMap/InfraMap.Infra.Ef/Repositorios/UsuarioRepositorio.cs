@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InfraMap.Infra.Ef.Repositorios
+namespace InfraMap.Infraestrutura.Ef.Repositorios
 {
     public class UsuarioRepositorio : IUsuarioRepositorio
     {

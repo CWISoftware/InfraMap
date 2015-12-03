@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace InfraMap.Infra.Ef.Properties {
+namespace InfraMap.Infraestrutura.Ef.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

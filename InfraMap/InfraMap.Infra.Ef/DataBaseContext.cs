@@ -14,7 +14,7 @@ using InfraMap.Dominio.ModuloAndar;
 using InfraMap.Dominio.ModuloSede;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
-namespace InfraMap.Infra.Ef
+namespace InfraMap.Infraestrutura.Ef
 {
     public class DataBaseContext : DbContext
     {

@@ -1,18 +1,18 @@
-namespace InfraMap.Infra.Ef.Migrations
+namespace InfraMap.Infraestrutura.Ef.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<InfraMap.Infra.Ef.DataBaseContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<InfraMap.Infraestrutura.Ef.DataBaseContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(InfraMap.Infra.Ef.DataBaseContext context)
+        protected override void Seed(InfraMap.Infraestrutura.Ef.DataBaseContext context)
         {
             //  This method will be called after migrating to the latest version.
 

@@ -1,4 +1,4 @@
-namespace InfraMap.Infra.Ef.Migrations
+namespace InfraMap.Infraestrutura.Ef.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
