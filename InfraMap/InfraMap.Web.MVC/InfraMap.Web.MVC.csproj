@@ -159,10 +159,6 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\InfraMap.Comum\InfraMap.Comum.csproj">
-      <Project>{2015AFF6-2BCC-4E28-BA0A-B4F9258662B2}</Project>
-      <Name>InfraMap.Comum</Name>
-    </ProjectReference>
     <ProjectReference Include="..\InfraMap.Dominio\InfraMap.Dominio.csproj">
       <Project>{107b3517-a282-44b0-9e96-8e9790962547}</Project>
       <Name>InfraMap.Dominio</Name>

@@ -86,10 +86,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\InfraMap.Comum\InfraMap.Comum.csproj">
-      <Project>{2015aff6-2bcc-4e28-ba0a-b4f9258662b2}</Project>
-      <Name>InfraMap.Comum</Name>
-    </ProjectReference>
     <ProjectReference Include="..\InfraMap.Dominio\InfraMap.Dominio.csproj">
       <Project>{107b3517-a282-44b0-9e96-8e9790962547}</Project>
       <Name>InfraMap.Dominio</Name>

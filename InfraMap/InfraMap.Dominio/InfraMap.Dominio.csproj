@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comum\EntidadeBase.cs" />
+    <Compile Include="Comum\IQuery.cs" />
+    <Compile Include="Comum\IRepositorio.cs" />
     <Compile Include="ModuloAndar\Andar.cs" />
     <Compile Include="ModuloAndar\IAndarRepositorio.cs" />
     <Compile Include="ModuloMaquina\IMaquinaRepositorio.cs" />
@@ -56,12 +59,6 @@
     <Compile Include="ModuloUsuario\IUsuarioRepositorio.cs" />
     <Compile Include="Servicos\IServicoCriptografia.cs" />
     <Compile Include="Servicos\ServicoAutenticacao.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\InfraMap.Comum\InfraMap.Comum.csproj">
-      <Project>{2015aff6-2bcc-4e28-ba0a-b4f9258662b2}</Project>
-      <Name>InfraMap.Comum</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
