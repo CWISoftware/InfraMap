@@ -7,7 +7,7 @@ body {
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    margin-top: 25px;
+    margin-top: 20%;
     padding-left: 15px;
     padding-right: 15px;
     height : 70%;
@@ -46,4 +46,41 @@ textarea {
 .col-centered{
     margin: 10% auto;
     float: none;
+}
+
+.bloco-sede {
+    margin-top: 40px;
+    width:130px;
+    height:200px;
+    background-color:rgb(194,193,193);
+    border-radius:20px;
+}
+
+.div-img-sede{
+    width:100px;
+    height:105px;
+    margin-top:10px;
+    margin-left:15px;
+}
+
+.img-sede{
+    width:100px;
+    height:105px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin-top:-40px;
+    margin-left:-50px;
+    position:relative;
+}
+
+.descricao-sede{
+    width:100px;
+    height:70px;
+    margin-bottom:10px;
+    margin-left:15px;
+    text-align:center;
+    color:white;
+    margin-top:10px;
+    padding-top:10px;
 }
