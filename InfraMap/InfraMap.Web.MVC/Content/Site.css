@@ -56,6 +56,10 @@ textarea {
     border-radius:20px;
 }
 
+.bloco-sede:hover{
+    background-color:rgb(180,180,180);
+}
+
 .div-img-sede{
     width:100px;
     height:105px;
