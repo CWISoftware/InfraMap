@@ -1,6 +1,8 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿html{
+    height:100%;
+}
+body {
+    height:100%;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -8,6 +10,7 @@
     margin-top: 25px;
     padding-left: 15px;
     padding-right: 15px;
+    height : 70%;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -17,10 +20,12 @@ textarea {
     max-width: 280px;
 }
 
+.navbar-header{
+    height: 20%;
+}
 .logo {
-    width: 208px;
-    height: 60px;
-    margin: 5px 0 0;
+    width:250px;
+    height:70px;
     background: url('img/logoCWI.png') no-repeat;
 }
 
@@ -28,12 +33,17 @@ textarea {
     background-color: #A5BDCD;
 }
 .footer {
-    margin-top: 50px;
     padding: 10px 15px 15px;
     color: #444;
     background: #efefef;
+    height:10%;
 }
 
 .icon-bar {
    background-color:black !important;
+}
+
+.col-centered{
+    margin: 10% auto;
+    float: none;
 }
