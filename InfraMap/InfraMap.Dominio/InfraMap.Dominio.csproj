@@ -51,7 +51,7 @@
     <Compile Include="ModuloMaquina\Maquina.cs" />
     <Compile Include="ModuloMesa\IMesaRepositorio.cs" />
     <Compile Include="ModuloMesa\Mesa.cs" />
-    <Compile Include="ModuloRamal\IRepositorioRamal.cs" />
+    <Compile Include="ModuloRamal\IRamalRepositorio.cs" />
     <Compile Include="ModuloRamal\Ramal.cs" />
     <Compile Include="ModuloSede\Sede.cs" />
     <Compile Include="ModuloUsuario\Permissao.cs" />

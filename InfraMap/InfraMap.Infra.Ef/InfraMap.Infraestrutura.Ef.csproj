@@ -72,6 +72,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Repositorios\AndarRepositorio.cs" />
+    <Compile Include="Repositorios\ColaboradorRepositorio.cs" />
+    <Compile Include="Repositorios\GerenteRepositorio.cs" />
+    <Compile Include="Repositorios\MaquinaRepositorio.cs" />
+    <Compile Include="Repositorios\MesaRepositorio.cs" />
+    <Compile Include="Repositorios\RamalRepositorio.cs" />
     <Compile Include="Repositorios\RepositorioBase.cs" />
     <Compile Include="Repositorios\UsuarioRepositorio.cs" />
   </ItemGroup>

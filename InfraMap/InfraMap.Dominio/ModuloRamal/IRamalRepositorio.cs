@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace InfraMap.Dominio.ModuloRamal
 {
-    public interface IRepositorioRamal : IRepositorio<Ramal>
+    public interface IRamalRepositorio : IRepositorio<Ramal>
     {
     }
 }
