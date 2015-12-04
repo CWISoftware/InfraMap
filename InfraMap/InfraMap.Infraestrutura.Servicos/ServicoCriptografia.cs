@@ -11,7 +11,7 @@ namespace InfraMap.Infraestrutura.Servicos
     {
         public string CriptografarSenha(string senha)
         {
-            return PegarHashMd5(senha) + "INFRAMAP";
+            return PegarHashMd5(senha + "INFRAMAP");
         }
 
         public string PegarHashMd5(string senha)
@@ -20,10 +20,10 @@ namespace InfraMap.Infraestrutura.Servicos
             byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(senha);         
             byte[] hash = md5.ComputeHash(inputBytes);           
             System.Text.StringBuilder sb = new System.Text.StringBuilder();           
-            for (int i = 0; i < hash.Length; i++)               
-            {               
-            sb.Append(hash[i].ToString("X2"));
-            }           
+            foreach (var b in hash)
+            {
+                sb.Append(b.ToString("X2"));
+            }          
             return sb.ToString();
         }
     }

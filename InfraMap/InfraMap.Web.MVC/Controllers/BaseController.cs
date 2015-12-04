@@ -16,16 +16,16 @@ namespace InfraMap.Web.MVC.Controllers
             return View();
         }
 
-        private IList<Usuario> BuscarUsuarioPeloFiltro(String nome)
+        private IList<Usuario> BuscarUsuarioPeloFiltro(String term)
         {
             IUsuarioRepositorio usuario = FabricaDeModulos.CriarUsuarioRepositorio();
-            if (String.IsNullOrEmpty(nome))
+            if (String.IsNullOrEmpty(term))
             {
                 return usuario.Buscar();
             }
             else
             {
-                return usuario.BuscarPorNome(nome);
+                return usuario.BuscarPorNome(term);
             }
         }
 
