@@ -22,10 +22,13 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                     </ul>
+                    <form id="buscaForm" action='@Url.Action("UsuarioAutoComplete", "Base")' method="get">
+                        @Html.TextBoxFor(m => m.Nome, new { @type = "text", @class = "form-control", @id = "typeahead", @name = "Nome", @value = "" })
+                        <input type="submit" value="Buscar" />
+                    </form>
                 </div>
             </div>
     </header>
-
     <section class="container body-content">
         @RenderBody()      
     </section>
@@ -33,8 +36,17 @@
     <footer class="footer text-center">
         <p>&copy; @DateTime.Now.Year - InfraMap - Todos os direitos reservados</p>
     </footer>
-
-    @Scripts.Render("~/bundles/jquery")
-    @RenderSection("Scripts", false)
+    @section Scripts {
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("Scripts", false)
+        <script src="~/Scripts/typeahead.bundle.js"></script>
+        <script>
+            $(function() {
+                $.getJSON('/Base/UsuarioAutoComplete', function (allData) {
+                    $('#typeahead').typeahead({source: allData});
+                })});
+        </script>
+    }
 </body>
 </html>
