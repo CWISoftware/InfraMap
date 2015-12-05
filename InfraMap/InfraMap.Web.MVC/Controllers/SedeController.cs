@@ -27,8 +27,10 @@ namespace InfraMap.Web.MVC.Controllers
             return Json(listaSedes, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult IrParaMapa(string descricaoAndar, int idAndar)
+        public ActionResult IrParaMapa()
         {
+            string descricaoAndar = Request.Params["descricaoAndar"];
+            int idAndar = Convert.ToInt32(Request.Params["idAndar"]);
             var andarRepositorio = FabricaDeModulos.CriarAndarRepositorio();
 
             var andar = andarRepositorio.BuscarAndarComMesas(idAndar);
