@@ -67,9 +67,9 @@
     <Compile Include="Migrations\201512031851342_AlterandoColunaGerente_Id_Null.Designer.cs">
       <DependentUpon>201512031851342_AlterandoColunaGerente_Id_Null.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201512051517244_Fix.cs" />
-    <Compile Include="Migrations\201512051517244_Fix.Designer.cs">
-      <DependentUpon>201512051517244_Fix.cs</DependentUpon>
+    <Compile Include="Migrations\201512051526000_Andar_SedeID_NotNull.cs" />
+    <Compile Include="Migrations\201512051526000_Andar_SedeID_NotNull.Designer.cs">
+      <DependentUpon>201512051526000_Andar_SedeID_NotNull.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201512051541200_populando sede e andares.cs" />
     <Compile Include="Migrations\201512051541200_populando sede e andares.Designer.cs">
@@ -114,8 +114,8 @@
     <EmbeddedResource Include="Migrations\201512031851342_AlterandoColunaGerente_Id_Null.resx">
       <DependentUpon>201512031851342_AlterandoColunaGerente_Id_Null.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512051517244_Fix.resx">
-      <DependentUpon>201512051517244_Fix.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201512051526000_Andar_SedeID_NotNull.resx">
+      <DependentUpon>201512051526000_Andar_SedeID_NotNull.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512051541200_populando sede e andares.resx">
       <DependentUpon>201512051541200_populando sede e andares.cs</DependentUpon>
