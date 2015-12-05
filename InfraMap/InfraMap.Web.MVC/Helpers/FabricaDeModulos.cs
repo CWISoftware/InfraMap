@@ -1,4 +1,6 @@
-﻿using InfraMap.Dominio.Repositorio;
+﻿using InfraMap.Dominio.ModuloAndar;
+using InfraMap.Dominio.ModuloSede;
+using InfraMap.Dominio.Repositorio;
 using InfraMap.Dominio.Servicos;
 using InfraMap.Infraestrutura.Ef.Repositorios;
 using InfraMap.Infraestrutura.Servicos;
@@ -18,9 +20,19 @@ namespace InfraMap.Web.MVC.Helpers
             return new UsuarioRepositorio();
         }
 
+        public static IAndarRepositorio CriarAndarRepositorio()
+        {
+            return new AndarRepositorio();
+        }
+
         public static IServicoCriptografia CriarServicoCriptografia()
         {
             return new ServicoCriptografia();
+        }
+
+        public static ISedeRepositorio CriarSedeRepositorio()
+        {
+            return new SedeRepositorio();
         }
 
         public static ServicoAutenticacao CriarServicoAutenticacao()
