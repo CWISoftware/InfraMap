@@ -13,7 +13,7 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
         {
             using (var db = new DataBaseContext())
             {
-                return db.Andar.Where(a=>a.Sede.Id == idSede).ToList();
+                return null;
             }
         }
     }

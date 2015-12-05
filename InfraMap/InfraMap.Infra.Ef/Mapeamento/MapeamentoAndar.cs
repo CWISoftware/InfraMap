@@ -11,8 +11,7 @@ namespace InfraMap.Infraestrutura.Ef.Mapeamento
     {
         public MapeamentoAndar()
         {
-            HasRequired(t => t.Sede).WithMany();
-            HasMany(t => t.Mesas).WithOptional();
+            HasMany(t => t.Mesas).WithRequired();
         }
     }
 }

@@ -22,7 +22,7 @@ namespace InfraMap.Web.MVC.Controllers
         public JsonResult PegarAndaresDasSedes()
         {
             ISedeRepositorio repositorioSede = FabricaDeModulos.CriarSedeRepositorio();
-            var listaSedes = repositorioSede.BuscarSedesComAndares().Select(s => new { id = s.Id, andares = new { } });
+            var listaSedes = repositorioSede.BuscarSedesComAndares();
             return Json(listaSedes,JsonRequestBehavior.AllowGet);
         }
     }

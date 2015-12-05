@@ -59,21 +59,9 @@
     <Compile Include="Mapeamento\MapeamentoRamal.cs" />
     <Compile Include="Mapeamento\MapeamentoSede.cs" />
     <Compile Include="Mapeamento\MapeamentoUsuario.cs" />
-    <Compile Include="Migrations\201512031751325_Initial.cs" />
-    <Compile Include="Migrations\201512031751325_Initial.Designer.cs">
-      <DependentUpon>201512031751325_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512031851342_AlterandoColunaGerente_Id_Null.cs" />
-    <Compile Include="Migrations\201512031851342_AlterandoColunaGerente_Id_Null.Designer.cs">
-      <DependentUpon>201512031851342_AlterandoColunaGerente_Id_Null.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512051526000_Andar_SedeID_NotNull.cs" />
-    <Compile Include="Migrations\201512051526000_Andar_SedeID_NotNull.Designer.cs">
-      <DependentUpon>201512051526000_Andar_SedeID_NotNull.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512051559570_Fix.cs" />
-    <Compile Include="Migrations\201512051559570_Fix.Designer.cs">
-      <DependentUpon>201512051559570_Fix.cs</DependentUpon>
+    <Compile Include="Migrations\201512051729210_Initial.cs" />
+    <Compile Include="Migrations\201512051729210_Initial.Designer.cs">
+      <DependentUpon>201512051729210_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -108,17 +96,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201512031751325_Initial.resx">
-      <DependentUpon>201512031751325_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512031851342_AlterandoColunaGerente_Id_Null.resx">
-      <DependentUpon>201512031851342_AlterandoColunaGerente_Id_Null.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512051526000_Andar_SedeID_NotNull.resx">
-      <DependentUpon>201512051526000_Andar_SedeID_NotNull.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512051559570_Fix.resx">
-      <DependentUpon>201512051559570_Fix.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201512051729210_Initial.resx">
+      <DependentUpon>201512051729210_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

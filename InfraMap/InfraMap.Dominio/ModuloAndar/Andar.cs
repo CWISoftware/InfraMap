@@ -10,9 +10,7 @@ using System.Threading.Tasks;
 namespace InfraMap.Dominio.ModuloAndar
 {
     public class Andar : EntidadeBase
-    {
-        public Sede Sede { get; set; }
-        
+    {      
         public String Descricao { get; set; }
 
         public ICollection<Mesa> Mesas { get; set; }

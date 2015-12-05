@@ -1,20 +1,20 @@
 ﻿using InfraMap.Dominio.ModuloMesa;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace InfraMap.Infraestrutura.Ef.Mapeamento
 {
-    public class MapeamentoMesa : MapeamentoEntidade<Mesa>
-    {
+    public class MapeamentoMesa : EntityTypeConfiguration<Mesa>
+    {   
         public MapeamentoMesa()
         {
-            HasRequired(t => t.Andar).WithRequiredDependent();
-            HasOptional(t => t.Colaborador).WithOptionalDependent();
-            HasOptional(t => t.Maquina).WithOptionalDependent();
-            HasOptional(t => t.Ramal).WithOptionalDependent();
+            HasOptional(t => t.Colaborador).WithMany();
+            HasOptional(t => t.Maquina).WithMany();
+            HasOptional(t => t.Ramal).WithMany();
         }
     }
 }

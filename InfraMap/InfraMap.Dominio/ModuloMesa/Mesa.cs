@@ -13,8 +13,6 @@ namespace InfraMap.Dominio.ModuloMesa
 {
     public class Mesa : EntidadeBase
     {
-        public Andar Andar { get; set; }
-
         public Usuario Colaborador { get; set; }
 
         public Maquina Maquina { get; set; }

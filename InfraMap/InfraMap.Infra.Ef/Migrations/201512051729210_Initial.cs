@@ -12,7 +12,7 @@ namespace InfraMap.Infraestrutura.Ef.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Descricao = c.String(nullable: false),
+                        Descricao = c.String(),
                         Sede_Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
@@ -23,19 +23,17 @@ namespace InfraMap.Infraestrutura.Ef.Migrations
                 "dbo.Mesa",
                 c => new
                     {
-                        Id = c.Int(nullable: false),
+                        Id = c.Int(nullable: false, identity: true),
                         Colaborador_Id = c.Int(),
                         Maquina_Id = c.Int(),
                         Ramal_Id = c.Int(),
-                        Andar_Id = c.Int(),
+                        Andar_Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Andar", t => t.Id)
                 .ForeignKey("dbo.Usuario", t => t.Colaborador_Id)
                 .ForeignKey("dbo.Maquina", t => t.Maquina_Id)
                 .ForeignKey("dbo.Ramal", t => t.Ramal_Id)
-                .ForeignKey("dbo.Andar", t => t.Andar_Id)
-                .Index(t => t.Id)
+                .ForeignKey("dbo.Andar", t => t.Andar_Id, cascadeDelete: true)
                 .Index(t => t.Colaborador_Id)
                 .Index(t => t.Maquina_Id)
                 .Index(t => t.Ramal_Id)
@@ -46,10 +44,10 @@ namespace InfraMap.Infraestrutura.Ef.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Nome = c.String(nullable: false),
-                        Login = c.String(nullable: false),
-                        Senha = c.String(nullable: false),
-                        Gerente_Id = c.Int(nullable: false),
+                        Nome = c.String(),
+                        Login = c.String(),
+                        Senha = c.String(),
+                        Gerente_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Usuario", t => t.Gerente_Id)
@@ -69,8 +67,8 @@ namespace InfraMap.Infraestrutura.Ef.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Nome = c.String(nullable: false),
-                        Tipo = c.String(nullable: false),
+                        Nome = c.String(),
+                        Tipo = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -79,8 +77,8 @@ namespace InfraMap.Infraestrutura.Ef.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Tipo = c.String(nullable: false),
-                        Numero = c.String(nullable: false),
+                        Tipo = c.String(),
+                        Numero = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -89,8 +87,8 @@ namespace InfraMap.Infraestrutura.Ef.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Nome = c.String(nullable: false),
-                        NomeCidade = c.String(nullable: false),
+                        Nome = c.String(),
+                        NomeCidade = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -119,7 +117,6 @@ namespace InfraMap.Infraestrutura.Ef.Migrations
             DropForeignKey("dbo.UsuarioPermissao", "Permissao_Id", "dbo.Permissao");
             DropForeignKey("dbo.UsuarioPermissao", "Usuario_Id", "dbo.Usuario");
             DropForeignKey("dbo.Usuario", "Gerente_Id", "dbo.Usuario");
-            DropForeignKey("dbo.Mesa", "Id", "dbo.Andar");
             DropIndex("dbo.UsuarioPermissao", new[] { "Permissao_Id" });
             DropIndex("dbo.UsuarioPermissao", new[] { "Usuario_Id" });
             DropIndex("dbo.Usuario", new[] { "Gerente_Id" });
@@ -127,7 +124,6 @@ namespace InfraMap.Infraestrutura.Ef.Migrations
             DropIndex("dbo.Mesa", new[] { "Ramal_Id" });
             DropIndex("dbo.Mesa", new[] { "Maquina_Id" });
             DropIndex("dbo.Mesa", new[] { "Colaborador_Id" });
-            DropIndex("dbo.Mesa", new[] { "Id" });
             DropIndex("dbo.Andar", new[] { "Sede_Id" });
             DropTable("dbo.UsuarioPermissao");
             DropTable("dbo.Sede");
