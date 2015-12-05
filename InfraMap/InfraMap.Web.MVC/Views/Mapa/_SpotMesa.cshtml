@@ -1,0 +1,59 @@
+﻿@model InfraMap.Web.MVC.Models.MesaModel
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Mesa</h4>
+            </div>
+            <div class="modal-body">
+                <input type="email" class="form-control" id="login">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button id="spotMesa" type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Adicionar colaborador</h4>
+            </div>
+            <div class="modal-body">
+                <input form="form-control" id="login" value=@Model.Id type="hidden" />
+                <input form="form-control" id="login" name="nome" placeholder="Procure o colaborador" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button id="adicionaUsuario" type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/andarJs")
+    @Scripts.Render("~/bundles/mesa")
+    <script src="~/Content/jquery.easy-autocomplete.min.js"></script>
+    @RenderSection("Scripts", false)
+    <script>
+        var usuarioAutoComplete = {
+            url: "Base/UsuarioAutoComplete",
+            getValue: "label",
+            list: {
+                match: {
+                    enabled: true
+                }
+            }
+        };
+        $("#login").easyAutocomplete(usuarioAutoComplete);
+    </script>
+}
+
+
