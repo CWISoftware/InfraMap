@@ -1,4 +1,5 @@
 ﻿using InfraMap.Dominio.ModuloMaquina;
+using InfraMap.Dominio.ModuloRamal;
 using InfraMap.Web.MVC.Helpers;
 using System;
 using System.Collections.Generic;
@@ -72,6 +73,26 @@ namespace InfraMap.Web.MVC.Controllers
         {
             IList<Maquina> maquinaEncontrada = BuscarMaquinaPeloFiltro(term);
             var json = maquinaEncontrada.Select(maquinas => new { label = maquinas.Nome });
+            return Json(json, JsonRequestBehavior.AllowGet);
+        }
+
+        private IList<Ramal> BuscarRamalPeloFiltro(String term)
+        {
+            IRamalRepositorio ramal = FabricaDeModulos.CriarRamalRepositorio();
+            if (String.IsNullOrEmpty(term))
+            {
+                return ramal.Buscar();
+            }
+            else
+            {
+                return ramal.BuscarRamaisPorNumeros(term);
+            }
+        }
+
+        public JsonResult RamalAutoComplete(string term)
+        {
+            IList<Ramal> ramalEncontrado = BuscarRamalPeloFiltro(term);
+            var json = ramalEncontrado.Select(ramais => new { label = ramais.Numero });
             return Json(json, JsonRequestBehavior.AllowGet);
         }
     }
