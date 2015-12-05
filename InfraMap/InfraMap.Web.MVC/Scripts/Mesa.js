@@ -4,7 +4,7 @@
     $.ajax({
         type: "POST",
         url: "/SaoLeopoldo/MesaAdicionarColaborador",
-        data: { id: idMesa, colaborador: login },
+        data: { id: 1, colaborador: login },
         datatype: "json",
         success: function (data) { },
         error: function (xhr, status, error) {
@@ -45,5 +45,6 @@ $("#adicionaRamal").click(function () {
 
 function DisplayError(xhr) {
     var msg = JSON.parse(xhr.responseText);
-    alert(msg.Message);
+    $("#error .modal-body").append("<h2>" + msg.Message + "</h2>");
+    $('#error').modal('show');
 }
