@@ -63,6 +63,10 @@
     <Compile Include="Migrations\201512051729210_Initial.Designer.cs">
       <DependentUpon>201512051729210_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512051930304_Populando tabela Maquina.cs" />
+    <Compile Include="Migrations\201512051930304_Populando tabela Maquina.Designer.cs">
+      <DependentUpon>201512051930304_Populando tabela Maquina.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -98,6 +102,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201512051729210_Initial.resx">
       <DependentUpon>201512051729210_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512051930304_Populando tabela Maquina.resx">
+      <DependentUpon>201512051930304_Populando tabela Maquina.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
