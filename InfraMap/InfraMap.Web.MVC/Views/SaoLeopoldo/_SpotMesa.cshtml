@@ -57,9 +57,9 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Adicionar colaborador</h4>
             </div>
-            <div class="modal-body">
-                <input form="form-control" id="idMesa" value=@Model.Id type="hidden" />
-                <input form="form-control" id="login" name="nome" placeholder="Procure o colaborador" />
+            <div class="modal-body form-horizontal">
+                <input class="form-control" id="idMesa" value=@Model.Id type="hidden" />
+                <input class="form-control" id="login" name="nome" placeholder="Procure o colaborador" />
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -75,10 +75,11 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Adicionar maquina</h4>
-                <input form="form-control" id="maquina" name="nome" placeholder="Procure a máquina" />
+                
             </div>
-            <div class="modal-body">
-                <input form="form-control" id="idMesa" value=@Model.Id type="hidden" />
+            <div class="modal-body form-horizontal">
+                <input class="form-control" id="idMesa" value=@Model.Id type="hidden" />
+                <input class="form-control" id="maquina" name="nome" placeholder="Procure a máquina" />
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -96,7 +97,7 @@
                 <h4 class="modal-title" id="myModalLabel">Adicionar ramal</h4>
                 @*Dropdown dos ramais que o value seja o id do selecionado!*@
             </div>
-            <div class="modal-body">
+            <div class="modal-body form-horizontal">
                 <input form="form-control" id="idMesa" value=@Model.Id type="hidden" />
             </div>
             <div class="modal-footer">
