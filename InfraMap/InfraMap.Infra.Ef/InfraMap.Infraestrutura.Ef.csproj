@@ -79,6 +79,7 @@
     <Compile Include="Repositorios\MesaRepositorio.cs" />
     <Compile Include="Repositorios\RamalRepositorio.cs" />
     <Compile Include="Repositorios\RepositorioBase.cs" />
+    <Compile Include="Repositorios\SedeRepositorio.cs" />
     <Compile Include="Repositorios\UsuarioRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
