@@ -9,5 +9,9 @@ namespace InfraMap.Infraestrutura.Ef.Mapeamento
 {
     public class MapeamentoSede : MapeamentoEntidade<Sede>
     {
+        public MapeamentoSede()
+        {
+            HasMany(t => t.Andares).WithOptional();
+        }
     }
 }

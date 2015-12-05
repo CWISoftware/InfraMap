@@ -9,5 +9,12 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
 {
     public class AndarRepositorio : RepositorioBase<Andar>, IAndarRepositorio
     {
+        public List<Andar> BuscarAndaresPorSede(int idSede)
+        {
+            using (var db = new DataBaseContext())
+            {
+                return db.Andar.Where(a=>a.Sede.Id == idSede).ToList();
+            }
+        }
     }
 }

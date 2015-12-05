@@ -9,5 +9,7 @@ namespace InfraMap.Dominio.ModuloAndar
 {
     public interface IAndarRepositorio : IRepositorio<Andar>
     {
+        List<Andar> BuscarAndaresPorSede(int idSede);
+
     }
 }

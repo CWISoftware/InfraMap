@@ -1,4 +1,5 @@
 ﻿using InfraMap.Comum;
+using InfraMap.Dominio.ModuloAndar;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,7 @@ namespace InfraMap.Dominio.ModuloSede
         public String Nome { get; set; }
 
         public String NomeCidade { get; set; }
+
+        public ICollection<Andar> Andares { get; set; }
     }
 }
