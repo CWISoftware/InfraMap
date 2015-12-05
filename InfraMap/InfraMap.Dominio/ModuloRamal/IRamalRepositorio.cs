@@ -9,5 +9,8 @@ namespace InfraMap.Dominio.ModuloRamal
 {
     public interface IRamalRepositorio : IRepositorio<Ramal>
     {
+        IList<Ramal> BuscarRamaisPorNumeros(string numero);
+
+        Ramal BuscarRamalPorNumero(string numero);
     }
 }
