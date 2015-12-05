@@ -25,7 +25,7 @@ namespace InfraMap.Web.MVC.Controllers
             }
             else
             {
-                return usuario.BuscarPorNome(term);
+                return usuario.BuscarListaPorNome(term);
             }
         }
 

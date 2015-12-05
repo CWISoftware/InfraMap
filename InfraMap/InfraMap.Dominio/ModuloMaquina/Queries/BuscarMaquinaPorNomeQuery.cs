@@ -9,16 +9,16 @@ namespace InfraMap.Dominio.ModuloMaquina.Queries
 {
     public class BuscarMaquinaPorNomeQuery : IQuery<Maquina>
     {
-        private readonly string nomeMaquina;
+        private readonly string nome;
 
-        public BuscarMaquinaPorNomeQuery(string nomeMaquina)
+        public BuscarMaquinaPorNomeQuery(string nome)
         {
-            this.nomeMaquina = nomeMaquina;
+            this.nome = nome;
         }
 
         public IQueryable<Maquina> CriarQuery(IQueryable<Maquina> src)
         {
-            return src.Where(t => t.Nome.StartsWith(this.nomeMaquina));
+            return src.Where(t => t.Nome.Equals(this.nome));
         }
     }
 }

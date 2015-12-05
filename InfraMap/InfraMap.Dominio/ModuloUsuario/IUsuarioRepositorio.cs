@@ -12,6 +12,8 @@ namespace InfraMap.Dominio.Repositorio
     {
         Usuario BuscarPorLogin(string login);
 
-        IList<Usuario> BuscarPorNome(string nome);
+        IList<Usuario> BuscarListaPorNome(string nome);
+
+        Usuario BuscarPorNome(string nome);
     }
 }

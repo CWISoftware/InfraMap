@@ -75,7 +75,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Adicionar maquina</h4>
-                <input form="form-control" id="maquina-auto-complete" name="nome" placeholder="Procure a máquina" />
+                <input form="form-control" id="maquina" name="nome" placeholder="Procure a máquina" />
             </div>
             <div class="modal-body">
                 <input form="form-control" id="idMesa" value=@Model.Id type="hidden" />
@@ -134,7 +134,7 @@
                 }
             }
         };
-        $("#maquina-auto-complete").easyAutocomplete(usuarioAutoComplete);
+        $("#maquina").easyAutocomplete(usuarioAutoComplete);
     </script>
 }
 

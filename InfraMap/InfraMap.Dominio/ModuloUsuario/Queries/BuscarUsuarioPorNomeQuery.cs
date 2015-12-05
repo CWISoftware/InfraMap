@@ -13,12 +13,12 @@ namespace InfraMap.Dominio.ModuloUsuario.Queries
 
         public BuscarUsuarioPorNomeQuery(string nome)
         {
-            this.nome = nome;        
+            this.nome = nome;
         }
 
         public IQueryable<Usuario> CriarQuery(IQueryable<Usuario> src)
         {
-            return src.Where(t => t.Nome.StartsWith(this.nome));
+            return src.Where(t => t.Nome.Equals(this.nome));
         }
     }
 }

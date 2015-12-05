@@ -10,23 +10,33 @@ namespace InfraMap.Web.MVC.Controllers
 {
     public class MapaController : Controller
     {
-        public void AdicionarColaborador(int idMesa, string loginColaborador)
+        public void AdicionarColaborador(int idMesa, string colaborador)
         {
             var mesaRepositorio = FabricaDeModulos.CriarMesaRepositorio();
             var usuarioRepositorio = FabricaDeModulos.CriarUsuarioRepositorio();
 
             var mesa = mesaRepositorio.BuscarPorId(idMesa);
-            mesa.Colaborador = usuarioRepositorio.BuscarPorLogin(loginColaborador);
+            mesa.Colaborador = usuarioRepositorio.BuscarPorNome(colaborador);
+            if (mesa.Colaborador == null)
+            {
+                throw new Exception("Colaborador não encontrado!");
+            }
+
             mesaRepositorio.Atualizar(mesa);
         }
 
-        public void AdicionarMaquina(int idMesa, int idMaquina)
+        public void AdicionarMaquina(int idMesa, string maquina)
         {
             var mesaRepositorio = FabricaDeModulos.CriarMesaRepositorio();
             var maquinaRepositorio = FabricaDeModulos.CriarMaquinaRepositorio();
 
             var mesa = mesaRepositorio.BuscarPorId(idMesa);
-            mesa.Maquina = maquinaRepositorio.BuscarPorId(idMaquina);
+            mesa.Maquina = maquinaRepositorio.BuscarPorNome(maquina);
+            if (mesa.Maquina == null)
+            {
+                throw new Exception("Maquina não encontrada!");
+            }
+
             mesaRepositorio.Atualizar(mesa);
         }
 
@@ -37,6 +47,11 @@ namespace InfraMap.Web.MVC.Controllers
 
             var mesa = mesaRepositorio.BuscarPorId(idMesa);
             mesa.Ramal = ramalRepositorio.BuscarPorId(idRamal);
+            if (mesa.Ramal == null)
+            {
+                throw new Exception("Ramal não encontrado!");
+            }
+
             mesaRepositorio.Atualizar(mesa);
         }
 
@@ -49,7 +64,7 @@ namespace InfraMap.Web.MVC.Controllers
             }
             else
             {
-                return maquina.BuscarPorNome(term);
+                return maquina.BuscarListaPorNome(term);
             }
         }
 
