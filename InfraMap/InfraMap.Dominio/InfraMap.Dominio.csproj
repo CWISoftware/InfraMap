@@ -46,6 +46,7 @@
     <Compile Include="ModuloAndar\IAndarRepositorio.cs" />
     <Compile Include="ModuloMaquina\IMaquinaRepositorio.cs" />
     <Compile Include="ModuloMaquina\Maquina.cs" />
+    <Compile Include="ModuloMaquina\Queries\BuscarMaquinaPorNomeQuery.cs" />
     <Compile Include="ModuloMesa\IMesaRepositorio.cs" />
     <Compile Include="ModuloMesa\Mesa.cs" />
     <Compile Include="ModuloRamal\IRamalRepositorio.cs" />
