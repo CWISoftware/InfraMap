@@ -9,19 +9,19 @@ namespace InfraMap.Web.MVC.Models
     {
         public int Id { get; set; }
 
-        public SedeModel Sede { get; set; }
+        public int IdSede { get; set; }
 
-        public MaquinaModel Maquina { get; set; }
+        public int IdMaquina { get; set; }
 
-        public RamalModel Ramal { get; set; }
+        public int IdRamal { get; set; }
 
-        public UsuarioModel Colaborador { get; set; }
+        public int IdColaborador { get; set; }
 
         public bool TemMaquina
         {
             get
             {
-                return this.Maquina != null;
+                return this.IdMaquina > 0;
             }
         }
 
@@ -29,7 +29,7 @@ namespace InfraMap.Web.MVC.Models
         {
             get
             {
-                return this.Ramal != null;
+                return this.IdRamal > 0;
             }
         }
 
@@ -37,7 +37,7 @@ namespace InfraMap.Web.MVC.Models
         {
             get
             {
-                return this.Colaborador != null;
+                return this.IdColaborador > 0;
             }
         }
     }

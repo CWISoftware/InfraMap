@@ -1,4 +1,5 @@
-﻿using InfraMap.Dominio.Repositorio;
+﻿using InfraMap.Dominio.ModuloMesa;
+using InfraMap.Dominio.Repositorio;
 using InfraMap.Dominio.Servicos;
 using InfraMap.Infraestrutura.Ef.Repositorios;
 using InfraMap.Infraestrutura.Servicos;
@@ -16,6 +17,11 @@ namespace InfraMap.Web.MVC.Helpers
         public static IUsuarioRepositorio CriarUsuarioRepositorio()
         {
             return new UsuarioRepositorio();
+        }
+
+        public static IMesaRepositorio CriarMesaRepositorio()
+        {
+            return new MesaRepositorio();
         }
 
         public static IServicoCriptografia CriarServicoCriptografia()
