@@ -1,0 +1,40 @@
+﻿.reuniao{
+	float: left;
+	text-align: center;
+	width:910px;
+	height:110px;
+}
+
+.sala{
+	float: left;
+	display: inline-block;
+	width: 350px;
+	height: 100px;
+	border: 2px solid #000;
+	border-radius: 4px;
+	margin: 2px 2px;
+}
+
+.espaco{
+	position: relative;
+	top: -748px;
+	left: -60px;
+	float: right;
+	height: 740px;
+	width: 250px;
+}
+
+.diretoria{
+	height: 120px;
+	width: 250px;
+	border: 2px solid #000;
+	border-radius: 4px;
+	margin-bottom: 10px;
+}
+
+.auditorio{
+	height: 615px;
+	width: 250px;
+	border: 2px solid #000;
+	border-radius: 4px;
+}

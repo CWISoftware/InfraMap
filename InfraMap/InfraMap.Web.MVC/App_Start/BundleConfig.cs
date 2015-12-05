@@ -22,6 +22,13 @@ namespace InfraMap.Web.MVC.App_Start
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                         "~/Scripts/bootstrap.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/andarJs").Include(
+                        "~/Scripts/Andar.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/andarCss").Include(
+                        "~/Content/Andar.css",
+                        "~/Content/TerceiroAndarCWISL.css"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                         "~/Content/bootstrap.css",
                         "~/Content/site.css"));

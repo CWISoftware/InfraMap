@@ -1,0 +1,37 @@
+﻿.andar{
+	position: absolute;
+	width: 1250px;
+	height: 1250px;
+}
+
+.ilha{
+	position: relative;
+	float: left;
+	margin-top: 20px;
+	height: 100px;
+	margin-bottom: 20px;
+}
+
+.fileira{
+	position: relative;
+	text-align: center;
+	width:940px;
+	height:50px;
+}
+
+.mesa {
+    float: left;
+    display: inline-block;
+    width: 100px;
+    height: 45px;
+    border: 2px solid #000;
+    border-radius: 4px;
+    margin: 2px 2px;
+}
+
+.mesa:hover {
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
