@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InfraMap.Dominio.ModuloMesa;
 
 namespace InfraMap.Infraestrutura.Ef.Repositorios
 {
@@ -14,6 +15,14 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
             using (var db = new DataBaseContext())
             {
                 return null;
+            }
+        }
+
+        public Andar BuscarAndarComMesas(int id)
+        {
+            using (var db = new DataBaseContext())
+            {
+                return db.Andar.Include("Mesas").Where(a => a.Id == id).SingleOrDefault();
             }
         }
     }

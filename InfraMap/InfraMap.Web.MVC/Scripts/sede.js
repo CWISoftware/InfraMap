@@ -1,16 +1,24 @@
 ﻿$("#sede-sao-leo").click(function () {
     alert("É um botão");
-    var id_sede = $("sede-sao-leo").val();
+    var id_sede = $("#sede-sao-leo").children("input").attr("value");
     $.ajax({
         type: "GET",
         url: '/Sede/PegarAndaresDasSedes',        
-        dataType: "json",
-        success: function (json) {
+        dataType: "json"
+    }).done(
+        function (json) {
             var options = "";
-            $.each(json, function (key, value) {
-                options += '<option value="' + key + '">' + value + '</option>';
-            });
-            $("#dropdown-andar").html(options);
+            options += '<option value="' + json[id_sede].Andares[0].Id + '">' + json[id_sede].Andares[0].Descricao + '</option>';
+            $("#btn-ir").addClass("show");
+            $("#dropdown-andar").append(options);
         }
-    });
+    );
 });
+
+$("#btn-ir").click(function () {
+    $.ajax({
+        url: '/Sede/IrParaMapa',
+        data: { descricaoAndar: $("#dropdown-andar").find(":selected").text(), idAndar: $("#dropdown-andar").val() }
+    });
+    }
+);
