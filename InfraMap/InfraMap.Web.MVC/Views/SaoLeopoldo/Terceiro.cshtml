@@ -1,9 +1,10 @@
-﻿@{
+﻿@model InfraMap.Web.MVC.Models.MesaModel
+@{
     ViewBag.Title = "Terceiro";
 }
 
 @Styles.Render("~/bundles/andarCss")
-
+@Html.Partial("_SpotMesa", @Model);
 <section class="andar">
     <div class="fileira">
         <div class="mesa">

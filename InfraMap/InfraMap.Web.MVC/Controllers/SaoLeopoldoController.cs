@@ -14,7 +14,7 @@ namespace InfraMap.Web.MVC.Controllers
         [HttpGet]
         public ActionResult Terceiro()
         {
-            return View();
+            return View(new MesaModel());
         }
 
         [HttpPost]

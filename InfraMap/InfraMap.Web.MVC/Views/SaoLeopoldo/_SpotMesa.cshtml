@@ -7,16 +7,17 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Mesa</h4>
             </div>
-            <div class="modal-body">
+            <div class="modal-body form-horizontal">
                 @if (Model.TemColaborador)
                 {
                     
                 }
                 else
                 {
-                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#colaborador">
+                    <button type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#colaborador">
                       Adicionar colaborador
                     </button>
+                    <h2></h2>
                 }
                 @if (Model.TemMaquina)
                 {
@@ -24,9 +25,10 @@
                 }
                 else
                 {
-                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#maquina">
+                    <button type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#maquina">
                         Adicionar maquina
                     </button>
+                    <h2></h2>
                 }
                 @if (Model.TemRamal)
                 {
@@ -34,9 +36,10 @@
                 }
                 else
                 {
-                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ramal">
+                    <button type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#ramal">
                         Adicionar ramal
                     </button>
+                    <h2></h2>
                 }
             </div>
             <div class="modal-footer">

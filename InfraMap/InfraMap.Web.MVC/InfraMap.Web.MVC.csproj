@@ -181,7 +181,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Sede\Index.cshtml" />
     <Content Include="Views\SaoLeopoldo\Terceiro.cshtml" />
-    <Content Include="Views\Mapa\_SpotMesa.cshtml" />
+    <Content Include="Views\SaoLeopoldo\_SpotMesa.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -191,6 +191,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Mapa\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\InfraMap.Dominio\InfraMap.Dominio.csproj">
