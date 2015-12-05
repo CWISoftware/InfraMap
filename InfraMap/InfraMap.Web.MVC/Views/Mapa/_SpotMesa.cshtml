@@ -8,7 +8,36 @@
                 <h4 class="modal-title" id="myModalLabel">Mesa</h4>
             </div>
             <div class="modal-body">
-                <input type="email" class="form-control" id="login">
+                @if (Model.TemColaborador)
+                {
+                    
+                }
+                else
+                {
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#colaborador">
+                      Adicionar colaborador
+                    </button>
+                }
+                @if (Model.TemMaquina)
+                {
+
+                }
+                else
+                {
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#maquina">
+                        Adicionar maquina
+                    </button>
+                }
+                @if (Model.TemRamal)
+                {
+
+                }
+                else
+                {
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ramal">
+                        Adicionar ramal
+                    </button>
+                }
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -18,7 +47,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+<div class="modal fade" id="colaborador" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -26,12 +55,50 @@
                 <h4 class="modal-title" id="myModalLabel">Adicionar colaborador</h4>
             </div>
             <div class="modal-body">
-                <input form="form-control" id="login" value=@Model.Id type="hidden" />
+                <input form="form-control" id="idMesa" value=@Model.Id type="hidden" />
                 <input form="form-control" id="login" name="nome" placeholder="Procure o colaborador" />
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <button id="adicionaUsuario" type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="maquina" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Adicionar maquina</h4>
+                @*Dropdown das maquinas que o value seja o id da selecionada!*@
+            </div>
+            <div class="modal-body">
+                <input form="form-control" id="idMesa" value=@Model.Id type="hidden" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button id="adicionaMaquina" type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ramal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Adicionar ramal</h4>
+                @*Dropdown dos ramais que o value seja o id do selecionado!*@
+            </div>
+            <div class="modal-body">
+                <input form="form-control" id="idMesa" value=@Model.Id type="hidden" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button id="adicionaRamal" type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
