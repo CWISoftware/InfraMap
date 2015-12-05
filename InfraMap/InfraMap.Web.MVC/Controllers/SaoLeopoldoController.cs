@@ -25,5 +25,23 @@ namespace InfraMap.Web.MVC.Controllers
             this.AdicionarColaborador(id, login);
             return Json(new { success = true });
         }
+
+        [HttpPost]
+        public JsonResult MesaAdicionarMaquina()
+        {
+            int id = Convert.ToInt32(Request.Params["id"]);
+            int idMaquina = Convert.ToInt32(Request.Params["maquina"]);
+            this.AdicionarMaquina(id, idMaquina);
+            return Json(new { success = true });
+        }
+
+        [HttpPost]
+        public JsonResult MesaAdicionarRamal()
+        {
+            int id = Convert.ToInt32(Request.Params["id"]);
+            int idRamal = Convert.ToInt32(Request.Params["ramal"]);
+            this.AdicionarRamal(id, idRamal);
+            return Json(new { success = true });
+        }
     }
 }
