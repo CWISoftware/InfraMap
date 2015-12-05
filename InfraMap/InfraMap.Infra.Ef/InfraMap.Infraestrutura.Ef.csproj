@@ -67,6 +67,10 @@
     <Compile Include="Migrations\201512031851342_AlterandoColunaGerente_Id_Null.Designer.cs">
       <DependentUpon>201512031851342_AlterandoColunaGerente_Id_Null.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512051517244_Fix.cs" />
+    <Compile Include="Migrations\201512051517244_Fix.Designer.cs">
+      <DependentUpon>201512051517244_Fix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -79,6 +83,7 @@
     <Compile Include="Repositorios\MesaRepositorio.cs" />
     <Compile Include="Repositorios\RamalRepositorio.cs" />
     <Compile Include="Repositorios\RepositorioBase.cs" />
+    <Compile Include="Repositorios\SedeRepositorio.cs" />
     <Compile Include="Repositorios\UsuarioRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -104,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512031851342_AlterandoColunaGerente_Id_Null.resx">
       <DependentUpon>201512031851342_AlterandoColunaGerente_Id_Null.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512051517244_Fix.resx">
+      <DependentUpon>201512051517244_Fix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
