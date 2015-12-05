@@ -1,4 +1,5 @@
-﻿using InfraMap.Web.MVC.Helpers;
+﻿using InfraMap.Dominio.ModuloMaquina;
+using InfraMap.Web.MVC.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,26 @@ namespace InfraMap.Web.MVC.Controllers
             var mesa = mesaRepositorio.BuscarPorId(idMesa);
             mesa.Ramal = ramalRepositorio.BuscarPorId(idRamal);
             mesaRepositorio.Atualizar(mesa);
+        }
+
+        private IList<Maquina> BuscarMaquinaPeloFiltro(String term)
+        {
+            IMaquinaRepositorio maquina = FabricaDeModulos.CriarMaquinaRepositorio();
+            if (String.IsNullOrEmpty(term))
+            {
+                return maquina.Buscar();
+            }
+            else
+            {
+                return maquina.BuscarPorNome(term);
+            }
+        }
+
+        public JsonResult MaquinaAutoComplete(string term)
+        {
+            IList<Maquina> maquinaEncontrada = BuscarMaquinaPeloFiltro(term);
+            var json = maquinaEncontrada.Select(maquinas => new { label = maquinas.Nome });
+            return Json(json, JsonRequestBehavior.AllowGet);
         }
     }
 }
