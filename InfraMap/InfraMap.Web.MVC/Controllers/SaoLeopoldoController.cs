@@ -21,8 +21,16 @@ namespace InfraMap.Web.MVC.Controllers
         public JsonResult MesaAdicionarColaborador()
         {
             int id = Convert.ToInt32(Request.Params["id"]);
-            string login = Request.Params["colaborador"];
-            this.AdicionarColaborador(id, login);
+            string nome = Request.Params["colaborador"];
+            try
+            {
+                this.AdicionarColaborador(id, nome);
+            }
+            catch (Exception e)
+            {
+                return Json(new { success = false, msg = e.Message });
+            }
+            
             return Json(new { success = true });
         }
 
@@ -30,8 +38,16 @@ namespace InfraMap.Web.MVC.Controllers
         public JsonResult MesaAdicionarMaquina()
         {
             int id = Convert.ToInt32(Request.Params["id"]);
-            int idMaquina = Convert.ToInt32(Request.Params["maquina"]);
-            this.AdicionarMaquina(id, idMaquina);
+            string maquina = Request.Params["maquina"];
+            try
+            {
+                this.AdicionarMaquina(id, maquina);
+            }
+            catch (Exception e)
+            {
+                return Json(new { success = false, msg = e.Message });
+            }
+
             return Json(new { success = true });
         }
 
@@ -39,8 +55,16 @@ namespace InfraMap.Web.MVC.Controllers
         public JsonResult MesaAdicionarRamal()
         {
             int id = Convert.ToInt32(Request.Params["id"]);
-            int idRamal = Convert.ToInt32(Request.Params["ramal"]);
-            this.AdicionarRamal(id, idRamal);
+            int ramal = Convert.ToInt32(Request.Params["ramal"]);
+            try
+            {
+                this.AdicionarRamal(id, ramal);
+            }
+            catch (Exception e)
+            {
+                return Json(new { success = false, msg = e.Message });
+            }
+            
             return Json(new { success = true });
         }
     }

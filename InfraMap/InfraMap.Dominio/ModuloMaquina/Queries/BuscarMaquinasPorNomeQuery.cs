@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 
 namespace InfraMap.Dominio.ModuloMaquina.Queries
 {
-    public class BuscarMaquinaPorNomeQuery : IQuery<Maquina>
+    public class BuscarMaquinasPorNomeQuery : IQuery<Maquina>
     {
-        private readonly string nome;
+        private readonly string nomeMaquina;
 
-        public BuscarMaquinaPorNomeQuery(string nome)
+        public BuscarMaquinasPorNomeQuery(string nomeMaquina)
         {
-            this.nome = nome;
+            this.nomeMaquina = nomeMaquina;
         }
 
         public IQueryable<Maquina> CriarQuery(IQueryable<Maquina> src)
         {
-            return src.Where(t => t.Nome.Equals(this.nome));
+            return src.Where(t => t.Nome.StartsWith(this.nomeMaquina));
         }
     }
 }

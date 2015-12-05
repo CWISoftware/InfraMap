@@ -19,9 +19,15 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
             }
         }
 
-        public IList<Usuario> BuscarPorNome(string nome)
+        public IList<Usuario> BuscarListaPorNome(string nome)
         {
-            return this.Buscar(new BuscarUsuarioPorNomeQuery(nome));
+            return this.Buscar(new BuscarUsuariosPorNomeQuery(nome));
+        }
+
+
+        public Usuario BuscarPorNome(string nome)
+        {
+            return this.Buscar(new BuscarUsuariosPorNomeQuery(nome)).FirstOrDefault();
         }
     }
 }

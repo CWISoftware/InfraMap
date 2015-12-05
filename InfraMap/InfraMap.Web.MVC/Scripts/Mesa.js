@@ -8,6 +8,11 @@
         datatype: "json",
         success: function (data) {}
     });
+    $.getJSON("/SaoLeopoldo/MesaAdicionarColaborador", { id: null }, function (result) {
+        if (!result.success) {
+            alert(result.error);
+        }
+    })
 });
 
 $("#adicionaMaquina").click(function () {
@@ -20,6 +25,11 @@ $("#adicionaMaquina").click(function () {
         datatype: "json",
         success: function (data) { }
     });
+    $.getJSON("/SaoLeopoldo/MesaAdicionarMaquina", { id: null }, function (result) {
+        if (!result.success) {
+            alert(result.error);
+        }
+    })
 });
 
 $("#adicionaRamal").click(function () {
@@ -32,4 +42,9 @@ $("#adicionaRamal").click(function () {
         datatype: "json",
         success: function (data) { }
     });
+    $.getJSON("/SaoLeopoldo/MesaAdicionarRamal", { id: null }, function(result){
+        if (!result.success){
+            alert(result.error);
+        }
+    })
 });
