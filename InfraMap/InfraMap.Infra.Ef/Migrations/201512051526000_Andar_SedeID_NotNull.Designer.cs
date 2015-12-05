@@ -7,13 +7,13 @@ namespace InfraMap.Infraestrutura.Ef.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Fix : IMigrationMetadata
+    public sealed partial class Andar_SedeID_NotNull : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Fix));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Andar_SedeID_NotNull));
         
         string IMigrationMetadata.Id
         {
-            get { return "201512051517244_Fix"; }
+            get { return "201512051526000_Andar_SedeID_NotNull"; }
         }
         
         string IMigrationMetadata.Source

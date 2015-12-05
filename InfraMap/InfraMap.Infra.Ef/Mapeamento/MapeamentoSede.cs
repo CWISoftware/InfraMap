@@ -11,7 +11,7 @@ namespace InfraMap.Infraestrutura.Ef.Mapeamento
     {
         public MapeamentoSede()
         {
-            HasMany(t => t.Andares).WithOptional();
+            HasMany(t => t.Andares).WithRequired();
         }
     }
 }
