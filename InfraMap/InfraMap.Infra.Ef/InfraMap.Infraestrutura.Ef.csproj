@@ -71,6 +71,10 @@
     <Compile Include="Migrations\201512051526000_Andar_SedeID_NotNull.Designer.cs">
       <DependentUpon>201512051526000_Andar_SedeID_NotNull.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512051541200_populando sede e andares.cs" />
+    <Compile Include="Migrations\201512051541200_populando sede e andares.Designer.cs">
+      <DependentUpon>201512051541200_populando sede e andares.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -112,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512051526000_Andar_SedeID_NotNull.resx">
       <DependentUpon>201512051526000_Andar_SedeID_NotNull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512051541200_populando sede e andares.resx">
+      <DependentUpon>201512051541200_populando sede e andares.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
