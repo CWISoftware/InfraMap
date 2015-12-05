@@ -1,4 +1,7 @@
-﻿using InfraMap.Dominio.ModuloMesa;
+﻿using InfraMap.Dominio.ModuloAndar;
+using InfraMap.Dominio.ModuloMaquina;
+using InfraMap.Dominio.ModuloMesa;
+using InfraMap.Dominio.ModuloRamal;
 using InfraMap.Dominio.Repositorio;
 using InfraMap.Dominio.Servicos;
 using InfraMap.Infraestrutura.Ef.Repositorios;
@@ -22,6 +25,21 @@ namespace InfraMap.Web.MVC.Helpers
         public static IMesaRepositorio CriarMesaRepositorio()
         {
             return new MesaRepositorio();
+        }
+
+        public static IMaquinaRepositorio CriarMaquinaRepositorio()
+        {
+            return new MaquinaRepositorio();
+        }
+
+        public static IRamalRepositorio CriarRamalRepositorio()
+        {
+            return new RamalRepositorio();
+        }
+
+        public static IAndarRepositorio CriarAndarRepositorio()
+        {
+            return new AndarRepositorio();
         }
 
         public static IServicoCriptografia CriarServicoCriptografia()

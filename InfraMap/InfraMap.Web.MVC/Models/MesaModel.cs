@@ -11,11 +11,13 @@ namespace InfraMap.Web.MVC.Models
 
         public int IdSede { get; set; }
 
+        public int IdAndar { get; set; }
+
         public int IdMaquina { get; set; }
 
         public int IdRamal { get; set; }
 
-        public int IdColaborador { get; set; }
+        public String Colaborador { get; set; }
 
         public bool TemMaquina
         {
@@ -37,7 +39,7 @@ namespace InfraMap.Web.MVC.Models
         {
             get
             {
-                return this.IdColaborador > 0;
+                return this.Colaborador != null;
             }
         }
     }
