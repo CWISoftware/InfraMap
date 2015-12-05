@@ -51,6 +51,8 @@
     <Compile Include="ModuloMesa\IMesaRepositorio.cs" />
     <Compile Include="ModuloMesa\Mesa.cs" />
     <Compile Include="ModuloRamal\IRamalRepositorio.cs" />
+    <Compile Include="ModuloRamal\Queries\BuscarRamaisPorNumeros.cs" />
+    <Compile Include="ModuloRamal\Queries\BuscarRamalPorNumero.cs" />
     <Compile Include="ModuloRamal\Ramal.cs" />
     <Compile Include="ModuloSede\ISedeRepositorio.cs" />
     <Compile Include="ModuloSede\Sede.cs" />

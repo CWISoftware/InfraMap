@@ -28,7 +28,7 @@ namespace InfraMap.Web.MVC.Controllers
             }
             catch (Exception e)
             {
-                return Json(new { success = false, msg = e.Message });
+                return ThrowError(e);
             }
             
             return Json(new { success = true });
@@ -45,7 +45,7 @@ namespace InfraMap.Web.MVC.Controllers
             }
             catch (Exception e)
             {
-                return Json(new { success = false, msg = e.Message });
+                return ThrowError(e);
             }
 
             return Json(new { success = true });
@@ -62,10 +62,16 @@ namespace InfraMap.Web.MVC.Controllers
             }
             catch (Exception e)
             {
-                return Json(new { success = false, msg = e.Message });
+                return ThrowError(e);
             }
             
             return Json(new { success = true });
+        }
+
+        private JsonResult ThrowError(Exception e)
+        {
+            Response.StatusCode = (int)System.Net.HttpStatusCode.BadRequest;
+            return Json(new { Message = e.Message });
         }
     }
 }

@@ -4,15 +4,13 @@
     $.ajax({
         type: "POST",
         url: "/SaoLeopoldo/MesaAdicionarColaborador",
-        data: { id: idMesa, colaborador: login},
+        data: { id: 1, colaborador: login },
         datatype: "json",
-        success: function (data) {}
-    });
-    $.getJSON("/SaoLeopoldo/MesaAdicionarColaborador", { id: null }, function (result) {
-        if (!result.success) {
-            alert(result.error);
+        success: function (data) { },
+        error: function (xhr, status, error) {
+            DisplayError(xhr);
         }
-    })
+    });
 });
 
 $("#adicionaMaquina").click(function () {
@@ -23,13 +21,11 @@ $("#adicionaMaquina").click(function () {
         url: "/SaoLeopoldo/MesaAdicionarMaquina",
         data: { id: idMesa, maquina: idMaquina },
         datatype: "json",
-        success: function (data) { }
-    });
-    $.getJSON("/SaoLeopoldo/MesaAdicionarMaquina", { id: null }, function (result) {
-        if (!result.success) {
-            alert(result.error);
+        success: function (data) { },
+        error: function (xhr, status, error) {
+            DisplayError(xhr);
         }
-    })
+    });
 });
 
 $("#adicionaRamal").click(function () {
@@ -40,11 +36,15 @@ $("#adicionaRamal").click(function () {
         url: "/SaoLeopoldo/MesaAdicionarRamal",
         data: { id: idMesa, ramal: idRamal },
         datatype: "json",
-        success: function (data) { }
-    });
-    $.getJSON("/SaoLeopoldo/MesaAdicionarRamal", { id: null }, function(result){
-        if (!result.success){
-            alert(result.error);
+        success: function (data) { },
+        error: function (xhr, status, error) {
+            DisplayError(xhr);
         }
-    })
+    });
 });
+
+function DisplayError(xhr) {
+    var msg = JSON.parse(xhr.responseText);
+    $("#error .modal-body").append("<h2>" + msg.Message + "</h2>");
+    $('#error').modal('show');
+}
