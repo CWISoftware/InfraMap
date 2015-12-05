@@ -6,7 +6,8 @@
     <title>@ViewBag.Title - Infra-Map</title>
     @Styles.Render("~/Content/bootstrap.min.css")
     @Styles.Render("~/Content/Site.css")
-    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/easy-autocomplete.min.css" rel="stylesheet" />
+    <link href="~/Content/easy-autocomplete.themes.min.css" rel="stylesheet" />
 </head>
 <body>
     <header class="navbar navbar navbar-fixed-top color-menu">
@@ -18,23 +19,38 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
+                    
                 </div>
-                <div class="navbar-collapse collapse">
+                <div class="navbar-brand navbar-collapse collapse navbar-right">
                     <ul class="nav navbar-nav">
+                        <li><input form="form-control" id="auto-complete" name="nome" placeholder="Procure o funcionário" /></li>
                     </ul>
                 </div>
+                
             </div>
     </header>
-
     <section class="container body-content">
         @RenderBody()      
     </section>
-
     <footer class="footer text-center">
         <p>&copy; @DateTime.Now.Year - InfraMap - Todos os direitos reservados</p>
     </footer>
-
     @Scripts.Render("~/bundles/jquery")
-    @RenderSection("Scripts", false)
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/modernizr")  
+    <script src="~/Content/jquery.easy-autocomplete.min.js"></script>
+        @RenderSection("Scripts", false)
+        <script>
+            var usuarioAutoComplete = {
+                url: "Base/UsuarioAutoComplete",
+                getValue: "label",
+                list: {
+                    match: {
+                        enabled: true
+                    }
+                }
+            };
+            $("#auto-complete").easyAutocomplete(usuarioAutoComplete);
+        </script>
 </body>
 </html>

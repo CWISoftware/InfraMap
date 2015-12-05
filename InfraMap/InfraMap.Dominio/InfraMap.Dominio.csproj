@@ -50,6 +50,7 @@
     <Compile Include="ModuloMesa\Mesa.cs" />
     <Compile Include="ModuloRamal\IRamalRepositorio.cs" />
     <Compile Include="ModuloRamal\Ramal.cs" />
+    <Compile Include="ModuloSede\ISedeRepositorio.cs" />
     <Compile Include="ModuloSede\Sede.cs" />
     <Compile Include="ModuloUsuario\Permissao.cs" />
     <Compile Include="ModuloUsuario\Queries\BuscarUsuarioPorNomeQuery.cs" />

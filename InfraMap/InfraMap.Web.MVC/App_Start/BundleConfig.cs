@@ -11,8 +11,7 @@ namespace InfraMap.Web.MVC.App_Start
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/jquery-ui-{version}.js"));
+                        "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
@@ -23,6 +22,16 @@ namespace InfraMap.Web.MVC.App_Start
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                         "~/Scripts/bootstrap.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/mesa").Include(
+                        "~/Scripts/Mesa.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/andarJs").Include(
+                        "~/Scripts/Andar.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/andarCss").Include(
+                        "~/Content/Andar.css",
+                        "~/Content/TerceiroAndarCWISL.css"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                         "~/Content/bootstrap.css",
                         "~/Content/site.css"));
@@ -30,6 +39,7 @@ namespace InfraMap.Web.MVC.App_Start
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                     "~/Scripts/jquery.unobtrusive*",
                     "~/Scripts/jquery.validate*"));
+                    
         }
     }
 }

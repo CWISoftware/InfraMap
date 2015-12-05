@@ -1,5 +1,7 @@
 ﻿using InfraMap.Dominio.ModuloAndar;
-using InfraMap.Dominio.ModuloSede;
+using InfraMap.Dominio.ModuloMaquina;
+using InfraMap.Dominio.ModuloMesa;
+using InfraMap.Dominio.ModuloRamal;
 using InfraMap.Dominio.Repositorio;
 using InfraMap.Dominio.Servicos;
 using InfraMap.Infraestrutura.Ef.Repositorios;
@@ -20,6 +22,21 @@ namespace InfraMap.Web.MVC.Helpers
             return new UsuarioRepositorio();
         }
 
+        public static IMesaRepositorio CriarMesaRepositorio()
+        {
+            return new MesaRepositorio();
+        }
+
+        public static IMaquinaRepositorio CriarMaquinaRepositorio()
+        {
+            return new MaquinaRepositorio();
+        }
+
+        public static IRamalRepositorio CriarRamalRepositorio()
+        {
+            return new RamalRepositorio();
+        }
+
         public static IAndarRepositorio CriarAndarRepositorio()
         {
             return new AndarRepositorio();
@@ -28,11 +45,6 @@ namespace InfraMap.Web.MVC.Helpers
         public static IServicoCriptografia CriarServicoCriptografia()
         {
             return new ServicoCriptografia();
-        }
-
-        public static ISedeRepositorio CriarSedeRepositorio()
-        {
-            return new SedeRepositorio();
         }
 
         public static ServicoAutenticacao CriarServicoAutenticacao()

@@ -31,7 +31,7 @@ namespace InfraMap.Web.MVC.Controllers
                 if (usuarioAutenticado != null)
                 {
                     ControleDeSessao.CriarSessaoDeUsuario(usuarioAutenticado);
-                    return RedirectToAction("Index", "SelecaoSede");
+                    return RedirectToAction("Index", "Sede");
                 }
             }
 
