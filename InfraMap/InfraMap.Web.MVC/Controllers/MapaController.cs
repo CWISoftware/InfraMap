@@ -46,6 +46,23 @@ namespace InfraMap.Web.MVC.Controllers
         }
 
         [HttpPost]
+        public JsonResult RemoverColaborador()
+        {
+            var helper = new MapaHelper();
+            var idMesa = Convert.ToInt32(Request.Params["id"]);
+            try
+            {
+                helper.RemoverColaborador(idMesa);
+            }
+            catch (Exception e)
+            {
+                return ThrowError(e);
+            }
+
+            return Json(new { success = true });
+        }
+
+        [HttpPost]
         public JsonResult AdicionarMaquina()
         {
             var helper = new MapaHelper();
@@ -65,6 +82,23 @@ namespace InfraMap.Web.MVC.Controllers
         }
 
         [HttpPost]
+        public JsonResult RemoverMaquina()
+        {
+            var helper = new MapaHelper();
+            var idMesa = Convert.ToInt32(Request.Params["id"]);
+            try
+            {
+                helper.RemoverMaquina(idMesa);
+            }
+            catch (Exception e)
+            {
+                return ThrowError(e);
+            }
+
+            return Json(new { success = true });
+        }
+
+        [HttpPost]
         public JsonResult AdicionarRamal()
         {
             var helper = new MapaHelper();
@@ -74,6 +108,23 @@ namespace InfraMap.Web.MVC.Controllers
             try
             {
                 helper.AdicionarRamal(idMesa, numero, tipo);
+            }
+            catch (Exception e)
+            {
+                return ThrowError(e);
+            }
+
+            return Json(new { success = true });
+        }
+
+        [HttpPost]
+        public JsonResult RemoverRamal()
+        {
+            var helper = new MapaHelper();
+            var idMesa = Convert.ToInt32(Request.Params["id"]);
+            try
+            {
+                helper.RemoverRamal(idMesa);
             }
             catch (Exception e)
             {
