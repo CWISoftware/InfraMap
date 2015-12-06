@@ -60,6 +60,11 @@ namespace InfraMap.Web.MVC.Helpers
 
         public void AdicionarMaquina(int idMesa, string maquina, int tipoMaquina)
         {
+            if (string.IsNullOrWhiteSpace(maquina))
+            {
+                throw new Exception("Prencha os campos obrigatórios!");
+            }
+
             var mesaRepositorio = FabricaDeModulos.CriarMesaRepositorio();
             var maquinaRepositorio = FabricaDeModulos.CriarMaquinaRepositorio();
 
@@ -92,6 +97,11 @@ namespace InfraMap.Web.MVC.Helpers
 
         public void AdicionarRamal(int idMesa, string ramal, int tipoRamal)
         {
+            if (string.IsNullOrWhiteSpace(ramal))
+            {
+                throw new Exception("Prencha os campos obrigatórios!");
+            }
+
             var mesaRepositorio = FabricaDeModulos.CriarMesaRepositorio();
             var ramalRepositorio = FabricaDeModulos.CriarRamalRepositorio();
             TipoRamal tipo = (TipoRamal) tipoRamal;
