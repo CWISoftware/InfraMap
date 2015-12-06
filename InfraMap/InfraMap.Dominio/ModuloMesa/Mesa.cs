@@ -13,10 +13,13 @@ namespace InfraMap.Dominio.ModuloMesa
 {
     public class Mesa : EntidadeBase
     {
+        public int? Colaborador_Id { get; set; }
         public Usuario Colaborador { get; set; }
 
+        public int? Maquina_Id { get; set; }
         public Maquina Maquina { get; set; }
 
+        public int? Ramal_Id { get; set; }
         public Ramal Ramal { get; set; }
     }
 }

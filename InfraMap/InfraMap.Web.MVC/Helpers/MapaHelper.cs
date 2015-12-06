@@ -35,8 +35,8 @@ namespace InfraMap.Web.MVC.Helpers
             var usuarioRepositorio = FabricaDeModulos.CriarUsuarioRepositorio();
 
             var mesa = mesaRepositorio.BuscarPorId(id);
-            mesa.Colaborador = usuarioRepositorio.BuscarPorNome(nome);
-            if (mesa.Colaborador == null)
+            mesa.Colaborador_Id = usuarioRepositorio.BuscarPorNome(nome).Id;
+            if (mesa.Colaborador_Id == 0)
             {
                 throw new Exception("Colaborador não encontrado!");
             }
@@ -58,7 +58,7 @@ namespace InfraMap.Web.MVC.Helpers
             };
 
             maquinaRepositorio.Adicionar(novaMaquina);
-            mesa.Maquina = novaMaquina;
+            mesa.Maquina_Id = novaMaquina.Id;
             mesaRepositorio.Atualizar(mesa);
         }
 
@@ -75,7 +75,7 @@ namespace InfraMap.Web.MVC.Helpers
 
             var mesa = mesaRepositorio.BuscarPorId(idMesa);
             ramalRepositorio.Adicionar(entidade);
-            mesa.Ramal = entidade;
+            mesa.Ramal_Id = entidade.Id;
             mesaRepositorio.Atualizar(mesa);
         }
     }
