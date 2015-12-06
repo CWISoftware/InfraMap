@@ -8,6 +8,7 @@
 
     @if (User.IsInRole("GERENTE"))
     {
+        <input type="hidden" id="nomeGerente" name=@User.Identity.Name />
         <button id="btn-selecionarColaboradores" type="button">Selecionar colaboradores</button>
         <button id="btn-salvarColaboradores" class="hide" type="button">Salvar colaboradores</button>
     }
