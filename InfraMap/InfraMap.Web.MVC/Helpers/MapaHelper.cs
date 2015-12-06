@@ -44,16 +44,17 @@ namespace InfraMap.Web.MVC.Helpers
             mesaRepositorio.Atualizar(mesa);
         }
 
-        public void AdicionarMaquina(int idMesa, string maquina, string tipoMaquina)
+        public void AdicionarMaquina(int idMesa, string maquina, int tipoMaquina)
         {
             var mesaRepositorio = FabricaDeModulos.CriarMesaRepositorio();
             var maquinaRepositorio = FabricaDeModulos.CriarMaquinaRepositorio();
 
             var mesa = mesaRepositorio.BuscarPorId(idMesa);
+            TipoMaquina tipo = (TipoMaquina) tipoMaquina;
             var novaMaquina = new Maquina()
             {
                 Nome = maquina,
-                Tipo = tipoMaquina
+                Tipo = tipo.ToString()
             };
 
             maquinaRepositorio.Adicionar(novaMaquina);
@@ -61,15 +62,15 @@ namespace InfraMap.Web.MVC.Helpers
             mesaRepositorio.Atualizar(mesa);
         }
 
-        public void AdicionarRamal(int idMesa, string ramal, string tipo)
+        public void AdicionarRamal(int idMesa, string ramal, int tipoRamal)
         {
             var mesaRepositorio = FabricaDeModulos.CriarMesaRepositorio();
             var ramalRepositorio = FabricaDeModulos.CriarRamalRepositorio();
-
+            TipoRamal tipo = (TipoRamal) tipoRamal;
             var entidade = new Ramal()
             {
                 Numero = ramal,
-                Tipo = tipo
+                Tipo = tipo.ToString()
             };
 
             var mesa = mesaRepositorio.BuscarPorId(idMesa);

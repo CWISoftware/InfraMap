@@ -30,7 +30,7 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
         {
             using (var db = new DataBaseContext())
             {
-                return db.Sede.Include("Andares.Mesas").FirstOrDefault(t => t.Nome.Equals(nome));
+                return db.Sede.Include("Andares.Mesas.Colaborador").FirstOrDefault(t => t.Nome.Equals(nome));
             }
         }
     }

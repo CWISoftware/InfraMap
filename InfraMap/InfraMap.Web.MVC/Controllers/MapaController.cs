@@ -31,8 +31,8 @@ namespace InfraMap.Web.MVC.Controllers
         public JsonResult AdicionarColaborador()
         {
             var helper = new MapaHelper();
-            int id = Convert.ToInt32(Request.Params["id"]);
-            string nome = Request.Params["colaborador"];
+            var id = Convert.ToInt32(Request.Params["id"]);
+            var nome = Request.Params["colaborador"];
             try
             {
                 helper.AdicionarColaborador(id, nome);
@@ -49,9 +49,9 @@ namespace InfraMap.Web.MVC.Controllers
         public JsonResult AdicionarMaquina()
         {
             var helper = new MapaHelper();
-            int idMesa = Convert.ToInt32(Request.Params["id"]);
-            string maquina = Request.Params["maquina"];
-            string tipo = Request.Params["tipo"];
+            var idMesa = Convert.ToInt32(Request.Params["id"]);
+            var maquina = Request.Params["maquina"];
+            var tipo = Convert.ToInt32(Request.Params["tipo"]);
             try
             {
                 helper.AdicionarMaquina(idMesa, maquina, tipo);
@@ -68,9 +68,9 @@ namespace InfraMap.Web.MVC.Controllers
         public JsonResult AdicionarRamal()
         {
             var helper = new MapaHelper();
-            int idMesa = Convert.ToInt32(Request.Params["id"]);
-            string numero = Request.Params["ramal"];
-            string tipo = Request.Params["tipo"];
+            var idMesa = Convert.ToInt32(Request.Params["id"]);
+            var numero = Request.Params["ramal"];
+            var tipo = Convert.ToInt32(Request.Params["tipo"]);
             try
             {
                 helper.AdicionarRamal(idMesa, numero, tipo);

@@ -78,7 +78,7 @@
             </div>
             <div class="modal-body form-horizontal">
                 <input class="form-control" id="idMesa" value=@Model.Id type="hidden" />
-                <input class="form-control" id="maquina" name="nome" placeholder="Nome da maquina" />
+                <input class="form-control" id="nomeMaquina" name="nome" placeholder="Nome da maquina" />
                 <h2></h2>
                 @Html.EnumDropDownListFor(m => m.TipoMaquina, new { @id = "tipoMaquina", @class = "form-control" })
             </div>
@@ -99,7 +99,7 @@
             </div>
             <div class="modal-body form-horizontal">
                 <input class="form-control" id="idMesa" value=@Model.Id type="text" />
-                <input class="form-control" id="ramal" name="nome" placeholder="Digite um ramal" />
+                <input class="form-control" id="numero" name="nome" placeholder="Digite um ramal" />
                 <h2></h2>
                 @Html.EnumDropDownListFor(m => m.TipoRamal, new { @id = "tipoRamal", @class = "form-control" })
             </div>
@@ -119,7 +119,24 @@
                 <h4 class="modal-title" id="myModalLabel">Ocorreu um erro!</h4>
             </div>
             <div class="modal-body">
-                
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="success" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Mensagem!</h4>
+            </div>
+            <div class="modal-body">
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
