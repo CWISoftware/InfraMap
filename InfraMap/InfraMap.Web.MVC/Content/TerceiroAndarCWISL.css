@@ -38,3 +38,17 @@
 	border: 2px solid #000;
 	border-radius: 4px;
 }
+
+.usuario{
+    background: url('img/user.png') no-repeat;
+}
+
+.ramal{
+    background: url('img/phone.png') no-repeat;
+    float: right;
+    margin-top: 0;
+}
+
+.computador{
+    background: url('img/computer.png') no-repeat;
+}
