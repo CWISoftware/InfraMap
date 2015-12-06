@@ -5,8 +5,24 @@
     var mesa = Model.First(t => t.Id == ViewBag.idMesa);
 }
 <div class="mesa" onclick="mesaClick(@ViewBag.idMesa)">
-    <label id="@ViewBag.idMesa" >@ViewBag.idMesa</label>
-    <span>@mesa.Colaborador</span>
+    <label class="form-group" id="@ViewBag.idMesa">@ViewBag.idMesa</label>
+    <label class="nome">@mesa.Colaborador</label>
+    <div class="form-inline">
+        @if (mesa.TemMaquina)
+        {
+            <span class="glyphicon glyphicon-hd-video" aria-hidden="true"></span>
+        }
+
+        @if (mesa.TemColaborador)
+        {
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+        }
+
+        @if (mesa.TemRamal)
+        {
+            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>
+        }
+    </div>
 </div>
 
 @section Scripts {

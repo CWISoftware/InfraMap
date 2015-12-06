@@ -17,15 +17,15 @@
 
 .espaco{
 	position: relative;
-	top: -748px;
-	left: -60px;
+	top: -858px;
+	left: -80px;
 	float: right;
 	height: 740px;
 	width: 250px;
 }
 
 .diretoria{
-	height: 120px;
+	height: 170px;
 	width: 250px;
 	border: 2px solid #000;
 	border-radius: 4px;
@@ -33,22 +33,8 @@
 }
 
 .auditorio{
-	height: 615px;
+	height: 665px;
 	width: 250px;
 	border: 2px solid #000;
 	border-radius: 4px;
-}
-
-.usuario{
-    background: url('img/user.png') no-repeat;
-}
-
-.ramal{
-    background: url('img/phone.png') no-repeat;
-    float: right;
-    margin-top: 0;
-}
-
-.computador{
-    background: url('img/computer.png') no-repeat;
 }

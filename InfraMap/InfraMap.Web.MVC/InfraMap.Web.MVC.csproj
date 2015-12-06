@@ -113,12 +113,9 @@
     <Content Include="Content\easy-autocomplete.min.css" />
     <Content Include="Content\easy-autocomplete.themes.css" />
     <Content Include="Content\easy-autocomplete.themes.min.css" />
-    <Content Include="Content\img\computer.png" />
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\logoCWI.png" />
-    <Content Include="Content\img\phone.png" />
     <Content Include="Content\img\sede-sao-leo-cwi.jpg" />
-    <Content Include="Content\img\user.png" />
     <Content Include="Content\jquery.easy-autocomplete.js" />
     <Content Include="Content\jquery.easy-autocomplete.min.js" />
     <Content Include="Content\Site.css" />
@@ -157,6 +154,7 @@
     <Compile Include="Helpers\FabricaDeModulos.cs" />
     <Compile Include="Helpers\MapaHelper.cs" />
     <Compile Include="Helpers\MesaModelHelper.cs" />
+    <Compile Include="Helpers\StringExtensions.cs" />
     <Compile Include="Models\AndarModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MesaModel.cs" />

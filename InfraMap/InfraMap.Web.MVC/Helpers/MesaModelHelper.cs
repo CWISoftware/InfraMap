@@ -13,7 +13,7 @@ namespace InfraMap.Web.MVC.Helpers
         {
             var model = new MesaModel()
             {
-                Colaborador = mesa.Colaborador != null ? mesa.Colaborador.Nome : null,
+                Colaborador = mesa.Colaborador != null ? mesa.Colaborador.Nome.Truncate(21) : null,
                 Maquina = mesa.Maquina != null ? mesa.Maquina.Nome + " - " + mesa.Maquina.Tipo : null,
                 Ramal = mesa.Ramal != null ? mesa.Ramal.Numero + " - " + mesa.Ramal.Tipo : null,
                 IdMaquina = mesa.Maquina != null ? mesa.Maquina.Id : 0,

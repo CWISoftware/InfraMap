@@ -35,7 +35,7 @@ namespace InfraMap.Web.MVC.Models
         {
             get
             {
-                return this.IdMaquina > 0;
+                return this.Maquina != null;
             }
         }
 
@@ -43,7 +43,7 @@ namespace InfraMap.Web.MVC.Models
         {
             get
             {
-                return this.IdRamal > 0;
+                return this.Ramal != null;
             }
         }
 
