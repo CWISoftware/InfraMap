@@ -127,14 +127,14 @@ function DisplayError(xhr) {
     $('#error').modal('show');
 }
 
-$("btn-selecionarColaboradores").click(function () {
+$("#btn-selecionarColaboradores").click(function () {
     $(".fileira").addClass("selectable");
-    $("btn-selecionarColaboradores").addClass("hide");
-    $("btn-salvarColaboradores").addClass("show");
+    $("#btn-selecionarColaboradores").addClass("hide");
+    $("#btn-salvarColaboradores").addClass("show");
     window.listaDeIdECor = [];
 });
 
-$("btn-salvarColaboradores").click(function () {
+$("#btn-salvarColaboradores").click(function () {
     $.ajax({
         type: "POST",
         url: "/Mapa/SalvarCoresDosColaboradores",
@@ -142,7 +142,7 @@ $("btn-salvarColaboradores").click(function () {
         datatype: "json",
         success: function (data) {
             reload();
-        },
+        }
     });
 });
 

@@ -4,10 +4,12 @@
 }
 
 @Styles.Render("~/bundles/andarCss")
+@Styles.Render("~/bundles/jquery-ui")
 <section class="andar">
 
     @if (User.IsInRole("GERENTE"))
     {
+        <input type="hidden" id="nomeGerente" name=@User.Identity.Name />
         <button id="btn-selecionarColaboradores" type="button">Selecionar colaboradores</button>
         <button id="btn-salvarColaboradores" class="hide" type="button">Salvar colaboradores</button>
     }
@@ -173,6 +175,10 @@
 </section>
 
 @section Scripts {
+    @if (User.IsInRole("GERENTE"))
+    {
+        @Scripts.Render("~/bundles/jqueryui")
+    }
     @Scripts.Render("~/bundles/mesa")
 }
 

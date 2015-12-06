@@ -60,3 +60,8 @@ label {
     top: -5px;
     left: 1px;
 }
+
+div .ui-selected { 
+  	background: #F39814; 
+  	color: white; 
+}
