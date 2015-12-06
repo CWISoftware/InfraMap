@@ -48,7 +48,7 @@ namespace InfraMap.Web.MVC.Helpers
         {
             var mesaRepositorio = FabricaDeModulos.CriarMesaRepositorio();
             var mesa = mesaRepositorio.BuscarPorId(idMesa);
-            if (mesa.Colaborador != null)
+            if (mesa.Colaborador == null)
             {
                 throw new Exception("Esta mesa não tem colaborador!");
             }
@@ -80,7 +80,7 @@ namespace InfraMap.Web.MVC.Helpers
         {
             var mesaRepositorio = FabricaDeModulos.CriarMesaRepositorio();
             var mesa = mesaRepositorio.BuscarPorId(idMesa);
-            if (mesa.Maquina != null)
+            if (mesa.Maquina == null)
             {
                 throw new Exception("Esta mesa não possui maquina!");
             }
@@ -111,7 +111,7 @@ namespace InfraMap.Web.MVC.Helpers
         {
             var mesaRepositorio = FabricaDeModulos.CriarMesaRepositorio();
             var mesa = mesaRepositorio.BuscarPorId(idMesa);
-            if (mesa.Ramal != null)
+            if (mesa.Ramal == null)
             {
                 throw new Exception("Esta mesa não possui ramal!");
             }

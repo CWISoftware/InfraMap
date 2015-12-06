@@ -31,6 +31,22 @@ function RenderPartial(id) {
             });
         });
 
+        $("#removerColaborador").click(function () {
+            var idMesa = $("#idMesa").val();
+            $.ajax({
+                type: "POST",
+                url: "/Mapa/RemoverColaborador",
+                data: { id: idMesa },
+                datatype: "json",
+                success: function (data) {
+                    reload();
+                },
+                error: function (xhr, status, error) {
+                    DisplayError(xhr);
+                }
+            });
+        });
+
         $("#adicionaMaquina").click(function () {
             var idMesa = $("#idMesa").val();
             var maquina = $("#nomeMaquina").val();
@@ -41,6 +57,22 @@ function RenderPartial(id) {
                 data: { id: idMesa, maquina: maquina, tipo: tipo },
                 datatype: "json",
                 success: function(data) {
+                    reload();
+                },
+                error: function (xhr, status, error) {
+                    DisplayError(xhr);
+                }
+            });
+        });
+
+        $("#removerMaquina").click(function () {
+            var idMesa = $("#idMesa").val();
+            $.ajax({
+                type: "POST",
+                url: "/Mapa/RemoverMaquina",
+                data: { id: idMesa },
+                datatype: "json",
+                success: function (data) {
                     reload();
                 },
                 error: function (xhr, status, error) {
@@ -66,6 +98,22 @@ function RenderPartial(id) {
                 }
             });
         });
+
+        $("#removerRamal").click(function () {
+            var idMesa = $("#idMesa").val();
+            $.ajax({
+                type: "POST",
+                url: "/Mapa/RemoverRamal",
+                data: { id: idMesa },
+                datatype: "json",
+                success: function (data) {
+                    reload();
+                },
+                error: function (xhr, status, error) {
+                    DisplayError(xhr);
+                }
+            });
+        });
     });
 }
 
@@ -83,7 +131,7 @@ $("btn-selecionarColaboradores").click(function () {
     $(".fileira").addClass("selectable");
     $("btn-selecionarColaboradores").addClass("hide");
     $("btn-salvarColaboradores").addClass("show");
-    listaDeIdECor = [];
+    window.listaDeIdECor = [];
 });
 
 $("btn-salvarColaboradores").click(function () {
