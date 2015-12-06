@@ -10,7 +10,7 @@
             options += '<option value="' + json[id_sede-1].Andares[0].Id + '">' + json[id_sede-1].Andares[0].Descricao + '</option>';
             $("#btn-ir").addClass("show");
             $("#dropdown-andar").addClass("show");
-            $("#dropdown-andar").append(options);
+            $("#dropdown-andar").empty().append(options);
         }
     );
 });

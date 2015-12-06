@@ -50,7 +50,7 @@ textarea {
 
 .bloco-sede {
     padding:20px;
-
+    cursor:pointer;
     height:70%;
     background-color:rgb(194,193,193);
     border-radius:20px;
