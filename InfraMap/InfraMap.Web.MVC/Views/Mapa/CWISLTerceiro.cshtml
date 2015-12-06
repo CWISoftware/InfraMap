@@ -5,6 +5,13 @@
 
 @Styles.Render("~/bundles/andarCss")
 <section class="andar">
+
+    @if (User.IsInRole("GERENTE"))
+    {
+        <button id="btn-selecionarColaboradores" type="button">Selecionar colaboradores</button>
+        <button id="btn-salvarColaboradores" class="hide" type="button">Salvar colaboradores</button>
+    }
+
     <div id="partial"></div>
     <div class="fileira">
         @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 1 } })

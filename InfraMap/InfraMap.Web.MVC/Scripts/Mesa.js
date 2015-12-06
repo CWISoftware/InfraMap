@@ -81,6 +81,8 @@ function DisplayError(xhr) {
 
 $("btn-selecionarColaboradores").click(function () {
     $(".fileira").addClass("selectable");
+    $("btn-selecionarColaboradores").addClass("hide");
+    $("btn-salvarColaboradores").addClass("show");
     listaDeIdECor = [];
 });
 
