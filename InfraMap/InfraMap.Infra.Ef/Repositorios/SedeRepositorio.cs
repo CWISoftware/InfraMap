@@ -22,7 +22,7 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
         {
             using (var db = new DataBaseContext())
             {
-                return db.Sede.Include("Andares").ToList();
+                return db.Sede.Include("Andares.Mesas").ToList();
             }
         }
 
@@ -30,7 +30,7 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
         {
             using (var db = new DataBaseContext())
             {
-                return db.Sede.Include("Andares").FirstOrDefault(t => t.Nome.Equals(nome));
+                return db.Sede.Include("Andares.Mesas").FirstOrDefault(t => t.Nome.Equals(nome));
             }
         }
     }
