@@ -2,205 +2,205 @@
 
 @if (User.IsInRole("INFRA"))
 {
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Mesa - @Model.Id</h4>
-            </div>
-            <div class="modal-body form-horizontal">
-                @if (Model.TemColaborador)
-                {
-                    <div class="form-inline">
-                        <label class="form-control">@Model.Colaborador</label>
-                        <button type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#removerColaborador" data-dismiss="modal">
-                            Remover colaborador
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Mesa - @Model.Id</h4>
+                </div>
+                <div class="modal-body form-horizontal">
+                    @if (Model.TemColaborador)
+                    {
+                        <div class="form-inline">
+                            <label class="form-control">@Model.Colaborador</label>
+                            <button type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#removerColaborador" data-dismiss="modal">
+                                Remover colaborador
+                            </button>
+                        </div>
+                        <h2></h2>
+                    }
+                    else
+                    {
+                        <button type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#colaborador" data-dismiss="modal">
+                            Adicionar colaborador
                         </button>
-                    </div>
-                    <h2></h2>
-                }
-                else
-                {
-                    <button type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#colaborador" data-dismiss="modal">
-                        Adicionar colaborador
-                    </button>
-                    <h2></h2>
-                }
-                @if (Model.TemMaquina)
-                {
-                    <div class="form-inline">
-                        <label class="form-control">@Model.Maquina</label>
-                        <button type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#removerMaquina" data-dismiss="modal">
-                            Remover maquina
+                        <h2></h2>
+                    }
+                    @if (Model.TemMaquina)
+                    {
+                        <div class="form-inline">
+                            <label class="form-control">@Model.Maquina</label>
+                            <button type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#removerMaquina" data-dismiss="modal">
+                                Remover maquina
+                            </button>
+                        </div>
+                        <h2></h2>
+                    }
+                    else
+                    {
+                        <button type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#maquina" data-dismiss="modal">
+                            Adicionar maquina
                         </button>
-                    </div>
-                    <h2></h2>
-                }
-                else
-                {
-                    <button type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#maquina" data-dismiss="modal">
-                        Adicionar maquina
-                    </button>
-                    <h2></h2>
-                }
-                @if (Model.TemRamal)
-                {
-                    <div class="form-inline">
-                        <label class="form-control">@Model.Ramal</label>
-                        <button type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#removerRamal" data-dismiss="modal">
-                            Remover ramal
+                        <h2></h2>
+                    }
+                    @if (Model.TemRamal)
+                    {
+                        <div class="form-inline">
+                            <label class="form-control">@Model.Ramal</label>
+                            <button type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#removerRamal" data-dismiss="modal">
+                                Remover ramal
+                            </button>
+                        </div>
+                        <h2></h2>
+                    }
+                    else
+                    {
+                        <button type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#ramal" data-dismiss="modal">
+                            Adicionar ramal
                         </button>
-                    </div>
+                        <h2></h2>
+                    }
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="colaborador" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Adicionar colaborador</h4>
+                </div>
+                <div class="modal-body form-horizontal">
+                    <input class="form-control" id="idMesa" value=@Model.Id type="hidden" />
+                    <input class="form-control" id="login" name="nome" placeholder="Procure o colaborador" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="adicionaUsuario" type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="maquina" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Adicionar maquina</h4>
+
+                </div>
+                <div class="modal-body form-horizontal">
+                    <input class="form-control" id="idMesa" value=@Model.Id type="hidden" />
+                    <input class="form-control" id="nomeMaquina" name="nome" placeholder="Nome da maquina" />
                     <h2></h2>
-                }
-                else
-                {
-                    <button type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#ramal" data-dismiss="modal">
-                        Adicionar ramal
-                    </button>
+                    @Html.EnumDropDownListFor(m => m.TipoMaquina, new { @id = "tipoMaquina", @class = "form-control" })
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="adicionaMaquina" type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ramal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Adicionar ramal</h4>
+                </div>
+                <div class="modal-body form-horizontal">
+                    <input class="form-control" id="idMesa" value=@Model.Id type="text" />
+                    <input class="form-control" id="numero" name="nome" placeholder="Digite um ramal" />
                     <h2></h2>
-                }
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="colaborador" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Adicionar colaborador</h4>
-            </div>
-            <div class="modal-body form-horizontal">
-                <input class="form-control" id="idMesa" value=@Model.Id type="hidden" />
-                <input class="form-control" id="login" name="nome" placeholder="Procure o colaborador" />
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button id="adicionaUsuario" type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+                    @Html.EnumDropDownListFor(m => m.TipoRamal, new { @id = "tipoRamal", @class = "form-control" })
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="adicionaRamal" type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="modal fade" id="maquina" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Adicionar maquina</h4>
-                
-            </div>
-            <div class="modal-body form-horizontal">
-                <input class="form-control" id="idMesa" value=@Model.Id type="hidden" />
-                <input class="form-control" id="nomeMaquina" name="nome" placeholder="Nome da maquina" />
-                <h2></h2>
-                @Html.EnumDropDownListFor(m => m.TipoMaquina, new { @id = "tipoMaquina", @class = "form-control" })
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button id="adicionaMaquina" type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+    <div class="modal fade" id="removerColaborador" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Deseja remover?</h4>
+                </div>
+                <div class="modal-body">
+                    <h2>@Model.Colaborador</h2>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="removeColaborador" type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="modal fade" id="ramal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Adicionar ramal</h4>
-            </div>
-            <div class="modal-body form-horizontal">
-                <input class="form-control" id="idMesa" value=@Model.Id type="text" />
-                <input class="form-control" id="numero" name="nome" placeholder="Digite um ramal" />
-                <h2></h2>
-                @Html.EnumDropDownListFor(m => m.TipoRamal, new { @id = "tipoRamal", @class = "form-control" })
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button id="adicionaRamal" type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+    <div class="modal fade" id="removerMaquina" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Deseja remover?</h4>
+                </div>
+                <div class="modal-body">
+                    <h2>@Model.Maquina</h2>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="removeMaquina" type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="modal fade" id="removerColaborador" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Deseja remover?</h4>
-            </div>
-            <div class="modal-body">
-                <h2>@Model.Colaborador</h2>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button id="removeColaborador" type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+    <div class="modal fade" id="removerRamal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Deseja remover?</h4>
+                </div>
+                <div class="modal-body">
+                    <h2>@Model.Ramal</h2>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="removeRamal" type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="modal fade" id="removerMaquina" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Deseja remover?</h4>
-            </div>
-            <div class="modal-body">
-                <h2>@Model.Maquina</h2>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button id="removeMaquina" type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+    <div class="modal fade" id="error" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Ocorreu um erro!</h4>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-<div class="modal fade" id="removerRamal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Deseja remover?</h4>
-            </div>
-            <div class="modal-body">
-                <h2>@Model.Ramal</h2>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button id="removeRamal" type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="error" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Ocorreu um erro!</h4>
-            </div>
-            <div class="modal-body">
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
 }
 
 @section Scripts {
