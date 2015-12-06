@@ -2,6 +2,7 @@
 using InfraMap.Dominio.ModuloRamal;
 using InfraMap.Web.MVC.Helpers;
 using InfraMap.Web.MVC.Models;
+using InfraMap.Web.MVC.Seguranca;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ using System.Web.Mvc;
 
 namespace InfraMap.Web.MVC.Controllers
 {
+    [Autorizador]
     public class MapaController : Controller
     {
         [HttpGet]
@@ -57,8 +59,8 @@ namespace InfraMap.Web.MVC.Controllers
             {
                 maquinaRepositorio.Adicionar(novaMaquina);
                 mesa.Maquina = novaMaquina;
-                mesaRepositorio.Atualizar(mesa);
-            }
+            mesaRepositorio.Atualizar(mesa);
+        }
             catch (Exception e)
             {
                 return ThrowError(e);
@@ -89,12 +91,12 @@ namespace InfraMap.Web.MVC.Controllers
                 ramalRepositorio.Adicionar(ramal);             
                 mesa.Ramal = ramal;
                 mesaRepositorio.Atualizar(mesa);
-            }
+        }
             catch(Exception e)
-            {
+        {
                 return ThrowError(e);
-            }
-            
+        }
+
             return Json(new { success = true });
         }
 
