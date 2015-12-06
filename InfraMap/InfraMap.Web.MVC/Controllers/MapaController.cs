@@ -59,8 +59,8 @@ namespace InfraMap.Web.MVC.Controllers
             {
                 maquinaRepositorio.Adicionar(novaMaquina);
                 mesa.Maquina = novaMaquina;
-            mesaRepositorio.Atualizar(mesa);
-        }
+                mesaRepositorio.Atualizar(mesa);
+            }
             catch (Exception e)
             {
                 return ThrowError(e);
@@ -88,14 +88,14 @@ namespace InfraMap.Web.MVC.Controllers
 
             try
             {
-                ramalRepositorio.Adicionar(ramal);             
+                ramalRepositorio.Adicionar(ramal);
                 mesa.Ramal = ramal;
                 mesaRepositorio.Atualizar(mesa);
-        }
-            catch(Exception e)
-        {
+            }
+            catch (Exception e)
+            {
                 return ThrowError(e);
-        }
+            }
 
             return Json(new { success = true });
         }
