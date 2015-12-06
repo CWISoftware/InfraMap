@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using InfraMap.Dominio.Mesa.Maquina;
+using InfraMap.Dominio.Mesa.Ramal;
 using InfraMap.Web.MVC.Models;
-using InfraMap.Dominio.ModuloMaquina;
-using InfraMap.Dominio.ModuloRamal;
 
 namespace InfraMap.Web.MVC.Helpers
 {

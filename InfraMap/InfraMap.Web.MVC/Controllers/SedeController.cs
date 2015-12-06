@@ -1,6 +1,4 @@
-﻿using InfraMap.Dominio.ModuloAndar;
-using InfraMap.Dominio.ModuloSede;
-using InfraMap.Infraestrutura.Ef.Repositorios;
+﻿using InfraMap.Infraestrutura.Ef.Repositorios;
 using InfraMap.Web.MVC.Helpers;
 using InfraMap.Web.MVC.Models;
 using InfraMap.Web.MVC.Seguranca;
@@ -10,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using InfraMap.Dominio.Sede;
 
 namespace InfraMap.Web.MVC.Controllers
 {

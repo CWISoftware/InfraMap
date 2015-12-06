@@ -1,10 +1,10 @@
-﻿using InfraMap.Dominio.ModuloAndar;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using InfraMap.Dominio.ModuloMesa;
+using InfraMap.Dominio.Mesa;
+using InfraMap.Dominio.Sede.Andar;
 
 namespace InfraMap.Infraestrutura.Ef.Repositorios
 {

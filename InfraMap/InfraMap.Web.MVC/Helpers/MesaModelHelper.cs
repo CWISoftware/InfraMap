@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using InfraMap.Web.MVC.Models;
-using InfraMap.Dominio.ModuloMesa;
+using InfraMap.Dominio.Mesa;
 
 namespace InfraMap.Web.MVC.Helpers
 {

@@ -1,10 +1,10 @@
-﻿using InfraMap.Dominio.ModuloMaquina;
-using InfraMap.Dominio.ModuloMaquina.Queries;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InfraMap.Dominio.Mesa.Maquina;
+using InfraMap.Dominio.Mesa.Maquina.Queries;
 
 namespace InfraMap.Infraestrutura.Ef.Repositorios
 {

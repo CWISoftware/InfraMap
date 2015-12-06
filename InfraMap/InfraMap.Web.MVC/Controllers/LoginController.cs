@@ -1,6 +1,4 @@
-﻿using InfraMap.Dominio.ModuloUsuario;
-using InfraMap.Dominio.Servicos;
-using InfraMap.Web.MVC.Helpers;
+﻿using InfraMap.Web.MVC.Helpers;
 using InfraMap.Web.MVC.Models;
 using InfraMap.Web.MVC.Seguranca;
 using System;
@@ -8,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using InfraMap.Dominio.Autenticacao;
+using InfraMap.Dominio.Usuario;
 
 namespace InfraMap.Web.MVC.Controllers
 {

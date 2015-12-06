@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
-using InfraMap.Dominio.ModuloUsuario;
-using InfraMap.Dominio.ModuloMesa;
-using InfraMap.Dominio.ModuloMaquina;
-using InfraMap.Dominio.ModuloRamal;
-using InfraMap.Dominio.ModuloAndar;
-using InfraMap.Dominio.ModuloSede;
+using InfraMap.Dominio.Mesa;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using InfraMap.Dominio.Autenticacao;
+using InfraMap.Dominio.Mesa.Maquina;
+using InfraMap.Dominio.Mesa.Ramal;
+using InfraMap.Dominio.Sede;
+using InfraMap.Dominio.Sede.Andar;
+using InfraMap.Dominio.Usuario;
 
 namespace InfraMap.Infraestrutura.Ef
 {
