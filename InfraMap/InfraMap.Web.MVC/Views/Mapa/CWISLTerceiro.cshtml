@@ -4,6 +4,7 @@
 }
 
 @Styles.Render("~/bundles/andarCss")
+@Styles.Render("~/bundles/jquery-ui")
 <section class="andar">
 
     @if (User.IsInRole("GERENTE"))
@@ -174,6 +175,10 @@
 </section>
 
 @section Scripts {
+    @if (User.IsInRole("GERENTE"))
+    {
+        @Scripts.Render("~/bundles/jqueryui")
+    }
     @Scripts.Render("~/bundles/mesa")
 }
 
