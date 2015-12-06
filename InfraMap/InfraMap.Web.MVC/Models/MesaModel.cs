@@ -27,6 +27,10 @@ namespace InfraMap.Web.MVC.Models
 
         public TipoMaquina TipoMaquina { get; set; }
 
+        public string Maquina { get; set; }
+
+        public string Ramal { get; set; }
+
         public bool TemMaquina
         {
             get

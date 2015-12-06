@@ -44,6 +44,20 @@ namespace InfraMap.Web.MVC.Helpers
             mesaRepositorio.Atualizar(mesa);
         }
 
+        public void RemoverColaborador(int idMesa)
+        {
+            var mesaRepositorio = FabricaDeModulos.CriarMesaRepositorio();
+            var mesa = mesaRepositorio.BuscarPorId(idMesa);
+            if (mesa.Colaborador != null)
+            {
+                throw new Exception("Esta mesa não tem colaborador!");
+            }
+
+            mesa.Colaborador = null;
+            mesa.Colaborador_Id = null;
+            mesaRepositorio.Atualizar(mesa);
+        }
+
         public void AdicionarMaquina(int idMesa, string maquina, int tipoMaquina)
         {
             var mesaRepositorio = FabricaDeModulos.CriarMesaRepositorio();
@@ -62,6 +76,20 @@ namespace InfraMap.Web.MVC.Helpers
             mesaRepositorio.Atualizar(mesa);
         }
 
+        public void RemoverMaquina(int idMesa)
+        {
+            var mesaRepositorio = FabricaDeModulos.CriarMesaRepositorio();
+            var mesa = mesaRepositorio.BuscarPorId(idMesa);
+            if (mesa.Maquina != null)
+            {
+                throw new Exception("Esta mesa não possui maquina!");
+            }
+
+            mesa.Maquina = null;
+            mesa.Maquina_Id = null;
+            mesaRepositorio.Atualizar(mesa);
+        }
+
         public void AdicionarRamal(int idMesa, string ramal, int tipoRamal)
         {
             var mesaRepositorio = FabricaDeModulos.CriarMesaRepositorio();
@@ -76,6 +104,20 @@ namespace InfraMap.Web.MVC.Helpers
             var mesa = mesaRepositorio.BuscarPorId(idMesa);
             ramalRepositorio.Adicionar(entidade);
             mesa.Ramal_Id = entidade.Id;
+            mesaRepositorio.Atualizar(mesa);
+        }
+
+        public void RemoverRamal(int idMesa)
+        {
+            var mesaRepositorio = FabricaDeModulos.CriarMesaRepositorio();
+            var mesa = mesaRepositorio.BuscarPorId(idMesa);
+            if (mesa.Ramal != null)
+            {
+                throw new Exception("Esta mesa não possui ramal!");
+            }
+
+            mesa.Ramal = null;
+            mesa.Ramal_Id = null;
             mesaRepositorio.Atualizar(mesa);
         }
     }
