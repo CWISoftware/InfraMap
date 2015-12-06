@@ -21,6 +21,8 @@ namespace InfraMap.Web.MVC.Models
 
         public String Colaborador { get; set; }
 
+        public int IdColaborador { get; set; }
+
         public TipoRamal TipoRamal { get; set; }
 
         public TipoMaquina TipoMaquina { get; set; }

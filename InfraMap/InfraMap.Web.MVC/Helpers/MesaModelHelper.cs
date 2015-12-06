@@ -16,6 +16,7 @@ namespace InfraMap.Web.MVC.Helpers
                 Colaborador = mesa.Colaborador != null ? mesa.Colaborador.Nome : null,
                 IdMaquina = mesa.Maquina != null ? mesa.Maquina.Id : 0,
                 IdRamal = mesa.Ramal != null ? mesa.Ramal.Id : 0,
+                IdColaborador = mesa.Colaborador != null ? mesa.Colaborador.Id : 0,
                 Id = mesa.Id
             };
 
