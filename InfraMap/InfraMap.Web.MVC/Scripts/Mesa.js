@@ -78,3 +78,36 @@ function DisplayError(xhr) {
     $("#error .modal-body").append("<h2>" + msg.Message + "</h2>");
     $('#error').modal('show');
 }
+
+$("btn-selecionarColaboradores").click(function () {
+    $(".fileira").addClass("selectable");
+    listaDeIdECor = [];
+});
+
+$("btn-salvarColaboradores").click(function () {
+    $.ajax({
+        type: "POST",
+        url: "/Mapa/SalvarCoresDosColaboradores",
+        data: { lista: listaDeIdECor },
+        datatype: "json",
+        success: function (data) {
+            reload();
+        },
+    });
+});
+
+$(function () {
+    $(".selectable").selectable({
+        selected: function (event, ui) {
+            var idMesa = $(ui.selected).children().attr("id");
+            var temClasseColaborador = $(ui.selected).hasClass("colaborador");
+            if (!temClasseColaborador) {
+                $(ui.selected).css("background", "white");
+            }
+            var corMesa = $(ui.selected).css("background");
+            var idECor = { id: idMesa, cor: corMesa }
+
+            listaDeIdECor.push(idECor);
+        }
+    });
+});

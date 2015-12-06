@@ -5,7 +5,7 @@
     var mesa = Model.First(t => t.Id == ViewBag.idMesa);
 }
 <div class="mesa" onclick="mesaClick(@ViewBag.idMesa)">
-    <span>@ViewBag.idMesa</span>
+    <label id="@ViewBag.idMesa" >@ViewBag.idMesa</label>
     <span>@mesa.Colaborador</span>
 </div>
 
