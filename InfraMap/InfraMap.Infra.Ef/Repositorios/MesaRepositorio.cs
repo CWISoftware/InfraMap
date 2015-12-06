@@ -1,13 +1,47 @@
 ﻿using InfraMap.Dominio.ModuloMesa;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace InfraMap.Infraestrutura.Ef.Repositorios
 {
-    public class MesaRepositorio : RepositorioBase<Mesa>, IMesaRepositorio
+    public class MesaRepositorio : IMesaRepositorio
     {
+        public Mesa BuscarPorId(int id)
+        {
+            using (var db = new DataBaseContext())
+            {
+                return db.Mesa.Include("Colaborador").Include("Ramal").Include("Maquina").FirstOrDefault(t => t.Id == id);
+            }
+        }
+
+        public void Adicionar(Mesa entity)
+        {
+            using (var db = new DataBaseContext())
+            {
+                db.Mesa.Add(entity);
+                db.SaveChanges();
+            }
+        }
+
+        public void Atualizar(Mesa entity)
+        {
+            using (var db = new DataBaseContext())
+            {
+                db.Entry(entity).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+
+        public IList<Mesa> Buscar()
+        {
+            using (var db = new DataBaseContext())
+            {
+                return db.Mesa.ToList();
+            }
+        }
     }
 }

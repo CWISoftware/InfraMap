@@ -148,7 +148,6 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MapaController.cs" />
-    <Compile Include="Controllers\SaoLeopoldoController.cs" />
     <Compile Include="Controllers\SedeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -180,8 +179,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Sede\Index.cshtml" />
-    <Content Include="Views\SaoLeopoldo\Terceiro.cshtml" />
-    <Content Include="Views\SaoLeopoldo\_SpotMesa.cshtml" />
+    <Content Include="Views\Mapa\CWISLTerceiro.cshtml" />
+    <Content Include="Views\Mapa\_SpotMesa.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -191,7 +190,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Mapa\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\InfraMap.Dominio\InfraMap.Dominio.csproj">

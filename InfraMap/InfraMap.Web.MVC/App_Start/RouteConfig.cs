@@ -14,6 +14,12 @@ namespace InfraMap.Web.MVC
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "EdicaoMapa",
+                url: "Mapa/{sede}/{andar}",
+                defaults: new { controller = "Mapa", action = "Index", sede = UrlParameter.Optional, andar = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Login", action = "Index", id = UrlParameter.Optional }

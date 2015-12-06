@@ -7,7 +7,14 @@ using System.Threading.Tasks;
 
 namespace InfraMap.Dominio.ModuloMesa
 {
-    public interface IMesaRepositorio : IRepositorio<Mesa>
+    public interface IMesaRepositorio
     {
+        Mesa BuscarPorId(int id);
+
+        void Adicionar(Mesa entity);
+
+        void Atualizar(Mesa entity);
+
+        IList<Mesa> Buscar();
     }
 }

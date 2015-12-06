@@ -30,11 +30,12 @@ $("#adicionaMaquina").click(function () {
 
 $("#adicionaRamal").click(function () {
     var idMesa = $("#idMesa").val();
-    var idRamal = $("#ramal").val();
+    var numero = $("#ramal").val();
+    var tipoRamal = $("#tipo").val();
     $.ajax({
         type: "POST",
         url: "/SaoLeopoldo/MesaAdicionarRamal",
-        data: { id: idMesa, ramal: idRamal },
+        data: { id: idMesa, ramal: numero, tipo: tipoRamal },
         datatype: "json",
         success: function (data) { },
         error: function (xhr, status, error) {

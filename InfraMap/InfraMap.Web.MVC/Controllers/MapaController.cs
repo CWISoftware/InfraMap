@@ -1,6 +1,7 @@
 ﻿using InfraMap.Dominio.ModuloMaquina;
 using InfraMap.Dominio.ModuloRamal;
 using InfraMap.Web.MVC.Helpers;
+using InfraMap.Web.MVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,89 +12,96 @@ namespace InfraMap.Web.MVC.Controllers
 {
     public class MapaController : Controller
     {
-        public void AdicionarColaborador(int idMesa, string colaborador)
+        [HttpGet]
+        public ActionResult Index(string sede, string andar)
         {
+            return View(sede + andar, new MesaModel());
+        }
+
+        [HttpPost]
+        public JsonResult MesaAdicionarColaborador()
+        {
+            int id = Convert.ToInt32(Request.Params["id"]);
+            string nome = Request.Params["colaborador"];
             var mesaRepositorio = FabricaDeModulos.CriarMesaRepositorio();
             var usuarioRepositorio = FabricaDeModulos.CriarUsuarioRepositorio();
 
-            var mesa = mesaRepositorio.BuscarPorId(idMesa);
-            mesa.Colaborador = usuarioRepositorio.BuscarPorNome(colaborador);
+            var mesa = mesaRepositorio.BuscarPorId(id);
+            mesa.Colaborador = usuarioRepositorio.BuscarPorNome(nome);
             if (mesa.Colaborador == null)
             {
-                throw new Exception("Colaborador não encontrado!");
+                return ThrowError(new Exception("Colaborador não encontrado!"));
             }
 
             mesaRepositorio.Atualizar(mesa);
+            return Json(new { success = true });
         }
 
-        public void AdicionarMaquina(int idMesa, string maquina)
+        [HttpPost]
+        public JsonResult MesaAdicionarMaquina()
         {
+            int id = Convert.ToInt32(Request.Params["id"]);
+            string maquina = Request.Params["maquina"];
+            string tipo = Request.Params["tipo"];
             var mesaRepositorio = FabricaDeModulos.CriarMesaRepositorio();
             var maquinaRepositorio = FabricaDeModulos.CriarMaquinaRepositorio();
 
-            var mesa = mesaRepositorio.BuscarPorId(idMesa);
-            mesa.Maquina = maquinaRepositorio.BuscarPorNome(maquina);
-            if (mesa.Maquina == null)
+            var mesa = mesaRepositorio.BuscarPorId(id);
+            var novaMaquina = new Maquina()
             {
-                throw new Exception("Maquina não encontrada!");
+                Nome = maquina,
+                Tipo = tipo
+            };
+
+            try
+            {
+                maquinaRepositorio.Adicionar(novaMaquina);
+                mesa.Maquina = novaMaquina;
+                mesaRepositorio.Atualizar(mesa);
+            }
+            catch (Exception e)
+            {
+                return ThrowError(e);
             }
 
-            mesaRepositorio.Atualizar(mesa);
+            return Json(new { success = true });
         }
 
-        public void AdicionarRamal(int idMesa, int idRamal)
+        [HttpPost]
+        public JsonResult MesaAdicionarRamal()
         {
+            int id = Convert.ToInt32(Request.Params["id"]);
+            string numero = Request.Params["ramal"];
+            string tipo = Request.Params["tipo"];
             var mesaRepositorio = FabricaDeModulos.CriarMesaRepositorio();
             var ramalRepositorio = FabricaDeModulos.CriarRamalRepositorio();
 
-            var mesa = mesaRepositorio.BuscarPorId(idMesa);
-            mesa.Ramal = ramalRepositorio.BuscarPorId(idRamal);
-            if (mesa.Ramal == null)
+            var ramal = new Ramal()
             {
-                throw new Exception("Ramal não encontrado!");
-            }
+                Numero = numero,
+                Tipo = tipo
+            };
 
-            mesaRepositorio.Atualizar(mesa);
+            var mesa = mesaRepositorio.BuscarPorId(id);
+
+            try
+            {
+                ramalRepositorio.Adicionar(ramal);             
+                mesa.Ramal = ramal;
+                mesaRepositorio.Atualizar(mesa);
+            }
+            catch(Exception e)
+            {
+                return ThrowError(e);
+            }
+            
+            return Json(new { success = true });
         }
 
-        private IList<Maquina> BuscarMaquinaPeloFiltro(String term)
+        private JsonResult ThrowError(Exception e)
         {
-            IMaquinaRepositorio maquina = FabricaDeModulos.CriarMaquinaRepositorio();
-            if (String.IsNullOrEmpty(term))
-            {
-                return maquina.Buscar();
-            }
-            else
-            {
-                return maquina.BuscarListaPorNome(term);
-            }
-        }
-
-        public JsonResult MaquinaAutoComplete(string term)
-        {
-            IList<Maquina> maquinaEncontrada = BuscarMaquinaPeloFiltro(term);
-            var json = maquinaEncontrada.Select(maquinas => new { label = maquinas.Nome });
-            return Json(json, JsonRequestBehavior.AllowGet);
-        }
-
-        private IList<Ramal> BuscarRamalPeloFiltro(String term)
-        {
-            IRamalRepositorio ramal = FabricaDeModulos.CriarRamalRepositorio();
-            if (String.IsNullOrEmpty(term))
-            {
-                return ramal.Buscar();
-            }
-            else
-            {
-                return ramal.BuscarRamaisPorNumeros(term);
-            }
-        }
-
-        public JsonResult RamalAutoComplete(string term)
-        {
-            IList<Ramal> ramalEncontrado = BuscarRamalPeloFiltro(term);
-            var json = ramalEncontrado.Select(ramais => new { label = ramais.Numero });
-            return Json(json, JsonRequestBehavior.AllowGet);
+            Response.StatusCode = (int)System.Net.HttpStatusCode.BadRequest;
+            return Json(new { Message = e.Message });
         }
     }
 }
