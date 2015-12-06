@@ -1,4 +1,4 @@
-﻿using InfraMap.Dominio.ModuloMesa;
+﻿using InfraMap.Dominio.Mesa;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;

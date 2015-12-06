@@ -1,10 +1,4 @@
-﻿using InfraMap.Dominio.ModuloAndar;
-using InfraMap.Dominio.ModuloMaquina;
-using InfraMap.Dominio.ModuloMesa;
-using InfraMap.Dominio.ModuloRamal;
-using InfraMap.Dominio.ModuloSede;
-using InfraMap.Dominio.Repositorio;
-using InfraMap.Dominio.Servicos;
+﻿using InfraMap.Dominio.Mesa;
 using InfraMap.Infraestrutura.Ef.Repositorios;
 using InfraMap.Infraestrutura.Servicos;
 using System;
@@ -12,6 +6,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InfraMap.Dominio.Autenticacao;
+using InfraMap.Dominio.Mesa.Maquina;
+using InfraMap.Dominio.Mesa.Ramal;
+using InfraMap.Dominio.Sede;
+using InfraMap.Dominio.Sede.Andar;
+using InfraMap.Dominio.Usuario;
 
 namespace InfraMap.Web.MVC.Helpers
 {
