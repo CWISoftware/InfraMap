@@ -1,4 +1,6 @@
-﻿using System;
+﻿using InfraMap.Dominio.ModuloMaquina;
+using InfraMap.Dominio.ModuloRamal;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,6 +20,10 @@ namespace InfraMap.Web.MVC.Models
         public int IdRamal { get; set; }
 
         public String Colaborador { get; set; }
+
+        public TipoRamal TipoRamal { get; set; }
+
+        public TipoMaquina TipoMaquina { get; set; }
 
         public bool TemMaquina
         {

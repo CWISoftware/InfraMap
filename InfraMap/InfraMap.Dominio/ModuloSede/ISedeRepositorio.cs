@@ -13,5 +13,6 @@ namespace InfraMap.Dominio.ModuloSede
 
         List<Sede> BuscarSedesComAndares();
 
+        Sede BuscarSedePorNome(string nome);
     }
 }

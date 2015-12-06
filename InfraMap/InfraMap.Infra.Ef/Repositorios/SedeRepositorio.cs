@@ -25,5 +25,13 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
                 return db.Sede.Include("Andares").ToList();
             }
         }
+
+        public Sede BuscarSedePorNome(string nome)
+        {
+            using (var db = new DataBaseContext())
+            {
+                return db.Sede.Include("Andares").FirstOrDefault(t => t.Nome.Equals(nome));
+            }
+        }
     }
 }

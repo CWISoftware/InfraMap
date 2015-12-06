@@ -1,0 +1,13 @@
+﻿@model List<InfraMap.Web.MVC.Models.MesaModel>
+
+@Styles.Render("~/bundles/andarCss")
+@{
+    var mesa = Model.First(t => t.Id == ViewBag.idMesa);
+}
+<div class="mesa" onclick="mesaClick(@ViewBag.idMesa)">
+    <h1>@mesa.Colaborador</h1>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/mesa")
+}

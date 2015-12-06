@@ -1,9 +1,13 @@
-﻿$("#adicionaUsuario").click(function () {
+﻿function mesaClick(id) {
+    RenderPartial(id);
+};
+
+$("#adicionaUsuario").click(function () {
     var idMesa = $("#idMesa").val();
     var login = $("#login").val();
     $.ajax({
         type: "POST",
-        url: "/SaoLeopoldo/MesaAdicionarColaborador",
+        url: "/Mapa/AdicionarColaborador",
         data: { id: 1, colaborador: login },
         datatype: "json",
         success: function (data) { },
@@ -15,11 +19,12 @@
 
 $("#adicionaMaquina").click(function () {
     var idMesa = $("#idMesa").val();
-    var idMaquina = $("#maquina").val();
+    var maquina = $("#maquina").val();
+    var tipo = $("#tipoMaquina").val();
     $.ajax({
         type: "POST",
-        url: "/SaoLeopoldo/MesaAdicionarMaquina",
-        data: { id: idMesa, maquina: idMaquina },
+        url: "/Mapa/AdicionarMaquina",
+        data: { id: idMesa, maquina: maquina, tipo: tipo},
         datatype: "json",
         success: function (data) { },
         error: function (xhr, status, error) {
@@ -31,10 +36,10 @@ $("#adicionaMaquina").click(function () {
 $("#adicionaRamal").click(function () {
     var idMesa = $("#idMesa").val();
     var numero = $("#ramal").val();
-    var tipoRamal = $("#tipo").val();
+    var tipoRamal = $("#tipoRamal").val();
     $.ajax({
         type: "POST",
-        url: "/SaoLeopoldo/MesaAdicionarRamal",
+        url: "/Mapa/AdicionarRamal",
         data: { id: idMesa, ramal: numero, tipo: tipoRamal },
         datatype: "json",
         success: function (data) { },
@@ -43,6 +48,21 @@ $("#adicionaRamal").click(function () {
         }
     });
 });
+
+function RenderPartial(id) {
+    $.ajax({
+        type: "POST",
+        url: "/Mapa/RenderPartialViewSpotMesa",
+        data: { id: id },
+        datatype: "json",
+        error: function (xhr, status, error) {
+            DisplayError(xhr);
+        }
+    }).success(function (data) {
+        $("#partial").html(data);
+        $('#myModal').modal('show');
+    });
+}
 
 function DisplayError(xhr) {
     var msg = JSON.parse(xhr.responseText);

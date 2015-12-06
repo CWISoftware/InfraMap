@@ -13,5 +13,10 @@ namespace InfraMap.Web.MVC.Models
         public string Descricao { get; set; }
 
         public List<MesaModel> Mesas { get; set; }
+
+        public AndarModel()
+        {
+            this.Mesas = new List<MesaModel>();
+        }
     }
 }

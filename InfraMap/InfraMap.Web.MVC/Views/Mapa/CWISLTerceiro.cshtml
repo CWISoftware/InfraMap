@@ -1,338 +1,152 @@
-﻿@model InfraMap.Web.MVC.Models.MesaModel
+﻿@model InfraMap.Web.MVC.Models.AndarModel
 @{
     ViewBag.Title = "Terceiro";
 }
 
 @Styles.Render("~/bundles/andarCss")
-@Html.Partial("_SpotMesa", @Model);
 <section class="andar">
+    <div id="partial"></div>
     <div class="fileira">
-        <div class="mesa">
+        @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 1 } })
+        @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 2 } })
+        @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 3 } })
+        @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 4 } })
+        @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 5 } })
+        @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 6 } })
+        @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 7 } })
+        @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 8 } })
+        @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 9 } })
+    </div>
 
+    <div class="ilha">
+        <div class="fileira">
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 10 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 11 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 12 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 13 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 14 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 15 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 16 } })
         </div>
-        <div class="mesa">
 
-        </div>
-        <div class="mesa">
-
-        </div>
-        <div class="mesa">
-
-        </div>
-        <div class="mesa">
-
-        </div>
-        <div class="mesa">
-
-        </div>
-        <div class="mesa">
-
-        </div>
-        <div class="mesa">
-
-        </div>
-        <div class="mesa">
-
+        <div class="fileira">
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 17 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 18 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 19 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 20 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 21 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 22 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 23 } })
         </div>
     </div>
 
     <div class="ilha">
         <div class="fileira">
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 24 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 25 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 26 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 27 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 28 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 29 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 30 } })
         </div>
 
         <div class="fileira">
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 31 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 32 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 33 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 34 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 35 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 36 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 37 } })
         </div>
     </div>
 
     <div class="ilha">
         <div class="fileira">
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 38 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 39 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 40 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 41 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 42 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 43 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 44 } })
         </div>
 
         <div class="fileira">
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 45 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 46 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 47 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 48 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 49 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 50 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 51 } })
         </div>
     </div>
 
     <div class="ilha">
         <div class="fileira">
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 52 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 53 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 54 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 55 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 56 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 57 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 58 } })
         </div>
 
         <div class="fileira">
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 59 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 60 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 61 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 62 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 63 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 64 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 65 } })
         </div>
     </div>
 
     <div class="ilha">
         <div class="fileira">
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 66 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 67 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 68 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 69 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 70 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 71 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 72 } })
         </div>
 
         <div class="fileira">
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 73 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 74 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 75 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 76 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 77 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 78 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 79 } })
         </div>
     </div>
 
     <div class="ilha">
         <div class="fileira">
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 79 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 80 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 81 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 82 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 83 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 84 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 85 } })
         </div>
 
         <div class="fileira">
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-        </div>
-    </div>
-
-    <div class="ilha">
-        <div class="fileira">
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-        </div>
-
-        <div class="fileira">
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
-            <div class="mesa">
-
-            </div>
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 85 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 86 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 87 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 88 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 89 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 90 } })
+            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 91 } })
         </div>
     </div>
 
@@ -352,7 +166,6 @@
 </section>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/andarJs")
     @Scripts.Render("~/bundles/mesa")
 }
 

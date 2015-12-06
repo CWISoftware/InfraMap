@@ -25,8 +25,8 @@ namespace InfraMap.Web.MVC.App_Start
             bundles.Add(new ScriptBundle("~/bundles/mesa").Include(
                         "~/Scripts/Mesa.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/andarJs").Include(
-                        "~/Scripts/Andar.js"));
+            bundles.Add(new ScriptBundle("~/bundles/partialMesa").Include(
+                        "~/Scripts/PartialMesa.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/andarCss").Include(
                         "~/Content/Andar.css",
