@@ -1,6 +1,4 @@
-﻿using InfraMap.Dominio.ModuloMaquina;
-using InfraMap.Dominio.ModuloRamal;
-using InfraMap.Web.MVC.Helpers;
+﻿using InfraMap.Web.MVC.Helpers;
 using InfraMap.Web.MVC.Models;
 using InfraMap.Web.MVC.Seguranca;
 using System;

@@ -13,7 +13,6 @@ namespace InfraMap.Web.MVC.Helpers
         public AndarModel BuscarAndarPorSede(string sede, string nomeAndar)
         {
             var sedeRepositorio = FabricaDeModulos.CriarSedeRepositorio();
-            var andarRepositorio = FabricaDeModulos.CriarAndarRepositorio();
             var sedeDb = sedeRepositorio.BuscarSedePorNome(sede);
             var andar = sedeDb.Andares.FirstOrDefault(t => t.Descricao.Equals(nomeAndar));
             var model = new AndarModel()
