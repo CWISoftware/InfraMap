@@ -23,7 +23,7 @@ function RenderPartial(id) {
                 data: { id: idMesa, colaborador: login },
                 datatype: "json",
                 success: function(data) {
-                    DisplaySuccess("Adicionado com sucesso!");
+                    reload();
                 },
                 error: function (xhr, status, error) {
                     DisplayError(xhr);
@@ -41,7 +41,7 @@ function RenderPartial(id) {
                 data: { id: idMesa, maquina: maquina, tipo: tipo },
                 datatype: "json",
                 success: function(data) {
-                    DisplaySuccess("Adicionado com sucesso!");
+                    reload();
                 },
                 error: function (xhr, status, error) {
                     DisplayError(xhr);
@@ -59,7 +59,7 @@ function RenderPartial(id) {
                 data: { id: idMesa, ramal: numero, tipo: tipoRamal },
                 datatype: "json",
                 success: function(data) {
-                    DisplaySuccess("Adicionado com sucesso!");
+                    reload();
                 },
                 error: function (xhr, status, error) {
                     DisplayError(xhr);
@@ -69,9 +69,8 @@ function RenderPartial(id) {
     });
 }
 
-function DisplaySuccess(msg) {
-    $("#success .modal-body").append("<h2>" + msg + "</h2>");
-    $('#success').modal('show');
+function reload() {
+    location.reload();
 }
 
 function DisplayError(xhr) {
