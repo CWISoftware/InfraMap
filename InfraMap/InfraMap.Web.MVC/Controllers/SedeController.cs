@@ -29,20 +29,13 @@ namespace InfraMap.Web.MVC.Controllers
             return Json(listaSedes, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult IrParaMapa()
+        public string PegarNomeSede()
         {
-            string descricaoAndar = Request.Params["descricaoAndar"];
-            int idAndar = Convert.ToInt32(Request.Params["idAndar"]);
-            var andarRepositorio = FabricaDeModulos.CriarAndarRepositorio();
+            int idSede = Convert.ToInt32(Request.Params["idSede"]);
+            var sedeRepositorio = FabricaDeModulos.CriarSedeRepositorio();
 
-            var andar = andarRepositorio.BuscarAndarComMesas(idAndar);
-            var andarModel = new AndarModel()
-            {
-                Id = andar.Id,
-                Descricao = andar.Descricao                
-            };
-
-            return RedirectToAction("Terceiro","SaoLeopoldo");
+            var sede = sedeRepositorio.BuscarPorId(idSede);
+            return sede.Nome;
         }
     }
 }

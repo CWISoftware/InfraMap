@@ -16,12 +16,17 @@
 });
 
 $("#btn-ir").click(function () {
+    var descricaoAndar = $("#dropdown-andar").find(":selected").text();
+    var id_sede = $("#sede-sao-leo").children("input").attr("value");
     $.ajax({
         type: "POST",
-        url: '/Sede/IrParaMapa',
-        data: { descricaoAndar: $("#dropdown-andar").find(":selected").text(), idAndar: $("#dropdown-andar").val() },
+        url: '/Sede/PegarNomeSede',
+        data: { idSede: id_sede },
         datatype: "json",
         success: function (data) { }
-    });
+    }).done(function (nomeSede) {
+        window.location.href = "/Mapa/"+nomeSede+"/" + descricaoAndar;
+    }
+    );
     }
 );
