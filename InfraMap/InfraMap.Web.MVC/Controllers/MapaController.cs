@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace InfraMap.Web.MVC.Controllers
 {
+    [Autorizador]
     public class MapaController : Controller
     {
         [HttpGet]
