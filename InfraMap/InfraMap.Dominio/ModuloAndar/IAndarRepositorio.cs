@@ -10,10 +10,6 @@ namespace InfraMap.Dominio.ModuloAndar
 {
     public interface IAndarRepositorio 
     {
-        List<Andar> BuscarAndaresPorSede(int idSede);
-
-        Andar BuscarAndarComMesas(int id);
-
         Andar BuscarPorId(int id);
     }
 }

@@ -17,21 +17,6 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
                 return db.Andar.Include("Mesas").FirstOrDefault(t => t.Id == id);
             }
         }
-
-        public List<Andar> BuscarAndaresPorSede(int idSede)
-        {
-            using (var db = new DataBaseContext())
-            {
-                return null;
-            }
-        }
-
-        public Andar BuscarAndarComMesas(int id)
-        {
-            using (var db = new DataBaseContext())
-            {
-                return db.Andar.Include("Mesas").Where(a => a.Id == id).SingleOrDefault();
-            }
-        }
+       
     }
 }

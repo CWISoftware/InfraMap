@@ -143,5 +143,15 @@ namespace InfraMap.Web.MVC.Controllers
 
             return PartialView("_SpotMesa", model);
         }
+
+        private int ContarMesasVazias(List<MesaModel> mesas)
+        {
+            return mesas.Count(m => !m.TemColaborador && !m.TemMaquina);
+        }
+
+        private int ContarEstacoesDisponiveis(List<MesaModel> mesas)
+        {
+            return mesas.Count(m => !m.TemColaborador && m.TemMaquina);
+        }
     }
 }
