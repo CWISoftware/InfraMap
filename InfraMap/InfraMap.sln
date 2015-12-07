@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Domínio", "1 - Domíni
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infraestrutura", "4 - Infraestrutura", "{9457D256-FC5F-4C63-B0AE-412CED58D8C3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfraMap.Dominio.Test", "InfraMap.Dominio.Test\InfraMap.Dominio.Test.csproj", "{79ADF0CB-0C8B-4B59-AF55-3939613E2D68}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{16C216C7-2A37-4A41-A6FB-239C6E70FD06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16C216C7-2A37-4A41-A6FB-239C6E70FD06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16C216C7-2A37-4A41-A6FB-239C6E70FD06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79ADF0CB-0C8B-4B59-AF55-3939613E2D68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79ADF0CB-0C8B-4B59-AF55-3939613E2D68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79ADF0CB-0C8B-4B59-AF55-3939613E2D68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79ADF0CB-0C8B-4B59-AF55-3939613E2D68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,5 +54,6 @@ Global
 		{FF25DFBA-B351-470A-B978-5F4561997042} = {9457D256-FC5F-4C63-B0AE-412CED58D8C3}
 		{1B2233A0-8221-43A7-ACCF-A403A7DD8A6E} = {1FE2B2A7-86B2-4466-8DA7-61DA439DB306}
 		{16C216C7-2A37-4A41-A6FB-239C6E70FD06} = {9457D256-FC5F-4C63-B0AE-412CED58D8C3}
+		{79ADF0CB-0C8B-4B59-AF55-3939613E2D68} = {55313BCC-54E2-4AD6-999A-963A7C96E390}
 	EndGlobalSection
 EndGlobal

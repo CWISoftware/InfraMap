@@ -242,22 +242,4 @@
 </div>
 }
 
-@section Scripts {
-    @Scripts.Render("~/bundles/partialMesa")
-    <script src="~/Content/jquery.easy-autocomplete.min.js"></script>
-    @RenderSection("Scripts", false)
-    <script>
-        var usuarioAutoComplete = {
-            url: "Base/UsuarioAutoComplete",
-            getValue: "label",
-            list: {
-                match: {
-                    enabled: true
-                }
-            }
-        };
-        $("#login").easyAutocomplete(usuarioAutoComplete);
-    </script>
-}
-
 
