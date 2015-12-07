@@ -14,6 +14,7 @@ function RenderPartial(id) {
     }).success(function (data) {
         $("#partial").html(data);
         $('#myModal').modal('show');
+        $("#login").easyAutocomplete(usuarioLoginAutoComplete);
         $("#adicionaUsuario").click(function () {
             var idMesa = $("#idMesa").val();
             var login = $("#login").val();
@@ -113,7 +114,7 @@ function RenderPartial(id) {
                     DisplayError(xhr);
                 }
             });
-        });
+        });       
     });
 }
 
@@ -126,6 +127,16 @@ function DisplayError(xhr) {
     $("#error .modal-body").append("<h2>" + msg.Message + "</h2>");
     $('#error').modal('show');
 }
+
+var usuarioLoginAutoComplete = {
+    url: "/Base/UsuarioLoginAutoComplete",
+    getValue: "label",
+    list: {
+        match: {
+            enabled: true
+        }
+    }
+};
 
 $("#btn-selecionarColaboradores").click(function () {
     $(".fileira").addClass("selectable");
