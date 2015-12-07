@@ -15,18 +15,7 @@ namespace InfraMap.Web.MVC.Helpers
             var sedeRepositorio = FabricaDeModulos.CriarSedeRepositorio();
             var sedeDb = sedeRepositorio.BuscarSedePorNome(sede);
             var andar = sedeDb.Andares.FirstOrDefault(t => t.Descricao.Equals(nomeAndar));
-            var model = new AndarModel()
-            {
-                Descricao = sede,
-                Id = andar.Id
-            };
-
-            foreach (var mesa in andar.Mesas)
-            {
-                model.Mesas.Add(new MesaModel(mesa));
-            }
-
-            return model;
+            return new AndarModel(andar);
         }
 
         public void AdicionarColaborador(int id, string nome)
