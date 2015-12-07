@@ -139,6 +139,7 @@
     <Content Include="Scripts\Mesa.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\sede.js" />
+    <Content Include="Scripts\SpotMesa.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
