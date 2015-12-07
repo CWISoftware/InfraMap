@@ -40,12 +40,12 @@ namespace InfraMap.Dominio.Mesa
             var colaborador = this.usuarioRepositorio.BuscarPorLogin(login);
             if (colaborador == null)
             {
-                throw new Exception("Colaborador não encontrado!");
+                throw new ArgumentException("Colaborador não encontrado!");
             }
 
             if (this.mesaRepositorio.BuscarMesaPorColaborador(colaborador.Login) != null)
             {
-                throw new Exception("Colaborador "+ colaborador.Login + " já está em outra mesa!");
+                throw new UsuarioEmOutraMesaException("Colaborador "+ colaborador.Login + " já está em outra mesa!");
             }
 
             mesa.AdicionarColaborador(colaborador);

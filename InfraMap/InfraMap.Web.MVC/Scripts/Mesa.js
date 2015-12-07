@@ -24,7 +24,29 @@ function RenderPartial(id) {
                 url: "/Mapa/AdicionarColaborador",
                 data: { id: idMesa, colaborador: login },
                 datatype: "json",
-                success: function(data) {
+                success: function (data) {
+                    if (data.trocar){
+                        $('#modalTrocarUsuario').modal('show');
+                    }
+                    else {
+                        reload();
+                    }       
+                },
+                error: function (xhr, status, error) {
+                    DisplayError(xhr);
+                }
+            });
+        });
+
+        $("#trocarUsuario").click(function () {
+            var idMesa = $("#idMesa").val();
+            var login = $("#login").val();
+            $.ajax({
+                type: "POST",
+                url: "/Mapa/TrocarMesaColaborador",
+                data: { id: idMesa, colaborador: login },
+                datatype: "json",
+                success: function (data) {
                     reload();
                 },
                 error: function (xhr, status, error) {

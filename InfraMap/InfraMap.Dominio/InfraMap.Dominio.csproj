@@ -43,6 +43,7 @@
     <Compile Include="Comum\IQuery.cs" />
     <Compile Include="Comum\IRepositorio.cs" />
     <Compile Include="Mesa\MesaService.cs" />
+    <Compile Include="Mesa\UsuarioEmOutraMesaException.cs" />
     <Compile Include="Sede\Andar\Andar.cs" />
     <Compile Include="Sede\Andar\IAndarRepositorio.cs" />
     <Compile Include="Mesa\Maquina\IMaquinaRepositorio.cs" />

@@ -35,10 +35,30 @@ namespace InfraMap.Web.MVC.Controllers
         {
             var service = Factory.CriarMesaServiceColaborador();
             var id = Convert.ToInt32(Request.Params["id"]);
-            var nome = Request.Params["colaborador"];
+            var login = Request.Params["colaborador"];
             try
             {
-                service.AdicionarColaborador(id, nome);
+                service.AdicionarColaborador(id, login);
+            }
+            catch(UsuarioEmOutraMesaException e)
+            {
+                return Json(new { success = true, trocar = true, message = e.Message, id = id, login = login });
+            }
+            catch (Exception e)
+            {
+                return ThrowError(e);
+            }
+            
+            return Json(new { success = true, trocar = false});
+        }
+
+        [HttpPost]
+        public JsonResult TrocarMesaColaborador(int id, string colaborador)
+        {
+            try
+            {
+                var service = Factory.CriarMesaServiceColaborador();
+                service.TrocarColaborador(id, colaborador);
             }
             catch (Exception e)
             {
