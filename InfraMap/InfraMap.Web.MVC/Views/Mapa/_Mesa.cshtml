@@ -6,24 +6,26 @@
     var nome = mesa.Colaborador != null ? mesa.Colaborador.Colaborador : "";
 }
 <div class="mesa" onclick="mesaClick(@ViewBag.idMesa)">
-    <label class="form-group" id="@ViewBag.idMesa">@ViewBag.idMesa</label>
-    <label class="nome">@nome</label>
-    <div class="form-inline">
-        @if (mesa.TemMaquina)
+    <label class="numeroMesa" id="@ViewBag.idMesa">@ViewBag.idMesa</label>
+    <div class="mesa-div">
+        @if (mesa.TemRamal)
         {
-            <span class="glyphicon glyphicon-hd-video" aria-hidden="true"></span>
+            <span class="glyphicon glyphicon-phone-alt ramal" aria-hidden="true"></span>
         }
 
         @if (mesa.TemColaborador)
         {
-            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            <span class="glyphicon glyphicon-user usuario" aria-hidden="true"></span>
         }
 
-        @if (mesa.TemRamal)
+        @if (mesa.TemMaquina && !mesa.TemColaborador)
         {
-            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>
+            <span class="glyphicon glyphicon-hd-video computador" aria-hidden="true"></span>
         }
-    </div>
+        
+        <label class="nome">@nome</label>
+    </div>      
+    
 </div>
 
 @section Scripts {
