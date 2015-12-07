@@ -16,21 +16,11 @@ namespace InfraMap.Dominio.Mesa
         private IMaquinaRepositorio maquinaRepositorio;
         private IRamalRepositorio ramalRepositorio;
 
-        public MesaService(IMesaRepositorio mesaRepositorio, IUsuarioRepositorio usuarioRepositorio)
+        public MesaService(IMesaRepositorio mesaRepositorio, IUsuarioRepositorio usuarioRepositorio, IMaquinaRepositorio maquinaRepositorio, IRamalRepositorio ramalRepositorio)
         {
             this.mesaRepositorio = mesaRepositorio;
             this.usuarioRepositorio = usuarioRepositorio;
-        }
-
-        public MesaService(IMesaRepositorio mesaRepositorio, IMaquinaRepositorio maquinaRepositorio)
-        {
-            this.mesaRepositorio = mesaRepositorio;
             this.maquinaRepositorio = maquinaRepositorio;
-        }
-
-        public MesaService(IMesaRepositorio mesaRepositorio, IRamalRepositorio ramalRepositorio)
-        {
-            this.mesaRepositorio = mesaRepositorio;
             this.ramalRepositorio = ramalRepositorio;
         }
 
