@@ -60,10 +60,13 @@ namespace InfraMap.Web.MVC.Controllers
         {
             string nome = Request.Params["nome"];
             var sede = FabricaDeModulos.CriarSedeRepositorio();
-            var resultado = sede.BuscarSedesComAndares().Where(sedes => sedes.Andares.Where(a => a.Mesas.Where(b => b.Colaborador.Nome.Equals(nome) ) != null) != null).FirstOrDefault();
-            var andares = resultado.Andares.FirstOrDefault();
-            var desc = andares.Descricao;
-            return Json(resultado, JsonRequestBehavior.AllowGet);
+            var sedeDoUsuario = sede.BuscarSedesComAndares().Where(sedes => sedes.Andares.Where(a => a.Mesas.Where(b => b.Colaborador.Nome.Equals(nome) ) != null) != null).FirstOrDefault();
+
+            var descricaoAndar = sedeDoUsuario.Andares.FirstOrDefault().Descricao;
+            var nomeSede = sedeDoUsuario.Nome;
+
+            String[] lista = { nomeSede , descricaoAndar};
+            return Json(lista, JsonRequestBehavior.AllowGet);
         }
         
     }
