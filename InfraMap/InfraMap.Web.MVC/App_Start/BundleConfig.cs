@@ -16,9 +16,7 @@ namespace InfraMap.Web.MVC.App_Start
                         "~/Scripts/jquery.easy-autocomplete.js",
                         "~/Scripts/jquery.easy-autocomplete.min.js",
                         "~/Scripts/base.js",
-                        "~/Scripts/infra-map-auto-complete.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
+                        "~/Scripts/infra-map-auto-complete.js",
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/sede").Include(
