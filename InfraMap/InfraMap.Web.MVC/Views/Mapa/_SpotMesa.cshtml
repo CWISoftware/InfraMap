@@ -1,5 +1,10 @@
 ﻿@model InfraMap.Web.MVC.Models.MesaModel
 
+@{
+    var colaborador = Model.Colaborador != null ? Model.Colaborador.Colaborador : "";
+    var maquina = Model.Maquina != null ? Model.Maquina.Maquina : "";
+    var ramal = Model.Ramal != null ? Model.Ramal.Ramal : "";
+}
 @if (User.IsInRole("INFRA"))
 {
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
@@ -13,7 +18,7 @@
                     @if (Model.TemColaborador)
                     {
                         <div class="form-inline">
-                            <label class="form-control">@Model.Colaborador</label>
+                            <label class="form-control">@colaborador</label>
                             <button type="button" class="btn btn-danger form-control" data-toggle="modal" data-target="#removerColaborador" data-dismiss="modal">
                                 Remover colaborador
                             </button>
@@ -30,7 +35,7 @@
                     @if (Model.TemMaquina)
                     {
                         <div class="form-inline">
-                            <label class="form-control">@Model.Maquina</label>
+                            <label class="form-control">@maquina</label>
                             <button type="button" class="btn btn-danger form-control" data-toggle="modal" data-target="#removerMaquina" data-dismiss="modal">
                                 Remover maquina
                             </button>
@@ -47,7 +52,7 @@
                     @if (Model.TemRamal)
                     {
                         <div class="form-inline">
-                            <label class="form-control">@Model.Ramal</label>
+                            <label class="form-control">@ramal</label>
                             <button type="button" class="btn btn-danger form-control" data-toggle="modal" data-target="#removerRamal" data-dismiss="modal">
                                 Remover ramal
                             </button>
@@ -100,7 +105,7 @@
                     <input class="form-control" id="idMesa" value=@Model.Id type="hidden" />
                     <input class="form-control" id="nomeMaquina" name="nome" placeholder="Nome da maquina" />
                     <h2></h2>
-                    @Html.EnumDropDownListFor(m => m.TipoMaquina, new { @id = "tipoMaquina", @class = "form-control" })
+                    @Html.EnumDropDownListFor(m => m.Maquina.TipoMaquina, new { @id = "tipoMaquina", @class = "form-control" })
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -121,7 +126,7 @@
                     <input class="form-control" id="idMesa" value=@Model.Id type="text" />
                     <input class="form-control" id="numero" name="nome" placeholder="Digite um ramal" />
                     <h2></h2>
-                    @Html.EnumDropDownListFor(m => m.TipoRamal, new { @id = "tipoRamal", @class = "form-control" })
+                    @Html.EnumDropDownListFor(m => m.Ramal.TipoRamal, new { @id = "tipoRamal", @class = "form-control" })
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -139,7 +144,7 @@
                     <h4 class="modal-title" id="myModalLabel">Deseja remover?</h4>
                 </div>
                 <div class="modal-body">
-                    <h2>@Model.Colaborador</h2>
+                    <h2>@colaborador</h2>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -157,7 +162,7 @@
                     <h4 class="modal-title" id="myModalLabel">Deseja remover?</h4>
                 </div>
                 <div class="modal-body">
-                    <h2>@Model.Maquina</h2>
+                    <h2>@maquina</h2>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -175,7 +180,7 @@
                     <h4 class="modal-title" id="myModalLabel">Deseja remover?</h4>
                 </div>
                 <div class="modal-body">
-                    <h2>@Model.Ramal</h2>
+                    <h2>@ramal</h2>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

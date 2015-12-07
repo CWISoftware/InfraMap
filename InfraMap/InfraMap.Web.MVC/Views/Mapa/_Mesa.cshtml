@@ -3,10 +3,11 @@
 @Styles.Render("~/bundles/andarCss")
 @{
     var mesa = Model.First(t => t.Id == ViewBag.idMesa);
+    var nome = mesa.Colaborador != null ? mesa.Colaborador.Colaborador : "";
 }
 <div class="mesa" onclick="mesaClick(@ViewBag.idMesa)">
     <label class="form-group" id="@ViewBag.idMesa">@ViewBag.idMesa</label>
-    <label class="nome">@mesa.Colaborador</label>
+    <label class="nome">@nome</label>
     <div class="form-inline">
         @if (mesa.TemMaquina)
         {

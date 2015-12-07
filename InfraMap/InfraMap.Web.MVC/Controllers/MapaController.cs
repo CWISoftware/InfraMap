@@ -140,7 +140,7 @@ namespace InfraMap.Web.MVC.Controllers
             var id = Convert.ToInt32(Request.Params["id"]);
             var mesaRepositorio = FabricaDeModulos.CriarMesaRepositorio();
             var mesa = mesaRepositorio.BuscarPorId(id);
-            var model = MesaModelHelper.EntidadeParaModel(mesa);
+            var model = new MesaModel(mesa);
             return PartialView("_SpotMesa", model);
         }
 

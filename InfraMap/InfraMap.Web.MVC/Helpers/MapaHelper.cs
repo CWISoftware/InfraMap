@@ -23,7 +23,7 @@ namespace InfraMap.Web.MVC.Helpers
 
             foreach (var mesa in andar.Mesas)
             {
-                model.Mesas.Add(MesaModelHelper.EntidadeParaModel(mesa));
+                model.Mesas.Add(new MesaModel(mesa));
             }
 
             return model;
