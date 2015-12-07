@@ -183,7 +183,7 @@
     <Content Include="Views\Mapa\CWISLTerceiro.cshtml" />
     <Content Include="Views\Mapa\_SpotMesa.cshtml" />
     <Content Include="Views\Mapa\_Mesa.cshtml" />
-    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Shared\_Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

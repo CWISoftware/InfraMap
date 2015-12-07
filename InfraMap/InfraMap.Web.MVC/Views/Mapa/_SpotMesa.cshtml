@@ -123,7 +123,7 @@
                     <h4 class="modal-title" id="myModalLabel">Adicionar ramal</h4>
                 </div>
                 <div class="modal-body form-horizontal">
-                    <input class="form-control" id="idMesa" value=@Model.Id type="text" />
+                    <input class="form-control" id="idMesa" value=@Model.Id type="hidden" />
                     <input class="form-control" id="numero" name="nome" placeholder="Digite um ramal" />
                     <h2></h2>
                     @Html.EnumDropDownListFor(m => m.Ramal.TipoRamal, new { @id = "tipoRamal", @class = "form-control" })
@@ -215,11 +215,12 @@
                     <h4 class="modal-title" id="myModalLabel">Mesa - @Model.Id</h4>
                 </div>
                 <div class="modal-body form-horizontal">
-                    <label class="form-control text-center">Deseja mudar o colaborador @colaborador de lugar?</label>
+                    <label class="form-control text-center">Colaborador está em outra mesa.
+                        Deseja mudar o colaborador de lugar?</label>
                 </div>
                     <div class="modal-footer">
-                        <button id="trocarUsuario" type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>                        
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>   
+                        <button id="trocarUsuario" type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>                     
                     </div>
                 </div>
             </div>

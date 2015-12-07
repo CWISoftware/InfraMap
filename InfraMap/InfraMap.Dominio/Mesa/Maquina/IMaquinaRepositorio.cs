@@ -5,8 +5,5 @@ namespace InfraMap.Dominio.Mesa.Maquina
 {
     public interface IMaquinaRepositorio : IRepositorio<Maquina>
     {
-        IList<Maquina> BuscarListaPorNome(string nomeMaquina);
-
-        Maquina BuscarPorNome(string nomeMaquina);
     }
 }

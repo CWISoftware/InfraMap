@@ -48,14 +48,10 @@
     <Compile Include="Sede\Andar\IAndarRepositorio.cs" />
     <Compile Include="Mesa\Maquina\IMaquinaRepositorio.cs" />
     <Compile Include="Mesa\Maquina\Maquina.cs" />
-    <Compile Include="Mesa\Maquina\Queries\BuscarMaquinaPorNomeQuery.cs" />
-    <Compile Include="Mesa\Maquina\Queries\BuscarMaquinasPorNomeQuery.cs" />
     <Compile Include="Mesa\Maquina\TipoMaquina.cs" />
     <Compile Include="Mesa\IMesaRepositorio.cs" />
     <Compile Include="Mesa\Mesa.cs" />
     <Compile Include="Mesa\Ramal\IRamalRepositorio.cs" />
-    <Compile Include="Mesa\Ramal\Queries\BuscarRamaisPorNumeros.cs" />
-    <Compile Include="Mesa\Ramal\Queries\BuscarRamalPorNumero.cs" />
     <Compile Include="Mesa\Ramal\Ramal.cs" />
     <Compile Include="Mesa\Ramal\TipoRamal.cs" />
     <Compile Include="Sede\ISedeRepositorio.cs" />
