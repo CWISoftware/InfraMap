@@ -23,6 +23,7 @@
                     <ul class="nav navbar-nav">
                         <li><input form="form-control" id="carregar-usuario" name="nomeCarregar" placeholder="Procure o funcionário"/></li>
                         <li><button type="submit" class="btn btn-default" id="btn-procurar"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button></li>
+                        @Html.ActionLink("Logout", "Sair", "Login", new { area= "" }, new { @class = "nav navbar"})
                     </ul>              
                 </div>
             </div>
