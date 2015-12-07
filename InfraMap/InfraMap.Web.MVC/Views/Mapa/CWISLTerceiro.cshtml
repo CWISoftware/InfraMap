@@ -5,6 +5,7 @@
 
 @Styles.Render("~/bundles/andarCss")
 @Styles.Render("~/bundles/jquery-ui")
+<h2 class="inline padding-20 margin-20">CWISL - 3 ANDAR</h2>
 <section class="andar">
 
     @if (User.IsInRole("GERENTE"))
@@ -13,8 +14,7 @@
         <button id="btn-selecionarColaboradores" type="button" class="pull-right">Selecionar colaboradores</button>
         <button id="btn-salvarColaboradores" class="hide pull-right" type="button">Salvar colaboradores</button>
     }
-
-    <h2 class="inline padding-20 margin-20">CWI - 3 ANDAR</h2>
+   
     <div id="partial"></div>
     <div class="fileira">
         @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 1 } })

@@ -26,16 +26,16 @@ namespace InfraMap.Web.MVC.Controllers
             }
             catch (Exception e)
             {
-                return ThrowError(e);
+                return Erro(e);
             }  
         }
 
         [HttpPost]
         public JsonResult AdicionarColaborador(int id, string colaborador)
         {
-            var service = Factory.CriarMesaService();
             try
             {
+                var service = Factory.CriarMesaService();
                 service.AdicionarColaborador(id, colaborador);
             }
             catch(UsuarioEmOutraMesaException)
@@ -44,7 +44,7 @@ namespace InfraMap.Web.MVC.Controllers
             }
             catch (Exception e)
             {
-                return ThrowError(e);
+                return Erro(e);
             }
             
             return Json(new { success = true, trocar = false});
@@ -60,7 +60,7 @@ namespace InfraMap.Web.MVC.Controllers
             }
             catch (Exception e)
             {
-                return ThrowError(e);
+                return Erro(e);
             }
             
             return Json(new { success = true });
@@ -69,14 +69,14 @@ namespace InfraMap.Web.MVC.Controllers
         [HttpPost]
         public JsonResult RemoverColaborador(int id)
         {
-            var service = Factory.CriarMesaService();
             try
             {
+                var service = Factory.CriarMesaService();
                 service.RemoverColaborador(id);
             }
             catch (Exception e)
             {
-                return ThrowError(e);
+                return Erro(e);
             }
 
             return Json(new { success = true });
@@ -84,13 +84,13 @@ namespace InfraMap.Web.MVC.Controllers
 
         [HttpPost]
         public JsonResult AdicionarMaquina(int id, string maquina, int tipo)
-        {
-            var service = Factory.CriarMesaService();
+        {         
             if (string.IsNullOrWhiteSpace(maquina))
             {
-                return ThrowError(new Exception("Preencha os campos!"));
+                return Erro(new Exception("Preencha os campos!"));
             }
 
+            var service = Factory.CriarMesaService();
             service.AdicionarMaquina(id, maquina, tipo);
             return Json(new { success = true });
         }
@@ -98,14 +98,14 @@ namespace InfraMap.Web.MVC.Controllers
         [HttpPost]
         public JsonResult RemoverMaquina(int id)
         {
-            var service = Factory.CriarMesaService();
             try
             {
+                var service = Factory.CriarMesaService();
                 service.RemoverMaquina(id);
             }
             catch (Exception e)
             {
-                return ThrowError(e);
+                return Erro(e);
             }
 
             return Json(new { success = true });
@@ -113,13 +113,13 @@ namespace InfraMap.Web.MVC.Controllers
 
         [HttpPost]
         public JsonResult AdicionarRamal(int id, string ramal, int tipo)
-        {
-            var service = Factory.CriarMesaService();
+        {      
             if (string.IsNullOrWhiteSpace(ramal))
             {
-                return ThrowError(new Exception("Preencha os campos!"));
+                return Erro(new Exception("Preencha os campos!"));
             }
 
+            var service = Factory.CriarMesaService();
             service.AdicionarRamal(id, ramal, tipo);             
             return Json(new { success = true });
         }
@@ -127,14 +127,14 @@ namespace InfraMap.Web.MVC.Controllers
         [HttpPost]
         public JsonResult RemoverRamal(int id)
         {
-            var service = Factory.CriarMesaService();
             try
             {
+                var service = Factory.CriarMesaService();
                 service.RemoverRamal(id);
             }
             catch (Exception e)
             {
-                return ThrowError(e);
+                return Erro(e);
             }
 
             return Json(new { success = true });
@@ -149,7 +149,7 @@ namespace InfraMap.Web.MVC.Controllers
             return PartialView("_SpotMesa", model);
         }
 
-        private JsonResult ThrowError(Exception e)
+        private JsonResult Erro(Exception e)
         {
             Response.StatusCode = (int)System.Net.HttpStatusCode.BadRequest;
             return Json(new { Message = e.Message });
