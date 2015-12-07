@@ -154,7 +154,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Factory.cs" />
-    <Compile Include="Helpers\StringExtensions.cs" />
     <Compile Include="Models\AndarModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MesaModel.cs" />
