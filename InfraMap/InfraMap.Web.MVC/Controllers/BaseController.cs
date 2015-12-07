@@ -19,7 +19,7 @@ namespace InfraMap.Web.MVC.Controllers
 
         private IList<Usuario> BuscarUsuarioPeloFiltro(string term)
         {
-            IUsuarioRepositorio usuario = FabricaDeModulos.CriarUsuarioRepositorio();
+            IUsuarioRepositorio usuario = Factory.CriarUsuarioRepositorio();
             if (String.IsNullOrEmpty(term))
             {
                 return usuario.Buscar();
@@ -39,7 +39,7 @@ namespace InfraMap.Web.MVC.Controllers
 
         private IList<Usuario> BuscarUsuarioPorLogin(String term)
         {
-            IUsuarioRepositorio usuario = FabricaDeModulos.CriarUsuarioRepositorio();
+            IUsuarioRepositorio usuario = Factory.CriarUsuarioRepositorio();
             if (String.IsNullOrEmpty(term))
             {
                 return usuario.Buscar();
@@ -60,7 +60,7 @@ namespace InfraMap.Web.MVC.Controllers
         public JsonResult CarregarMapaDoUsuarioPesquisado()
         {
             string nome = Request.Params["nome"];
-            var sede = FabricaDeModulos.CriarSedeRepositorio();
+            var sede = Factory.CriarSedeRepositorio();
             var sedeDoUsuario = sede.BuscarSedesComAndares().Where(sedes => sedes.Andares.Where(a => a.Mesas.Where(b => b.Colaborador.Nome.Equals(nome) ) != null) != null).FirstOrDefault();
             var descricaoAndar = sedeDoUsuario.Andares.FirstOrDefault().Descricao;
             var nomeSede = sedeDoUsuario.Nome;

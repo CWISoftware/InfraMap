@@ -23,7 +23,7 @@ namespace InfraMap.Web.MVC.Controllers
         [HttpGet]
         public JsonResult PegarAndaresDasSedes()
         {
-            ISedeRepositorio repositorioSede = FabricaDeModulos.CriarSedeRepositorio();
+            ISedeRepositorio repositorioSede = Factory.CriarSedeRepositorio();
             var listaSedes = repositorioSede.BuscarSedesComAndares();
             return Json(listaSedes, JsonRequestBehavior.AllowGet);
         }
@@ -31,7 +31,7 @@ namespace InfraMap.Web.MVC.Controllers
         public string PegarNomeSede()
         {
             int idSede = Convert.ToInt32(Request.Params["idSede"]);
-            var sedeRepositorio = FabricaDeModulos.CriarSedeRepositorio();
+            var sedeRepositorio = Factory.CriarSedeRepositorio();
 
             var sede = sedeRepositorio.BuscarPorId(idSede);
             return sede.Nome;

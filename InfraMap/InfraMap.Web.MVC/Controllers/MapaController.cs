@@ -18,7 +18,7 @@ namespace InfraMap.Web.MVC.Controllers
         {     
             try
             {
-                var sedeRepositorio = FabricaDeModulos.CriarSedeRepositorio();
+                var sedeRepositorio = Factory.CriarSedeRepositorio();
                 var sedeDb = sedeRepositorio.BuscarSedePorNome(sede);
                 var andar = sedeDb.Andares.FirstOrDefault(t => t.Descricao.Equals(nomeAndar));
                 var model = new AndarModel(andar);
@@ -33,7 +33,7 @@ namespace InfraMap.Web.MVC.Controllers
         [HttpPost]
         public JsonResult AdicionarColaborador()
         {
-            var service = new MesaService(FabricaDeModulos.CriarMesaRepositorio(), FabricaDeModulos.CriarUsuarioRepositorio());
+            var service = new MesaService(Factory.CriarMesaRepositorio(), Factory.CriarUsuarioRepositorio());
             var id = Convert.ToInt32(Request.Params["id"]);
             var nome = Request.Params["colaborador"];
             try
@@ -51,7 +51,7 @@ namespace InfraMap.Web.MVC.Controllers
         [HttpPost]
         public JsonResult RemoverColaborador()
         {
-            var service = new MesaService(FabricaDeModulos.CriarMesaRepositorio(), FabricaDeModulos.CriarUsuarioRepositorio());
+            var service = new MesaService(Factory.CriarMesaRepositorio(), Factory.CriarUsuarioRepositorio());
             var idMesa = Convert.ToInt32(Request.Params["id"]);
             try
             {
@@ -68,7 +68,7 @@ namespace InfraMap.Web.MVC.Controllers
         [HttpPost]
         public JsonResult AdicionarMaquina()
         {
-            var service = new MesaService(FabricaDeModulos.CriarMesaRepositorio(), FabricaDeModulos.CriarMaquinaRepositorio());
+            var service = new MesaService(Factory.CriarMesaRepositorio(), Factory.CriarMaquinaRepositorio());
             var idMesa = Convert.ToInt32(Request.Params["id"]);
             var maquina = Request.Params["maquina"];
             var tipo = Convert.ToInt32(Request.Params["tipo"]);
@@ -84,7 +84,7 @@ namespace InfraMap.Web.MVC.Controllers
         [HttpPost]
         public JsonResult RemoverMaquina()
         {
-            var service = new MesaService(FabricaDeModulos.CriarMesaRepositorio(), FabricaDeModulos.CriarMaquinaRepositorio());
+            var service = new MesaService(Factory.CriarMesaRepositorio(), Factory.CriarMaquinaRepositorio());
             var idMesa = Convert.ToInt32(Request.Params["id"]);
             try
             {
@@ -101,7 +101,7 @@ namespace InfraMap.Web.MVC.Controllers
         [HttpPost]
         public JsonResult AdicionarRamal()
         {
-            var service = new MesaService(FabricaDeModulos.CriarMesaRepositorio(), FabricaDeModulos.CriarRamalRepositorio());
+            var service = new MesaService(Factory.CriarMesaRepositorio(), Factory.CriarRamalRepositorio());
             var idMesa = Convert.ToInt32(Request.Params["id"]);
             var numero = Request.Params["ramal"];
             var tipo = Convert.ToInt32(Request.Params["tipo"]);
@@ -117,7 +117,7 @@ namespace InfraMap.Web.MVC.Controllers
         [HttpPost]
         public JsonResult RemoverRamal()
         {
-            var service = new MesaService(FabricaDeModulos.CriarMesaRepositorio(), FabricaDeModulos.CriarRamalRepositorio());
+            var service = new MesaService(Factory.CriarMesaRepositorio(), Factory.CriarRamalRepositorio());
             var idMesa = Convert.ToInt32(Request.Params["id"]);
             try
             {
@@ -135,7 +135,7 @@ namespace InfraMap.Web.MVC.Controllers
         public ActionResult RenderPartialViewSpotMesa()
         {
             var id = Convert.ToInt32(Request.Params["id"]);
-            var mesaRepositorio = FabricaDeModulos.CriarMesaRepositorio();
+            var mesaRepositorio = Factory.CriarMesaRepositorio();
             var mesa = mesaRepositorio.BuscarPorId(id);
             var model = new MesaModel(mesa);
             return PartialView("_SpotMesa", model);
