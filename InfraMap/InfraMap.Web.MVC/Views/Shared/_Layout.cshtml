@@ -4,10 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Infra-Map</title>
-    @Styles.Render("~/Content/bootstrap.min.css")
-    @Styles.Render("~/Content/Site.css")
-    <link href="~/Content/easy-autocomplete.min.css" rel="stylesheet" />
-    <link href="~/Content/easy-autocomplete.themes.min.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
 </head>
 <body>
     <header class="navbar navbar color-menu">
@@ -34,9 +31,8 @@
     </section>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/modernizr")  
-    <script src="~/Content/jquery.easy-autocomplete.min.js"></script>
-            @RenderSection("Scripts", false)
-            <script src="~/Scripts/base.js"></script>
+    @RenderSection("Scripts", false)
+    <script src="~/Scripts/base.js"></script>
         <script>
             var usuarioAutoComplete = {
                 url: "/Base/UsuarioAutoComplete",
