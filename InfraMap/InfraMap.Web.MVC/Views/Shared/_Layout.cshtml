@@ -10,20 +10,19 @@
     <header class="navbar navbar color-menu">
             <div class="container">
                 <div class="navbar-header">
-                    <h3 class="logo"></h3>
-                    @Html.ActionLink("","Index", "Sede", new { area = "" }, new { @class = "navbar-brand logo" })
+                   
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    
+                    @Html.ActionLink(".", "Index", "Sede", new { area = "" }, new { @class = "navbar-brand logo" })
                 </div>
                 <div class="navbar-brand navbar-collapse collapse navbar-right">
                     <ul class="nav navbar-nav">
                         <li><input form="form-control" id="carregar-usuario" name="nomeCarregar" placeholder="Procure o funcionário"/></li>
                         <li><button type="submit" class="btn btn-default" id="btn-procurar"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button></li>
-                        @Html.ActionLink("Logout", "Sair", "Login", new { area= "" }, new { @class = "nav navbar"})
+                        @*<li><a href="@Html.Action("Sair", "Login")"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></li>*@
                     </ul>              
                 </div>
             </div>

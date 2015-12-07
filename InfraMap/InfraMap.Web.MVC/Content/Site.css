@@ -27,6 +27,7 @@ textarea {
     width: 137px;
     height: 35px;
     background: url('img/logo.png') no-repeat;
+    margin-top: 20px;
 }
 
 .color-menu{
