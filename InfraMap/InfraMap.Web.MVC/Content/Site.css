@@ -50,7 +50,7 @@ textarea {
 
 .bloco-sede {
     padding:20px;
-    width:20%;
+    cursor:pointer;
     height:70%;
     background-color:rgb(194,193,193);
     border-radius:20px;
@@ -62,21 +62,20 @@ textarea {
 
 .div-img-sede{
     width:100%;
-    height:200px;
+    height:80%;
     margin: 10px 0;
 }
 
 .img-sede{
     width:100%;
-    height:200px;
+    height:100%;
     position:relative;
 }
 
 .descricao-sede{
     width:100%;
-    height:70px;
+    height:15%;
     color:white;
-    padding-top:10px;
 }
 
 .margin-20{
