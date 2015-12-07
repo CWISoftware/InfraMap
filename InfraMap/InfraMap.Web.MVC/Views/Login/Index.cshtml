@@ -1,8 +1,8 @@
 ﻿@model InfraMap.Web.MVC.Models.LoginModel
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Login/Login.cshtml";
 }
-
 @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "form" }))
 {
     @Html.ValidationSummary(true)
