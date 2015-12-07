@@ -36,5 +36,25 @@ namespace InfraMap.Web.MVC.Controllers
             var json = usuarioEncontrado.Select(usuarios => new { label = usuarios.Nome });
             return Json(json, JsonRequestBehavior.AllowGet);
         }
+
+        private IList<Usuario> BuscarUsuarioPorLogin(String term)
+        {
+            IUsuarioRepositorio usuario = FabricaDeModulos.CriarUsuarioRepositorio();
+            if (String.IsNullOrEmpty(term))
+            {
+                return usuario.Buscar();
+            }
+            else
+            {
+                return usuario.BuscarUsuariosPorLogin(term);
+            }
+        }
+
+        public JsonResult UsuarioLoginAutoComplete(string term)
+        {
+            IList<Usuario> usuarioEncontrado = BuscarUsuarioPorLogin(term);
+            var json = usuarioEncontrado.Select(usuarios => new { label = usuarios.Login });
+            return Json(json, JsonRequestBehavior.AllowGet);
+        }
     }
 }
