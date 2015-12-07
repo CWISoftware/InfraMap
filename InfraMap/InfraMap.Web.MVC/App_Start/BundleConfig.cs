@@ -33,7 +33,7 @@ namespace InfraMap.Web.MVC.App_Start
             bundles.Add(new StyleBundle("~/bundles/jquery-ui").Include(
                         "~/Content/jquery-ui.*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/andarCss").Include(
+            bundles.Add(new StyleBundle("~/bundles/andarCss").Include(
                         "~/Content/Andar.css",
                         "~/Content/TerceiroAndarCWISL.css"));
 
