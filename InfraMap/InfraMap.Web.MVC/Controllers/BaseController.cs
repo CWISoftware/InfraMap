@@ -56,17 +56,16 @@ namespace InfraMap.Web.MVC.Controllers
             var json = usuarioEncontrado.Select(usuarios => new { label = usuarios.Login });
             return Json(json, JsonRequestBehavior.AllowGet);
         }
+
         public JsonResult CarregarMapaDoUsuarioPesquisado()
         {
             string nome = Request.Params["nome"];
             var sede = FabricaDeModulos.CriarSedeRepositorio();
             var sedeDoUsuario = sede.BuscarSedesComAndares().Where(sedes => sedes.Andares.Where(a => a.Mesas.Where(b => b.Colaborador.Nome.Equals(nome) ) != null) != null).FirstOrDefault();
-
             var descricaoAndar = sedeDoUsuario.Andares.FirstOrDefault().Descricao;
             var nomeSede = sedeDoUsuario.Nome;
-
-            String[] lista = { nomeSede , descricaoAndar};
-            return Json(lista, JsonRequestBehavior.AllowGet);
+            string[] sedeEDescricao = { nomeSede , descricaoAndar};
+            return Json(sedeEDescricao, JsonRequestBehavior.AllowGet);
         }
         
     }

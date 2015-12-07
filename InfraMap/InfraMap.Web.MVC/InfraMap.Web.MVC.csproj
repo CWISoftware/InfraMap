@@ -116,8 +116,8 @@
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\logoCWI.png" />
     <Content Include="Content\img\sede-sao-leo-cwi.jpg" />
-    <Content Include="Content\jquery.easy-autocomplete.js" />
-    <Content Include="Content\jquery.easy-autocomplete.min.js" />
+    <Content Include="Scripts\jquery.easy-autocomplete.js" />
+    <Content Include="Scripts\jquery.easy-autocomplete.min.js" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\TerceiroAndarCWISL.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -183,7 +183,6 @@
     <Content Include="Views\Mapa\CWISLTerceiro.cshtml" />
     <Content Include="Views\Mapa\_SpotMesa.cshtml" />
     <Content Include="Views\Mapa\_Mesa.cshtml" />
-    <Content Include="Views\Base\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
