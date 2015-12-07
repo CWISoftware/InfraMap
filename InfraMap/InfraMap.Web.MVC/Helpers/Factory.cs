@@ -15,7 +15,7 @@ using InfraMap.Dominio.Usuario;
 
 namespace InfraMap.Web.MVC.Helpers
 {
-    public class FabricaDeModulos
+    public class Factory
     {
 
         public static IUsuarioRepositorio CriarUsuarioRepositorio()
