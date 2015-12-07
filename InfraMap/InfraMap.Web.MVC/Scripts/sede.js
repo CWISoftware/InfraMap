@@ -7,7 +7,7 @@
     }).done(
         function (json) {
             var options = "";
-            json[id_sede - 1].Andares.each(function (andar) {
+            json[id_sede - 1].Andares.forEach(function (andar) {
                 options += '<option value="' + andar.Id + '">' + andar.Descricao + '</option>';
             })
             $("#btn-ir").addClass("show");
