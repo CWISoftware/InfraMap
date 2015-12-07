@@ -31,18 +31,16 @@ namespace InfraMap.Web.MVC.Controllers
         }
 
         [HttpPost]
-        public JsonResult AdicionarColaborador()
+        public JsonResult AdicionarColaborador(int id, string colaborador)
         {
             var service = Factory.CriarMesaService();
-            var id = Convert.ToInt32(Request.Params["id"]);
-            var login = Request.Params["colaborador"];
             try
             {
-                service.AdicionarColaborador(id, login);
+                service.AdicionarColaborador(id, colaborador);
             }
-            catch(UsuarioEmOutraMesaException e)
+            catch(UsuarioEmOutraMesaException)
             {
-                return Json(new { success = true, trocar = true, message = e.Message, id = id, login = login });
+                return Json(new { success = true, trocar = true });
             }
             catch (Exception e)
             {
@@ -69,13 +67,12 @@ namespace InfraMap.Web.MVC.Controllers
         }
 
         [HttpPost]
-        public JsonResult RemoverColaborador()
+        public JsonResult RemoverColaborador(int id)
         {
             var service = Factory.CriarMesaService();
-            var idMesa = Convert.ToInt32(Request.Params["id"]);
             try
             {
-                service.RemoverColaborador(idMesa);
+                service.RemoverColaborador(id);
             }
             catch (Exception e)
             {
@@ -86,29 +83,25 @@ namespace InfraMap.Web.MVC.Controllers
         }
 
         [HttpPost]
-        public JsonResult AdicionarMaquina()
+        public JsonResult AdicionarMaquina(int id, string maquina, int tipo)
         {
             var service = Factory.CriarMesaService();
-            var idMesa = Convert.ToInt32(Request.Params["id"]);
-            var maquina = Request.Params["maquina"];
-            var tipo = Convert.ToInt32(Request.Params["tipo"]);
             if (string.IsNullOrWhiteSpace(maquina))
             {
                 return ThrowError(new Exception("Preencha os campos!"));
             }
 
-            service.AdicionarMaquina(idMesa, maquina, tipo);
+            service.AdicionarMaquina(id, maquina, tipo);
             return Json(new { success = true });
         }
 
         [HttpPost]
-        public JsonResult RemoverMaquina()
+        public JsonResult RemoverMaquina(int id)
         {
             var service = Factory.CriarMesaService();
-            var idMesa = Convert.ToInt32(Request.Params["id"]);
             try
             {
-                service.RemoverMaquina(idMesa);
+                service.RemoverMaquina(id);
             }
             catch (Exception e)
             {
@@ -119,29 +112,25 @@ namespace InfraMap.Web.MVC.Controllers
         }
 
         [HttpPost]
-        public JsonResult AdicionarRamal()
+        public JsonResult AdicionarRamal(int id, string ramal, int tipo)
         {
             var service = Factory.CriarMesaService();
-            var idMesa = Convert.ToInt32(Request.Params["id"]);
-            var numero = Request.Params["ramal"];
-            var tipo = Convert.ToInt32(Request.Params["tipo"]);
-            if (string.IsNullOrWhiteSpace(numero))
+            if (string.IsNullOrWhiteSpace(ramal))
             {
                 return ThrowError(new Exception("Preencha os campos!"));
             }
 
-            service.AdicionarRamal(idMesa, numero, tipo);             
+            service.AdicionarRamal(id, ramal, tipo);             
             return Json(new { success = true });
         }
 
         [HttpPost]
-        public JsonResult RemoverRamal()
+        public JsonResult RemoverRamal(int id)
         {
             var service = Factory.CriarMesaService();
-            var idMesa = Convert.ToInt32(Request.Params["id"]);
             try
             {
-                service.RemoverRamal(idMesa);
+                service.RemoverRamal(id);
             }
             catch (Exception e)
             {
@@ -152,9 +141,8 @@ namespace InfraMap.Web.MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult RenderPartialViewSpotMesa()
+        public ActionResult RenderPartialViewSpotMesa(int id)
         {
-            var id = Convert.ToInt32(Request.Params["id"]);
             var mesaRepositorio = Factory.CriarMesaRepositorio();
             var mesa = mesaRepositorio.BuscarPorId(id);
             var model = new MesaModel(mesa);
