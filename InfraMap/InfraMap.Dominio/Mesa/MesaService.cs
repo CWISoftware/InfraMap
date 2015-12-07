@@ -43,6 +43,11 @@ namespace InfraMap.Dominio.Mesa
                 throw new Exception("Colaborador não encontrado!");
             }
 
+            if (this.mesaRepositorio.BuscarMesaPorColaborador(colaborador.Login) != null)
+            {
+                throw new Exception("Colaborador "+ colaborador.Login + " já está em outra mesa!");
+            }
+
             mesa.AdicionarColaborador(colaborador);
             this.mesaRepositorio.Atualizar(mesa);
         }
