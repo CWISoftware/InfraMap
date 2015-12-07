@@ -61,6 +61,7 @@
     <Compile Include="Sede\Sede.cs" />
     <Compile Include="Autenticacao\Permissao.cs" />
     <Compile Include="Usuario\Queries\BuscarUsuarioPorNomeQuery.cs" />
+    <Compile Include="Usuario\Queries\BuscarUsuariosPorLoginQuery.cs" />
     <Compile Include="Usuario\Queries\BuscarUsuariosPorNomeQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuario\Usuario.cs" />
