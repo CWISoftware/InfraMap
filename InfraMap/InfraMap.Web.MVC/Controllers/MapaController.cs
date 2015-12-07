@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using InfraMap.Dominio.Mesa;
 
 namespace InfraMap.Web.MVC.Controllers
 {
@@ -17,8 +18,10 @@ namespace InfraMap.Web.MVC.Controllers
         {     
             try
             {
-                var helper = new MapaHelper();
-                var model = helper.BuscarAndarPorSede(sede, nomeAndar);
+                var sedeRepositorio = FabricaDeModulos.CriarSedeRepositorio();
+                var sedeDb = sedeRepositorio.BuscarSedePorNome(sede);
+                var andar = sedeDb.Andares.FirstOrDefault(t => t.Descricao.Equals(nomeAndar));
+                var model = new AndarModel(andar);
                 return View(sede + nomeAndar, model);
             }
             catch (Exception e)
@@ -30,12 +33,12 @@ namespace InfraMap.Web.MVC.Controllers
         [HttpPost]
         public JsonResult AdicionarColaborador()
         {
-            var helper = new MapaHelper();
+            var service = new MesaService(FabricaDeModulos.CriarMesaRepositorio(), FabricaDeModulos.CriarUsuarioRepositorio());
             var id = Convert.ToInt32(Request.Params["id"]);
             var nome = Request.Params["colaborador"];
             try
             {
-                helper.AdicionarColaborador(id, nome);
+                service.AdicionarColaborador(id, nome);
             }
             catch (Exception e)
             {
@@ -48,11 +51,11 @@ namespace InfraMap.Web.MVC.Controllers
         [HttpPost]
         public JsonResult RemoverColaborador()
         {
-            var helper = new MapaHelper();
+            var service = new MesaService(FabricaDeModulos.CriarMesaRepositorio(), FabricaDeModulos.CriarUsuarioRepositorio());
             var idMesa = Convert.ToInt32(Request.Params["id"]);
             try
             {
-                helper.RemoverColaborador(idMesa);
+                service.RemoverColaborador(idMesa);
             }
             catch (Exception e)
             {
@@ -65,30 +68,27 @@ namespace InfraMap.Web.MVC.Controllers
         [HttpPost]
         public JsonResult AdicionarMaquina()
         {
-            var helper = new MapaHelper();
+            var service = new MesaService(FabricaDeModulos.CriarMesaRepositorio(), FabricaDeModulos.CriarMaquinaRepositorio());
             var idMesa = Convert.ToInt32(Request.Params["id"]);
             var maquina = Request.Params["maquina"];
             var tipo = Convert.ToInt32(Request.Params["tipo"]);
-            try
+            if (string.IsNullOrWhiteSpace(maquina))
             {
-                helper.AdicionarMaquina(idMesa, maquina, tipo);
-            }
-            catch (Exception e)
-            {
-                return ThrowError(e);
+                return ThrowError(new Exception("Preencha os campos!"));
             }
 
+            service.AdicionarMaquina(idMesa, maquina, tipo);
             return Json(new { success = true });
         }
 
         [HttpPost]
         public JsonResult RemoverMaquina()
         {
-            var helper = new MapaHelper();
+            var service = new MesaService(FabricaDeModulos.CriarMesaRepositorio(), FabricaDeModulos.CriarMaquinaRepositorio());
             var idMesa = Convert.ToInt32(Request.Params["id"]);
             try
             {
-                helper.RemoverMaquina(idMesa);
+                service.RemoverMaquina(idMesa);
             }
             catch (Exception e)
             {
@@ -101,30 +101,27 @@ namespace InfraMap.Web.MVC.Controllers
         [HttpPost]
         public JsonResult AdicionarRamal()
         {
-            var helper = new MapaHelper();
+            var service = new MesaService(FabricaDeModulos.CriarMesaRepositorio(), FabricaDeModulos.CriarRamalRepositorio());
             var idMesa = Convert.ToInt32(Request.Params["id"]);
             var numero = Request.Params["ramal"];
             var tipo = Convert.ToInt32(Request.Params["tipo"]);
-            try
+            if (string.IsNullOrWhiteSpace(numero))
             {
-                helper.AdicionarRamal(idMesa, numero, tipo);
-            }
-            catch (Exception e)
-            {
-                return ThrowError(e);
+                return ThrowError(new Exception("Preencha os campos!"));
             }
 
+            service.AdicionarRamal(idMesa, numero, tipo);             
             return Json(new { success = true });
         }
 
         [HttpPost]
         public JsonResult RemoverRamal()
         {
-            var helper = new MapaHelper();
+            var service = new MesaService(FabricaDeModulos.CriarMesaRepositorio(), FabricaDeModulos.CriarRamalRepositorio());
             var idMesa = Convert.ToInt32(Request.Params["id"]);
             try
             {
-                helper.RemoverRamal(idMesa);
+                service.RemoverRamal(idMesa);
             }
             catch (Exception e)
             {

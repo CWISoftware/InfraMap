@@ -152,7 +152,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\FabricaDeModulos.cs" />
-    <Compile Include="Helpers\MapaHelper.cs" />
     <Compile Include="Helpers\StringExtensions.cs" />
     <Compile Include="Models\AndarModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
