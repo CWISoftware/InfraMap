@@ -204,9 +204,9 @@
       <Project>{ff25dfba-b351-470a-b978-5f4561997042}</Project>
       <Name>InfraMap.Infraestrutura.Ef</Name>
     </ProjectReference>
-    <ProjectReference Include="..\InfraMap.Infraestrutura.Servicos\InfraMap.Infraestrutura.Servicos.csproj">
+    <ProjectReference Include="..\InfraMap.Infraestrutura.Servicos\InfraMap.Infraestrutura.csproj">
       <Project>{16c216c7-2a37-4a41-a6fb-239c6e70fd06}</Project>
-      <Name>InfraMap.Infraestrutura.Servicos</Name>
+      <Name>InfraMap.Infraestrutura</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

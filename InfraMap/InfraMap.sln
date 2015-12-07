@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfraMap.Dominio", "InfraMap.Dominio\InfraMap.Dominio.csproj", "{107B3517-A282-44B0-9E96-8E9790962547}"
 EndProject
@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfraMap.Infraestrutura.Ef"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfraMap.Web.MVC", "InfraMap.Web.MVC\InfraMap.Web.MVC.csproj", "{1B2233A0-8221-43A7-ACCF-A403A7DD8A6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfraMap.Infraestrutura.Servicos", "InfraMap.Infraestrutura.Servicos\InfraMap.Infraestrutura.Servicos.csproj", "{16C216C7-2A37-4A41-A6FB-239C6E70FD06}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfraMap.Infraestrutura", "InfraMap.Infraestrutura.Servicos\InfraMap.Infraestrutura.csproj", "{16C216C7-2A37-4A41-A6FB-239C6E70FD06}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Apresentação", "0 - Apresentação", "{1FE2B2A7-86B2-4466-8DA7-61DA439DB306}"
 EndProject
