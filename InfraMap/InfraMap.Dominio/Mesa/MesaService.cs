@@ -52,6 +52,19 @@ namespace InfraMap.Dominio.Mesa
             this.mesaRepositorio.Atualizar(mesa);
         }
 
+        public void TrocarColaborador(int id, string login)
+        {
+            var mesa = this.mesaRepositorio.BuscarPorId(id);
+            var mesaAtual = this.mesaRepositorio.BuscarMesaPorColaborador(login);
+            if (mesaAtual != null)
+            {
+                mesa.AdicionarColaborador(mesaAtual.Colaborador);
+                mesaAtual.RemoverColaborador();
+                mesaRepositorio.Atualizar(mesa);
+                mesaRepositorio.Atualizar(mesaAtual);
+            }
+        }
+
         public void RemoverColaborador(int idMesa)
         {
             var mesa = this.mesaRepositorio.BuscarPorId(idMesa);

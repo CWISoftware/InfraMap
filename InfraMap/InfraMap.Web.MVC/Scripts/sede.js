@@ -7,7 +7,9 @@
     }).done(
         function (json) {
             var options = "";
-            options += '<option value="' + json[id_sede-1].Andares[0].Id + '">' + json[id_sede-1].Andares[0].Descricao + '</option>';
+            json[id_sede - 1].Andares.each(function (andar) {
+                options += '<option value="' + andar.Id + '">' + andar.Descricao + '</option>';
+            })
             $("#btn-ir").addClass("show");
             $("#dropdown-andar").addClass("show");
             $("#dropdown-andar").empty().append(options);
