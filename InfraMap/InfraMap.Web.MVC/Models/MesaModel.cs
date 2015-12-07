@@ -108,7 +108,7 @@ namespace InfraMap.Web.MVC.Models
         public ColaboradorModel(Usuario colaborador)
         {
             this.IdColaborador = colaborador.Id;
-            this.Colaborador = colaborador.Nome;
+            this.Colaborador = colaborador.Nome.Truncate(22);
             this.Login = colaborador.Login;
         }
     }
