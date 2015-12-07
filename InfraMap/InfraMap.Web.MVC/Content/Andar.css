@@ -74,6 +74,11 @@ label {
     margin: 0 auto;
 }
 
+.fa-desktop{
+    height: 30px;
+    width: 28px;
+}
+
 .numeroMesa{
     position:relative;
     margin:0;
