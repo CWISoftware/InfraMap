@@ -26,7 +26,7 @@ namespace InfraMap.Web.MVC.Controllers
             }
             catch (Exception e)
             {
-                return Erro(e);
+                return ErroTratado(e);
             }  
         }
 
@@ -44,7 +44,7 @@ namespace InfraMap.Web.MVC.Controllers
             }
             catch (Exception e)
             {
-                return Erro(e);
+                return ErroTratado(e);
             }
             
             return Json(new { success = true, trocar = false});
@@ -60,7 +60,7 @@ namespace InfraMap.Web.MVC.Controllers
             }
             catch (Exception e)
             {
-                return Erro(e);
+                return ErroTratado(e);
             }
             
             return Json(new { success = true });
@@ -76,7 +76,7 @@ namespace InfraMap.Web.MVC.Controllers
             }
             catch (Exception e)
             {
-                return Erro(e);
+                return ErroTratado(e);
             }
 
             return Json(new { success = true });
@@ -87,7 +87,7 @@ namespace InfraMap.Web.MVC.Controllers
         {         
             if (string.IsNullOrWhiteSpace(maquina))
             {
-                return Erro(new Exception("Preencha os campos!"));
+                return ErroTratado(new Exception("Preencha os campos!"));
             }
 
             var service = Factory.CriarMesaService();
@@ -105,7 +105,7 @@ namespace InfraMap.Web.MVC.Controllers
             }
             catch (Exception e)
             {
-                return Erro(e);
+                return ErroTratado(e);
             }
 
             return Json(new { success = true });
@@ -116,7 +116,7 @@ namespace InfraMap.Web.MVC.Controllers
         {      
             if (string.IsNullOrWhiteSpace(ramal))
             {
-                return Erro(new Exception("Preencha os campos!"));
+                return ErroTratado(new Exception("Preencha os campos!"));
             }
 
             var service = Factory.CriarMesaService();
@@ -134,7 +134,7 @@ namespace InfraMap.Web.MVC.Controllers
             }
             catch (Exception e)
             {
-                return Erro(e);
+                return ErroTratado(e);
             }
 
             return Json(new { success = true });
@@ -149,7 +149,7 @@ namespace InfraMap.Web.MVC.Controllers
             return PartialView("_SpotMesa", model);
         }
 
-        private JsonResult Erro(Exception e)
+        private JsonResult ErroTratado(Exception e)
         {
             Response.StatusCode = (int)System.Net.HttpStatusCode.BadRequest;
             return Json(new { Message = e.Message });

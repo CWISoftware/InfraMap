@@ -28,9 +28,8 @@ namespace InfraMap.Web.MVC.Controllers
             return Json(listaSedes, JsonRequestBehavior.AllowGet);
         }
 
-        public string PegarNomeSede()
+        public string PegarNomeSede(int idSede)
         {
-            int idSede = Convert.ToInt32(Request.Params["idSede"]);
             var sedeRepositorio = Factory.CriarSedeRepositorio();
 
             var sede = sedeRepositorio.BuscarPorId(idSede);
