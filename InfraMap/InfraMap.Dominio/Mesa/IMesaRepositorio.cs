@@ -16,5 +16,7 @@ namespace InfraMap.Dominio.Mesa
         void Atualizar(Mesa entity);
 
         IList<Mesa> Buscar();
+
+        Mesa BuscarMesaPorColaborador(string loginColaborador);
     }
 }

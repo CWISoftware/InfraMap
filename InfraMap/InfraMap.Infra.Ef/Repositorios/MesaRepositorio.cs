@@ -10,6 +10,14 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
 {
     public class MesaRepositorio : IMesaRepositorio
     {
+        public Mesa BuscarMesaPorColaborador(string loginColaborador)
+        {
+            using (var db = new DataBaseContext())
+            {
+                return db.Mesa.Include("Colaborador").FirstOrDefault(t => t.Colaborador.Login == loginColaborador);
+            }
+        }
+
         public Mesa BuscarPorId(int id)
         {
             using (var db = new DataBaseContext())
