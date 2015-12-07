@@ -32,18 +32,5 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/modernizr")  
     @RenderSection("Scripts", false)
-    <script src="~/Scripts/base.js"></script>
-        <script>
-            var usuarioAutoComplete = {
-                url: "/Base/UsuarioAutoComplete",
-                getValue: "label",
-                list: {
-                    match: {
-                        enabled: true
-                    }
-                }
-            };
-            $("#carregar-usuario").easyAutocomplete(usuarioAutoComplete);
-        </script>
 </body>
 </html>

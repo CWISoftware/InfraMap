@@ -116,6 +116,7 @@
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\logoCWI.png" />
     <Content Include="Content\img\sede-sao-leo-cwi.jpg" />
+    <Content Include="Scripts\infra-map-auto-complete.js" />
     <Content Include="Scripts\jquery.easy-autocomplete.js" />
     <Content Include="Scripts\jquery.easy-autocomplete.min.js" />
     <Content Include="Content\Site.css" />
