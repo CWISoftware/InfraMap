@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using InfraMap.Dominio.Autenticacao;
 
-namespace InfraMap.Infraestrutura.Servicos
+namespace InfraMap.Infraestrutura.Criptografia
 {
     public class ServicoCriptografia : IServicoCriptografia
     {

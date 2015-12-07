@@ -1,6 +1,6 @@
 ﻿using InfraMap.Dominio.Mesa;
 using InfraMap.Infraestrutura.Ef.Repositorios;
-using InfraMap.Infraestrutura.Servicos;
+using InfraMap.Infraestrutura.Criptografia;
 using System;
 using System.Collections.Generic;
 using System.Linq;
