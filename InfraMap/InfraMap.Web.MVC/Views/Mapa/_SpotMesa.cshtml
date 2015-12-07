@@ -18,7 +18,7 @@
                     @if (Model.TemColaborador)
                     {
                         <div class="form-inline">
-                            <label class="form-control">@colaborador</label>
+                            <label class="form-control text-center">Nome: @colaborador</label>
                             <button type="button" class="btn btn-danger form-control" data-toggle="modal" data-target="#removerColaborador" data-dismiss="modal">
                                 Remover colaborador
                             </button>
@@ -35,7 +35,7 @@
                     @if (Model.TemMaquina)
                     {
                         <div class="form-inline">
-                            <label class="form-control">@maquina</label>
+                            <label class="form-control text-center">Computador: @maquina</label>
                             <button type="button" class="btn btn-danger form-control" data-toggle="modal" data-target="#removerMaquina" data-dismiss="modal">
                                 Remover maquina
                             </button>
@@ -52,7 +52,7 @@
                     @if (Model.TemRamal)
                     {
                         <div class="form-inline">
-                            <label class="form-control">@ramal</label>
+                            <label class="form-control text-center">Ramal: @ramal</label>
                             <button type="button" class="btn btn-danger form-control" data-toggle="modal" data-target="#removerRamal" data-dismiss="modal">
                                 Remover ramal
                             </button>
@@ -144,7 +144,7 @@
                     <h4 class="modal-title" id="myModalLabel">Deseja remover?</h4>
                 </div>
                 <div class="modal-body">
-                    <h2>@colaborador</h2>
+                    <h2>Nome: @colaborador</h2>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -162,7 +162,7 @@
                     <h4 class="modal-title" id="myModalLabel">Deseja remover?</h4>
                 </div>
                 <div class="modal-body">
-                    <h2>@maquina</h2>
+                    <h2>Computador: @maquina</h2>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -180,7 +180,7 @@
                     <h4 class="modal-title" id="myModalLabel">Deseja remover?</h4>
                 </div>
                 <div class="modal-body">
-                    <h2>@ramal</h2>
+                    <h2>Ramal: @ramal</h2>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -207,6 +207,38 @@
         </div>
     </div>
 }
+
+<div class="modal fade" id="modalUsuario" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Mesa - @Model.Id</h4>
+            </div>
+            <div class="modal-body form-horizontal">
+                @if (!Model.TemColaborador && !Model.TemRamal && !Model.TemMaquina)
+                {
+                    <label class="form-control text-center">Mesa vazia</label>
+                }
+                @if (Model.TemColaborador)
+                {
+                    <label class="form-control text-center">Nome: @colaborador</label>
+                }
+                @if (Model.TemMaquina)
+                {
+                    <label class="form-control text-center">Computador: @maquina</label>
+                }
+                @if (Model.TemRamal)
+                {
+                    <label class="form-control text-center">Ramal: @ramal</label>                    
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/partialMesa")
