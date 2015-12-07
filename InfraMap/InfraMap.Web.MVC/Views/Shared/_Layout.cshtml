@@ -23,10 +23,10 @@
                 </div>
                 <div class="navbar-brand navbar-collapse collapse navbar-right">
                     <ul class="nav navbar-nav">
-                        <li><input form="form-control" id="auto-complete" name="nome" placeholder="Procure o funcionário" /></li>
+                        <li><input form="form-control" id="carregar-usuario" name="nomeCarregar" placeholder="Procure o funcionário" /></li>
                     </ul>
+                        <button type="submit" class="btn btn-default" id="btn-procurar">Procurar</button>
                 </div>
-                
             </div>
     </header>
     <section class="container body-content">
@@ -35,7 +35,8 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/modernizr")  
     <script src="~/Content/jquery.easy-autocomplete.min.js"></script>
-        @RenderSection("Scripts", false)
+            @RenderSection("Scripts", false)
+            <script src="~/Scripts/base.js"></script>
         <script>
             var usuarioAutoComplete = {
                 url: "/Base/UsuarioAutoComplete",
@@ -46,7 +47,7 @@
                     }
                 }
             };
-            $("#auto-complete").easyAutocomplete(usuarioAutoComplete);
+            $("#carregar-usuario").easyAutocomplete(usuarioAutoComplete);
         </script>
 </body>
 </html>
