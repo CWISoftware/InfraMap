@@ -33,7 +33,7 @@ namespace InfraMap.Web.MVC.Controllers
         [HttpPost]
         public JsonResult AdicionarColaborador()
         {
-            var service = Factory.CriarMesaServiceColaborador();
+            var service = Factory.CriarMesaService();
             var id = Convert.ToInt32(Request.Params["id"]);
             var login = Request.Params["colaborador"];
             try
@@ -57,7 +57,7 @@ namespace InfraMap.Web.MVC.Controllers
         {
             try
             {
-                var service = Factory.CriarMesaServiceColaborador();
+                var service = Factory.CriarMesaService();
                 service.TrocarColaborador(id, colaborador);
             }
             catch (Exception e)
@@ -71,7 +71,7 @@ namespace InfraMap.Web.MVC.Controllers
         [HttpPost]
         public JsonResult RemoverColaborador()
         {
-            var service = Factory.CriarMesaServiceColaborador();
+            var service = Factory.CriarMesaService();
             var idMesa = Convert.ToInt32(Request.Params["id"]);
             try
             {
@@ -88,7 +88,7 @@ namespace InfraMap.Web.MVC.Controllers
         [HttpPost]
         public JsonResult AdicionarMaquina()
         {
-            var service = Factory.CriarMesaServiceMaquina();
+            var service = Factory.CriarMesaService();
             var idMesa = Convert.ToInt32(Request.Params["id"]);
             var maquina = Request.Params["maquina"];
             var tipo = Convert.ToInt32(Request.Params["tipo"]);
@@ -104,7 +104,7 @@ namespace InfraMap.Web.MVC.Controllers
         [HttpPost]
         public JsonResult RemoverMaquina()
         {
-            var service = Factory.CriarMesaServiceMaquina();
+            var service = Factory.CriarMesaService();
             var idMesa = Convert.ToInt32(Request.Params["id"]);
             try
             {
@@ -121,7 +121,7 @@ namespace InfraMap.Web.MVC.Controllers
         [HttpPost]
         public JsonResult AdicionarRamal()
         {
-            var service = Factory.CriarMesaServiceRamal();
+            var service = Factory.CriarMesaService();
             var idMesa = Convert.ToInt32(Request.Params["id"]);
             var numero = Request.Params["ramal"];
             var tipo = Convert.ToInt32(Request.Params["tipo"]);
@@ -137,7 +137,7 @@ namespace InfraMap.Web.MVC.Controllers
         [HttpPost]
         public JsonResult RemoverRamal()
         {
-            var service = Factory.CriarMesaServiceRamal();
+            var service = Factory.CriarMesaService();
             var idMesa = Convert.ToInt32(Request.Params["id"]);
             try
             {

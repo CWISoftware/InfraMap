@@ -57,19 +57,10 @@ namespace InfraMap.Web.MVC.Helpers
             return new ServicoAutenticacao(CriarUsuarioRepositorio(), CriarServicoCriptografia());
         }
 
-        public static MesaService CriarMesaServiceColaborador()
+        public static MesaService CriarMesaService()
         {
-            return new MesaService(CriarMesaRepositorio(), CriarUsuarioRepositorio());
-        }
-
-        public static MesaService CriarMesaServiceMaquina()
-        {
-            return new MesaService(CriarMesaRepositorio(), CriarMaquinaRepositorio());
-        }
-
-        public static MesaService CriarMesaServiceRamal()
-        {
-            return new MesaService(CriarMesaRepositorio(), CriarRamalRepositorio());
+            return new MesaService(CriarMesaRepositorio(), CriarUsuarioRepositorio(),
+                    CriarMaquinaRepositorio(), CriarRamalRepositorio());
         }
     }
 }
