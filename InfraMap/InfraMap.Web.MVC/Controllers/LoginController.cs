@@ -41,9 +41,10 @@ namespace InfraMap.Web.MVC.Controllers
 
 
 
-        public void Sair()
+        public ActionResult Sair()
         {
             ControleDeSessao.Encerrar();
+            return RedirectToAction("Index", "Login");
         }
     }
 }
