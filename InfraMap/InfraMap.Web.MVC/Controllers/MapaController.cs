@@ -33,7 +33,7 @@ namespace InfraMap.Web.MVC.Controllers
         [HttpPost]
         public JsonResult AdicionarColaborador()
         {
-            var service = new MesaService(Factory.CriarMesaRepositorio(), Factory.CriarUsuarioRepositorio());
+            var service = Factory.CriarMesaServiceColaborador();
             var id = Convert.ToInt32(Request.Params["id"]);
             var nome = Request.Params["colaborador"];
             try
@@ -51,7 +51,7 @@ namespace InfraMap.Web.MVC.Controllers
         [HttpPost]
         public JsonResult RemoverColaborador()
         {
-            var service = new MesaService(Factory.CriarMesaRepositorio(), Factory.CriarUsuarioRepositorio());
+            var service = Factory.CriarMesaServiceColaborador();
             var idMesa = Convert.ToInt32(Request.Params["id"]);
             try
             {
@@ -68,7 +68,7 @@ namespace InfraMap.Web.MVC.Controllers
         [HttpPost]
         public JsonResult AdicionarMaquina()
         {
-            var service = new MesaService(Factory.CriarMesaRepositorio(), Factory.CriarMaquinaRepositorio());
+            var service = Factory.CriarMesaServiceMaquina();
             var idMesa = Convert.ToInt32(Request.Params["id"]);
             var maquina = Request.Params["maquina"];
             var tipo = Convert.ToInt32(Request.Params["tipo"]);
@@ -84,7 +84,7 @@ namespace InfraMap.Web.MVC.Controllers
         [HttpPost]
         public JsonResult RemoverMaquina()
         {
-            var service = new MesaService(Factory.CriarMesaRepositorio(), Factory.CriarMaquinaRepositorio());
+            var service = Factory.CriarMesaServiceMaquina();
             var idMesa = Convert.ToInt32(Request.Params["id"]);
             try
             {
@@ -101,7 +101,7 @@ namespace InfraMap.Web.MVC.Controllers
         [HttpPost]
         public JsonResult AdicionarRamal()
         {
-            var service = new MesaService(Factory.CriarMesaRepositorio(), Factory.CriarRamalRepositorio());
+            var service = Factory.CriarMesaServiceRamal();
             var idMesa = Convert.ToInt32(Request.Params["id"]);
             var numero = Request.Params["ramal"];
             var tipo = Convert.ToInt32(Request.Params["tipo"]);
@@ -117,7 +117,7 @@ namespace InfraMap.Web.MVC.Controllers
         [HttpPost]
         public JsonResult RemoverRamal()
         {
-            var service = new MesaService(Factory.CriarMesaRepositorio(), Factory.CriarRamalRepositorio());
+            var service = Factory.CriarMesaServiceRamal();
             var idMesa = Convert.ToInt32(Request.Params["id"]);
             try
             {

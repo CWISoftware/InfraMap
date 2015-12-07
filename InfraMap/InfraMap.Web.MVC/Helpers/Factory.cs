@@ -17,7 +17,6 @@ namespace InfraMap.Web.MVC.Helpers
 {
     public class Factory
     {
-
         public static IUsuarioRepositorio CriarUsuarioRepositorio()
         {
             return new UsuarioRepositorio();
@@ -56,6 +55,21 @@ namespace InfraMap.Web.MVC.Helpers
         public static ServicoAutenticacao CriarServicoAutenticacao()
         {
             return new ServicoAutenticacao(CriarUsuarioRepositorio(), CriarServicoCriptografia());
+        }
+
+        public static MesaService CriarMesaServiceColaborador()
+        {
+            return new MesaService(CriarMesaRepositorio(), CriarUsuarioRepositorio());
+        }
+
+        public static MesaService CriarMesaServiceMaquina()
+        {
+            return new MesaService(CriarMesaRepositorio(), CriarMaquinaRepositorio());
+        }
+
+        public static MesaService CriarMesaServiceRamal()
+        {
+            return new MesaService(CriarMesaRepositorio(), CriarRamalRepositorio());
         }
     }
 }
