@@ -28,5 +28,11 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
         {
             return this.Buscar(new BuscarUsuariosPorNomeQuery(nome)).FirstOrDefault();
         }
+
+
+        public IList<Usuario> BuscarUsuariosPorLogin(string login)
+        {
+            return this.Buscar(new BuscarUsuariosPorLoginQuery(login));
+        }
     }
 }
