@@ -82,3 +82,11 @@ textarea {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+.inline{
+    display:inline;
+}
+
+.padding-20{
+    padding:20px;
+}

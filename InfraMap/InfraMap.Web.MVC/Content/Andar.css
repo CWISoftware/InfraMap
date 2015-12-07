@@ -2,7 +2,7 @@
 	position: absolute;
 	width: 1270px;
 	height: 1250px;
-    left: 12px;
+    left: 78px;
 }
 
 .ilha{
@@ -29,6 +29,7 @@
     border: 2px solid #000;
     border-radius: 4px;
     margin: 2px 2px;
+    cursor:pointer;
 }
 
 .mesa:hover {
@@ -55,7 +56,6 @@
 
 label {
     position: relative;
-    text-align: center;
     font-size: 8px;
     top: -5px;
     left: 1px;
