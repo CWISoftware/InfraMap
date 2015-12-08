@@ -8,7 +8,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>InfraMap.Infraestrutura.Test</RootNamespace>
     <AssemblyName>InfraMap.Infraestrutura.Test</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -16,6 +16,7 @@
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <IsCodedUITest>False</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -55,6 +56,10 @@
     <Compile Include="StringExtensionsTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\InfraMap.Dominio\InfraMap.Dominio.csproj">
+      <Project>{107B3517-A282-44B0-9E96-8E9790962547}</Project>
+      <Name>InfraMap.Dominio</Name>
+    </ProjectReference>
     <ProjectReference Include="..\InfraMap.Infraestrutura.Servicos\InfraMap.Infraestrutura.csproj">
       <Project>{16c216c7-2a37-4a41-a6fb-239c6e70fd06}</Project>
       <Name>InfraMap.Infraestrutura</Name>
