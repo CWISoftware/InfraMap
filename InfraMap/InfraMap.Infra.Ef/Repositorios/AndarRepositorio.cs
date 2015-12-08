@@ -22,7 +22,7 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
         {
             using (var db = new DataBaseContext())
             {
-                return db.Andar.Include("Mesas").FirstOrDefault(m=>m.Mesas.Contains(mesa));
+                return db.Andar.Include("Mesas").FirstOrDefault(m => m.Mesas.FirstOrDefault(e => e.Id == mesa.Id) is Mesa);
             }
         }
     }
