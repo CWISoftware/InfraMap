@@ -24,9 +24,9 @@ namespace InfraMap.Web.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                ServicoAutenticacao servicoAutenticacao = Factory.CriarServicoAutenticacao();
+                var servicoAutenticacao = Factory.CriarServicoAutenticacao();
 
-                Usuario usuarioAutenticado = servicoAutenticacao.BuscarPorAutenticacao(loginModel.Login, loginModel.Senha);
+                var usuarioAutenticado = servicoAutenticacao.BuscarPorAutenticacao(loginModel.Login, loginModel.Senha);
 
                 if (usuarioAutenticado != null)
                 {
