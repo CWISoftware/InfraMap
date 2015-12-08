@@ -8,9 +8,13 @@
                 url: '/Base/CarregarMapaDoUsuarioPesquisado',
                 data: { nome: usuario },
                 dataType: "json",
-                success: function (data) { }
-            }).done(function (sedeEDescricao) {
-                window.location.href = "/Mapa/" + sedeEDescricao[0] + "/" + sedeEDescricao[1];
+                success: function (data) {
+                    window.location.href = "/Mapa/" + data.sede + "/" + data.descricao;
+                },
+                error: function (xhr, status, error) {
+                    $("#carregar-usuario").val('');
+                    $('#erroUsuarioEmNenhumaMesa').modal('show');
+                }
             });
         }
     });

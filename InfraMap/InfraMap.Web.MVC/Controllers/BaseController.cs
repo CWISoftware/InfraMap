@@ -58,13 +58,13 @@ namespace InfraMap.Web.MVC.Controllers
                 var descricaoAndar = andarDoUsuario.Descricao;
                 var nomeSede = sede.BuscarSedePorAndar(andarDoUsuario).Nome;
 
-                string[] sedeEDescricao = {nomeSede, descricaoAndar};
-                return Json(sedeEDescricao, JsonRequestBehavior.AllowGet);
+                return Json(new { sede = nomeSede, descricao = descricaoAndar });
             }
             catch (Exception e)
             {
-                return Json(new {Message = e.Message});
+                Response.StatusCode = (int)System.Net.HttpStatusCode.BadRequest;
+                return Json(new { Message = e.Message });
             }
-        }     
+        }
     }
 }

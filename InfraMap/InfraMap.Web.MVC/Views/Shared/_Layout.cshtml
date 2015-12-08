@@ -8,25 +8,42 @@
 </head>
 <body>
     <header class="navbar navbar color-menu">
-            <div class="container">
-                <div class="navbar-header">
-                   
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a href="~/Sede/Index"><span class="logo navbar-brand"></span></a>
+        <div class="container">
+            <div class="navbar-header">
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="~/Sede/Index"><span class="logo navbar-brand"></span></a>
+            </div>
+            <div class="navbar-brand navbar-collapse collapse navbar-right">
+                <ul class="nav navbar-nav">
+                    <li><input class="radius-campo-pesquisa form-control" id="carregar-usuario" name="nomeCarregar" placeholder="Procure o funcionário" /></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="modal fade" id="erroUsuarioEmNenhumaMesa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Ocorreu um erro!</h4>
                 </div>
-                <div class="navbar-brand navbar-collapse collapse navbar-right">
-                    <ul class="nav navbar-nav">
-                        <li><input class ="radius-campo-pesquisa form-control" id="carregar-usuario" name="nomeCarregar" placeholder="Procure o funcionário"/></li>
-                    </ul>              
+                <div class="modal-body">
+                    <h3>Usuário procurado não esta em nenhuma mesa</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
                 </div>
             </div>
-    </header>
+        </div>
+    </div>
     <section class="container body-content">
-        @RenderBody()      
+        @RenderBody()
     </section>
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("Scripts", false)
