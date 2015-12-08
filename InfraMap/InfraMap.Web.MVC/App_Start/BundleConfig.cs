@@ -15,15 +15,15 @@ namespace InfraMap.Web.MVC.App_Start
                         "~/Scripts/bootstrap.js",
                         "~/Scripts/jquery.easy-autocomplete.js",
                         "~/Scripts/jquery.easy-autocomplete.min.js",
-                        "~/Scripts/base.js",
+                        "~/Scripts/Custom/base.js",
                         "~/Scripts/infra-map-auto-complete.js",
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/sede").Include(
-                       "~/Scripts/sede.js"));
+                       "~/Scripts/Custom/sede.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/mesa").Include(
-                        "~/Scripts/Mesa.js"));
+                        "~/Scripts/Custom/Mesa.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui.*"));
@@ -32,8 +32,8 @@ namespace InfraMap.Web.MVC.App_Start
                         "~/Content/jquery-ui.*"));
 
             bundles.Add(new StyleBundle("~/bundles/andarCss").Include(
-                        "~/Content/Andar.css",
-                        "~/Content/TerceiroAndarCWISL.css"));
+                        "~/Content/Custom/Andar.css",
+                        "~/Content/Custom/TerceiroAndarCWISL.css"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                         "~/Content/bootstrap.css",
