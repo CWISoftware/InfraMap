@@ -7,13 +7,13 @@ namespace InfraMap.Infraestrutura.Ef.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Populartabelaramal : IMigrationMetadata
+    public sealed partial class Final : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Populartabelaramal));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Final));
         
         string IMigrationMetadata.Id
         {
-            get { return "201512052137293_Popular tabela ramal"; }
+            get { return "201512080049001_Final"; }
         }
         
         string IMigrationMetadata.Source
