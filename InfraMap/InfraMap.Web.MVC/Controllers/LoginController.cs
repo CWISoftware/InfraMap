@@ -39,8 +39,6 @@ namespace InfraMap.Web.MVC.Controllers
             return View("Index", loginModel);
         }
 
-
-
         public ActionResult Sair()
         {
             ControleDeSessao.Encerrar();
