@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using InfraMap.Comum;
 using InfraMap.Dominio.Sede;
+using InfraMap.Dominio.Sede.Andar;
 
 namespace InfraMap.Infraestrutura.Ef.Repositorios
 {
@@ -34,6 +35,14 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
                     .Include("Andares.Mesas.Maquina")
                     .Include("Andares.Mesas.Ramal")
                     .FirstOrDefault(t => t.Nome.Equals(nome));
+            }
+        }
+
+        public Sede BuscarSedePorAndar(Andar andar)
+        {
+            using (var db = new DataBaseContext())
+            {
+                return db.Sede.Where(a=>a.Andares.Contains(andar)).FirstOrDefault();
             }
         }
     }

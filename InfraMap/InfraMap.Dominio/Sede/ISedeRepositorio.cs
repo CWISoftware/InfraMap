@@ -10,5 +10,7 @@ namespace InfraMap.Dominio.Sede
         List<Sede> BuscarSedesComAndares();
 
         Sede BuscarSedePorNome(string nome);
+
+        Sede BuscarSedePorAndar(Andar.Andar andar);
     }
 }

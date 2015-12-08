@@ -60,9 +60,14 @@ namespace InfraMap.Web.MVC.Controllers
         public JsonResult CarregarMapaDoUsuarioPesquisado(string nome)
         {
             var sede = Factory.CriarSedeRepositorio();
-            var sedeDoUsuario = sede.BuscarSedesComAndares().Where(sedes => sedes.Andares.Where(a => a.Mesas.Where(b => b.Colaborador.Nome.Equals(nome) ) != null) != null).FirstOrDefault();
-            var descricaoAndar = sedeDoUsuario.Andares.FirstOrDefault().Descricao;
-            var nomeSede = sedeDoUsuario.Nome;
+            var andar = Factory.CriarAndarRepositorio();
+            var mesa = Factory.CriarMesaRepositorio();
+            var user = Factory.CriarUsuarioRepositorio();
+
+            var andarDoUsuario = andar.BuscarPorId(mesa.BuscarMesaPorColaborador(user.BuscarPorNome(nome).Login).Id);
+            var descricaoAndar = andarDoUsuario.Descricao;
+            var nomeSede = sede.BuscarSedePorAndar(andarDoUsuario).Nome;
+
             string[] sedeEDescricao = { nomeSede , descricaoAndar};
             return Json(sedeEDescricao, JsonRequestBehavior.AllowGet);
         }
