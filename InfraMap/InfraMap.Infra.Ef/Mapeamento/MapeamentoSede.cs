@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Infrastructure.Annotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +13,11 @@ namespace InfraMap.Infraestrutura.Ef.Mapeamento
     {
         public MapeamentoSede()
         {
+            Property(t => t.Nome)
+                .IsRequired()
+                .HasMaxLength(100)
+                .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute("IX_Sede_Nome"){ IsUnique = false} ));
+            Property(t => t.NomeCidade).IsRequired().HasMaxLength(100);
             HasMany(t => t.Andares).WithRequired();
         }
     }

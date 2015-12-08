@@ -63,13 +63,9 @@
     <Compile Include="Migrations\201512051729210_Initial.Designer.cs">
       <DependentUpon>201512051729210_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201512051930304_Populando tabela Maquina.cs" />
-    <Compile Include="Migrations\201512051930304_Populando tabela Maquina.Designer.cs">
-      <DependentUpon>201512051930304_Populando tabela Maquina.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512052137293_Popular tabela ramal.cs" />
-    <Compile Include="Migrations\201512052137293_Popular tabela ramal.Designer.cs">
-      <DependentUpon>201512052137293_Popular tabela ramal.cs</DependentUpon>
+    <Compile Include="Migrations\201512080049001_Final.cs" />
+    <Compile Include="Migrations\201512080049001_Final.Designer.cs">
+      <DependentUpon>201512080049001_Final.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -107,11 +103,8 @@
     <EmbeddedResource Include="Migrations\201512051729210_Initial.resx">
       <DependentUpon>201512051729210_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512051930304_Populando tabela Maquina.resx">
-      <DependentUpon>201512051930304_Populando tabela Maquina.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512052137293_Popular tabela ramal.resx">
-      <DependentUpon>201512052137293_Popular tabela ramal.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201512080049001_Final.resx">
+      <DependentUpon>201512080049001_Final.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

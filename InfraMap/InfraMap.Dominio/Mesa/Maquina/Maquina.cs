@@ -5,8 +5,8 @@ namespace InfraMap.Dominio.Mesa.Maquina
 {
     public class Maquina : EntidadeBase
     {
-        public String Nome { get; set; }
+        public string Nome { get; set; }
 
-        public String Tipo { get; set; }
+        public string Tipo { get; set; }
     }
 }

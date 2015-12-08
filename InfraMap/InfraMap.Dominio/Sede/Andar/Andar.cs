@@ -6,7 +6,7 @@ namespace InfraMap.Dominio.Sede.Andar
 {
     public class Andar : EntidadeBase
     {      
-        public String Descricao { get; set; }
+        public string Descricao { get; set; }
 
         public ICollection<Mesa.Mesa> Mesas { get; set; }
     }
