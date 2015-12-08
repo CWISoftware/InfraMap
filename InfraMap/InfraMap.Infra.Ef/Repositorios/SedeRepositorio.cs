@@ -42,7 +42,7 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
         {
             using (var db = new DataBaseContext())
             {
-                return db.Sede.Where(a=>a.Andares.Contains(andar)).FirstOrDefault();
+                return db.Sede.Include("Andares").FirstOrDefault(a => a.Andares.Contains(andar));
             }
         }
     }
