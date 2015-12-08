@@ -147,6 +147,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ErroController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MapaController.cs" />
     <Compile Include="Controllers\SedeController.cs" />
@@ -189,6 +190,8 @@
     <Content Include="Views\Mapa\CWISLQuarto.cshtml" />
     <Content Include="Views\Mapa\CWISLQuinto.cshtml" />
     <Content Include="Views\Mapa\CWISLSexto.cshtml" />
+    <Content Include="Views\Erro\Index.cshtml" />
+    <Content Include="Views\Erro\NotFound.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
