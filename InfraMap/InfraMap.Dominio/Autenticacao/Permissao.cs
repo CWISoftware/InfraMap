@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using InfraMap.Comum;
+using InfraMap.Dominio.Comum;
 
 namespace InfraMap.Dominio.Autenticacao
 {
