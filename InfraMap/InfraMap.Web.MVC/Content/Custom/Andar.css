@@ -3,6 +3,7 @@
 	width: 1270px;
 	height: 1250px;
     left: 78px;
+    margin-top:20px;
 }
 
 .ilha{
@@ -30,8 +31,9 @@
     border-radius: 4px;
     margin: 2px 2px;
     cursor:pointer;
-    text-overflow: ellipsis;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .mesa:hover {
@@ -51,8 +53,9 @@
 .nome {
     position: relative;
     text-align: center;
-    font-size: 8px;
-    top: 12px;
+    margin-left:6px;
+    font-size: 12px;
+    top: 6px;
     left: -5px;
 }
 
@@ -71,14 +74,12 @@ label {
 
 .computador{
     position: relative;
-    font-size:20px;
-    display:table;
-    margin: 0 auto;
+    margin-left:8%;
+    margin-top:12px;
 }
 
-.fa-desktop{
-    height: 30px;
-    width: 28px;
+.fa{
+    font: normal normal normal 25px/1 FontAwesome !important;
 }
 
 .numeroMesa{
@@ -98,7 +99,7 @@ label {
 
 .usuario{
     position: relative;
-    font-size:20px;
+    font-size:25px;
     display:table;
     margin:0 auto;
 }

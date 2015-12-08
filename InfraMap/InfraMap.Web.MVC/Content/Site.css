@@ -7,10 +7,11 @@ body {
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    margin-top: 80px;
+    margin-top: 20px;
     padding-left: 15px;
     padding-right: 15px;
-    height : 70%;
+    height : 100%;
+    width:100%;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -33,12 +34,6 @@ textarea {
 .color-menu{
     background-color: #808080;
 }
-.footer {
-    padding: 10px 15px 15px;
-    color: #444;
-    background: #efefef;
-    height:10%;
-}
 
 .icon-bar {
    background-color:black !important;
@@ -56,7 +51,7 @@ textarea {
 .bloco-sede {
     padding:20px;
     cursor:pointer;
-    height:70%;
+    height:60%;
     background-color:rgb(194,193,193);
     border-radius:20px;
 }
@@ -140,4 +135,12 @@ textarea {
   margin-bottom: 20px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.radius-campo-pesquisa{
+    border-radius: 10px !important;
+}
+
+.tamanho-colaborador{
+    width: 200px;
 }
