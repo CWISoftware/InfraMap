@@ -17,6 +17,13 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
                 return db.Andar.Include("Mesas.Colaborador").FirstOrDefault(t => t.Id == id);
             }
         }
-       
+
+        public Andar BuscarPorMesa(Mesa mesa)
+        {
+            using (var db = new DataBaseContext())
+            {
+                return db.Andar.Include("Mesas").FirstOrDefault(m=>m.Mesas.Contains(mesa));
+            }
+        }
     }
 }
