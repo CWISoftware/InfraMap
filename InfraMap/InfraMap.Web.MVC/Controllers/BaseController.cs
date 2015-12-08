@@ -64,7 +64,9 @@ namespace InfraMap.Web.MVC.Controllers
             var mesa = Factory.CriarMesaRepositorio();
             var user = Factory.CriarUsuarioRepositorio();
 
-            var andarDoUsuario = andar.BuscarPorMesa(mesa.BuscarMesaPorColaborador(user.BuscarPorNome(nome).Login));
+            var login = user.BuscarPorNome(nome).Login;
+            var mesaDoUsuario = mesa.BuscarMesaPorColaborador(login);
+            var andarDoUsuario = andar.BuscarPorMesa(mesaDoUsuario);
             var descricaoAndar = andarDoUsuario.Descricao;
             var nomeSede = sede.BuscarSedePorAndar(andarDoUsuario).Nome;
 
