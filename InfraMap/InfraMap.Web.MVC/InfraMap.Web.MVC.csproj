@@ -106,7 +106,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Andar.css" />
+    <Content Include="Content\Custom\Andar.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\easy-autocomplete.css" />
@@ -120,10 +120,10 @@
     <Content Include="Scripts\jquery.easy-autocomplete.js" />
     <Content Include="Scripts\jquery.easy-autocomplete.min.js" />
     <Content Include="Content\Site.css" />
-    <Content Include="Content\TerceiroAndarCWISL.css" />
+    <Content Include="Content\Custom\TerceiroAndarCWISL.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\base.js" />
+    <Content Include="Scripts\Custom\base.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\Settings.settings">
@@ -136,9 +136,9 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\Mesa.js" />
+    <Content Include="Scripts\Custom\Mesa.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\sede.js" />
+    <Content Include="Scripts\Custom\sede.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
