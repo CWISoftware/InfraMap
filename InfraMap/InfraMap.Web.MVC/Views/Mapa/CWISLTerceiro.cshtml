@@ -4,10 +4,8 @@
 }
 
 @Styles.Render("~/bundles/andarCss")
-@Styles.Render("~/bundles/jquery-ui")
-<h2 class="inline padding-20 margin-20">CWISL - 3 ANDAR</h2>
+<h2 class="inline">CWISL - 3 ANDAR</h2>
 <section class="andar">
-
     @if (User.IsInRole("GERENTE"))
     {
         <input type="hidden" id="nomeGerente" name=@User.Identity.Name />
@@ -176,10 +174,6 @@
 </section>
 
 @section Scripts {
-    @if (User.IsInRole("GERENTE"))
-    {
-        @Scripts.Render("~/bundles/jqueryui")
-    }
     @Scripts.Render("~/bundles/mesa")
 }
 

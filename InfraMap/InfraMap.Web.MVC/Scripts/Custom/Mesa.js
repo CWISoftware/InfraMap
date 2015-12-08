@@ -55,7 +55,7 @@ function RenderPartial(id) {
             });
         });
 
-        $("#removerColaborador").click(function () {
+        $("#removeColaborador").click(function () {
             var idMesa = $("#idMesa").val();
             $.ajax({
                 type: "POST",
@@ -89,7 +89,7 @@ function RenderPartial(id) {
             });
         });
 
-        $("#removerMaquina").click(function () {
+        $("#removeMaquina").click(function () {
             var idMesa = $("#idMesa").val();
             $.ajax({
                 type: "POST",
@@ -123,7 +123,7 @@ function RenderPartial(id) {
             });
         });
 
-        $("#removerRamal").click(function () {
+        $("#removeRamal").click(function () {
             var idMesa = $("#idMesa").val();
             $.ajax({
                 type: "POST",
