@@ -36,7 +36,7 @@ namespace InfraMap.Dominio.Test
             usuario2.Id = 3;
 
             Usuario.Usuario usuario3 = new Usuario.Usuario();
-            usuario2.Id = 5;
+            usuario3.Id = 5;
 
             mesa.AdicionarColaborador(usuario1);
             mesa.AdicionarColaborador(usuario2);
