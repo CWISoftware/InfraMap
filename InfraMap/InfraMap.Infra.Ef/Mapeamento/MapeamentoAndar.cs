@@ -11,6 +11,7 @@ namespace InfraMap.Infraestrutura.Ef.Mapeamento
     {
         public MapeamentoAndar()
         {
+            Property(t => t.Descricao).IsRequired().HasMaxLength(200);
             HasMany(t => t.Mesas).WithRequired();
         }
     }

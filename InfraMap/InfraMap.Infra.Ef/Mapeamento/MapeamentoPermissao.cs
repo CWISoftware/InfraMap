@@ -9,5 +9,9 @@ namespace InfraMap.Infraestrutura.Ef.Mapeamento
 {
     public class MapeamentoPermissao : MapeamentoEntidade<Permissao>
     {
+        public MapeamentoPermissao()
+        {
+            Property(t => t.Texto).IsRequired().HasMaxLength(50);
+        }
     }
 }
