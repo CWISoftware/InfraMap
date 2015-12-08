@@ -23,7 +23,7 @@ namespace InfraMap.Infraestrutura.Ef.Migrations
                 "dbo.Mesa",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Int(nullable: false, identity: false),
                         Colaborador_Id = c.Int(),
                         Maquina_Id = c.Int(),
                         Ramal_Id = c.Int(),

@@ -12,7 +12,6 @@ namespace InfraMap.Infraestrutura.Ef.Mapeamento
     {   
         public MapeamentoMesa()
         {
-            Property(t => t.Id).IsRequired();
             HasOptional(t => t.Colaborador).WithMany().HasForeignKey(k => k.Colaborador_Id);
             HasOptional(t => t.Maquina).WithMany().HasForeignKey(k => k.Maquina_Id);
             HasOptional(t => t.Ramal).WithMany().HasForeignKey(k => k.Ramal_Id);
