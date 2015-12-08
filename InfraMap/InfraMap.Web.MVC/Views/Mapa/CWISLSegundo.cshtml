@@ -1,0 +1,30 @@
+﻿@model InfraMap.Web.MVC.Models.AndarModel
+@{
+    ViewBag.Title = "Terceiro";
+}
+
+@Styles.Render("~/bundles/andarCss")
+@Styles.Render("~/bundles/jquery-ui")
+<h2 class="inline padding-20 margin-20">CWISL - 2 ANDAR</h2>
+<section class="andar">
+    <div id="partial"></div>
+    <div class="fileira">
+        @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary {{"idMesa", 92}})
+        @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary {{"idMesa", 93}})
+        @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary {{"idMesa", 94}})
+        @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary {{"idMesa", 95}})
+        @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary {{"idMesa", 96}})
+        @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary {{"idMesa", 97}})
+        @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary {{"idMesa", 98}})
+        @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary {{"idMesa", 99}})
+        @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary {{"idMesa", 100}})
+    </div>
+</section>
+
+@section Scripts {
+    @if (User.IsInRole("GERENTE"))
+    {
+        @Scripts.Render("~/bundles/jqueryui")
+    }
+    @Scripts.Render("~/bundles/mesa")
+}
