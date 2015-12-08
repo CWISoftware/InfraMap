@@ -1,6 +1,10 @@
 ﻿
 @{
     ViewBag.Title = "NotFound";
+    if (!User.Identity.IsAuthenticated)
+    {
+        Layout = "~/Views/Shared/_Login.cshtml";
+    }
 }
 
 <div class="jumbotron">
