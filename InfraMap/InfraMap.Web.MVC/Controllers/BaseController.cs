@@ -55,10 +55,10 @@ namespace InfraMap.Web.MVC.Controllers
                 var login = user.BuscarPorNome(nome).Login;
                 var mesaDoUsuario = mesa.BuscarMesaPorColaborador(login);
                 var andarDoUsuario = andar.BuscarPorMesa(mesaDoUsuario);
-                var descricaoAndar = andarDoUsuario.Descricao;
+                var idAndar = andarDoUsuario.Id;
                 var nomeSede = sede.BuscarSedePorAndar(andarDoUsuario).Nome;
 
-                return Json(new { sede = nomeSede, descricao = descricaoAndar });
+                return Json(new { sede = nomeSede, idAndar = idAndar });
             }
             catch (Exception e)
             {
