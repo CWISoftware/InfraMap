@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Infra-Map</title>
     @Styles.Render("~/Content/css")
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 <body>
     <header class="navbar navbar color-menu">
@@ -20,7 +21,16 @@
             </div>
             <div class="navbar-brand navbar-collapse collapse navbar-right">
                 <ul class="nav navbar-nav">
-                    <li><input class="radius-campo-pesquisa form-control" id="carregar-usuario" name="nomeCarregar" placeholder="Procure o funcionário" /></li>
+                    <li>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-search"></i>
+                            </div>
+                            <input class="form-control radius-campo-pesquisa" id="carregar-usuario" name="nomeCarregar" placeholder="Pesquise pelo funcionário" autocomplete="off" style="
+    height: 39px;
+">
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -38,10 +48,10 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                </div>
             </div>
         </div>
     </div>
+        </div>
     <section class="container body-content">
         @RenderBody()
     </section>
