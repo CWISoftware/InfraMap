@@ -1,6 +1,6 @@
 ﻿@model InfraMap.Web.MVC.Models.LoginModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_Login.cshtml";
 }
 <div class="wrapper">
@@ -8,7 +8,7 @@
     {
         @Html.ValidationSummary(true, "Email ou senha inválidos!")
         @Html.AntiForgeryToken()
-        <h2 class="form-signin-heading inframap text-center">Inframap</h2>
+        <h2 class="form-signin-heading inframap">Inframap</h2>
         <div class="form-group">
             <div class="icon-addon addon-lg">
                 @Html.TextBoxFor(m => m.Login, new { @type = "text", @class = "form-control", @placeholder = "Username" })
