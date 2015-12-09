@@ -33,14 +33,17 @@ namespace InfraMap.Web.MVC.Controllers
         
         private string BuscarDescricaoDoAndarPorId(int id)
         {
-            Dictionary<int, string> andares = new Dictionary<int, string>();
-            andares.Add(1, "Primeiro");
-            andares.Add(2, "Segundo");
-            andares.Add(3, "Terceiro");
-            andares.Add(4, "Quarto");
-            andares.Add(5, "Quinta");
-            andares.Add(6, "Sexto");
-            return andares.FirstOrDefault(m=>m.Key == id).Value;
+            var andares = new Dictionary<int, string>
+            {
+                {1, "Primeiro"},
+                {2, "Segundo"},
+                {3, "Terceiro"},
+                {4, "Quarto"},
+                {5, "Quinto"},
+                {6, "Sexto"}
+            };
+
+            return andares.FirstOrDefault(m => m.Key == id).Value;
         }     
 
         [HttpPost]

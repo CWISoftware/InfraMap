@@ -31,9 +31,6 @@
     border-radius: 4px;
     margin: 2px 2px;
     cursor:pointer;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .mesa:hover {
@@ -50,6 +47,10 @@
 }
 
 .nome {
+    width:90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     position: relative;
     text-align: center;
     margin-left:6px;
@@ -78,6 +79,10 @@ label {
 }
 
 .fa{
+    font: normal normal normal 16px/1 FontAwesome !important;
+}
+
+.fa-logo{
     font: normal normal normal 25px/1 FontAwesome !important;
 }
 
@@ -110,4 +115,32 @@ label {
 div .ui-selected { 
   	background: #F39814; 
   	color: white; 
+}
+
+.btn{
+    text-transform:uppercase;
+    font-weight: 600;   
+    color:black;
+}
+
+.btn-primary{
+    background-color:white;
+    color:#4169E1;
+}
+
+.btn-primary:hover{
+    transition:all 1s;
+    background-color:#4169E1;
+    color:white;
+}
+
+.btn-danger{
+    background-color:white;
+    color:#B22222;
+}
+
+.btn-danger:hover{
+    transition:all 1s;
+    background-color:#B22222;
+    color:white;
 }
