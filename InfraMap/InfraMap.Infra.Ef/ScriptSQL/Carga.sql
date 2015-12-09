@@ -289,3 +289,9 @@ VALUES ((SELECT COUNT(1) FROM Mesa) + 1, 6)
 
 
 SELECT * FROM MESA
+
+-----------------------------------------------------------------------------
+--Hostname:	507d9939-5801-47e0-8dc0-a568004584bc.sqlserver.sequelizer.com
+--Username:	svyircivwbphkbwu
+--Password:	qQhLsLVvLscXuwUuDT8EXbdBj65HqTm5YLgmaZtgdLPwdDEEqrWLfw7pLNAuPneZ
+-----------------------------------------------------------------------------
