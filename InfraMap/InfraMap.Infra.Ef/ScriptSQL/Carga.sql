@@ -241,17 +241,17 @@ INSERT INTO Sede (NomeCidade, Nome)
 VALUES ('São Leopoldo', 'CWISL')
 
 INSERT INTO Andar (Descricao, Sede_Id)
-VALUES ('Primeiro', 1)
+VALUES ('1º Andar', 1)
 INSERT INTO Andar (Descricao, Sede_Id)
-VALUES ('Segundo', 1)
+VALUES ('2º Andar', 1)
 INSERT INTO Andar (Descricao, Sede_Id)
-VALUES ('Terceiro', 1)
+VALUES ('3º Andar', 1)
 INSERT INTO Andar (Descricao, Sede_Id)
-VALUES ('Quarto', 1)
+VALUES ('4º Andar', 1)
 INSERT INTO Andar (Descricao, Sede_Id)
-VALUES ('Quinto', 1)
+VALUES ('5º Andar', 1)
 INSERT INTO Andar (Descricao, Sede_Id)
-VALUES ('Sexto', 1)
+VALUES ('6º Andar', 1)
 
 WHILE (SELECT COUNT(1) FROM Mesa) < 91
 BEGIN

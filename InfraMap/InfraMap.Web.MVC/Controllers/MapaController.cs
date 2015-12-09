@@ -39,7 +39,7 @@ namespace InfraMap.Web.MVC.Controllers
                 {2, "Segundo"},
                 {3, "Terceiro"},
                 {4, "Quarto"},
-                {5, "Quinta"},
+                {5, "Quinto"},
                 {6, "Sexto"}
             };
 
