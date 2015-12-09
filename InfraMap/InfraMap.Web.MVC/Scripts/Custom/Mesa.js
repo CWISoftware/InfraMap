@@ -1,5 +1,9 @@
-﻿function mesaClick(id) {
-    RenderPartial(id);
+﻿var podeExecutar = true;
+function mesaClick(id) {
+    if (podeExecutar) {
+        podeExecutar = false;
+        RenderPartial(id);
+    }   
 };
 
 function RenderPartial(id) {
@@ -12,6 +16,7 @@ function RenderPartial(id) {
             DisplayError(xhr);
         }
     }).success(function (data) {
+        podeExecutar = true;
         $("#partial").html(data);
         $('#myModal').modal('show');
         $('#modalUsuario').modal('show');
