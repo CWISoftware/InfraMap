@@ -1,7 +1,6 @@
 ﻿@model List<InfraMap.Web.MVC.Models.MesaModel>
 
 @Styles.Render("~/bundles/andarCss")
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 @{
     var mesa = Model.First(t => t.Id == ViewBag.idMesa);
     var nome = mesa.Colaborador != null ? mesa.Colaborador.Colaborador : "";
