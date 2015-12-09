@@ -17,12 +17,8 @@ namespace InfraMap.Web.MVC.App_Start
                         "~/Scripts/jquery.easy-autocomplete.min.js",
                         "~/Scripts/Custom/base.js",
                         "~/Scripts/infra-map-auto-complete.js",
-                        "~/Scripts/modernizr-*"));
-
-            bundles.Add(new ScriptBundle("~/bundles/sede").Include(
-                       "~/Scripts/Custom/sede.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/mesa").Include(
+                        "~/Scripts/modernizr-*",
+                        "~/Scripts/Custom/sede.js",
                         "~/Scripts/Custom/Mesa.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
@@ -31,17 +27,15 @@ namespace InfraMap.Web.MVC.App_Start
             bundles.Add(new StyleBundle("~/bundles/jquery-ui").Include(
                         "~/Content/jquery-ui.*"));
 
-            bundles.Add(new StyleBundle("~/bundles/andarCss").Include(
-                        "~/Content/Custom/Andar.css",
-                        "~/Content/Custom/TerceiroAndarCWISL.css"));
-
             bundles.Add(new StyleBundle("~/Content/css").Include(
                         "~/Content/bootstrap.css",
                         "~/Content/Site.css",
                         "~/Content/easy-autocomplete.min.css",
                         "~/Content/easy-autocomplete.theme.min.css",
                         "~/Content/font-awesome.css",
-                        "~/Content/font-awesome.min.css"));
+                        "~/Content/font-awesome.min.css",
+                        "~/Content/Custom/Andar.css",
+                        "~/Content/Custom/TerceiroAndarCWISL.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                     "~/Scripts/jquery.unobtrusive*",

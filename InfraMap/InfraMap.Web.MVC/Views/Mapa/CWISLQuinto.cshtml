@@ -3,7 +3,6 @@
     ViewBag.Title = "Quinto";
 }
 
-@Styles.Render("~/bundles/andarCss")
 <h2 class="inline padding-20 margin-20">CWISL - 5 ANDAR</h2>
 <section class="andar">
     <div id="partial"></div>
@@ -15,7 +14,3 @@
         @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 111 } })
     </div>
 </section>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/mesa")
-}

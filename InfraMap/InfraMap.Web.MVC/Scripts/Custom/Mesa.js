@@ -166,6 +166,7 @@ var usuarioLoginAutoComplete = {
     }
 };
 
+/* feature de gerente escolher colaboradores não 100% funcional
 $("#btn-selecionarColaboradores").click(function () {
     $(".fileira").addClass("selectable");
     $("#btn-selecionarColaboradores").addClass("hide");
@@ -200,3 +201,4 @@ $(function () {
         }
     });
 });
+*/

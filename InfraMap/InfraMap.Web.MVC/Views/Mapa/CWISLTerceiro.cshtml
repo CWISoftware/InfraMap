@@ -3,7 +3,6 @@
     ViewBag.Title = "Terceiro";
 }
 
-@Styles.Render("~/bundles/andarCss")
 <h2 class="inline">CWISL - 3 ANDAR</h2>
 <section class="andar">
     @if (User.IsInRole("GERENTE"))
@@ -172,8 +171,4 @@
         </div>
     </div>
 </section>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/mesa")
-}
 
