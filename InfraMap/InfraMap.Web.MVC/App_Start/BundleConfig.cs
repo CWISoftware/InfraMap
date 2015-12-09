@@ -39,7 +39,9 @@ namespace InfraMap.Web.MVC.App_Start
                         "~/Content/bootstrap.css",
                         "~/Content/Site.css",
                         "~/Content/easy-autocomplete.min.css",
-                        "~/Content/easy-autocomplete.theme.min.css"));
+                        "~/Content/easy-autocomplete.theme.min.css",
+                        "~/Content/font-awesome.css",
+                        "~/Content/font-awesome.min.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                     "~/Scripts/jquery.unobtrusive*",

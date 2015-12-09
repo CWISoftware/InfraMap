@@ -156,9 +156,13 @@ textarea {
 }
 
 .radius-campo-pesquisa{
-    border-radius: 10px !important;
+    border-radius: 3px !important;
 }
 
 .tamanho-colaborador{
     width: 200px;
+}
+
+.input-group{
+    width: 250px;
 }
