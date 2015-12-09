@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using InfraMap.Comum;
 using InfraMap.Dominio.Autenticacao;
+using InfraMap.Dominio.Comum;
 
 namespace InfraMap.Dominio.Usuario
 {

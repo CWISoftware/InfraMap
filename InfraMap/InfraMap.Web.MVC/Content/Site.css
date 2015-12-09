@@ -41,6 +41,10 @@ textarea {
    background-color:black !important;
 }
 
+.jumbotron{
+    text-align:center;
+}
+
 .col-centered{
     margin: 10% auto;
     float: none;

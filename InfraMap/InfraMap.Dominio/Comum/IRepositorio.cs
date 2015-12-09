@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace InfraMap.Comum
+namespace InfraMap.Dominio.Comum
 {
     public interface IRepositorio<TEntity> where TEntity : EntidadeBase
     {

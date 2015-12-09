@@ -19,58 +19,52 @@ namespace InfraMap.Web.MVC.Controllers
 
         private IList<Usuario> BuscarUsuarioPeloFiltro(string term)
         {
-            IUsuarioRepositorio usuario = Factory.CriarUsuarioRepositorio();
-            if (String.IsNullOrEmpty(term))
-            {
-                return usuario.Buscar();
-            }
-            else
-            {
-                return usuario.BuscarListaPorNome(term);
-            }
+            var usuario = Factory.CriarUsuarioRepositorio();
+            return string.IsNullOrEmpty(term) ? usuario.Buscar() : usuario.BuscarListaPorNome(term);
         }
 
         public JsonResult UsuarioAutoComplete(string term)
         {
-            IList<Usuario> usuarioEncontrado = BuscarUsuarioPeloFiltro(term);
+            var usuarioEncontrado = BuscarUsuarioPeloFiltro(term);
             var json = usuarioEncontrado.Select(usuarios => new { label = usuarios.Nome, id = usuarios.Id });
             return Json(json, JsonRequestBehavior.AllowGet);
         }
 
-        private IList<Usuario> BuscarUsuarioPorLogin(String term)
+        private IList<Usuario> BuscarUsuarioPorLogin(string term)
         {
-            IUsuarioRepositorio usuario = Factory.CriarUsuarioRepositorio();
-            if (String.IsNullOrEmpty(term))
-            {
-                return usuario.Buscar();
-            }
-            else
-            {
-                return usuario.BuscarUsuariosPorLogin(term);
-            }
+            var usuario = Factory.CriarUsuarioRepositorio();
+            return string.IsNullOrEmpty(term) ? usuario.Buscar() : usuario.BuscarUsuariosPorLogin(term);
         }
 
         public JsonResult UsuarioLoginAutoComplete(string term)
         {
-            IList<Usuario> usuarioEncontrado = BuscarUsuarioPorLogin(term);
+            var usuarioEncontrado = BuscarUsuarioPorLogin(term);
             var json = usuarioEncontrado.Select(usuarios => new { label = usuarios.Login });
             return Json(json, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult CarregarMapaDoUsuarioPesquisado(string nome)
         {
-            var sede = Factory.CriarSedeRepositorio();
-            var andar = Factory.CriarAndarRepositorio();
-            var mesa = Factory.CriarMesaRepositorio();
-            var user = Factory.CriarUsuarioRepositorio();
+            try
+            {
+                var sede = Factory.CriarSedeRepositorio();
+                var andar = Factory.CriarAndarRepositorio();
+                var mesa = Factory.CriarMesaRepositorio();
+                var user = Factory.CriarUsuarioRepositorio();
 
-            var andarDoUsuario = andar.BuscarPorMesa(mesa.BuscarMesaPorColaborador(user.BuscarPorNome(nome).Login));
-            var descricaoAndar = andarDoUsuario.Descricao;
-            var nomeSede = sede.BuscarSedePorAndar(andarDoUsuario).Nome;
+                var login = user.BuscarPorNome(nome).Login;
+                var mesaDoUsuario = mesa.BuscarMesaPorColaborador(login);
+                var andarDoUsuario = andar.BuscarPorMesa(mesaDoUsuario);
+                var descricaoAndar = andarDoUsuario.Descricao;
+                var nomeSede = sede.BuscarSedePorAndar(andarDoUsuario).Nome;
 
-            string[] sedeEDescricao = { nomeSede , descricaoAndar};
-            return Json(sedeEDescricao, JsonRequestBehavior.AllowGet);
+                return Json(new { sede = nomeSede, descricao = descricaoAndar });
+            }
+            catch (Exception e)
+            {
+                Response.StatusCode = (int)System.Net.HttpStatusCode.BadRequest;
+                return Json(new { Message = e.Message });
+            }
         }
-        
     }
 }

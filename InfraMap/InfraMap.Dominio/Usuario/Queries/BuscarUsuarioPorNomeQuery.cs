@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using InfraMap.Comum;
+using InfraMap.Dominio.Comum;
 
 namespace InfraMap.Dominio.Usuario.Queries
 {
