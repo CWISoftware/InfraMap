@@ -20,7 +20,14 @@
             </div>
             <div class="navbar-brand navbar-collapse collapse navbar-right">
                 <ul class="nav navbar-nav">
-                    <li><input class="radius-campo-pesquisa form-control" id="carregar-usuario" name="nomeCarregar" placeholder="Procure o funcionário" /></li>
+                    <li>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-search"></i>
+                            </div>
+                            <input class="form-control radius-campo-pesquisa" id="carregar-usuario" name="nomeCarregar" placeholder="Pesquise pelo funcionário" autocomplete="off">
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -38,10 +45,10 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                </div>
             </div>
         </div>
     </div>
+        </div>
     <section class="container body-content">
         @RenderBody()
     </section>

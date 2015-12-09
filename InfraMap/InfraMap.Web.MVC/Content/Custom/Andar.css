@@ -81,6 +81,10 @@ label {
     font: normal normal normal 25px/1 FontAwesome !important;
 }
 
+.fa-search{
+    font: normal normal normal 14px/1 FontAwesome !important;
+}
+
 .numeroMesa{
     position:relative;
     margin:0;
