@@ -32,6 +32,22 @@ textarea {
     margin-bottom:10px;
 }
 
+.font-14{
+    font-size:14px;
+}
+
+.margin-sala-reuniao{
+    margin-top:10%;
+}
+
+.margin-sala-diretoria{
+    margin-top:30%;
+}
+
+.margin-auditorio{
+    margin-top:120%;
+}
+
 .color-menu{
     background-color: #808080;
     box-shadow: 0px 5px 28px 3px rgba(0,0,0,0.75);

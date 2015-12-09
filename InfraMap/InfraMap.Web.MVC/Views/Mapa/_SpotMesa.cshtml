@@ -18,7 +18,7 @@
                     @if (Model.TemColaborador)
                     {
                         <div class="form-inline">
-                            <label class="form-control text-center"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>  Nome: @colaborador</label>
+                            <label class=" text-center font-14"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>  Nome: @colaborador</label>
                             <button type="button" class="btn btn-danger form-control" data-toggle="modal" data-target="#removerColaborador" data-dismiss="modal">
                                 Remover colaborador
                             </button>
@@ -35,7 +35,7 @@
                     @if (Model.TemMaquina)
                     {
                         <div class="form-inline">
-                            <label class="form-control text-center"><span class="glyphicon glyphicon-hd-video" aria-hidden="true"></span>  Computador: @maquina</label>
+                            <label class="font-14 text-center"><span class="fa fa-desktop" aria-hidden="true"></span>  Computador: @maquina</label>
                             <button type="button" class="btn btn-danger form-control" data-toggle="modal" data-target="#removerMaquina" data-dismiss="modal">
                                 Remover maquina
                             </button>
@@ -52,7 +52,7 @@
                     @if (Model.TemRamal)
                     {
                         <div class="form-inline">
-                            <label class="form-control text-center"><span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>  Ramal: @ramal</label>
+                            <label class="font-14 text-center"><span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>  Ramal: @ramal</label>
                             <button type="button" class="btn btn-danger form-control" data-toggle="modal" data-target="#removerRamal" data-dismiss="modal">
                                 Remover ramal
                             </button>
@@ -219,8 +219,8 @@
                         Deseja mudar o colaborador de lugar?</label>
                 </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>   
-                        <button id="trocarUsuario" type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>                     
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Nao</button>   
+                        <button id="trocarUsuario" type="button" class="btn btn-primary" data-dismiss="modal">Sim</button>                     
                     </div>
                 </div>
             </div>
@@ -238,19 +238,19 @@
                         <div class="modal-body form-horizontal">
                             @if (!Model.TemColaborador && !Model.TemRamal && !Model.TemMaquina)
                             {
-                                <label class="form-control text-center">Mesa vazia</label>
+                                <label class="font-14 text-center">Mesa vazia</label>
                             }
                             @if (Model.TemColaborador)
                             {
-                                <label class="form-control text-center"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>  Nome: @colaborador</label>
+                                <label class="font-14 text-center"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>  Nome: @colaborador</label>
                             }
                             @if (Model.TemMaquina)
                             {
-                                <label class="form-control text-center"><span class="glyphicon glyphicon-hd-video" aria-hidden="true"></span>  Computador: @maquina</label>
+                                <label class="font-14 text-center"><span class="glyphicon glyphicon-hd-video" aria-hidden="true"></span>  Computador: @maquina</label>
                             }
                             @if (Model.TemRamal)
                             {
-                                <label class="form-control text-center"><span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>  Ramal: @ramal</label>
+                                <label class="font-14 text-center"><span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>  Ramal: @ramal</label>
                             }
                         </div>
                         <div class="modal-footer">

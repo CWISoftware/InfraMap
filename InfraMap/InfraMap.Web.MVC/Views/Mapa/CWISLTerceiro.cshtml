@@ -9,7 +9,7 @@
     @if (User.IsInRole("GERENTE"))
     {
         <input type="hidden" id="nomeGerente" name=@User.Identity.Name />
-        <button id="btn-selecionarColaboradores" type="button" class="pull-right">Selecionar colaboradores</button>
+        <button id="btn-selecionarColaboradores" type="button" class="pull-right hide">Selecionar colaboradores</button>
         <button id="btn-salvarColaboradores" class="hide pull-right" type="button">Salvar colaboradores</button>
     }
    
@@ -159,16 +159,16 @@
     </div>
 
     <div class="espaco">
-        <div class="auditorio">Auditório</div>
-        <div class="diretoria">Diretoria</div>
+        <div class="auditorio text-center"><h4 class="margin-auditorio">Auditório</h4></div>
+        <div class="diretoria text-center"><h4 class="margin-sala-diretoria">Diretoria</h4></div>
     </div>
 
     <div class="reuniao">
-        <div class="sala">
-            Sala 3.1
+        <div class="sala text-center">
+            <h4 class="margin-sala-reuniao">Sala 3.1</h4>
         </div>
-        <div class="sala">
-            Sala 3.2
+        <div class="sala text-center">
+            <h4 class="margin-sala-reuniao">Sala 3.2</h4>
         </div>
     </div>
 </section>
