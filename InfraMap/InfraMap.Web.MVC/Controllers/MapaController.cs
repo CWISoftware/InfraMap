@@ -14,21 +14,34 @@ namespace InfraMap.Web.MVC.Controllers
     public class MapaController : Controller
     {
         [HttpGet]
-        public ActionResult Index(string sede, string nomeAndar)
+        public ActionResult Index(string sede, int andar)
         {     
             try
             {
                 var sedeRepositorio = Factory.CriarSedeRepositorio();
                 var sedeDb = sedeRepositorio.BuscarSedePorNome(sede);
-                var andar = sedeDb.Andares.FirstOrDefault(t => t.Descricao.Equals(nomeAndar));
-                var model = new AndarModel(andar);
-                return View(sede + nomeAndar, model);
+                var andarDb = sedeDb.Andares.FirstOrDefault(t => t.Id == andar);
+                var model = new AndarModel(andarDb);
+                var descricaoAndar = BuscarDescricaoDoAndarPorId(andarDb.Id);
+                return View(sede + descricaoAndar, model);
             }
             catch (Exception e)
             {
                 return ErroTratado(e);
             }  
-        }
+        }   
+        
+        private string BuscarDescricaoDoAndarPorId(int id)
+        {
+            Dictionary<int, string> andares = new Dictionary<int, string>();
+            andares.Add(1, "Primeiro");
+            andares.Add(2, "Segundo");
+            andares.Add(3, "Terceiro");
+            andares.Add(4, "Quarto");
+            andares.Add(5, "Quinta");
+            andares.Add(6, "Sexto");
+            return andares.FirstOrDefault(m=>m.Key == id).Value;
+        }     
 
         [HttpPost]
         public JsonResult AdicionarColaborador(int id, string colaborador)

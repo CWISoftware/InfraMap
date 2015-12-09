@@ -21,8 +21,8 @@ namespace InfraMap.Web.MVC
 
             routes.MapRoute(
                 name: "EdicaoMapa",
-                url: "Mapa/{sede}/{nomeAndar}",
-                defaults: new { controller = "Mapa", action = "Index", sede = UrlParameter.Optional, nomeAndar = UrlParameter.Optional }
+                url: "Mapa/{sede}/{andar}",
+                defaults: new { controller = "Mapa", action = "Index", sede = UrlParameter.Optional, andar = UrlParameter.Optional }
             );
 
             routes.MapRoute(

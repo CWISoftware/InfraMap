@@ -18,7 +18,7 @@
 });
 
 $("#btn-ir").click(function () {
-    var descricaoAndar = $("#dropdown-andar").find(":selected").text();
+    var idAndar = $("#dropdown-andar").find(":selected").val();
     var id_sede = $("#sede-sao-leo").children("input").attr("value");
     $.ajax({
         type: "POST",
@@ -27,7 +27,7 @@ $("#btn-ir").click(function () {
         datatype: "json",
         success: function (data) { }
     }).done(function (nomeSede) {
-        window.location.href = "/Mapa/"+nomeSede+"/" + descricaoAndar;
+        window.location.href = "/Mapa/"+nomeSede+"/" + idAndar;
     }
     );
     }
