@@ -35,6 +35,7 @@ namespace InfraMap.Web.MVC.Controllers
                 }
             }
 
+            ViewBag.Erro = "Usuário ou senha inválidos.";
             ModelState.AddModelError("INVALID_LOGIN", "Usuário ou senha inválidos.");
             return View("Index", loginModel);
         }
