@@ -19,31 +19,14 @@ namespace InfraMap.Web.MVC.Controllers
             try
             {
                 var sedeRepositorio = Factory.CriarSedeRepositorio();
-                var sedeDb = sedeRepositorio.BuscarSedePorNome(sede);
-                var andarDb = sedeDb.Andares.FirstOrDefault(t => t.Id == andar);
+                var andarDb = sedeRepositorio.BuscarSedePorNome(sede).Andares.FirstOrDefault(t => t.Id == andar);
                 var model = new AndarModel(andarDb);
-                var descricaoAndar = BuscarDescricaoDoAndarPorId(andarDb.Id);
-                return View(sede + descricaoAndar, model);
+                return View(sede + andarDb.Id, model);
             }
             catch (Exception e)
             {
                 return ErroTratado(e);
             }  
-        }   
-        
-        private string BuscarDescricaoDoAndarPorId(int id)
-        {
-            var andares = new Dictionary<int, string>
-            {
-                {1, "Primeiro"},
-                {2, "Segundo"},
-                {3, "Terceiro"},
-                {4, "Quarto"},
-                {5, "Quinto"},
-                {6, "Sexto"}
-            };
-
-            return andares.FirstOrDefault(m => m.Key == id).Value;
         }     
 
         [HttpPost]
