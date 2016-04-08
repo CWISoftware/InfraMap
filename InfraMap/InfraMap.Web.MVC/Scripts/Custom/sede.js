@@ -1,5 +1,5 @@
 ﻿$("#sede-sao-leo").click(function () {
-    var id_sede = $("#sede-sao-leo").children("input").attr("value");
+    var id_sede = $(this).children("input").attr("value");
     $.ajax({
         type: "GET",
         url: '/Sede/PegarAndaresDasSedes',        

@@ -3,15 +3,12 @@
     ViewBag.Title = "Terceiro";
 }
 
-<h2 class="inline">CWISL - 3 ANDAR</h2>
+<div style="width:100%;height:100px;margin-bottom:40px;">
+    <h2 class="inline">CWISL - 3 ANDAR</h2>
+    <button id="btn-selecionarColaboradores" type="button" class="btn btn-default pull-right">Selecionar colaboradores</button>
+    <button id="btn-salvarColaboradores" class="btn btn-default pull-right" type="button">Salvar colaboradores</button>
+</div>
 <section class="andar">
-    @if (User.IsInRole("GERENTE"))
-    {
-        <input type="hidden" id="nomeGerente" name=@User.Identity.Name />
-        <button id="btn-selecionarColaboradores" type="button" class="pull-right hide">Selecionar colaboradores</button>
-        <button id="btn-salvarColaboradores" class="hide pull-right" type="button">Salvar colaboradores</button>
-    }
-   
     <div id="partial"></div>
     <div class="fileira">
         @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", 1 } })

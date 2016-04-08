@@ -9,8 +9,7 @@ using System.Web.Mvc;
 using InfraMap.Dominio.Mesa;
 
 namespace InfraMap.Web.MVC.Controllers
-{
-    [Autorizador]
+{    
     public class MapaController : Controller
     {
         [HttpGet]
@@ -162,6 +161,15 @@ namespace InfraMap.Web.MVC.Controllers
         private int ContarEstacoesDisponiveis(List<MesaModel> mesas)
         {
             return mesas.Count(m => !m.TemColaborador && m.TemMaquina);
+        }
+
+        public void SalvarCorDosColaboradores(int[] listaIdMesa)
+        {
+            var a = listaIdMesa;
+            var mesaRepositorio = Factory.CriarMesaRepositorio();
+            var mesa = mesaRepositorio.BuscarPorId(a.First());
+            var usuarioLogado = ControleDeSessao.UsuarioLogado;
+            //TODO: salvar cor para colaborador que esta na mesa
         }
     }
 }

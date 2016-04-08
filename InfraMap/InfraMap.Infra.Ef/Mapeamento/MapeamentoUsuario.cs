@@ -21,6 +21,7 @@ namespace InfraMap.Infraestrutura.Ef.Mapeamento
                 .IsRequired()
                 .HasMaxLength(50)
                 .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute("IX_Usuario_Login") { IsUnique = true }));
+            Property(t => t.Cor).IsOptional().HasMaxLength(50);
             Property(t => t.Senha).IsRequired().HasMaxLength(64);
             HasMany(t => t.Permissoes).WithMany(t => t.Usuarios);
             HasOptional(t => t.ColaboradoresVinculados).WithMany().Map(t => t.MapKey("Gerente_Id"));

@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Infra-Map</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/bundles/jquery-ui")
+    @Styles.Render("~/Content/jquery-ui.css")
+    @Styles.Render("~/Content/jquery-ui.structure.css")
+    @Styles.Render("~/Content/jquery-ui.theme.css")
 </head>
 <body>
     <header class="navbar navbar color-menu">
@@ -50,14 +54,16 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                </div>
             </div>
         </div>
     </div>
-        </div>
-    <section class="container body-content">
+    <section class="box-container body-content">
         @RenderBody()
     </section>
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/Scripts/jquery-ui.js")
     @RenderSection("Scripts", false)
 </body>
 </html>

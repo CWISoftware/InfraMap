@@ -18,7 +18,12 @@ body {
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 320px;
+}
+
+.box-container{
+    padding-left:10px;
+    padding-right:10px;
 }
 
 .navbar-header{
@@ -55,7 +60,6 @@ textarea {
 
 .color-menu{
     background-color: #808080;
-    box-shadow: 0px 5px 28px 3px rgba(0,0,0,0.75);
 }
 
 .icon-bar {

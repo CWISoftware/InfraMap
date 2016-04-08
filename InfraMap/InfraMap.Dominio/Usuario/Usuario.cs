@@ -7,11 +7,13 @@ namespace InfraMap.Dominio.Usuario
 {
     public class Usuario : EntidadeBase
     {
-        public String Nome { get; set; }
+        public string Nome { get; set; }
 
-        public String Login { get; set; }
+        public string Login { get; set; }
 
-        public String Senha { get; set; }
+        public string Senha { get; set; }
+
+        public string Cor { get; set; }
 
         public ICollection<Permissao> Permissoes { get; set; }
 

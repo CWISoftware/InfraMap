@@ -166,19 +166,25 @@ var usuarioLoginAutoComplete = {
     }
 };
 
-/* feature de gerente escolher colaboradores não 100% funcional
+// feature de gerente escolher colaboradores não 100% funcional
 $("#btn-selecionarColaboradores").click(function () {
     $(".fileira").addClass("selectable");
     $("#btn-selecionarColaboradores").addClass("hide");
     $("#btn-salvarColaboradores").addClass("show");
-    window.listaDeIdECor = [];
+    $(".mesa").attr("onclick", null);
+    $(".mesa").addClass("ui-widget-content");
+    startSelectable();
 });
 
 $("#btn-salvarColaboradores").click(function () {
+    var listId = [];
+    $(".mesa.ui-selected").find('.numeroMesa').each(function () {
+        listId.push($(this).attr("id"));
+    });
     $.ajax({
         type: "POST",
-        url: "/Mapa/SalvarCoresDosColaboradores",
-        data: { lista: listaDeIdECor },
+        url: "/Mapa/SalvarCorDosColaboradores",
+        data: { listaIdMesa: listId },
         datatype: "json",
         success: function (data) {
             reload();
@@ -186,19 +192,14 @@ $("#btn-salvarColaboradores").click(function () {
     });
 });
 
-$(function () {
+function startSelectable() {
     $(".selectable").selectable({
         selected: function (event, ui) {
-            var idMesa = $(ui.selected).children().attr("id");
-            var temClasseColaborador = $(ui.selected).hasClass("colaborador");
-            if (!temClasseColaborador) {
-                $(ui.selected).css("background", "white");
+            var temclassecolaborador = $(ui.selected).find("span").hasClass("usuario");
+            if (!temclassecolaborador) {
+                $(ui.selected).removeClass("ui-selected");
+                return;
             }
-            var corMesa = $(ui.selected).css("background");
-            var idECor = { id: idMesa, cor: corMesa }
-
-            listaDeIdECor.push(idECor);
         }
     });
-});
-*/
+};

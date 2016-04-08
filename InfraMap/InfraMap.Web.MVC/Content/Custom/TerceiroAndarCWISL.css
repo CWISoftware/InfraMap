@@ -17,8 +17,8 @@
 
 .espaco{
 	position: relative;
-	top: -858px;
-	left: -80px;
+    display:inline-block;
+	top: -62px;
 	float: right;
 	height: 740px;
 	width: 250px;

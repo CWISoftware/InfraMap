@@ -11,11 +11,14 @@ namespace InfraMap.Web.MVC.Seguranca
     {
         public string Login { get; private set; }
 
+        public string Cor { get; set; }
+
         public string[] Permissoes { get; private set; }
 
         public UsuarioLogado(Usuario usuario)
         {
             this.Login = usuario.Login;
+            this.Cor = usuario.Cor;
             this.Permissoes = usuario.Permissoes.Select(p => p.Texto).ToArray();
         }
 
