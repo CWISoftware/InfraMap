@@ -1,46 +1,80 @@
-﻿.andar{
-	width: 100%;
-	height: 1250px;
+﻿.andar {
+    width: 1092px;
+    height: 1250px;
     left: 78px;
-    margin-top:20px;
+    margin-top: 20px;
 }
 
-.container{
-    padding-left:0;
-    padding-right:0;
+.container {
+    padding-left: 0;
+    padding-right: 0;
 }
 
-.ilha{
-	position: relative;
-	float: left;
-	margin-top: 20px;
-	height: 120px;
-	margin-bottom: 20px;
+.salas-sul-cwi-sl {
+    float: left;
+    width: inherit;
+    height: 100px;
 }
 
-.fileira{
-	position: relative;
-	text-align: center;
-	width:940px;
-	height:60px;
+.salas-norte-cwi-sl {
+    float: left;
+    width: 588px;
+    height: 100px;
+}
+
+.salas-oeste-cwi-sl {
+    position: absolute;
+    z-index: 999;
+    float: right;
+    width: 335px;
+    height: 950px;
+    top: 140px;
+    left: 770px;
+}
+
+.sala {
+    position: relative;
+    float: left;
+    display: inline-block;
+    border: 2px solid #000;
+    border-radius: 4px;
+    margin: 2px 2px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.espaco-fileiras-cwi-sl {
+    float: inherit;
+    display: inline-block;
+    height: 50px;
+    width: inherit;
+}
+
+.fileira-leste-cwi-sl {
+    float: left;
+    height: 50px;
+}
+
+.fileira-oeste-cwi-sl {
+    float: right;
+    height: 50px;
 }
 
 .mesa {
     position: relative;
     float: left;
     display: inline-block;
-    width: 100px;
-    height: 55px;
+    width: 80px;
+    height: 45px;
     border: 2px solid #000;
     border-radius: 4px;
     margin: 2px 2px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .mesa:hover {
     cursor: pointer;
     outline: 0;
-    
     box-shadow: 0px 0px 22px 3px rgba(0,0,0,0.55);
 }
 
@@ -51,13 +85,13 @@
 }
 
 .nome {
-    width:90%;
+    width: 90%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     position: relative;
     text-align: center;
-    margin-left:6px;
+    margin-left: 6px;
     font-size: 12px;
     top: 6px;
     left: -5px;
@@ -70,81 +104,81 @@ label {
     left: 1px;
 }
 
-.mesa-div{
-    position:relative;
-    width:100%;
-    height:100%;
-}
-
-.computador{
+.mesa-div {
     position: relative;
-    margin-left:8%;
-    margin-top:12px;
+    width: 100%;
+    height: 100%;
 }
 
-.fa{
+.computador {
+    position: relative;
+    margin-left: 8%;
+    margin-top: 12px;
+}
+
+.fa {
     font: normal normal normal 16px/1 FontAwesome !important;
 }
 
-.fa-logo{
+.fa-logo {
     font: normal normal normal 25px/1 FontAwesome !important;
 }
 
-.fa-search{
+.fa-search {
     font: normal normal normal 14px/1 FontAwesome !important;
 }
 
-.numeroMesa{
-    position:relative;
-    margin:0;
-    margin-top:5px;
-    float:left;
-}
-
-.ramal{
-    position:relative;
-    font-size:15px;
-    margin:0;
-    float:right;
-    margin-right:3px;
-}
-
-.usuario{
+.numero-mesa {
     position: relative;
-    font-size:25px;
-    display:table;
-    margin:0 auto;
+    margin: 5px;
+    margin-top: 5px;
+    float: right;
 }
 
-div .ui-selected { 
-  	background: #F39814; 
-  	color: white; 
+.ramal {
+    position: relative;
+    font-size: 15px;
+    margin: 0;
+    float: right;
+    margin-right: 3px;
 }
 
-.btn{
-    text-transform:uppercase;
-    font-weight: 600;   
-    color:black;
+.usuario {
+    position: relative;
+    font-size: 25px;
+    display: table;
+    margin: 0 auto;
 }
 
-.btn-primary{
-    background-color:white;
-    color:#4169E1;
+div .ui-selected {
+    background: #F39814;
+    color: white;
 }
 
-.btn-primary:hover{
-    transition:all 1s;
-    background-color:#4169E1;
-    color:white;
+.btn {
+    text-transform: uppercase;
+    font-weight: 600;
+    color: black;
 }
 
-.btn-danger{
-    background-color:white;
-    color:#B22222;
+.btn-primary {
+    background-color: white;
+    color: #4169E1;
 }
 
-.btn-danger:hover{
-    transition:all 1s;
-    background-color:#B22222;
-    color:white;
+.btn-primary:hover {
+    transition: all 1s;
+    background-color: #4169E1;
+    color: white;
+}
+
+.btn-danger {
+    background-color: white;
+    color: #B22222;
+}
+
+.btn-danger:hover {
+    transition: all 1s;
+    background-color: #B22222;
+    color: white;
 }

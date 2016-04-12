@@ -3,7 +3,7 @@ function mesaClick(id) {
     if (podeExecutar) {
         podeExecutar = false;
         RenderPartial(id);
-    }   
+    }
 };
 
 function RenderPartial(id) {
@@ -35,7 +35,7 @@ function RenderPartial(id) {
                     }
                     else {
                         reload();
-                    }       
+                    }
                 },
                 error: function (xhr, status, error) {
                     DisplayError(xhr);
@@ -142,7 +142,7 @@ function RenderPartial(id) {
                     DisplayError(xhr);
                 }
             });
-        });       
+        });
     });
 }
 
@@ -178,7 +178,7 @@ $("#btn-selecionarColaboradores").click(function () {
 
 $("#btn-salvarColaboradores").click(function () {
     var listId = [];
-    $(".mesa.ui-selected").find('.numeroMesa').each(function () {
+    $(".mesa.ui-selected").find('.numero-mesa').each(function () {
         listId.push($(this).attr("id"));
     });
     $.ajax({

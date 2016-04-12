@@ -29,18 +29,17 @@ namespace InfraMap.Web.MVC.App_Start
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                         "~/Content/bootstrap.css",
-                        "~/Content/Site.css",
+                        "~/Content/Custom/Site.css",
                         "~/Content/easy-autocomplete.min.css",
                         "~/Content/easy-autocomplete.theme.min.css",
                         "~/Content/font-awesome.css",
                         "~/Content/font-awesome.min.css",
-                        "~/Content/Custom/Andar.css",
-                        "~/Content/Custom/TerceiroAndarCWISL.css"));
+                        "~/Content/Custom/Andar.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                     "~/Scripts/jquery.unobtrusive*",
                     "~/Scripts/jquery.validate*"));
-                    
+
         }
     }
 }

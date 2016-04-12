@@ -5,7 +5,7 @@
     var nome = mesa.Colaborador != null ? mesa.Colaborador.Colaborador : "";
 }
 <div class="mesa" onclick="mesaClick(@ViewBag.idMesa)">
-    <label class="numeroMesa" id="@ViewBag.idMesa">@ViewBag.idMesa</label>
+    <label class="numero-mesa" id="@ViewBag.idMesa">@ViewBag.idMesa</label>
     <div class="mesa-div">
         @if (mesa.TemRamal)
         {
@@ -21,8 +21,6 @@
         {
             <span class="fa fa-logo fa-desktop computador"></span>
         }
-        
         <label class="nome">@nome</label>
-    </div>      
-    
+    </div>
 </div>
