@@ -43,13 +43,7 @@
     width: inherit;
 }
 
-.fileira-leste-cwi-sl {
-    float: left;
-    height: 50px;
-}
-
-.fileira-oeste-cwi-sl {
-    float: right;
+.fileira {
     height: 50px;
 }
 
