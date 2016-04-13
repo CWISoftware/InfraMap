@@ -9,12 +9,13 @@ using System.Web.Mvc;
 using InfraMap.Dominio.Mesa;
 
 namespace InfraMap.Web.MVC.Controllers
-{    
+{
+    [Autorizador]
     public class MapaController : Controller
     {
         [HttpGet]
         public ActionResult Index(string sede, int andar)
-        {     
+        {
             try
             {
                 var sedeRepositorio = Factory.CriarSedeRepositorio();
@@ -25,8 +26,8 @@ namespace InfraMap.Web.MVC.Controllers
             catch (Exception e)
             {
                 return ErroTratado(e);
-            }  
-        }     
+            }
+        }
 
         [HttpPost]
         public JsonResult AdicionarColaborador(int id, string colaborador)
@@ -44,7 +45,7 @@ namespace InfraMap.Web.MVC.Controllers
             {
                 return ErroTratado(e);
             }
-            
+
             return Json(new { success = true, trocar = false});
         }
 
@@ -60,7 +61,7 @@ namespace InfraMap.Web.MVC.Controllers
             {
                 return ErroTratado(e);
             }
-            
+
             return Json(new { success = true });
         }
 
@@ -82,7 +83,7 @@ namespace InfraMap.Web.MVC.Controllers
 
         [HttpPost]
         public JsonResult AdicionarMaquina(int id, string maquina, int tipo)
-        {         
+        {
             if (string.IsNullOrWhiteSpace(maquina))
             {
                 return ErroTratado(new Exception("Preencha os campos!"));
@@ -111,14 +112,14 @@ namespace InfraMap.Web.MVC.Controllers
 
         [HttpPost]
         public JsonResult AdicionarRamal(int id, string ramal, int tipo)
-        {      
+        {
             if (string.IsNullOrWhiteSpace(ramal))
             {
                 return ErroTratado(new Exception("Preencha os campos!"));
             }
 
             var service = Factory.CriarMesaService();
-            service.AdicionarRamal(id, ramal, tipo);             
+            service.AdicionarRamal(id, ramal, tipo);
             return Json(new { success = true });
         }
 
