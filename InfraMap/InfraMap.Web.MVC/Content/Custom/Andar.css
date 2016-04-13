@@ -1,7 +1,7 @@
 ﻿.andar {
     width: 1092px;
     height: 1250px;
-    left: 78px;
+    margin: 0 auto;
     margin-top: 20px;
 }
 
@@ -12,24 +12,17 @@
 
 .salas-sul-cwi-sl {
     float: left;
-    width: inherit;
     height: 100px;
 }
 
 .salas-norte-cwi-sl {
     float: left;
-    width: 588px;
     height: 100px;
 }
 
 .salas-oeste-cwi-sl {
-    position: absolute;
-    z-index: 999;
     float: right;
     width: 335px;
-    height: 950px;
-    top: 140px;
-    left: 770px;
 }
 
 .sala {
@@ -60,6 +53,10 @@
     height: 50px;
 }
 
+.mesas-andar-3 {
+    float: left;
+    width: 756px; /*Comprimento dá última fileira (80px + 2px + 2px) * 9*/
+}
 .mesa {
     position: relative;
     float: left;

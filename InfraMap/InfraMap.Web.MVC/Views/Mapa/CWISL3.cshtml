@@ -2,46 +2,48 @@
 @{
     ViewBag.Title = "Terceiro";
 }
-<h2 class="inline padding-20 margin-20">CWI - São Leopoldo - 3º andar</h2>
 <section class="andar">
-    @{
-        int i_mesas = 309, num_mesas = 0;
+    <h2>CWI - São Leopoldo - 3º andar</h2>
+    <div class="mesas-andar-3">
+        @{
+            int i_mesas = 309, num_mesas = 0;
 
-        @Html.Raw("<div class=\"fileira-leste-cwi-sl\">");
+            @Html.Raw("<div class=\"fileira-leste-cwi-sl\">");
             for (var i = 0; i < 9; i++, i_mesas--)
             {
-            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", i_mesas } });
-        }
-        @Html.Raw("</div>");
-        @Html.Raw("<div class=\"espaco-fileiras-cwi-sl\"></div>");
-        while (i_mesas > 224)
-        {
+                @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", i_mesas } });
+            }
+            @Html.Raw("</div>");
+            @Html.Raw("<div class=\"espaco-fileiras-cwi-sl\"></div>");
+            while (i_mesas > 224)
+            {
+                @Html.Raw("<div class=\"fileira-leste-cwi-sl\">");
+                for (var i = 0; i < 7; i++, i_mesas--, num_mesas++)
+                {
+                    @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", i_mesas } });
+                }
+                @Html.Raw("</div>");
+
+                if ((num_mesas % 14) == 0)
+                {
+                    @Html.Raw("<div class=\"espaco-fileiras-cwi-sl\"></div>");
+                }
+            }
             @Html.Raw("<div class=\"fileira-leste-cwi-sl\">");
-            for (var i = 0; i < 7; i++, i_mesas--, num_mesas++)
+            for (i_mesas = 217; i_mesas < 224; i_mesas++)
             {
                 @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", i_mesas } });
-                }
-            @Html.Raw("</div>");
-
-            if ((num_mesas % 14) == 0)
-            {
-                @Html.Raw("<div class=\"espaco-fileiras-cwi-sl\"></div>");
             }
+            @Html.Raw("</div>");
+            @Html.Raw("<div class=\"espaco-fileiras-cwi-sl\"></div>");
         }
-        @Html.Raw("<div class=\"fileira-leste-cwi-sl\">");
-        for (i_mesas = 217; i_mesas < 224; i_mesas++)
-        {
-            @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", i_mesas } });
-        }
-        @Html.Raw("</div>");
-        @Html.Raw("<div class=\"espaco-fileiras-cwi-sl\"></div>");
-    }
-    <div class="salas-norte-cwi-sl">
-        <div class="sala" style="width: 250px; height: inherit">
-            <h4 class="margin-sala-reuniao">Reunião 3.1</h4>
-        </div>
-        <div class="sala" style="width: 330px; height: inherit">
-            <h4 class="margin-sala-reuniao">Reunião 3.2</h4>
+        <div class="salas-norte-cwi-sl">
+            <div class="sala" style="width: 250px; height: inherit">
+                <h4 class="margin-sala-reuniao">Reunião 3.1</h4>
+            </div>
+            <div class="sala" style="width: 330px; height: inherit">
+                <h4 class="margin-sala-reuniao">Reunião 3.2</h4>
+            </div>
         </div>
     </div>
     <div class="salas-oeste-cwi-sl">
