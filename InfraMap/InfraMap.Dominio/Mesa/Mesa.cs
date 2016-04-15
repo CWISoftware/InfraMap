@@ -18,6 +18,10 @@ namespace InfraMap.Dominio.Mesa
         public int? Ramal_Id { get; set; }
         public Ramal.Ramal Ramal { get; set; }
 
+        public string PontoRede { get; set; }
+        public string PontoTelefone { get; set; }
+        public string PontoEletrico { get; set; }
+
         public void AdicionarColaborador(Usuario.Usuario colaborador)
         {
             this.Colaborador = colaborador;
