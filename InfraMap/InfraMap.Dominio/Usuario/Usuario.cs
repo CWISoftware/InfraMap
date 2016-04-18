@@ -11,10 +11,14 @@ namespace InfraMap.Dominio.Usuario
 
         public string Login { get; set; }
 
-        public string Cor { get; set; }
+        public string Cor { get; set; }        
 
         public ICollection<Permissao> Permissoes { get; set; }
 
-        public ICollection<Usuario> ColaboradoresVinculados { get; set; } 
+        public int? GerenteId { get; set; }
+
+        public virtual Usuario Gerente { get; set; }
+
+        public virtual ICollection<Usuario> ColaboradoresVinculados { get; set; }       
     }
 }

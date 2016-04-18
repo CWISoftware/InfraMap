@@ -81,6 +81,10 @@
     <Compile Include="Migrations\201604172116572_Retirado campo senha do usuario.Designer.cs">
       <DependentUpon>201604172116572_Retirado campo senha do usuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604180316329_Alteração do mapeamento usuario com gerente.cs" />
+    <Compile Include="Migrations\201604180316329_Alteração do mapeamento usuario com gerente.Designer.cs">
+      <DependentUpon>201604180316329_Alteração do mapeamento usuario com gerente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -130,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604172116572_Retirado campo senha do usuario.resx">
       <DependentUpon>201604172116572_Retirado campo senha do usuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604180316329_Alteração do mapeamento usuario com gerente.resx">
+      <DependentUpon>201604180316329_Alteração do mapeamento usuario com gerente.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

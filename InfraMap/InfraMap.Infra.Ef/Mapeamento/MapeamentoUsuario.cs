@@ -23,7 +23,7 @@ namespace InfraMap.Infraestrutura.Ef.Mapeamento
                 .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute("IX_Usuario_Login") { IsUnique = true }));
             Property(t => t.Cor).IsOptional().HasMaxLength(50);
             HasMany(t => t.Permissoes).WithMany(t => t.Usuarios);
-            HasOptional(t => t.ColaboradoresVinculados).WithMany().Map(t => t.MapKey("Gerente_Id"));
+            HasOptional(t => t.Gerente).WithMany(t => t.ColaboradoresVinculados).HasForeignKey(t => t.GerenteId).WillCascadeOnDelete(false);
         }
     }
 }
