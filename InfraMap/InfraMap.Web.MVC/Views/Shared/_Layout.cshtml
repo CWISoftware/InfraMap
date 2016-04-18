@@ -26,15 +26,15 @@
                 <ul class="nav navbar-nav">
                     <li>
                         <div class="input-group">
+                            <input class="form-control radius-campo-pesquisa" id="carregar-usuario" name="nomeCarregar" placeholder="Pesquise pelo funcionário" autocomplete="off">
                             <div class="input-group-addon">
                                 <i class="fa fa-search"></i>
                             </div>
-                            <input class="form-control radius-campo-pesquisa" id="carregar-usuario" name="nomeCarregar" placeholder="Pesquise pelo funcionário" autocomplete="off">
                         </div>
                     </li>
                     <li>
                         <button class="btn btn-primary pull-right" onclick="location.href='@Url.Action("Sair","Login")'">
-                            <i class="fa fa-sign-out"></i> Logout
+                            <i class="fa fa-sign-out"></i> Sair
                         </button>
                     </li>
                 </ul>
@@ -50,7 +50,7 @@
                     <h4 class="modal-title" id="myModalLabel">Ocorreu um erro!</h4>
                 </div>
                 <div class="modal-body">
-                    <h3>Usuário procurado não esta em uma mesa ou não existe.</h3>
+                    <h3>Usuário procurado não está em uma mesa ou não existe.</h3>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>

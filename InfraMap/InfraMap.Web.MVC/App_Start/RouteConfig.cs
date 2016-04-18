@@ -22,7 +22,7 @@ namespace InfraMap.Web.MVC
             routes.MapRoute(
                 name: "EdicaoMapa",
                 url: "Mapa/{sede}/{andar}",
-                defaults: new { controller = "Mapa", action = "Index", sede = UrlParameter.Optional, andar = UrlParameter.Optional }
+                defaults: new { controller = "Mapa", action = "Index", sede = UrlParameter.Optional, andar = UrlParameter.Optional}
             );
 
             routes.MapRoute(
@@ -30,6 +30,13 @@ namespace InfraMap.Web.MVC
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Login", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "MostraColaborador",
+                url: "Mapa/{sede}/{andar}/{mesa}",
+                defaults: new { controller = "Mapa", action = "MostraMesa", sede = UrlParameter.Optional, andar = UrlParameter.Optional, mesa = UrlParameter.Optional}
+            );
+
         }
     }
 }

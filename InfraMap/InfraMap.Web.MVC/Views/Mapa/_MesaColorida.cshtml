@@ -1,0 +1,32 @@
+﻿@model List<InfraMap.Web.MVC.Models.MesaModel>
+
+@{
+    var mesa = Model.First(t => t.Id == ViewBag.idMesa);
+    var nome = mesa.Colaborador != null ? mesa.Colaborador.Colaborador : "";
+}
+<div class="mesa" onclick="mesaClick(@ViewBag.idMesa, 1)" style="color:red; box-shadow: 0px 0px 3px 2px red">
+    <label class="numero-mesa" id="@ViewBag.idMesa" style="color:inherit">@ViewBag.idMesa</label>
+    <div class="mesa-div" style="color:inherit">
+
+        @if (mesa.TemRamal)
+        {
+            <span class="glyphicon glyphicon-phone-alt ramal" aria-hidden="true" style="color:inherit"></span>
+        }
+
+        @if (mesa.TemColaborador)
+        {
+            <span class="glyphicon glyphicon-user usuario" aria-hidden="true" style="color:inherit"></span>
+        }
+
+        @if (mesa.TemMaquina && !mesa.TemColaborador)
+        {
+            <span class="fa fa-logo fa-desktop computador" aria-hidden="true" style="color:inherit"></span>
+        }
+
+        else if (mesa.TemMaquina)
+        {
+            <span class="fa fa-lowerlogo fa-desktop computador-menor" aria-hidden="true" style="color:inherit"></span>
+        }
+        <label class="nome">@nome</label>
+    </div>
+</div>

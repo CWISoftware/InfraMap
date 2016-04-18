@@ -71,7 +71,7 @@
                     }
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reload()">Fechar</button>
                 </div>
             </div>
         </div>
@@ -89,7 +89,7 @@
                     <input class="form-control tamanho-colaborador" id="login" name="nome" placeholder="Procure o colaborador" />
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reload()">Fechar</button>
                     <button id="adicionaUsuario" type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
                 </div>
             </div>
@@ -151,7 +151,7 @@
                     <h2></h2>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reload()">Fechar</button>
                     <button id="adicionaMaquina" type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
                 </div>
             </div>
@@ -172,7 +172,7 @@
                     @Html.EnumDropDownListFor(m => m.Ramal.Tipo, new { @id = "tipoRamal", @class = "form-control" })
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reload()">Fechar</button>
                     <button id="adicionaRamal" type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
                 </div>
             </div>
@@ -190,7 +190,7 @@
                     <h2>Nome: @colaborador</h2>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reload()">Fechar</button>
                     <button id="removeColaborador" type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
                 </div>
             </div>
@@ -208,7 +208,7 @@
                     <h2>Computador: @maquina</h2>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reload()">Fechar</button>
                     <button id="removeMaquina" type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
                 </div>
             </div>
@@ -226,7 +226,7 @@
                     <h2>Ramal: @ramal</h2>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reload()">Fechar</button>
                     <button id="removeRamal" type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
                 </div>
             </div>
@@ -244,7 +244,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reload()">Fechar</button>
                 </div>
             </div>
         </div>
@@ -299,7 +299,7 @@
                     }
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reload()">Fechar</button>
                 </div>
             </div>
         </div>

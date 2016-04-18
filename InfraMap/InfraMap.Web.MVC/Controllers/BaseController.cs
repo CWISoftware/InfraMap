@@ -58,7 +58,7 @@ namespace InfraMap.Web.MVC.Controllers
                 var idAndar = andarDoUsuario.Id;
                 var nomeSede = sede.BuscarSedePorAndar(andarDoUsuario).Nome;
 
-                return Json(new { sede = nomeSede, idAndar = idAndar });
+                return Json(new { sede = nomeSede, idAndar = idAndar, mesa = mesaDoUsuario.Id });
             }
             catch (Exception e)
             {

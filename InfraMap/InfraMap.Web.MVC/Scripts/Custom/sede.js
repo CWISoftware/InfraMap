@@ -2,7 +2,7 @@
     var id_sede = $(this).children("input").attr("value");
     $.ajax({
         type: "GET",
-        url: '/Sede/PegarAndaresDasSedes',        
+        url: '/Sede/PegarAndaresDasSedes',
         dataType: "json"
     }).done(
         function (json) {
@@ -27,7 +27,7 @@ $("#btn-ir").click(function () {
         datatype: "json",
         success: function (data) { }
     }).done(function (nomeSede) {
-        window.location.href = "/Mapa/"+nomeSede+"/" + idAndar;
+        window.location.href = "/Mapa/"+nomeSede+"/" + idAndar + "/";
     }
     );
     }

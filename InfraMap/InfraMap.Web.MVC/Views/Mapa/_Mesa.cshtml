@@ -3,7 +3,7 @@
     var mesa = Model.First(t => t.Id == ViewBag.idMesa);
     var nome = mesa.Colaborador != null ? mesa.Colaborador.Nome : "";
 }
-<div class="mesa" onclick="mesaClick(@ViewBag.idMesa)">
+<div class="mesa" onclick="mesaClick(@ViewBag.idMesa, 0)">
     <label class="numero-mesa" id="@ViewBag.idMesa">@ViewBag.idMesa</label>
     <div class="mesa-div">
         @if (mesa.TemRamal)
@@ -18,8 +18,14 @@
 
         @if (mesa.TemMaquina && !mesa.TemColaborador)
         {
-            <span class="fa fa-logo fa-desktop computador"></span>
+            <span class="fa fa-logo fa-desktop computador" aria-hidden="true"></span>
         }
+
+        else if (mesa.TemMaquina)
+        {
+            <span class="fa fa-lowerlogo fa-desktop computador-menor" aria-hidden="true"></span>
+        }
+
         <label class="nome">@nome</label>
     </div>
 </div>

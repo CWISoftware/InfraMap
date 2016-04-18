@@ -40,7 +40,7 @@ namespace InfraMap.Web.MVC.Models
             if (mesa.Ramal != null)
             {
                 this.Ramal = mesa.Ramal;
-            }          
+            }
         }
 
         public bool TemMaquina
@@ -65,6 +65,37 @@ namespace InfraMap.Web.MVC.Models
             {
                 return this.Colaborador != null;
             }
+        }
+    }
+
+    public class RamalModel
+    {
+        public int IdRamal { get; set; }
+
+        public string Ramal { get; set; }
+
+        public TipoRamal TipoRamal { get; set; }
+
+        public RamalModel(Ramal ramal)
+        {
+            this.IdRamal = ramal.Id;
+            this.Ramal = ramal.Numero + " - " + ramal.Tipo;
+        }
+    }
+
+    public class ColaboradorModel
+    {
+        public int IdColaborador { get; set; }
+
+        public string Colaborador { get; set; }
+
+        public string Login { get; set; }
+
+        public ColaboradorModel(Usuario colaborador)
+        {
+            this.IdColaborador = colaborador.Id;
+            this.Colaborador = colaborador.Nome.Truncate(22);
+            this.Login = colaborador.Login;
         }
     }
 }

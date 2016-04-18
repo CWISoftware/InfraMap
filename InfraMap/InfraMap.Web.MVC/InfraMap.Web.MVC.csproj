@@ -215,6 +215,7 @@
     <Content Include="Views\Mapa\CWISL6.cshtml" />
     <Content Include="Views\Erro\Index.cshtml" />
     <Content Include="Views\Erro\NotFound.cshtml" />
+    <Content Include="Views\Mapa\_MesaColorida.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
