@@ -73,17 +73,9 @@
     <Compile Include="Migrations\201604081425336_Adicionado cor no usuario.Designer.cs">
       <DependentUpon>201604081425336_Adicionado cor no usuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201604172108097_Mudança mapeamento maquina e mesa.cs" />
-    <Compile Include="Migrations\201604172108097_Mudança mapeamento maquina e mesa.Designer.cs">
-      <DependentUpon>201604172108097_Mudança mapeamento maquina e mesa.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604172116572_Retirado campo senha do usuario.cs" />
-    <Compile Include="Migrations\201604172116572_Retirado campo senha do usuario.Designer.cs">
-      <DependentUpon>201604172116572_Retirado campo senha do usuario.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604180316329_Alteração do mapeamento usuario com gerente.cs" />
-    <Compile Include="Migrations\201604180316329_Alteração do mapeamento usuario com gerente.Designer.cs">
-      <DependentUpon>201604180316329_Alteração do mapeamento usuario com gerente.cs</DependentUpon>
+    <Compile Include="Migrations\201604181703269_MapeamentoMaquinaMesaUsuario.cs" />
+    <Compile Include="Migrations\201604181703269_MapeamentoMaquinaMesaUsuario.Designer.cs">
+      <DependentUpon>201604181703269_MapeamentoMaquinaMesaUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -129,14 +121,8 @@
     <EmbeddedResource Include="Migrations\201604081425336_Adicionado cor no usuario.resx">
       <DependentUpon>201604081425336_Adicionado cor no usuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604172108097_Mudança mapeamento maquina e mesa.resx">
-      <DependentUpon>201604172108097_Mudança mapeamento maquina e mesa.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604172116572_Retirado campo senha do usuario.resx">
-      <DependentUpon>201604172116572_Retirado campo senha do usuario.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604180316329_Alteração do mapeamento usuario com gerente.resx">
-      <DependentUpon>201604180316329_Alteração do mapeamento usuario com gerente.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201604181703269_MapeamentoMaquinaMesaUsuario.resx">
+      <DependentUpon>201604181703269_MapeamentoMaquinaMesaUsuario.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
