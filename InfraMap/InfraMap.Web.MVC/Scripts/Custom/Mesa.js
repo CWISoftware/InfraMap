@@ -26,7 +26,7 @@ function RenderPartial(id) {
             var login = $("#login").val();
             $.ajax({
                 type: "POST",
-                url: "/Mapa/AdicionarColaborador",
+                url: "/Colaborador/AdicionarColaborador",
                 data: { id: idMesa, colaborador: login },
                 datatype: "json",
                 success: function (data) {
@@ -48,7 +48,7 @@ function RenderPartial(id) {
             var login = $("#login").val();
             $.ajax({
                 type: "POST",
-                url: "/Mapa/TrocarMesaColaborador",
+                url: "/Colaborador/TrocarMesaColaborador",
                 data: { id: idMesa, colaborador: login },
                 datatype: "json",
                 success: function (data) {
@@ -64,7 +64,7 @@ function RenderPartial(id) {
             var idMesa = $("#idMesa").val();
             $.ajax({
                 type: "POST",
-                url: "/Mapa/RemoverColaborador",
+                url: "/Colaborador/RemoverColaborador",
                 data: { id: idMesa },
                 datatype: "json",
                 success: function (data) {
@@ -76,15 +76,69 @@ function RenderPartial(id) {
             });
         });
 
+        $("#btnAdicionarMaquina").click(function () {
+            $.ajax({
+                type: "GET",
+                url: "/Maquina/NomesModelosPadrao",
+                success: function (data) {
+                    var options = "";
+                    data.forEach(function (modelo) {
+                        options += '<option value="' + modelo.Id + '">' + modelo.Name + '</option>';
+                    })
+                    $("#dropdown-modeloMaquina").empty().append(options);
+                },
+                error: function (xhr, status, error) {
+                    DisplayError(xhr);
+                }
+            });
+        });
+
+        $("#dropdown-modeloMaquina").change(function () {
+            var idModeloEscolhido = $(this).val();
+            $.ajax({
+                type: "GET",
+                url: "/Maquina/MaquinaDoModelo",
+                data: { idModelo: idModeloEscolhido },
+                success: function (data) {
+                    $("#processador").prop('disabled', false).val(data.Processador);
+                    $("#placaMae").prop('disabled', false).val(data.PlacaMae);
+                    $("#unidadesMemoriaRam").prop('disabled', false).val(data.UnidadesMemoriaRam);
+                    $("#penteMemoriaRamGB").prop('disabled', false).val(data.PenteMemoriaRamGB);
+                    $("#ssd").prop('disabled', false).val(data.SSD);
+                    $("#hd").prop('disabled', false).val(data.HD);
+                    $("#fonte").prop('disabled', false).val(data.Fonte);
+                    $("#placaRede").prop('disabled', false).val(data.PlacaRede);
+                    $("#driverOtico").prop('disabled', false).val(data.DriverOtico);
+                },
+                error: function (xhr, status, error) {
+                    DisplayError(xhr);
+                }
+            })
+        });
+
         $("#adicionaMaquina").click(function () {
-            var idMesa = $("#idMesa").val();
-            var maquina = $("#nomeMaquina").val();
-            var tipo = $("#tipoMaquina").val();
+            var maquinaPessoal = {
+                Patrimonio: $("#patrimonio").val(),
+                EtiquetaServico: $("#etiquetaServico").val(),
+                IdMesa: $("#idMesa").val(),
+                Maquina: {
+                    IdModeloMaquina: $("#dropdown-modeloMaquina").val(),
+                    Processador: $("#processador").val(),
+                    PlacaMae: $("#placaMae").val(),
+                    UnidadesMemoriaRam: $("#unidadesMemoriaRam").val(),
+                    PenteMemoriaRamGB: $("#penteMemoriaRamGB").val(),
+                    Ssd: $("#ssd").val(),
+                    Hd: $("#hd").val(),
+                    Fonte: $("#fonte").val(),
+                    PlacaRede: $("#placaRede").val(),
+                    DriverOtico: $("#driverOtico").val()
+                }
+            };
             $.ajax({
                 type: "POST",
-                url: "/Mapa/AdicionarMaquina",
-                data: { id: idMesa, maquina: maquina, tipo: tipo },
-                datatype: "json",
+                url: "/Maquina/AdicionarMaquina",
+                data: JSON.stringify(maquinaPessoal),
+                contentType: "application/json",
                 success: function(data) {
                     reload();
                 },
@@ -98,7 +152,7 @@ function RenderPartial(id) {
             var idMesa = $("#idMesa").val();
             $.ajax({
                 type: "POST",
-                url: "/Mapa/RemoverMaquina",
+                url: "/Maquina/RemoverMaquina",
                 data: { id: idMesa },
                 datatype: "json",
                 success: function (data) {
@@ -116,7 +170,7 @@ function RenderPartial(id) {
             var tipoRamal = $("#tipoRamal").val();
             $.ajax({
                 type: "POST",
-                url: "/Mapa/AdicionarRamal",
+                url: "/Ramal/AdicionarRamal",
                 data: { id: idMesa, ramal: numero, tipo: tipoRamal },
                 datatype: "json",
                 success: function(data) {
@@ -132,7 +186,7 @@ function RenderPartial(id) {
             var idMesa = $("#idMesa").val();
             $.ajax({
                 type: "POST",
-                url: "/Mapa/RemoverRamal",
+                url: "/Ramal/RemoverRamal",
                 data: { id: idMesa },
                 datatype: "json",
                 success: function (data) {

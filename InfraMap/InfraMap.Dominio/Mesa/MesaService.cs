@@ -15,13 +15,17 @@ namespace InfraMap.Dominio.Mesa
         private IUsuarioRepositorio usuarioRepositorio;
         private IMaquinaRepositorio maquinaRepositorio;
         private IRamalRepositorio ramalRepositorio;
+        private IModeloMaquinaRepositorio modeloMaquinaRepositorio;
+        private IMaquinaPessoalRepositorio maquinaPessoalRepositorio;
 
-        public MesaService(IMesaRepositorio mesaRepositorio, IUsuarioRepositorio usuarioRepositorio, IMaquinaRepositorio maquinaRepositorio, IRamalRepositorio ramalRepositorio)
+        public MesaService(IMesaRepositorio mesaRepositorio, IUsuarioRepositorio usuarioRepositorio, IMaquinaRepositorio maquinaRepositorio, IRamalRepositorio ramalRepositorio, IModeloMaquinaRepositorio modeloMaquinaRepositorio, IMaquinaPessoalRepositorio maquinaPessoalRepositorio)
         {
             this.mesaRepositorio = mesaRepositorio;
             this.usuarioRepositorio = usuarioRepositorio;
             this.maquinaRepositorio = maquinaRepositorio;
             this.ramalRepositorio = ramalRepositorio;
+            this.modeloMaquinaRepositorio = modeloMaquinaRepositorio;
+            this.maquinaPessoalRepositorio = maquinaPessoalRepositorio;
         }
 
         public void AdicionarColaborador(int id, string login)
@@ -35,7 +39,7 @@ namespace InfraMap.Dominio.Mesa
 
             if (this.mesaRepositorio.BuscarMesaPorColaborador(colaborador.Login) != null)
             {
-                throw new UsuarioEmOutraMesaException("Colaborador "+ colaborador.Login + " já está em outra mesa!");
+                throw new UsuarioEmOutraMesaException("Colaborador " + colaborador.Login + " já está em outra mesa!");
             }
 
             mesa.AdicionarColaborador(colaborador);
@@ -67,25 +71,21 @@ namespace InfraMap.Dominio.Mesa
             this.mesaRepositorio.Atualizar(mesa);
         }
 
-        public void AdicionarMaquina(int idMesa, string maquina, int tipoMaquina)
+        public void AdicionarMaquina(int idMesa, MaquinaPessoal maquinaPessoal)
         {
             var mesa = this.mesaRepositorio.BuscarPorId(idMesa);
-            var tipo = (TipoMaquina)tipoMaquina;
-            var novaMaquina = new Maquina.Maquina()
-            {
-                Nome = maquina,
-                Tipo = tipo.ToString()
-            };
+            maquinaPessoal.Maquina.ModeloMaquina = this.modeloMaquinaRepositorio.BuscarPorId((int)maquinaPessoal.Maquina.ModeloMaquina_Id);
 
-            this.maquinaRepositorio.Adicionar(novaMaquina);
-            mesa.AdicionarMaquina(novaMaquina);
+            var novaMaquinaPessoal = this.maquinaPessoalRepositorio.Adicionar(maquinaPessoal);
+            this.maquinaRepositorio.Adicionar(maquinaPessoal.Maquina);
+            mesa.AdicionarMaquina(novaMaquinaPessoal);
             this.mesaRepositorio.Atualizar(mesa);
         }
 
         public void RemoverMaquina(int idMesa)
         {
             var mesa = this.mesaRepositorio.BuscarPorId(idMesa);
-            if (mesa.Maquina == null)
+            if (mesa.MaquinaPessoal == null)
             {
                 throw new Exception("Esta mesa não possui maquina!");
             }

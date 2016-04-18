@@ -4,7 +4,7 @@ namespace InfraMap.Dominio.Comum
 {
     public interface IRepositorio<TEntity> where TEntity : EntidadeBase
     {
-        void Adicionar(TEntity entity);
+        TEntity Adicionar(TEntity entity);
 
         void Atualizar(TEntity entity);
 

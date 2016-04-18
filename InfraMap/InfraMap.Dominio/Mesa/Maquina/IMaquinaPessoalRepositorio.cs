@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InfraMap.Dominio.Comum;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace InfraMap.Dominio.Mesa.Maquina
 {
-    public enum TipoMaquina
+    public interface IMaquinaPessoalRepositorio : IRepositorio<MaquinaPessoal>
     {
-        DEFAULT=0,PESSOAL=1
     }
 }

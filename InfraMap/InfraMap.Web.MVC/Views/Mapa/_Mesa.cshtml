@@ -1,8 +1,7 @@
-﻿@model List<InfraMap.Web.MVC.Models.MesaModel>
-
+﻿@model ICollection<InfraMap.Dominio.Mesa.Mesa>
 @{
     var mesa = Model.First(t => t.Id == ViewBag.idMesa);
-    var nome = mesa.Colaborador != null ? mesa.Colaborador.Colaborador : "";
+    var nome = mesa.Colaborador != null ? mesa.Colaborador.Nome : "";
 }
 <div class="mesa" onclick="mesaClick(@ViewBag.idMesa)">
     <label class="numero-mesa" id="@ViewBag.idMesa">@ViewBag.idMesa</label>

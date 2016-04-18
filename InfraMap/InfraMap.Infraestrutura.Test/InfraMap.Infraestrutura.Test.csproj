@@ -52,7 +52,6 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServicoCriptografiaTest.cs" />
     <Compile Include="StringExtensionsTest.cs" />
   </ItemGroup>
   <ItemGroup>

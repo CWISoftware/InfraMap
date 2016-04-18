@@ -1,6 +1,5 @@
 ﻿using InfraMap.Dominio.Mesa;
 using InfraMap.Infraestrutura.Ef.Repositorios;
-using InfraMap.Infraestrutura.Criptografia;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,20 +46,25 @@ namespace InfraMap.Web.MVC.Helpers
             return new SedeRepositorio();
         }
 
-        public static IServicoCriptografia CriarServicoCriptografia()
+        public static IModeloMaquinaRepositorio CriarModeloMaquinaRepositorio()
         {
-            return new ServicoCriptografia();
+            return new ModeloMaquinaRepositorio();
+        }
+
+        public static IMaquinaPessoalRepositorio CriarMaquinaPessoalRepositorio()
+        {
+            return new MaquinaPessoalRepositorio();
         }
 
         public static ServicoAutenticacao CriarServicoAutenticacao()
         {
-            return new ServicoAutenticacao(CriarUsuarioRepositorio(), CriarServicoCriptografia());
+            return new ServicoAutenticacao(CriarUsuarioRepositorio());
         }
 
         public static MesaService CriarMesaService()
         {
             return new MesaService(CriarMesaRepositorio(), CriarUsuarioRepositorio(),
-                    CriarMaquinaRepositorio(), CriarRamalRepositorio());
+                    CriarMaquinaRepositorio(), CriarRamalRepositorio(), CriarModeloMaquinaRepositorio(), CriarMaquinaPessoalRepositorio());
         }
     }
 }

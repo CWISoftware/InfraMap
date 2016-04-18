@@ -66,5 +66,11 @@ namespace InfraMap.Web.MVC.Controllers
                 return Json(new { Message = e.Message });
             }
         }
+
+        public JsonResult ErroTratado(Exception e)
+        {
+            Response.StatusCode = (int)System.Net.HttpStatusCode.BadRequest;
+            return Json(new { Message = e.Message });
+        }
     }
 }

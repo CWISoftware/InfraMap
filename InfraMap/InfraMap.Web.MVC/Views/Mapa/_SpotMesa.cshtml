@@ -1,9 +1,9 @@
 ﻿@model InfraMap.Web.MVC.Models.MesaModel
 
 @{
-    var colaborador = Model.Colaborador != null ? Model.Colaborador.Colaborador : "";
-    var maquina = Model.Maquina != null ? Model.Maquina.Maquina : "";
-    var ramal = Model.Ramal != null ? Model.Ramal.Ramal : "";
+    var colaborador = Model.Colaborador != null ? Model.Colaborador.Nome.Truncate(22) : "";
+    var maquina = Model.Maquina != null ? Model.Maquina.Maquina.ModeloMaquina.Name : "";
+    var ramal = Model.Ramal != null ? Model.Ramal.Numero : "";
 }
 @if (User.IsInRole("INFRA"))
 {
@@ -39,12 +39,15 @@
                             <button type="button" class="btn btn-danger form-control" data-toggle="modal" data-target="#removerMaquina" data-dismiss="modal">
                                 Remover maquina
                             </button>
+                            <button type="button" class="btn btn-info form-control" data-toggle="modal" data-target="#editarMaquina" data-dismiss="modal">
+                                Editar maquina
+                            </button>
                         </div>
                         <h2></h2>
                     }
                     else
                     {
-                        <button type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#maquina" data-dismiss="modal">
+                        <button type="button" class="btn btn-primary form-control" id="btnAdicionarMaquina" data-toggle="modal" data-target="#maquina" data-dismiss="modal">
                             Adicionar maquina
                         </button>
                         <h2></h2>
@@ -103,9 +106,49 @@
                 </div>
                 <div class="modal-body form-horizontal">
                     <input class="form-control" id="idMesa" value=@Model.Id type="hidden" />
-                    <input class="form-control" id="nomeMaquina" name="nome" placeholder="Nome da maquina" />
+                    <input class="form-control" id="etiquetaServico" placeholder="Etiqueta de servico" />
+                    <input class="form-control" id="patrimonio" placeholder="Numero do patrimonio" />
+                    <select id="dropdown-modeloMaquina" class="form-control"></select>
+                    <div class="form-group">
+                        <label>Processador:</label>
+                        <input class="form-control" id="processador" disabled placeholder="Descriçao do processador" />
+                    </div>
+                    <div class="form-group">
+                        <label>Placa Mãe:</label>
+                        <input class="form-control" id="placaMae" disabled placeholder="Descriçao da placa mãe" />
+                    </div>
+                    <div class="form-group">
+                        <label>Pentes de Memória Ram:</label>
+                        <input class="form-control" type="number" disabled id="unidadesMemoriaRam" placeholder="Número de pentes de memória ram" />
+                    </div>
+                    <div class="form-group">
+                        <label>Tamanho de cada pente:</label>
+                        <input class="form-control" type="number" disabled id="penteMemoriaRamGB" placeholder="Tamanho de cada pente de memória ram" />
+                        <div class="input-group-addon">GB</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Tamanho SSD:</label>
+                        <input class="form-control" type="number" disabled id="ssd" placeholder="Tamanho do SSD" />
+                        <div class="input-group-addon">GB</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Tamanho HD:</label>
+                        <input class="form-control" type="number" disabled id="hd" placeholder="Tamanho do HD" />
+                        <div class="input-group-addon">GB</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Fonte:</label>
+                        <input class="form-control" id="fonte" disabled placeholder="Descrição da fonte" />
+                    </div>
+                    <div class="form-group">
+                        <label>Placa de Rede:</label>
+                        <input class="form-control" id="placaRede" disabled placeholder="Descrição da placa de rede" />
+                    </div>
+                    <div class="form-group">
+                        <label>Driver Ótico:</label>
+                        <input class="form-control" id="driverOtico" disabled placeholder="Descrição do driver ótico" />
+                    </div>
                     <h2></h2>
-                    @Html.EnumDropDownListFor(m => m.Maquina.TipoMaquina, new { @id = "tipoMaquina", @class = "form-control" })
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
@@ -126,7 +169,7 @@
                     <input class="form-control" id="idMesa" value=@Model.Id type="hidden" />
                     <input class="form-control" id="numero" name="nome" placeholder="Digite um ramal" />
                     <h2></h2>
-                    @Html.EnumDropDownListFor(m => m.Ramal.TipoRamal, new { @id = "tipoRamal", @class = "form-control" })
+                    @Html.EnumDropDownListFor(m => m.Ramal.Tipo, new { @id = "tipoRamal", @class = "form-control" })
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>

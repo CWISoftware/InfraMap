@@ -1,33 +1,37 @@
 ﻿using InfraMap.Dominio.Usuario;
+using System.Web.Security;
 
 namespace InfraMap.Dominio.Autenticacao
 {
     public class ServicoAutenticacao
     {
         private IUsuarioRepositorio usuarioRepositorio;
-        private IServicoCriptografia servicoCriptografia;
 
-        public ServicoAutenticacao(IUsuarioRepositorio usuarioRepositorio, IServicoCriptografia servicoCriptografia)
+        public ServicoAutenticacao(IUsuarioRepositorio usuarioRepositorio)
         {
             this.usuarioRepositorio = usuarioRepositorio;
-            this.servicoCriptografia = servicoCriptografia;
         }
 
         public Usuario.Usuario BuscarPorAutenticacao(string login, string senha)
         {
-            Usuario.Usuario usuario = this.usuarioRepositorio.BuscarPorLogin(login);
-
-            if (usuario != null)
+            //if (Membership.ValidateUser(login,senha))
             {
-                string senhaCriptografada = servicoCriptografia.CriptografarSenha(senha);
+                Usuario.Usuario usuario = this.usuarioRepositorio.BuscarPorLogin(login);
 
-                if (usuario.Senha.ToUpper() != senhaCriptografada)
+                if(usuario == null)
                 {
-                    return null;
+                    var usuarioAD = Membership.GetUser(login);
+                    var usuarioLogado = new Usuario.Usuario()
+                    {
+                        Login = usuarioAD.UserName,
+                        Nome = usuarioAD.ProviderName
+                    };
+                    return this.usuarioRepositorio.Adicionar(usuarioLogado);
                 }
+                return usuario;
             }
 
-            return usuario;
+            return null;
         }
 
     }

@@ -35,6 +35,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,13 +47,17 @@
     <Compile Include="Comum\EntidadeBase.cs" />
     <Compile Include="Comum\IQuery.cs" />
     <Compile Include="Comum\IRepositorio.cs" />
+    <Compile Include="Mesa\Maquina\IMaquinaPessoalRepositorio.cs" />
+    <Compile Include="Mesa\Maquina\IModeloMaquinaRepositorio.cs" />
+    <Compile Include="Mesa\Maquina\MaquinaPessoal.cs" />
+    <Compile Include="Mesa\Maquina\ModeloMaquina.cs" />
+    <Compile Include="Mesa\Maquina\TipoMaquina.cs" />
     <Compile Include="Mesa\MesaService.cs" />
     <Compile Include="Mesa\UsuarioEmOutraMesaException.cs" />
     <Compile Include="Sede\Andar\Andar.cs" />
     <Compile Include="Sede\Andar\IAndarRepositorio.cs" />
     <Compile Include="Mesa\Maquina\IMaquinaRepositorio.cs" />
     <Compile Include="Mesa\Maquina\Maquina.cs" />
-    <Compile Include="Mesa\Maquina\TipoMaquina.cs" />
     <Compile Include="Mesa\IMesaRepositorio.cs" />
     <Compile Include="Mesa\Mesa.cs" />
     <Compile Include="Mesa\Ramal\IRamalRepositorio.cs" />
@@ -66,7 +72,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuario\Usuario.cs" />
     <Compile Include="Usuario\IUsuarioRepositorio.cs" />
-    <Compile Include="Autenticacao\IServicoCriptografia.cs" />
     <Compile Include="Autenticacao\ServicoAutenticacao.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

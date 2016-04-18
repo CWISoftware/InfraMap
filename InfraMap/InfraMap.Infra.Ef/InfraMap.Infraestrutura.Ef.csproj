@@ -55,10 +55,12 @@
     <Compile Include="Mapeamento\MapeamentoEntidade.cs" />
     <Compile Include="Mapeamento\MapeamentoMaquina.cs" />
     <Compile Include="Mapeamento\MapeamentoMesa.cs" />
+    <Compile Include="Mapeamento\MapeamentoModeloMaquina.cs" />
     <Compile Include="Mapeamento\MapeamentoPermissao.cs" />
     <Compile Include="Mapeamento\MapeamentoRamal.cs" />
     <Compile Include="Mapeamento\MapeamentoSede.cs" />
     <Compile Include="Mapeamento\MapeamentoUsuario.cs" />
+    <Compile Include="Mapeamento\MapeamentoMaquinaPessoal.cs" />
     <Compile Include="Migrations\201512051729210_Initial.cs" />
     <Compile Include="Migrations\201512051729210_Initial.Designer.cs">
       <DependentUpon>201512051729210_Initial.cs</DependentUpon>
@@ -71,6 +73,14 @@
     <Compile Include="Migrations\201604081425336_Adicionado cor no usuario.Designer.cs">
       <DependentUpon>201604081425336_Adicionado cor no usuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604172108097_Mudança mapeamento maquina e mesa.cs" />
+    <Compile Include="Migrations\201604172108097_Mudança mapeamento maquina e mesa.Designer.cs">
+      <DependentUpon>201604172108097_Mudança mapeamento maquina e mesa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604172116572_Retirado campo senha do usuario.cs" />
+    <Compile Include="Migrations\201604172116572_Retirado campo senha do usuario.Designer.cs">
+      <DependentUpon>201604172116572_Retirado campo senha do usuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -79,8 +89,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Repositorios\AndarRepositorio.cs" />
+    <Compile Include="Repositorios\MaquinaPessoalRepositorio.cs" />
     <Compile Include="Repositorios\MaquinaRepositorio.cs" />
     <Compile Include="Repositorios\MesaRepositorio.cs" />
+    <Compile Include="Repositorios\ModeloMaquinaRepositorio.cs" />
     <Compile Include="Repositorios\RamalRepositorio.cs" />
     <Compile Include="Repositorios\RepositorioBase.cs" />
     <Compile Include="Repositorios\SedeRepositorio.cs" />
@@ -112,6 +124,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604081425336_Adicionado cor no usuario.resx">
       <DependentUpon>201604081425336_Adicionado cor no usuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604172108097_Mudança mapeamento maquina e mesa.resx">
+      <DependentUpon>201604172108097_Mudança mapeamento maquina e mesa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604172116572_Retirado campo senha do usuario.resx">
+      <DependentUpon>201604172116572_Retirado campo senha do usuario.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

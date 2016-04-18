@@ -11,8 +11,6 @@ namespace InfraMap.Dominio.Usuario
 
         public string Login { get; set; }
 
-        public string Senha { get; set; }
-
         public string Cor { get; set; }
 
         public ICollection<Permissao> Permissoes { get; set; }

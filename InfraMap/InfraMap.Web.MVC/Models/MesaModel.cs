@@ -17,28 +17,29 @@ namespace InfraMap.Web.MVC.Models
 
         public int IdAndar { get; set; }
 
-        public MaquinaModel Maquina { get; set; }
+        public MaquinaPessoal Maquina { get; set; }
 
-        public RamalModel Ramal { get; set; }
+        public Ramal Ramal { get; set; }
 
-        public ColaboradorModel Colaborador { get; set; }
+        public Usuario Colaborador { get; set; }
 
         public MesaModel(Mesa mesa)
         {
             this.Id = mesa.Id;
             if (mesa.Colaborador != null)
             {
-                this.Colaborador = new ColaboradorModel(mesa.Colaborador);
+                mesa.Colaborador.Nome.Truncate(22);
+                this.Colaborador = mesa.Colaborador;
             }
 
-            if (mesa.Maquina != null)
+            if (mesa.MaquinaPessoal != null)
             {
-                this.Maquina = new MaquinaModel(mesa.Maquina);
+                this.Maquina = mesa.MaquinaPessoal;
             }
 
             if (mesa.Ramal != null)
             {
-                this.Ramal = new RamalModel(mesa.Ramal);
+                this.Ramal = mesa.Ramal;
             }          
         }
 
@@ -64,52 +65,6 @@ namespace InfraMap.Web.MVC.Models
             {
                 return this.Colaborador != null;
             }
-        }
-    }
-
-    public class MaquinaModel
-    {
-        public int IdMaquina { get; set; }
-
-        public string Maquina { get; set; }
-
-        public TipoMaquina TipoMaquina { get; set; }
-
-        public MaquinaModel(Maquina maquina)
-        {
-            this.IdMaquina = maquina.Id;
-            this.Maquina = maquina.Nome + " - " + maquina.Tipo;
-        }
-    }
-
-    public class RamalModel
-    {
-        public int IdRamal { get; set; }
-
-        public string Ramal { get; set; }
-
-        public TipoRamal TipoRamal { get; set; }
-
-        public RamalModel(Ramal ramal)
-        {
-            this.IdRamal = ramal.Id;
-            this.Ramal = ramal.Numero + " - " + ramal.Tipo;
-        }
-    }
-
-    public class ColaboradorModel
-    {
-        public int IdColaborador { get; set; }
-
-        public string Colaborador { get; set; }
-
-        public string Login { get; set; }
-
-        public ColaboradorModel(Usuario colaborador)
-        {
-            this.IdColaborador = colaborador.Id;
-            this.Colaborador = colaborador.Nome.Truncate(22);
-            this.Login = colaborador.Login;
         }
     }
 }

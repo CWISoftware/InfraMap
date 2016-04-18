@@ -9,12 +9,13 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
 {
     public class RepositorioBase<TEntity> : IRepositorio<TEntity> where TEntity : EntidadeBase
     {
-        public void Adicionar(TEntity entity)
+        public TEntity Adicionar(TEntity entity)
         {
             using (var dbContext = new DataBaseContext())
             {
                 dbContext.Set<TEntity>().Add(entity);
                 dbContext.SaveChanges();
+                return entity;
             }
         }
 

@@ -12,11 +12,14 @@ namespace InfraMap.Dominio.Mesa
         public int? Colaborador_Id { get; set; }
         public Usuario.Usuario Colaborador { get; set; }
 
-        public int? Maquina_Id { get; set; }
-        public Maquina.Maquina Maquina { get; set; }
+        public Maquina.MaquinaPessoal MaquinaPessoal { get; set; }
 
         public int? Ramal_Id { get; set; }
         public Ramal.Ramal Ramal { get; set; }
+
+        public string PontoRede { get; set; }
+        public string PontoTelefone { get; set; }
+        public string PontoEletrico { get; set; }
 
         public void AdicionarColaborador(Usuario.Usuario colaborador)
         {
@@ -30,16 +33,14 @@ namespace InfraMap.Dominio.Mesa
             this.Colaborador_Id = null;
         }
 
-        public void AdicionarMaquina(Maquina.Maquina maquina)
+        public void AdicionarMaquina(Maquina.MaquinaPessoal maquinaPessoal)
         {
-            this.Maquina = maquina;
-            this.Maquina_Id = maquina.Id;
+            this.MaquinaPessoal = maquinaPessoal;
         }
 
         public void RemoverMaquina()
         {
-            this.Maquina = null;
-            this.Maquina_Id = null;
+            this.MaquinaPessoal = null;
         }
 
         public void AdicionarRamal(Ramal.Ramal ramal)
@@ -52,6 +53,30 @@ namespace InfraMap.Dominio.Mesa
         {
             this.Ramal = null;
             this.Ramal_Id = null;
+        }
+
+        public bool TemMaquina
+        {
+            get
+            {
+                return this.MaquinaPessoal != null;
+            }
+        }
+
+        public bool TemRamal
+        {
+            get
+            {
+                return this.Ramal != null;
+            }
+        }
+
+        public bool TemColaborador
+        {
+            get
+            {
+                return this.Colaborador != null;
+            }
         }
     }
 }
