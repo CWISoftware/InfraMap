@@ -9,7 +9,7 @@
                 data: { nome: usuario },
                 dataType: "json",
                 success: function (data) {
-                    window.location.href = "/Mapa/" + data.sede + "/" + data.idAndar + "/" + data.mesa + "/";
+                    window.location.href = "/Mapa/" + data.sede + "/" + data.idAndar + "/" + data.mesa;
                 },
                 error: function (xhr, status, error) {
                     $("#carregar-usuario").val('');

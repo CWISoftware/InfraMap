@@ -201,7 +201,11 @@ function RenderPartial(id) {
 }
 
 function reload() {
-    location.reload();
+    var myUrl = window.location.href;
+    var newUrl = myUrl.substr(0, window.location.href.length - (window.location.href.length - myUrl.lastIndexOf("/")));
+    if ((newUrl[window.location.href.length]) != "/")
+        newUrl = newUrl + "/";
+    window.location.href = newUrl;
 }
 
 function DisplayError(xhr) {
