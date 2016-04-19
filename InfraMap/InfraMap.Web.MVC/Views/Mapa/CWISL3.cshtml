@@ -4,10 +4,10 @@
 
 }
 <section class="andar">
-    <div class="pull-right">
-        <button id="btn-selecionarColaboradores" type="button" class="btn btn-default pull-right">Selecionar colaboradores</button>
-        <button id="btn-salvarColaboradores" class="btn btn-default pull-right" type="button">Salvar colaboradores</button>
-    </div>
+    @if (User.IsInRole("GERENTE"))
+    {
+        Html.RenderPartial("_OpcoesGerente");
+    }
     <h2>CWI - São Leopoldo - 3º andar</h2>
     <div id="partial"></div>
     <div class="mesas-andar-3">

@@ -224,7 +224,8 @@ var usuarioLoginAutoComplete = {
 $("#btn-selecionarColaboradores").click(function () {
     $(".fileira").addClass("selectable");
     $("#btn-selecionarColaboradores").addClass("hide");
-    $("#btn-salvarColaboradores").addClass("show");
+    $("#btn-salvarColaboradores").removeClass("hide");
+    $("#btn-cancelar").removeClass("hide");
     $(".mesa").attr("onclick", null);
     $(".mesa").addClass("ui-widget-content");
     startSelectable();
@@ -241,6 +242,9 @@ $("#btn-salvarColaboradores").click(function () {
         data: { listaIdColaborador: listId },
         datatype: "json",
         success: function (data) {
+            $("#btn-selecionarColaboradores").removeClass("hide");
+            $("#btn-salvarColaboradores").addClass("hide");
+            $("#btn-cancelar").addClass("hide");
             reload();
         }
     });
@@ -257,3 +261,10 @@ function startSelectable() {
         }
     });
 };
+
+$("#btn-cancelar").click(function () {
+    $("#btn-selecionarColaboradores").removeClass("hide");
+    $("#btn-salvarColaboradores").addClass("hide");
+    $("#btn-cancelar").addClass("hide");
+    reload();
+});
