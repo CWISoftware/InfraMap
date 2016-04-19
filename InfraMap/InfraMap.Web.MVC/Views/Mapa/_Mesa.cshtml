@@ -2,30 +2,30 @@
 @{
     var mesa = Model.First(t => t.Id == ViewBag.idMesa);
     var nome = mesa.Colaborador != null ? mesa.Colaborador.Nome : "";
+    var id = mesa.Colaborador != null ? mesa.Colaborador.Id.ToString() : "";
+    var cor = "black";
+    if (ViewBag.mesaSelecionada == mesa.Id) { cor = "red; box-shadow: 0px 0px 3px 2px red"; }
+    else if (mesa.Colaborador != null) { cor = mesa.Colaborador.Cor; }
 }
-<div class="mesa" onclick="mesaClick(@ViewBag.idMesa, 0)">
-    <label class="numero-mesa" id="@ViewBag.idMesa">@ViewBag.idMesa</label>
-    <div class="mesa-div">
-        @if (mesa.TemRamal)
-        {
-            <span class="glyphicon glyphicon-phone-alt ramal" aria-hidden="true"></span>
-        }
-
-        @if (mesa.TemColaborador)
-        {
-            <span class="glyphicon glyphicon-user usuario" aria-hidden="true"></span>
-        }
-
-        @if (mesa.TemMaquina && !mesa.TemColaborador)
-        {
-            <span class="fa fa-logo fa-desktop computador" aria-hidden="true"></span>
-        }
-
-        else if (mesa.TemMaquina)
-        {
-            <span class="fa fa-lowerlogo fa-desktop computador-menor" aria-hidden="true"></span>
-        }
-
-        <label class="nome">@nome</label>
+<div class="mesa" onclick="mesaClick(@ViewBag.idMesa)" style="color:@cor;">
+        <label class="numero-mesa" id="@ViewBag.idMesa" style="color:inherit">@ViewBag.idMesa</label>
+        <div class="mesa-div">
+            @if (mesa.TemRamal)
+            {
+                <span class="glyphicon glyphicon-phone-alt ramal" aria-hidden="true" style="color:inherit"></span>
+            }
+            @if (mesa.TemColaborador)
+            {
+                <span class="glyphicon glyphicon-user usuario" aria-hidden="true" style="color:inherit"></span>
+            }
+            @if (mesa.TemMaquina && !mesa.TemColaborador)
+            {
+                <span class="fa fa-logo fa-desktop computador" aria-hidden="true" style="color:inherit"></span>
+            }
+            else if (mesa.TemMaquina)
+            {
+                <span class="fa fa-lowerlogo fa-desktop computador-menor" aria-hidden="true" style="color:inherit"></span>
+            }
+            <label id_usuario="@id" class="nome">@nome</label>
+        </div>
     </div>
-</div>

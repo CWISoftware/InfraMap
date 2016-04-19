@@ -2,11 +2,11 @@
 @{
     ViewBag.Title = "Quarto";
 }
-<div style="width:79%;height:10px">
-    <button id="btn-selecionarColaboradores" type="button" class="btn btn-default pull-right">Selecionar colaboradores</button>
-    <button id="btn-salvarColaboradores" class="btn btn-default pull-right" type="button">Salvar colaboradores</button>
-</div>
 <section class="andar">
+    <div class="pull-right">
+        <button id="btn-selecionarColaboradores" type="button" class="btn btn-default pull-right">Selecionar colaboradores</button>
+        <button id="btn-salvarColaboradores" class="btn btn-default pull-right" type="button">Salvar colaboradores</button>
+    </div>
     <h2>CWI - São Leopoldo - 4º andar</h2>
     <div id="partial"></div>
     <div class="salas-sul-cwi-sl">
@@ -33,28 +33,14 @@
             @Html.Raw("<div class=\"fileira pull-left\">");
             for (var i = 0; i < 6; i++, i_mesas++, num_mesas++)
 	        {
-                /*if (i_mesas == Model.MesaId)
-                {
-                    @Html.Partial("_MesaColorida", Model.Mesas, new ViewDataDictionary { { "idMesa", Model.MesaId } });
-                }
-                else */
-                {
-                    @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", i_mesas } });
-                }
+                @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", i_mesas }, { "mesaSelecionada", Model.GetMesaSelecionada() } });
             }
             @Html.Raw("</div>");
 
             @Html.Raw("<div class=\"fileira pull-right\">");
             for (var i = 0; i < 6; i++, i_mesas++, num_mesas++)
 	        {
-                /*if (i_mesas == Model.MesaId)
-                {
-                    @Html.Partial("_MesaColorida", Model.Mesas, new ViewDataDictionary { { "idMesa", Model.MesaId } });
-                }
-                else */
-                {
-                    @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", i_mesas } });
-                }
+                @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", i_mesas }, { "mesaSelecionada", Model.GetMesaSelecionada() } });
             }
             @Html.Raw("</div>");
 
