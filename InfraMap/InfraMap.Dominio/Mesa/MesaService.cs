@@ -101,7 +101,7 @@ namespace InfraMap.Dominio.Mesa
             var entidade = new Ramal.Ramal
             {
                 Numero = ramal,
-                Tipo = tipo.ToString()
+                Tipo = tipo
             };
 
             var mesa = this.mesaRepositorio.BuscarPorId(idMesa);

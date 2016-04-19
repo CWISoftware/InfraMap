@@ -53,6 +53,7 @@
     <Compile Include="Mesa\Maquina\ModeloMaquina.cs" />
     <Compile Include="Mesa\Maquina\TipoMaquina.cs" />
     <Compile Include="Mesa\MesaService.cs" />
+    <Compile Include="Mesa\Ramal\DisplayAttribute.cs" />
     <Compile Include="Mesa\UsuarioEmOutraMesaException.cs" />
     <Compile Include="Sede\Andar\Andar.cs" />
     <Compile Include="Sede\Andar\IAndarRepositorio.cs" />

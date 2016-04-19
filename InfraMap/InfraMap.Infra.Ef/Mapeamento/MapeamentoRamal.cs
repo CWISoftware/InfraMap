@@ -12,7 +12,7 @@ namespace InfraMap.Infraestrutura.Ef.Mapeamento
         public MapeamentoRamal()
         {
             Property(t => t.Numero).IsRequired().HasMaxLength(15);
-            Property(t => t.Tipo).IsRequired().HasMaxLength(25);
+            Property(t => t.Tipo).IsRequired();
         }
     }
 }
