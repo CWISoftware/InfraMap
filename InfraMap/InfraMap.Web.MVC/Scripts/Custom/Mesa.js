@@ -232,13 +232,13 @@ $("#btn-selecionarColaboradores").click(function () {
 
 $("#btn-salvarColaboradores").click(function () {
     var listId = [];
-    $(".mesa.ui-selected").find('.numero-mesa').each(function () {
-        listId.push($(this).attr("id"));
+    $(".mesa.ui-selected").find('.nome').each(function () {
+        listId.push($(this).attr("id_usuario"));
     });
     $.ajax({
         type: "POST",
         url: "/Mapa/SalvarCorDosColaboradores",
-        data: { listaIdMesa: listId },
+        data: { listaIdColaborador: listId },
         datatype: "json",
         success: function (data) {
             reload();

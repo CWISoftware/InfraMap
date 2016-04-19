@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using InfraMap.Dominio.Mesa.Maquina;
 using InfraMap.Dominio.Mesa.Ramal;
 using InfraMap.Dominio.Usuario;
+using InfraMap.Dominio.Autenticacao;
 
 namespace InfraMap.Dominio.Mesa
 {
@@ -119,6 +120,25 @@ namespace InfraMap.Dominio.Mesa
 
             mesa.RemoverRamal();
             this.mesaRepositorio.Atualizar(mesa);
+        }
+
+        public void SalvarCorDosColaboradores(int[] listaIdColaborador, string gerenteLogin)
+        {
+            var gerente = this.usuarioRepositorio.BuscarPorLogin(gerenteLogin);
+            if (gerente == null)
+            {
+                throw new ArgumentException("Gerente não encontrado!");
+            }
+            foreach (int idColaborador in listaIdColaborador)
+            {
+                var colaborador = this.usuarioRepositorio.BuscarPorId(idColaborador);
+                if (colaborador != null)
+                {
+                    colaborador.Cor = gerente.Cor;
+                    colaborador.GerenteId = gerente.Id;
+                    this.usuarioRepositorio.Atualizar(colaborador);
+                }
+            }
         }
     }
 }

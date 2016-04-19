@@ -71,13 +71,19 @@ namespace InfraMap.Web.MVC.Controllers
             return mesas.Count(m => !m.TemColaborador && m.TemMaquina);
         }
 
-        public void SalvarCorDosColaboradores(int[] listaIdMesa)
+        [HttpPost]
+        public JsonResult SalvarCorDosColaboradores(int[] listaIdColaborador)
         {
-            var a = listaIdMesa;
-            var mesaRepositorio = Factory.CriarMesaRepositorio();
-            var mesa = mesaRepositorio.BuscarPorId(a.First());
-            var usuarioLogado = ControleDeSessao.UsuarioLogado;
-            //TODO: salvar cor para colaborador que esta na mesa
+            try
+            {
+                var service = Factory.CriarMesaService();
+                service.SalvarCorDosColaboradores(listaIdColaborador, ControleDeSessao.UsuarioLogado.Login);
+            }
+            catch (Exception e)
+            {
+                return ErroTratado(e);
+            }
+            return Json(new { success = true });
         }
     }
 }

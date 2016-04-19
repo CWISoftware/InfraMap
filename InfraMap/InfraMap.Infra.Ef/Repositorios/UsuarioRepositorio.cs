@@ -14,7 +14,7 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
         {
             using (var db = new DataBaseContext())
             {
-                return db.Usuario.Include("Permissoes").FirstOrDefault(p => p.Login == login);
+                return db.Usuario.Include("Permissoes").Include("ColaboradoresVinculados").FirstOrDefault(p => p.Login == login);
             }
         }
 
@@ -33,6 +33,14 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
         public IList<Usuario> BuscarUsuariosPorLogin(string login)
         {
             return this.Buscar(new BuscarUsuariosPorLoginQuery(login));
+        }
+
+        public IList<Usuario> Buscar()
+        {
+            using (var db = new DataBaseContext())
+            {
+                return db.Usuario.ToList();
+            }
         }
     }
 }
