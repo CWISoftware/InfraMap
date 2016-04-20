@@ -29,10 +29,10 @@ namespace InfraMap.Dominio.Mesa
             this.maquinaPessoalRepositorio = maquinaPessoalRepositorio;
         }
 
-        public void AdicionarColaborador(int id, string login)
+        public void AdicionarColaborador(int id, string nome)
         {
             var mesa = this.mesaRepositorio.BuscarPorId(id);
-            var colaborador = this.usuarioRepositorio.BuscarPorLogin(login);
+            var colaborador = this.usuarioRepositorio.BuscarPorNome(nome);
             if (colaborador == null)
             {
                 throw new ArgumentException("Colaborador não encontrado!");

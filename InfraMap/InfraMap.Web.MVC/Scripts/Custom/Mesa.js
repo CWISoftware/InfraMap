@@ -18,9 +18,9 @@ function RenderPartial(id) {
     }).success(function (data) {
         podeExecutar = true;
         $("#partial").html(data);
-        $('#myModal').modal('show');
-        $('#modalUsuario').modal('show');
-        $("#login").easyAutocomplete(usuarioLoginAutoComplete);
+        $('#InfraModal').modal('show');
+        $('#GerenteModal').modal('show');
+        $("#login").easyAutocomplete(usuarioAutoComplete);
         $("#adicionaUsuario").click(function () {
             var idMesa = $("#idMesa").val();
             var login = $("#login").val();

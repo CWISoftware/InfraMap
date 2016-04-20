@@ -7,7 +7,7 @@
 }
 @if (User.IsInRole("INFRA"))
 {
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal fade" id="InfraModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -271,9 +271,10 @@
         </div>
     </div>
 }
-@if (!User.IsInRole("INFRA"))
+
+@if (User.IsInRole("GERENTE"))
 {
-    <div class="modal fade" id="modalUsuario" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal fade" id="GerenteModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
