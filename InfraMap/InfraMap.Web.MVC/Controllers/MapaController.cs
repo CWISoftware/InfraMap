@@ -36,7 +36,7 @@ namespace InfraMap.Web.MVC.Controllers
             {
                 var sedeRepositorio = Factory.CriarSedeRepositorio();
                 var andarDb = sedeRepositorio.BuscarSedePorNome(sede).Andares.FirstOrDefault(t => t.Id == andar);
-                andarDb.SetMesaSelecionada(mesa);
+                andarDb.MesaSelecionada = mesa;
                 var model = andarDb;
                 return View(sede + andarDb.Id, model);
             }

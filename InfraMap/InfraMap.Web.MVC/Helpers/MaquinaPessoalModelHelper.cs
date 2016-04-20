@@ -1,9 +1,5 @@
 ﻿using InfraMap.Dominio.Mesa.Maquina;
 using InfraMap.Web.MVC.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace InfraMap.Web.MVC.Helpers
 {
@@ -32,7 +28,7 @@ namespace InfraMap.Web.MVC.Helpers
                 Processador = model.Processador,
                 PenteMemoriaRamGB = model.PenteMemoriaRamGB,
                 UnidadesMemoriaRam = model.UnidadesMemoriaRam,
-                TipoMaquina = TipoMaquina.PESSOAL,
+                TipoMaquina = TipoMaquina.Pessoal,
                 ModeloMaquina_Id = model.IdModeloMaquina
             };
         }

@@ -1,10 +1,12 @@
-﻿namespace InfraMap.Dominio.Mesa.Ramal
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace InfraMap.Dominio.Mesa.Ramal
 {
     public enum TipoRamal
     {
         [Display(Name = "Digital")]
         Digital,
-        [Display(Name = "Analogico")]
+        [Display(Name = "Analógico")]
         Analogico
     }
 }

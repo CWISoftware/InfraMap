@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace InfraMap.Dominio.Mesa.Maquina
 {
     public enum TipoMaquina
     {
-        DEFAULT=0,PESSOAL=1
+        [Display(Name = "Padrão")]
+        Padrao,
+        [Display(Name = "Pessoal")]
+        Pessoal
     }
 }

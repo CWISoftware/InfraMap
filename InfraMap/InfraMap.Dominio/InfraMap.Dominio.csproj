@@ -34,6 +34,7 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -53,7 +54,6 @@
     <Compile Include="Mesa\Maquina\ModeloMaquina.cs" />
     <Compile Include="Mesa\Maquina\TipoMaquina.cs" />
     <Compile Include="Mesa\MesaService.cs" />
-    <Compile Include="Mesa\Ramal\DisplayAttribute.cs" />
     <Compile Include="Mesa\UsuarioEmOutraMesaException.cs" />
     <Compile Include="Sede\Andar\Andar.cs" />
     <Compile Include="Sede\Andar\IAndarRepositorio.cs" />

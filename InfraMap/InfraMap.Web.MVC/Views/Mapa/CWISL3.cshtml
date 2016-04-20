@@ -17,7 +17,7 @@
             @Html.Raw("<div class=\"fileira pull-left\">");
             for (var i = 0; i < 9; i++, i_mesas--)
             {
-                @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", i_mesas }, { "mesaSelecionada", Model.GetMesaSelecionada() } });
+                @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", i_mesas }, { "mesaSelecionada", Model.MesaSelecionada } });
             }
             @Html.Raw("</div>");
             @Html.Raw("<div class=\"espaco-fileiras-cwi-sl\"></div>");
@@ -26,7 +26,7 @@
                 @Html.Raw("<div class=\"fileira pull-left\">");
                 for (var i = 0; i < 7; i++, i_mesas--, num_mesas++)
                 {
-                    @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", i_mesas }, { "mesaSelecionada", Model.GetMesaSelecionada() } });
+                    @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", i_mesas }, { "mesaSelecionada", Model.MesaSelecionada } });
                 }
                 @Html.Raw("</div>");
 
@@ -38,7 +38,7 @@
             @Html.Raw("<div class=\"fileira pull-left\">");
             for (i_mesas = 217; i_mesas < 224; i_mesas++)
             {
-              @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", i_mesas }, { "mesaSelecionada", Model.GetMesaSelecionada() } });
+              @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", i_mesas }, { "mesaSelecionada", Model.MesaSelecionada } });
             }
             @Html.Raw("</div>");
             @Html.Raw("<div class=\"espaco-fileiras-cwi-sl\"></div>");

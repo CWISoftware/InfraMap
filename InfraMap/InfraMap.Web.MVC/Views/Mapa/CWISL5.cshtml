@@ -34,14 +34,14 @@
             @Html.Raw("<div class=\"fileira pull-left\">");
             for (var i = 0; i < 6; i++, i_mesas++, num_mesas++)
             {
-                @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", i_mesas }, {"mesaSelecionada", Model.GetMesaSelecionada()} });
+                @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", i_mesas }, {"mesaSelecionada", Model.MesaSelecionada} });
             }
             @Html.Raw("</div>");
 
             @Html.Raw("<div class=\"fileira pull-right\">");
             for(var i = 0; i < 6; i++, i_mesas++, num_mesas++)
             {
-                @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", i_mesas }, { "mesaSelecionada", Model.GetMesaSelecionada() } });
+                @Html.Partial("_Mesa", Model.Mesas, new ViewDataDictionary { { "idMesa", i_mesas }, { "mesaSelecionada", Model.MesaSelecionada } });
             }
             @Html.Raw("</div>");
 
