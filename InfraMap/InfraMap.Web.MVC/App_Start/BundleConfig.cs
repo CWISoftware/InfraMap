@@ -19,7 +19,8 @@ namespace InfraMap.Web.MVC.App_Start
                         "~/Scripts/infra-map-auto-complete.js",
                         "~/Scripts/modernizr-*",
                         "~/Scripts/Custom/sede.js",
-                        "~/Scripts/Custom/Mesa.js"));
+                        "~/Scripts/Custom/Mesa.js",
+                        "~/Scripts/Custom/OpcoesGerente.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui.*"));
