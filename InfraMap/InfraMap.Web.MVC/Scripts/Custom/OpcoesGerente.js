@@ -22,7 +22,7 @@ $("#btn-salvarColaboradores").click(function () {
             $("#btn-selecionarColaboradores").removeClass("hide");
             $("#btn-salvarColaboradores").addClass("hide");
             $("#btn-cancelar").addClass("hide");
-            reload();
+            RetiraDestaqueMesa();
         }
     });
 });
@@ -43,5 +43,5 @@ $("#btn-cancelar").click(function () {
     $("#btn-selecionarColaboradores").removeClass("hide");
     $("#btn-salvarColaboradores").addClass("hide");
     $("#btn-cancelar").addClass("hide");
-    reload();
+    RetiraDestaqueMesa();
 });

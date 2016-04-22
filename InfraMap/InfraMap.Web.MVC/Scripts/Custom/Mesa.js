@@ -34,7 +34,7 @@ function RenderPartial(id) {
                         $('#modalTrocarUsuario').modal('show');
                     }
                     else {
-                        reload();
+                        RetiraDestaqueMesa();
                     }
                 },
                 error: function (xhr, status, error) {
@@ -52,7 +52,7 @@ function RenderPartial(id) {
                 data: { id: idMesa, colaborador: login },
                 datatype: "json",
                 success: function (data) {
-                    reload();
+                    RetiraDestaqueMesa();
                 },
                 error: function (xhr, status, error) {
                     DisplayError(xhr);
@@ -68,7 +68,7 @@ function RenderPartial(id) {
                 data: { id: idMesa },
                 datatype: "json",
                 success: function (data) {
-                    reload();
+                    RetiraDestaqueMesa();
                 },
                 error: function (xhr, status, error) {
                     DisplayError(xhr);
@@ -143,7 +143,7 @@ function RenderPartial(id) {
                 data: JSON.stringify(maquinaPessoal),
                 contentType: "application/json",
                 success: function(data) {
-                    reload();
+                    RetiraDestaqueMesa();
                 },
                 error: function (xhr, status, error) {
                     DisplayError(xhr);
@@ -159,7 +159,7 @@ function RenderPartial(id) {
                 data: { id: idMesa },
                 datatype: "json",
                 success: function (data) {
-                    reload();
+                    RetiraDestaqueMesa();
                 },
                 error: function (xhr, status, error) {
                     DisplayError(xhr);
@@ -177,7 +177,7 @@ function RenderPartial(id) {
                 data: { id: idMesa, ramal: numero, tipo: tipoRamal },
                 datatype: "json",
                 success: function(data) {
-                    reload();
+                    RetiraDestaqueMesa();
                 },
                 error: function (xhr, status, error) {
                     DisplayError(xhr);
@@ -193,7 +193,7 @@ function RenderPartial(id) {
                 data: { id: idMesa },
                 datatype: "json",
                 success: function (data) {
-                    reload();
+                    RetiraDestaqueMesa();
                 },
                 error: function (xhr, status, error) {
                     DisplayError(xhr);
@@ -203,9 +203,15 @@ function RenderPartial(id) {
     });
 }
 
-var reload = function () {
+var RetiraDestaqueMesa = function () {
     var myUrl = window.location.href;
     var newUrl = myUrl.substr(0, window.location.href.length - (window.location.href.length - myUrl.lastIndexOf("/")));
+    var UrlTest = newUrl.match("[a-zA-Z]$");
+    if (UrlTest != null)
+    {
+        var andar = myUrl.substr(myUrl.lastIndexOf("/"), window.location.href.length);
+        newUrl = newUrl + andar + "/";
+    }
     if ((newUrl[window.location.href.length]) != "/")
         newUrl = newUrl + "/";
     window.location.href = newUrl;
