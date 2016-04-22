@@ -127,6 +127,7 @@
     <Content Include="Content\jquery-ui.theme.min.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Scripts\Custom\OpcoesGerente.js" />
+    <Content Include="Scripts\Custom\OpcoesInfra.js" />
     <Content Include="Scripts\Custom\Shared.js" />
     <Content Include="Scripts\infra-map-auto-complete.js" />
     <Content Include="Scripts\jquery-ui.js" />
@@ -227,6 +228,7 @@
     <Content Include="Views\Modais\_ModalError.cshtml" />
     <Content Include="Views\Modais\_ModalTrocarUsuario.cshtml" />
     <Content Include="Views\Shared\_OpcoesInfra.cshtml" />
+    <Content Include="Views\Maquina\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -237,7 +239,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Colaborador\" />
-    <Folder Include="Views\Maquina\" />
     <Folder Include="Views\Ramal\" />
   </ItemGroup>
   <ItemGroup>

@@ -21,7 +21,8 @@ namespace InfraMap.Web.MVC.App_Start
                         "~/Scripts/modernizr-*",
                         "~/Scripts/Custom/sede.js",
                         "~/Scripts/Custom/Mesa.js",
-                        "~/Scripts/Custom/OpcoesGerente.js"));
+                        "~/Scripts/Custom/OpcoesGerente.js",
+                        "~/Scripts/Custom/OpcoesInfra.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui.*"));

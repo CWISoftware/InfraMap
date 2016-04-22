@@ -52,5 +52,18 @@ namespace InfraMap.Web.MVC.Controllers
 
             return Json(maquina, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpGet]
+        public ActionResult AdicionarMaquina()
+        {
+            try
+            {
+                return View("Index");
+            }
+            catch (Exception e)
+            {
+                return ErroTratado(e);
+            }
+        }
     }
 }
