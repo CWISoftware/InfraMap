@@ -7,228 +7,160 @@ function mesaClick(id) {
 };
 
 function RenderPartial(id) {
-    $.ajax({
-        type: "POST",
-        url: "/Mapa/RenderPartialViewSpotMesa",
-        data: { id: id },
-        datatype: "json",
-        error: function (xhr, status, error) {
-            DisplayError(xhr);
-        }
-    }).success(function (data) {
-        podeExecutar = true;
-        $("#partial").html(data);
-        $('#InfraModal').modal('show');
-        $('#GerenteModal').modal('show');
-        $("#login").easyAutocomplete(usuarioAutoComplete);
-        $("#adicionaUsuario").click(function () {
-            var idMesa = $("#idMesa").val();
-            var login = $("#login").val();
-            $.ajax({
-                type: "POST",
-                url: "/Colaborador/AdicionarColaborador",
-                data: { id: idMesa, colaborador: login },
-                datatype: "json",
-                success: function (data) {
-                    if (data.trocar) {
-                        $('#modalTrocarUsuario').modal('show');
+    SendsServer(
+        "/Mapa/RenderPartialViewSpotMesa",
+        { id: id },
+        function (data) {
+            podeExecutar = true;
+            $("#partial").html(data);
+            $('#InfraModal').modal('show');
+            $('#GerenteModal').modal('show');
+            $("#login").easyAutocomplete(usuarioAutoComplete);
+            $("#adicionaUsuario").click(
+                function () {
+                    SendsServer(
+                        "/Colaborador/AdicionarColaborador",
+                        { id: $("#idMesa").val(), colaborador: $("#login").val() },
+                        function (response) {
+                            if (response.trocar) {
+                                $('#modalTrocarUsuario').modal('show');
+                            }
+                            else {
+                                RetiraDestaqueMesa();
+                            }
+                        },
+                        function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+                    );
+                }
+            );
+
+            $("#trocarUsuario").click(
+                function () {
+                    SendsServer(
+                        "/Colaborador/TrocarMesaColaborador",
+                        { id: $("#idMesa").val(), colaborador: $("#login").val() },
+                        function (response) { RetiraDestaqueMesa(); },
+                        function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+                    );
+                }
+            );
+
+            $("#removeColaborador").click(
+                function () {
+                    SendsServer(
+                        "/Colaborador/RemoverColaborador",
+                        { id: $("#idMesa").val() },
+                        function (response) { RetiraDestaqueMesa(); },
+                        function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+                    );
+                }
+            );
+
+            $("#btnAdicionarMaquina").click(
+                function () {
+                    ReceivesServer(
+                        "/Maquina/NomesModelosPadrao",
+                        { },
+                        function (data) {
+                            var options = "<option value='0'>Selecione um modelo</option>";
+                            data.forEach(
+                                function (modelo) {
+                                    options += '<option value="' + modelo.Id + '">' + modelo.Name + '</option>';
+                                }
+                            )
+                            $("#dropdown-modeloMaquina").empty().append(options);
+                        },
+                        function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+                    );
+                }
+            );
+
+            $("#dropdown-modeloMaquina").change(
+                function () {
+                    var idModeloEscolhido = $(this).val();
+                    if (idModeloEscolhido == 0) {
+                        return;
                     }
-                    else {
-                        RetiraDestaqueMesa();
-                    }
-                },
-                error: function (xhr, status, error) {
-                    DisplayError(xhr);
-                }
-            });
-        });
 
-        $("#trocarUsuario").click(function () {
-            var idMesa = $("#idMesa").val();
-            var login = $("#login").val();
-            $.ajax({
-                type: "POST",
-                url: "/Colaborador/TrocarMesaColaborador",
-                data: { id: idMesa, colaborador: login },
-                datatype: "json",
-                success: function (data) {
-                    RetiraDestaqueMesa();
-                },
-                error: function (xhr, status, error) {
-                    DisplayError(xhr);
+                    ReceivesServer(
+                        "/Maquina/MaquinaDoModelo",
+                        { idModelo: idModeloEscolhido },
+                        function (data) {
+                            $("#processador").prop('disabled', false).val(data.Processador);
+                            $("#placaMae").prop('disabled', false).val(data.PlacaMae);
+                            $("#unidadesMemoriaRam").prop('disabled', false).val(data.UnidadesMemoriaRam);
+                            $("#penteMemoriaRamGB").prop('disabled', false).val(data.PenteMemoriaRamGB);
+                            $("#ssd").prop('disabled', false).val(data.SSD);
+                            $("#hd").prop('disabled', false).val(data.HD);
+                            $("#fonte").prop('disabled', false).val(data.Fonte);
+                            $("#placaRede").prop('disabled', false).val(data.PlacaRede);
+                            $("#driverOtico").prop('disabled', false).val(data.DriverOtico);
+                        },
+                        function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+                    );
                 }
-            });
-        });
+            );
 
-        $("#removeColaborador").click(function () {
-            var idMesa = $("#idMesa").val();
-            $.ajax({
-                type: "POST",
-                url: "/Colaborador/RemoverColaborador",
-                data: { id: idMesa },
-                datatype: "json",
-                success: function (data) {
-                    RetiraDestaqueMesa();
-                },
-                error: function (xhr, status, error) {
-                    DisplayError(xhr);
+            $("#adicionaMaquina").click(
+                function () {
+                    SendsServer(
+                        "/Maquina/AdicionarMaquina",
+                        {
+                            EtiquetaServico: $("#etiquetaServico").val(),
+                            Patrimonio: $("#patrimonio").val(),
+                            IdMesa: $("#idMesa").val(),
+                            Maquina: {
+                                IdModeloMaquina: $("#dropdown-modeloMaquina").val(),
+                                Processador: $("#processador").val(),
+                                PlacaMae: $("#placaMae").val(),
+                                UnidadesMemoriaRam: $("#unidadesMemoriaRam").val(),
+                                PenteMemoriaRamGB: $("#penteMemoriaRamGB").val(),
+                                Ssd: $("#ssd").val(),
+                                Hd: $("#hd").val(),
+                                Fonte: $("#fonte").val(),
+                                PlacaRede: $("#placaRede").val(),
+                                DriverOtico: $("#driverOtico").val()
+                            }
+                        },
+                        function (response) { RetiraDestaqueMesa(); },
+                        function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+                    );
                 }
-            });
-        });
+            );
 
-        $("#btnAdicionarMaquina").click(function () {
-            $.ajax({
-                type: "GET",
-                url: "/Maquina/NomesModelosPadrao",
-                success: function (data) {
-                    var options = "<option value='0'>Selecione um modelo</option>";
-                    data.forEach(function (modelo) {
-                        options += '<option value="' + modelo.Id + '">' + modelo.Name + '</option>';
-                    })
-                    $("#dropdown-modeloMaquina").empty().append(options);
-                },
-                error: function (xhr, status, error) {
-                    DisplayError(xhr);
+            $("#removeMaquina").click(
+                function () {
+                    SendsServer(
+                        "/Maquina/RemoverMaquina",
+                        { id: $("#idMesa").val() },
+                        function (response) { RetiraDestaqueMesa(); },
+                        function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+                    );
                 }
-            });
-        });
+            );
 
-        $("#dropdown-modeloMaquina").change(function () {
-            var idModeloEscolhido = $(this).val();
-            if (idModeloEscolhido == 0) {
-                return;
-            }
-            $.ajax({
-                type: "GET",
-                url: "/Maquina/MaquinaDoModelo",
-                data: { idModelo: idModeloEscolhido },
-                success: function (data) {
-                    $("#processador").prop('disabled', false).val(data.Processador);
-                    $("#placaMae").prop('disabled', false).val(data.PlacaMae);
-                    $("#unidadesMemoriaRam").prop('disabled', false).val(data.UnidadesMemoriaRam);
-                    $("#penteMemoriaRamGB").prop('disabled', false).val(data.PenteMemoriaRamGB);
-                    $("#ssd").prop('disabled', false).val(data.SSD);
-                    $("#hd").prop('disabled', false).val(data.HD);
-                    $("#fonte").prop('disabled', false).val(data.Fonte);
-                    $("#placaRede").prop('disabled', false).val(data.PlacaRede);
-                    $("#driverOtico").prop('disabled', false).val(data.DriverOtico);
-                },
-                error: function (xhr, status, error) {
-                    DisplayError(xhr);
+            $("#adicionaRamal").click(
+                function () {
+                    SendsServer(
+                        "/Ramal/AdicionarRamal",
+                        { id: $("#idMesa").val(), ramal: $("#numero").val(), tipo: $("#tipoRamal").val() },
+                        function (response) { RetiraDestaqueMesa(); },
+                        function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+                    );
                 }
-            })
-        });
+            );
 
-        $("#adicionaMaquina").click(function () {
-            var maquinaPessoal = {
-                EtiquetaServico: $("#etiquetaServico").val(),
-                Patrimonio: $("#patrimonio").val(),
-                IdMesa: $("#idMesa").val(),
-                Maquina: {
-                    IdModeloMaquina: $("#dropdown-modeloMaquina").val(),
-                    Processador: $("#processador").val(),
-                    PlacaMae: $("#placaMae").val(),
-                    UnidadesMemoriaRam: $("#unidadesMemoriaRam").val(),
-                    PenteMemoriaRamGB: $("#penteMemoriaRamGB").val(),
-                    Ssd: $("#ssd").val(),
-                    Hd: $("#hd").val(),
-                    Fonte: $("#fonte").val(),
-                    PlacaRede: $("#placaRede").val(),
-                    DriverOtico: $("#driverOtico").val()
+            $("#removeRamal").click(
+                function () {
+                    SendsServer(
+                        "/Ramal/RemoverRamal",
+                        { id: $("#idMesa").val() },
+                        function (response) { RetiraDestaqueMesa(); },
+                        function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+                    );
                 }
-            };
-            $.ajax({
-                type: "POST",
-                url: "/Maquina/AdicionarMaquina",
-                data: JSON.stringify(maquinaPessoal),
-                contentType: "application/json",
-                success: function(data) {
-                    RetiraDestaqueMesa();
-                },
-                error: function (xhr, status, error) {
-                    DisplayError(xhr);
-                }
-            });
-        });
-
-        $("#removeMaquina").click(function () {
-            var idMesa = $("#idMesa").val();
-            $.ajax({
-                type: "POST",
-                url: "/Maquina/RemoverMaquina",
-                data: { id: idMesa },
-                datatype: "json",
-                success: function (data) {
-                    RetiraDestaqueMesa();
-                },
-                error: function (xhr, status, error) {
-                    DisplayError(xhr);
-                }
-            });
-        });
-
-        $("#adicionaRamal").click(function () {
-            var idMesa = $("#idMesa").val();
-            var numero = $("#numero").val();
-            var tipoRamal = $("#tipoRamal").val();
-            $.ajax({
-                type: "POST",
-                url: "/Ramal/AdicionarRamal",
-                data: { id: idMesa, ramal: numero, tipo: tipoRamal },
-                datatype: "json",
-                success: function(data) {
-                    RetiraDestaqueMesa();
-                },
-                error: function (xhr, status, error) {
-                    DisplayError(xhr);
-                }
-            });
-        });
-
-        $("#removeRamal").click(function () {
-            var idMesa = $("#idMesa").val();
-            $.ajax({
-                type: "POST",
-                url: "/Ramal/RemoverRamal",
-                data: { id: idMesa },
-                datatype: "json",
-                success: function (data) {
-                    RetiraDestaqueMesa();
-                },
-                error: function (xhr, status, error) {
-                    DisplayError(xhr);
-                }
-            });
-        });
-    });
+            );
+        },
+        function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+     );
 }
-
-var RetiraDestaqueMesa = function () {
-    var myUrl = window.location.href;
-    var newUrl = myUrl.substr(0, window.location.href.length - (window.location.href.length - myUrl.lastIndexOf("/")));
-    var UrlTest = newUrl.match("[a-zA-Z]$");
-    if (UrlTest != null)
-    {
-        var andar = myUrl.substr(myUrl.lastIndexOf("/"), window.location.href.length);
-        newUrl = newUrl + andar + "/";
-    }
-    if ((newUrl[window.location.href.length]) != "/")
-        newUrl = newUrl + "/";
-    window.location.href = newUrl;
-}
-
-function DisplayError(xhr) {
-    var msg = JSON.parse(xhr.responseText);
-    $("#error .modal-body").append("<h2>" + msg.Message + "</h2>");
-    $('#error').modal('show');
-}
-
-var usuarioLoginAutoComplete = {
-    url: "/Base/UsuarioLoginAutoComplete",
-    getValue: "label",
-    list: {
-        match: {
-            enabled: true
-        }
-    }
-};

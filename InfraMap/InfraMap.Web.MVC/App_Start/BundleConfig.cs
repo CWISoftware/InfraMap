@@ -15,6 +15,7 @@ namespace InfraMap.Web.MVC.App_Start
                         "~/Scripts/bootstrap.js",
                         "~/Scripts/jquery.easy-autocomplete.js",
                         "~/Scripts/jquery.easy-autocomplete.min.js",
+                        "~/Scripts/Custom/Shared.js",
                         "~/Scripts/Custom/base.js",
                         "~/Scripts/infra-map-auto-complete.js",
                         "~/Scripts/modernizr-*",

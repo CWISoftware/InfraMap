@@ -13,18 +13,17 @@ $("#btn-salvarColaboradores").click(function () {
     $(".mesa.ui-selected").find('.nome').each(function () {
         listId.push($(this).attr("id_usuario"));
     });
-    $.ajax({
-        type: "POST",
-        url: "/Mapa/SalvarCorDosColaboradores",
-        data: { listaIdColaborador: listId },
-        datatype: "json",
-        success: function (data) {
+    SendsServer(
+        "/Mapa/SalvarCorDosColaboradores",
+        { listaIdColaborador: listId },
+        function (response) {
             $("#btn-selecionarColaboradores").removeClass("hide");
             $("#btn-salvarColaboradores").addClass("hide");
             $("#btn-cancelar").addClass("hide");
             RetiraDestaqueMesa();
-        }
-    });
+        },
+        function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+    );
 });
 
 function startSelectable() {

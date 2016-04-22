@@ -36,13 +36,6 @@ namespace InfraMap.Web.MVC.Controllers
             return string.IsNullOrEmpty(term) ? usuario.Buscar() : usuario.BuscarUsuariosPorLogin(term);
         }
 
-        public JsonResult UsuarioLoginAutoComplete(string term)
-        {
-            var usuarioEncontrado = BuscarUsuarioPorLogin(term);
-            var json = usuarioEncontrado.Select(usuarios => new { label = usuarios.Login });
-            return Json(json, JsonRequestBehavior.AllowGet);
-        }
-
         public JsonResult CarregarMapaDoUsuarioPesquisado(string nome)
         {
             try

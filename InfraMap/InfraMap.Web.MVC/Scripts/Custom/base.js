@@ -3,19 +3,18 @@
         var key = e.which;
         if (key === 13) {
             var usuario = $("#carregar-usuario").val();
-            $.ajax({
-                type: "POST",
-                url: '/Base/CarregarMapaDoUsuarioPesquisado',
-                data: { nome: usuario },
-                dataType: "json",
-                success: function (data) {
-                    window.location.href = "/Mapa/" + data.sede + "/" + data.idAndar + "/" + data.mesa;
+
+            SendsServer(
+                "/Base/CarregarMapaDoUsuarioPesquisado",
+                { nome: usuario },
+                function (response) {
+                    window.location.href = "/Mapa/" + response.sede + "/" + response.idAndar + "/" + response.mesa;
                 },
-                error: function (xhr, status, error) {
+                function (jqXHR, textStatus, errorThrown) {
                     $("#carregar-usuario").val('');
                     $('#erroUsuarioEmNenhumaMesa').modal('show');
                 }
-            });
+            );
         }
     });
 });
