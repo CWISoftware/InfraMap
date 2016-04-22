@@ -30,7 +30,7 @@ function RenderPartial(id) {
                 data: { id: idMesa, colaborador: login },
                 datatype: "json",
                 success: function (data) {
-                    if (data.trocar){
+                    if (data.trocar) {
                         $('#modalTrocarUsuario').modal('show');
                     }
                     else {
@@ -120,7 +120,7 @@ function RenderPartial(id) {
         });
 
         $("#adicionaMaquina").click(function () {
-            var maquinaPessoal = {               
+            var maquinaPessoal = {
                 EtiquetaServico: $("#etiquetaServico").val(),
                 Patrimonio: $("#patrimonio").val(),
                 IdMesa: $("#idMesa").val(),
@@ -137,7 +137,6 @@ function RenderPartial(id) {
                     DriverOtico: $("#driverOtico").val()
                 }
             };
-            console.log(maquinaPessoal);
             $.ajax({
                 type: "POST",
                 url: "/Maquina/AdicionarMaquina",
@@ -204,7 +203,7 @@ function RenderPartial(id) {
     });
 }
 
-var reload = function() {
+var reload = function () {
     var myUrl = window.location.href;
     var newUrl = myUrl.substr(0, window.location.href.length - (window.location.href.length - myUrl.lastIndexOf("/")));
     if ((newUrl[window.location.href.length]) != "/")

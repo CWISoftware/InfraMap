@@ -52,7 +52,7 @@ namespace InfraMap.Web.MVC.Controllers
             var mesaRepositorio = Factory.CriarMesaRepositorio();
             var mesa = mesaRepositorio.BuscarPorId(id);
             var model = new MesaModel(mesa);
-            return PartialView("_SpotMesa", model);
+            return PartialView("~/Views/Modais/_SpotMesa.cshtml", model);
         }
 
         private JsonResult ErroTratado(Exception e)
