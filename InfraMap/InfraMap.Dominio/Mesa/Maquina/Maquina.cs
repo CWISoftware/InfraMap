@@ -10,9 +10,9 @@ namespace InfraMap.Dominio.Mesa.Maquina
 
         public TipoMaquina TipoMaquina { get; set; }
 
-        public int HD { get; set; }
+        public int? HD { get; set; }
 
-        public int SSD { get; set; }
+        public int? SSD { get; set; }
 
         public int PenteMemoriaRamGB { get; set; }
 

@@ -12,6 +12,7 @@ namespace InfraMap.Dominio.Mesa
         public int? Colaborador_Id { get; set; }
         public Usuario.Usuario Colaborador { get; set; }
 
+        public int? MaquinaPessoal_Id { get; set; }
         public Maquina.MaquinaPessoal MaquinaPessoal { get; set; }
 
         public int? Ramal_Id { get; set; }
@@ -36,11 +37,13 @@ namespace InfraMap.Dominio.Mesa
         public void AdicionarMaquina(Maquina.MaquinaPessoal maquinaPessoal)
         {
             this.MaquinaPessoal = maquinaPessoal;
+            this.MaquinaPessoal_Id = maquinaPessoal.Id;
         }
 
         public void RemoverMaquina()
         {
             this.MaquinaPessoal = null;
+            this.MaquinaPessoal_Id = null;
         }
 
         public void AdicionarRamal(Ramal.Ramal ramal)

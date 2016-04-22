@@ -9,5 +9,12 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
 {
     public class MaquinaRepositorio : RepositorioBase<Maquina>, IMaquinaRepositorio
     {
+        public Maquina BuscarPorIdModelo(int id)
+        {
+            using (var db = new DataBaseContext())
+            {
+                return db.Maquina.FirstOrDefault(m => m.ModeloMaquina_Id == id);
+            }
+        }
     }
 }

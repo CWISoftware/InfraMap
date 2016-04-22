@@ -43,5 +43,14 @@ namespace InfraMap.Web.MVC.Controllers
 
             return Json(listaModelosMaquina, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpGet]
+        public JsonResult MaquinaDoModelo(int idModelo)
+        {
+            var repositorio = Factory.CriarMaquinaRepositorio();
+            var maquina = repositorio.BuscarPorIdModelo(idModelo);
+
+            return Json(maquina, JsonRequestBehavior.AllowGet);
+        }
     }
 }

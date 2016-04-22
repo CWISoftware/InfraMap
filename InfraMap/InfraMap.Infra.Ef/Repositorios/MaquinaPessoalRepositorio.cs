@@ -9,5 +9,15 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
 {
     public class MaquinaPessoalRepositorio : RepositorioBase<MaquinaPessoal>,IMaquinaPessoalRepositorio
     {
+        public new MaquinaPessoal Adicionar(MaquinaPessoal entity)
+        {
+            using (var db = new DataBaseContext())
+            {
+                db.Entry(entity.Maquina.ModeloMaquina).State = System.Data.Entity.EntityState.Unchanged;
+                db.Entry(entity).State = System.Data.Entity.EntityState.Added;
+                db.SaveChanges();
+                return entity;
+            }
+        }
     }
 }

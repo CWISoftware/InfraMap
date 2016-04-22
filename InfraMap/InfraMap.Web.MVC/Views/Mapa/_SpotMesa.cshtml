@@ -39,9 +39,6 @@
                             <button type="button" class="btn btn-danger form-control" data-toggle="modal" data-target="#removerMaquina" data-dismiss="modal">
                                 Remover maquina
                             </button>
-                            <button type="button" class="btn btn-info form-control" data-toggle="modal" data-target="#editarMaquina" data-dismiss="modal">
-                                Editar maquina
-                            </button>
                         </div>
                         <h2></h2>
                     }
@@ -104,11 +101,19 @@
                     <h4 class="modal-title" id="myModalLabel">Adicionar maquina</h4>
 
                 </div>
-                <div class="modal-body form-horizontal">
-                    <input class="form-control" id="idMesa" value=@Model.Id type="hidden" />
-                    <input class="form-control" id="etiquetaServico" placeholder="Etiqueta de servico" />
-                    <input class="form-control" id="patrimonio" placeholder="Numero do patrimonio" />
-                    <select id="dropdown-modeloMaquina" class="form-control"></select>
+                <div class="modal-body form-horizontal col-lg-8 col-lg-offset-2">
+                    <div class="form-group">
+                        <input class="form-control" id="idMesa" value=@Model.Id type="hidden" />
+                        <input class="form-control" id="etiquetaServico" placeholder="Etiqueta de servico" />                       
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" id="patrimonio" placeholder="Numero do patrimonio" />
+                    </div>
+                    <div class="form-group">
+                        <select id="dropdown-modeloMaquina" class="form-control">
+                            <option value="0">Selecione o modelo</option>
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label>Processador:</label>
                         <input class="form-control" id="processador" disabled placeholder="Descriçao do processador" />
@@ -123,18 +128,24 @@
                     </div>
                     <div class="form-group">
                         <label>Tamanho de cada pente:</label>
-                        <input class="form-control" type="number" disabled id="penteMemoriaRamGB" placeholder="Tamanho de cada pente de memória ram" />
-                        <div class="input-group-addon">GB</div>
+                        <div class="input-group" style="width:320px">
+                            <input class="form-control form-inline" style="top:0;" type="number" disabled id="penteMemoriaRamGB" placeholder="Tamanho de cada pente de memória ram" />
+                            <div class="input-group-addon">GB</div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Tamanho SSD:</label>
-                        <input class="form-control" type="number" disabled id="ssd" placeholder="Tamanho do SSD" />
-                        <div class="input-group-addon">GB</div>
+                        <div class="input-group" style="width:320px">
+                            <input class="form-control" type="number" style="top:0;" disabled id="ssd" placeholder="Tamanho do SSD" />
+                            <div class="input-group-addon">GB</div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Tamanho HD:</label>
-                        <input class="form-control" type="number" disabled id="hd" placeholder="Tamanho do HD" />
-                        <div class="input-group-addon">GB</div>
+                        <div class="input-group" style="width:320px">
+                            <input class="form-control" type="number" style="top:0;" disabled id="hd" placeholder="Tamanho do HD" />
+                            <div class="input-group-addon">GB</div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Fonte:</label>

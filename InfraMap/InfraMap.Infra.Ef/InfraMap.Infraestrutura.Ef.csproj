@@ -81,6 +81,10 @@
     <Compile Include="Migrations\201604191901413_TipoRamal.Designer.cs">
       <DependentUpon>201604191901413_TipoRamal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604220318105_Mudança mapeamento de mesa.cs" />
+    <Compile Include="Migrations\201604220318105_Mudança mapeamento de mesa.Designer.cs">
+      <DependentUpon>201604220318105_Mudança mapeamento de mesa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -130,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604191901413_TipoRamal.resx">
       <DependentUpon>201604191901413_TipoRamal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604220318105_Mudança mapeamento de mesa.resx">
+      <DependentUpon>201604220318105_Mudança mapeamento de mesa.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

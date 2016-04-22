@@ -22,7 +22,7 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
         {
             using (var db = new DataBaseContext())
             {
-                return db.Mesa.Include("Colaborador").Include("Ramal").Include("MaquinaPessoal").FirstOrDefault(t => t.Id == id);
+                return db.Mesa.Include("Colaborador").Include("Ramal").Include("MaquinaPessoal.Maquina.ModeloMaquina").FirstOrDefault(t => t.Id == id);
             }
         }
 

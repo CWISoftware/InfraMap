@@ -78,7 +78,6 @@ namespace InfraMap.Dominio.Mesa
             maquinaPessoal.Maquina.ModeloMaquina = this.modeloMaquinaRepositorio.BuscarPorId((int)maquinaPessoal.Maquina.ModeloMaquina_Id);
 
             var novaMaquinaPessoal = this.maquinaPessoalRepositorio.Adicionar(maquinaPessoal);
-            this.maquinaRepositorio.Adicionar(maquinaPessoal.Maquina);
             mesa.AdicionarMaquina(novaMaquinaPessoal);
             this.mesaRepositorio.Atualizar(mesa);
         }

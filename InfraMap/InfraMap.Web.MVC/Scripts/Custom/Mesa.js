@@ -81,7 +81,7 @@ function RenderPartial(id) {
                 type: "GET",
                 url: "/Maquina/NomesModelosPadrao",
                 success: function (data) {
-                    var options = "";
+                    var options = "<option value='0'>Selecione um modelo</option>";
                     data.forEach(function (modelo) {
                         options += '<option value="' + modelo.Id + '">' + modelo.Name + '</option>';
                     })
@@ -95,6 +95,9 @@ function RenderPartial(id) {
 
         $("#dropdown-modeloMaquina").change(function () {
             var idModeloEscolhido = $(this).val();
+            if (idModeloEscolhido == 0) {
+                return;
+            }
             $.ajax({
                 type: "GET",
                 url: "/Maquina/MaquinaDoModelo",
@@ -117,9 +120,9 @@ function RenderPartial(id) {
         });
 
         $("#adicionaMaquina").click(function () {
-            var maquinaPessoal = {
-                Patrimonio: $("#patrimonio").val(),
+            var maquinaPessoal = {               
                 EtiquetaServico: $("#etiquetaServico").val(),
+                Patrimonio: $("#patrimonio").val(),
                 IdMesa: $("#idMesa").val(),
                 Maquina: {
                     IdModeloMaquina: $("#dropdown-modeloMaquina").val(),
@@ -134,6 +137,7 @@ function RenderPartial(id) {
                     DriverOtico: $("#driverOtico").val()
                 }
             };
+            console.log(maquinaPessoal);
             $.ajax({
                 type: "POST",
                 url: "/Maquina/AdicionarMaquina",
