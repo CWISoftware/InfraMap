@@ -1,59 +1,60 @@
-﻿using InfraMap.Dominio.Mesa.Maquina;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using InfraMap.Dominio.Mesa.Maquina;
 using InfraMap.Dominio.Mesa.Ramal;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InfraMap.Dominio.Test
 {
     [TestClass]
     public class MesaTest
     {
-        [TestMethod]
-        public void AdicionaColaboradorComSucesso()
-        {
-            Mesa.Mesa mesa = new Mesa.Mesa();
-            Usuario.Usuario usuario = new Usuario.Usuario();
-            usuario.Id = 1;
+        private Usuario.Usuario usuario;
+        private Mesa.Mesa mesa;
+        private MaquinaPessoal maquina;
+        private Ramal ramal;
 
+        public MesaTest()
+        {
+            usuario = new Usuario.Usuario();
+            mesa = new Mesa.Mesa();
+            maquina = new MaquinaPessoal();
+            ramal = new Ramal();
+
+            usuario.Id = 1;
+            mesa.Id = 1;
+            maquina.Id = 1;
+            ramal.Id = 1;
+        }
+
+        [TestMethod]
+        public void AdicionarColaborador()
+        {
             mesa.AdicionarColaborador(usuario);
 
-            Assert.AreEqual(1,mesa.Colaborador_Id);
+            Assert.AreEqual(usuario.Id, mesa.Colaborador_Id);
             Assert.AreEqual(usuario,mesa.Colaborador);
         }
 
         [TestMethod]
-        public void AdicionaTresColaboradoresEVerificaSeFicouUltimo()
+        public void AdicionarColaboradores()
         {
-            Mesa.Mesa mesa = new Mesa.Mesa();
-            Usuario.Usuario usuario1 = new Usuario.Usuario();
-            usuario1.Id = 1;
-
             Usuario.Usuario usuario2 = new Usuario.Usuario();
-            usuario2.Id = 3;
-
             Usuario.Usuario usuario3 = new Usuario.Usuario();
-            usuario3.Id = 5;
 
-            mesa.AdicionarColaborador(usuario1);
+            usuario2.Id = 2;
+            usuario3.Id = 3;
+
+            mesa.AdicionarColaborador(usuario);
             mesa.AdicionarColaborador(usuario2);
             mesa.AdicionarColaborador(usuario3);
 
-            Assert.AreEqual(5, mesa.Colaborador_Id);
+            Assert.AreEqual(usuario3.Id, mesa.Colaborador_Id);
             Assert.AreEqual(usuario3, mesa.Colaborador);
         }
 
         [TestMethod]
-        public void RemoveColaboradorComSucesso()
+        public void RemoverColaborador()
         {
-            Mesa.Mesa mesa = new Mesa.Mesa();
-            Usuario.Usuario usuario = new Usuario.Usuario();
-            usuario.Id = 1;
             mesa.AdicionarColaborador(usuario);
-
             mesa.RemoverColaborador();
 
             Assert.AreEqual(null, mesa.Colaborador_Id);
@@ -61,53 +62,37 @@ namespace InfraMap.Dominio.Test
         }
 
         [TestMethod]
-        public void AdicionaMaquinaNaMesa()
+        public void AdicionarMaquina()
         {
-            Mesa.Mesa mesa = new Mesa.Mesa();
-            Maquina maquina = new Maquina();
-            maquina.Id = 1;
+            mesa.AdicionarMaquina(maquina);
 
-            //mesa.AdicionarMaquina(maquina);
-
-            //Assert.AreEqual(maquina,mesa.Maquina);
-            //Assert.AreEqual(maquina.Id,mesa.Maquina_Id);
+            Assert.AreEqual(maquina,mesa.MaquinaPessoal);
+            Assert.AreEqual(maquina.Id,mesa.MaquinaPessoal_Id);
         }
 
         [TestMethod]
-        public void RemoveMaquinaDaMesa()
+        public void RemoverMaquina()
         {
-            Mesa.Mesa mesa = new Mesa.Mesa();
-            Maquina maquina = new Maquina();
-            maquina.Id = 1;
-            //mesa.AdicionarMaquina(maquina);
+            mesa.AdicionarMaquina(maquina);
+            mesa.RemoverMaquina();
 
-            //mesa.RemoverMaquina();
-
-            //Assert.AreEqual(null, mesa.Maquina);
-            //Assert.AreEqual(null, mesa.Maquina_Id);
+            Assert.AreEqual(null, mesa.MaquinaPessoal);
+            Assert.AreEqual(null, mesa.MaquinaPessoal_Id);
         }
 
         [TestMethod]
-        public void AdicionarRamalNaMesa()
+        public void AdicionarRamal()
         {
-            Mesa.Mesa mesa = new Mesa.Mesa();
-            Ramal ramal = new Ramal();
-            ramal.Id = 1;
-
             mesa.AdicionarRamal(ramal);
 
             Assert.AreEqual(ramal, mesa.Ramal);
-            Assert.AreEqual(1,mesa.Ramal_Id);
+            Assert.AreEqual(ramal.Id, mesa.Ramal_Id);
         }
 
         [TestMethod]
-        public void RemoverRamalDaMesa()
+        public void RemoverRamal()
         {
-            Mesa.Mesa mesa = new Mesa.Mesa();
-            Ramal ramal = new Ramal();
-            ramal.Id = 1;
             mesa.AdicionarRamal(ramal);
-
             mesa.RemoverRamal();
 
             Assert.AreEqual(null,mesa.Ramal);

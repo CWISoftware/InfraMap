@@ -55,6 +55,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="MaquinaTest.cs" />
     <Compile Include="MesaServiceTest.cs" />
     <Compile Include="MesaTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

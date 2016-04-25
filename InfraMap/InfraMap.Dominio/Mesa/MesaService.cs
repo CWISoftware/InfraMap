@@ -29,16 +29,16 @@ namespace InfraMap.Dominio.Mesa
             this.maquinaPessoalRepositorio = maquinaPessoalRepositorio;
         }
 
-        public void AdicionarColaborador(int id, string nome)
+        public void AdicionarColaborador(int idMesa, string nomeColaborador)
         {
-            var mesa = this.mesaRepositorio.BuscarPorId(id);
-            var colaborador = this.usuarioRepositorio.BuscarPorNome(nome);
+            var mesa = this.mesaRepositorio.BuscarPorId(idMesa);
+            var colaborador = this.usuarioRepositorio.BuscarPorNome(nomeColaborador);
             if (colaborador == null)
             {
                 throw new ArgumentException("Colaborador não encontrado!");
             }
-
-            if (this.mesaRepositorio.BuscarMesaPorColaborador(colaborador.Login) != null)
+            var mesaColaborador = this.mesaRepositorio.BuscarMesaPorColaborador(colaborador.Login);
+            if (mesaColaborador != null)
             {
                 throw new UsuarioEmOutraMesaException("Colaborador " + colaborador.Login + " já está em outra mesa!");
             }
@@ -47,12 +47,11 @@ namespace InfraMap.Dominio.Mesa
             this.mesaRepositorio.Atualizar(mesa);
         }
 
-        public void TrocarColaborador(int id, string nome)
+        public void TrocarColaborador(int idMesa, string nomeColaborador)
         {
-            var mesa = this.mesaRepositorio.BuscarPorId(id);
-            var colaborador = this.usuarioRepositorio.BuscarPorNome(nome);
-            var login = colaborador.Login;
-            var mesaAtual = this.mesaRepositorio.BuscarMesaPorColaborador(login);
+            var mesa = this.mesaRepositorio.BuscarPorId(idMesa);
+            var colaborador = this.usuarioRepositorio.BuscarPorNome(nomeColaborador);
+            var mesaAtual = this.mesaRepositorio.BuscarMesaPorColaborador(colaborador.Login);
             if (mesaAtual != null)
             {
                 mesa.AdicionarColaborador(mesaAtual.Colaborador);
@@ -96,18 +95,18 @@ namespace InfraMap.Dominio.Mesa
             this.mesaRepositorio.Atualizar(mesa);
         }
 
-        public void AdicionarRamal(int idMesa, string ramal, int tipoRamal)
+        public void AdicionarRamal(int idMesa, string numeroRamal, int tipoRamal)
         {
             var tipo = (TipoRamal)tipoRamal;
-            var entidade = new Ramal.Ramal
+            var ramal = new Ramal.Ramal
             {
-                Numero = ramal,
+                Numero = numeroRamal,
                 Tipo = tipo
             };
 
             var mesa = this.mesaRepositorio.BuscarPorId(idMesa);
-            this.ramalRepositorio.Adicionar(entidade);
-            mesa.AdicionarRamal(entidade);
+            this.ramalRepositorio.Adicionar(ramal);
+            mesa.AdicionarRamal(ramal);
             this.mesaRepositorio.Atualizar(mesa);
         }
 

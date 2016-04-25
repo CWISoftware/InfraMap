@@ -1,272 +1,252 @@
-﻿using FakeItEasy;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using FakeItEasy;
 using InfraMap.Dominio.Mesa;
+using InfraMap.Dominio.Usuario;
 using InfraMap.Dominio.Mesa.Maquina;
 using InfraMap.Dominio.Mesa.Ramal;
-using InfraMap.Dominio.Usuario;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InfraMap.Dominio.Test
 {
     [TestClass]
     public class MesaServiceTest
     {
-        [TestMethod]
-        public void AdicionaColaboradorComSucesso()
-        {
-            var ramalRepositorio = A.Fake<IRamalRepositorio>();
-            var usuarioRepositorio = A.Fake<IUsuarioRepositorio>();
-            var maquinaRepositorio = A.Fake<IMaquinaRepositorio>();
-            var mesaRepositorio = A.Fake<IMesaRepositorio>();
-            var login = "usuario.usuario";
-            Mesa.Mesa mesaFake = new Mesa.Mesa();
-            Usuario.Usuario usuarioFake = new Usuario.Usuario();
-            usuarioFake.Login = login;
-            A.CallTo(() => mesaRepositorio.BuscarPorId(1)).Returns(mesaFake);
-            A.CallTo(() => usuarioRepositorio.BuscarPorLogin(login)).Returns(usuarioFake);
-            A.CallTo(() => mesaRepositorio.BuscarMesaPorColaborador(usuarioFake.Login)).Returns(null);
-            A.CallTo(() => mesaRepositorio.Atualizar(mesaFake)).DoesNothing();
-            //MesaService mesaService = new MesaService(mesaRepositorio,usuarioRepositorio,maquinaRepositorio,ramalRepositorio);
+        private IMesaRepositorio mesaRepositorio;
+        private IUsuarioRepositorio usuarioRepositorio;
+        private IMaquinaRepositorio maquinaRepositorio;
+        private IRamalRepositorio ramalRepositorio;
+        private IModeloMaquinaRepositorio modeloMaquinaRepositorio;
+        private IMaquinaPessoalRepositorio maquinaPessoalRepositorio;
 
-            //mesaService.AdicionarColaborador(1,login);
+        private Usuario.Usuario usuarioFake;
+        private Mesa.Mesa mesaFake;
+        private MaquinaPessoal maquinaPessoalFake;
+        private ModeloMaquina modeloMaquinaFake;
+        private Maquina maquinaFake;
+        private Ramal ramalFake;
+
+        private MesaService mesaService;
+
+        public MesaServiceTest()
+        {
+            usuarioFake = new Usuario.Usuario();
+            mesaFake = new Mesa.Mesa();
+            maquinaPessoalFake = new MaquinaPessoal();
+            modeloMaquinaFake = new ModeloMaquina();
+            maquinaFake = new Maquina();
+            ramalFake = new Ramal();
+
+            mesaFake.Id = 1;
+
+            usuarioFake.Login = "usuario.usuario";
+            usuarioFake.Nome = "Usuário";
+            usuarioFake.Id = 1;
+
+            modeloMaquinaFake.Id = 1;
+
+            ramalFake.Id = 1;
+            ramalFake.Numero = "9999";
+            ramalFake.Tipo = TipoRamal.Analogico;
+        }
+
+        private void Inicializa()
+        {
+            mesaRepositorio = A.Fake<IMesaRepositorio>();
+            usuarioRepositorio = A.Fake<IUsuarioRepositorio>();
+            maquinaRepositorio = A.Fake<IMaquinaRepositorio>();
+            ramalRepositorio = A.Fake<IRamalRepositorio>();
+            modeloMaquinaRepositorio = A.Fake<IModeloMaquinaRepositorio>();
+            maquinaPessoalRepositorio = A.Fake<IMaquinaPessoalRepositorio>();
+
+            mesaService = new MesaService(
+                mesaRepositorio,
+                usuarioRepositorio,
+                maquinaRepositorio,
+                ramalRepositorio,
+                modeloMaquinaRepositorio,
+                maquinaPessoalRepositorio
+                );
+        }
+
+        [TestMethod]
+        public void AdicionarColaborador()
+        {
+            Inicializa();
+
+            A.CallTo(() => mesaRepositorio.BuscarPorId(mesaFake.Id)).Returns(mesaFake);
+            A.CallTo(() => usuarioRepositorio.BuscarPorNome(usuarioFake.Nome)).Returns(usuarioFake);
+            A.CallTo(() => mesaRepositorio.BuscarMesaPorColaborador(usuarioFake.Login)).Returns(null);
+
+            mesaService.AdicionarColaborador(mesaFake.Id, usuarioFake.Nome);
 
             Assert.AreEqual(usuarioFake,mesaFake.Colaborador);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException), "Colaborador não encontrado!")]
-        public void TentaAdicionarColaboradorNuloComInsucesso()
+        public void AdicionarColaboradorNulo()
         {
-            var ramalRepositorio = A.Fake<IRamalRepositorio>();
-            var usuarioRepositorio = A.Fake<IUsuarioRepositorio>();
-            var maquinaRepositorio = A.Fake<IMaquinaRepositorio>();
-            var mesaRepositorio = A.Fake<IMesaRepositorio>();
-            var login = "usuario.usuario";
-            Mesa.Mesa mesaFake = new Mesa.Mesa();
-            Usuario.Usuario usuarioFake = new Usuario.Usuario();
-            A.CallTo(() => mesaRepositorio.BuscarPorId(1)).Returns(mesaFake);
-            A.CallTo(() => usuarioRepositorio.BuscarPorLogin(login)).Returns(null);
-            //MesaService mesaService = new MesaService(mesaRepositorio, usuarioRepositorio, maquinaRepositorio, ramalRepositorio);
+            Inicializa();
 
-            //mesaService.AdicionarColaborador(1, login);
+            A.CallTo(() => mesaRepositorio.BuscarPorId(mesaFake.Id)).Returns(mesaFake);
+            A.CallTo(() => usuarioRepositorio.BuscarPorNome(usuarioFake.Nome)).Returns(null);
+
+            mesaService.AdicionarColaborador(mesaFake.Id, usuarioFake.Nome);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(UsuarioEmOutraMesaException), "Colaborador usuario.usuario já está em outra mesa!")]
-        public void TentaAdicionarColaboradorQueJaEstaEmOutraMesa()
+        [ExpectedException(typeof(UsuarioEmOutraMesaException))]
+        public void AdicionarColaboradorEmOutraMesa()
         {
-            var ramalRepositorio = A.Fake<IRamalRepositorio>();
-            var usuarioRepositorio = A.Fake<IUsuarioRepositorio>();
-            var maquinaRepositorio = A.Fake<IMaquinaRepositorio>();
-            var mesaRepositorio = A.Fake<IMesaRepositorio>();
-            var login = "usuario.usuario";
-            Mesa.Mesa mesaFake = new Mesa.Mesa();
-            Usuario.Usuario usuarioFake = new Usuario.Usuario();
-            usuarioFake.Login = login;
-            A.CallTo(() => mesaRepositorio.BuscarPorId(1)).Returns(mesaFake);
-            A.CallTo(() => usuarioRepositorio.BuscarPorLogin(login)).Returns(usuarioFake);
+            Inicializa();
+
+            A.CallTo(() => mesaRepositorio.BuscarPorId(mesaFake.Id)).Returns(mesaFake);
+            A.CallTo(() => usuarioRepositorio.BuscarPorNome(usuarioFake.Nome)).Returns(usuarioFake);
             A.CallTo(() => mesaRepositorio.BuscarMesaPorColaborador(usuarioFake.Login)).Returns(mesaFake);
-            //MesaService mesaService = new MesaService(mesaRepositorio, usuarioRepositorio, maquinaRepositorio, ramalRepositorio);
 
-            //mesaService.AdicionarColaborador(1, login);
+
+            mesaService.AdicionarColaborador(mesaFake.Id, usuarioFake.Nome);
         }
 
         [TestMethod]
-        public void TrocaColaboradorComSucesso()
+        public void TrocarColaborador()
         {
-            var ramalRepositorio = A.Fake<IRamalRepositorio>();
-            var usuarioRepositorio = A.Fake<IUsuarioRepositorio>();
-            var maquinaRepositorio = A.Fake<IMaquinaRepositorio>();
-            var mesaRepositorio = A.Fake<IMesaRepositorio>();
-            var login = "usuario.usuario";
-            Mesa.Mesa mesaFake = new Mesa.Mesa();
-            Mesa.Mesa mesaFakeAtual = new Mesa.Mesa();
-            Usuario.Usuario usuario = new Usuario.Usuario();
-            mesaFakeAtual.Colaborador = usuario;
-            A.CallTo(() => mesaRepositorio.BuscarPorId(1)).Returns(mesaFake);
-            A.CallTo(() => mesaRepositorio.BuscarMesaPorColaborador(login)).Returns(mesaFakeAtual);
-            A.CallTo(() => mesaRepositorio.Atualizar(mesaFake)).DoesNothing();
-            A.CallTo(() => mesaRepositorio.Atualizar(mesaFakeAtual)).DoesNothing();
-            //MesaService mesaService = new MesaService(mesaRepositorio, usuarioRepositorio, maquinaRepositorio, ramalRepositorio);
+            Inicializa();
 
-            //mesaService.TrocarColaborador(1, login);
+            Mesa.Mesa mesaFakeAtual = new Mesa.Mesa();
+            mesaFakeAtual.Id = 2;
+            mesaFakeAtual.AdicionarColaborador(usuarioFake);
+
+            A.CallTo(() => mesaRepositorio.BuscarPorId(mesaFake.Id)).Returns(mesaFake);
+            A.CallTo(() => usuarioRepositorio.BuscarPorNome(usuarioFake.Nome)).Returns(usuarioFake);
+            A.CallTo(() => mesaRepositorio.BuscarMesaPorColaborador(usuarioFake.Login)).Returns(mesaFakeAtual);
+
+            mesaService.TrocarColaborador(mesaFake.Id, usuarioFake.Nome);
 
             Assert.AreEqual(null,mesaFakeAtual.Colaborador);
-            Assert.AreEqual(usuario, mesaFake.Colaborador);
+            Assert.AreEqual(usuarioFake, mesaFake.Colaborador);
         }
 
         [TestMethod]
-        public void TentaTrocarColaboradorQueNaoEstaNumaMesa()
+        public void TrocarColaboradorSemMesa()
         {
-            var ramalRepositorio = A.Fake<IRamalRepositorio>();
-            var usuarioRepositorio = A.Fake<IUsuarioRepositorio>();
-            var maquinaRepositorio = A.Fake<IMaquinaRepositorio>();
-            var mesaRepositorio = A.Fake<IMesaRepositorio>();
-            var login = "usuario.usuario";
-            Mesa.Mesa mesaFake = new Mesa.Mesa();
-            mesaFake.Colaborador = null;
-            A.CallTo(() => mesaRepositorio.BuscarPorId(1)).Returns(mesaFake);
-            A.CallTo(() => mesaRepositorio.BuscarMesaPorColaborador(login)).Returns(null);
-            //MesaService mesaService = new MesaService(mesaRepositorio, usuarioRepositorio, maquinaRepositorio, ramalRepositorio);
+            Inicializa();
 
-            //mesaService.TrocarColaborador(1, login);
+            A.CallTo(() => mesaRepositorio.BuscarPorId(mesaFake.Id)).Returns(mesaFake);
+            A.CallTo(() => usuarioRepositorio.BuscarPorNome(usuarioFake.Nome)).Returns(usuarioFake);
+            A.CallTo(() => mesaRepositorio.BuscarMesaPorColaborador(usuarioFake.Login)).Returns(null);
+
+            mesaService.TrocarColaborador(mesaFake.Id, usuarioFake.Nome);
 
             Assert.AreEqual(null, mesaFake.Colaborador);
         }
 
         [TestMethod]
-        public void RemoverColaboradorComSucesso()
+        public void RemoverColaborador()
         {
-            var ramalRepositorio = A.Fake<IRamalRepositorio>();
-            var usuarioRepositorio = A.Fake<IUsuarioRepositorio>();
-            var maquinaRepositorio = A.Fake<IMaquinaRepositorio>();
-            var mesaRepositorio = A.Fake<IMesaRepositorio>();
-            Mesa.Mesa mesaFake = new Mesa.Mesa();
-            mesaFake.Colaborador = new Usuario.Usuario();
-            A.CallTo(() => mesaRepositorio.BuscarPorId(1)).Returns(mesaFake);
-            A.CallTo(() => mesaRepositorio.Atualizar(mesaFake)).DoesNothing();
-            //MesaService mesaService = new MesaService(mesaRepositorio, usuarioRepositorio, maquinaRepositorio, ramalRepositorio);
+            Inicializa();
 
-            //mesaService.RemoverColaborador(1);
+            mesaFake.AdicionarColaborador(usuarioFake);
+
+            A.CallTo(() => mesaRepositorio.BuscarPorId(mesaFake.Id)).Returns(mesaFake);
+
+            mesaService.RemoverColaborador(mesaFake.Id);
 
             Assert.AreEqual(null, mesaFake.Colaborador);
         }
 
         [TestMethod]
         [ExpectedException(typeof(Exception), "Esta mesa não tem colaborador!")]
-        public void TentaRemoverColaboradorDeMesaQueNaoTemColaborador()
+        public void RemoverColaboradorSemMesa()
         {
-            var ramalRepositorio = A.Fake<IRamalRepositorio>();
-            var usuarioRepositorio = A.Fake<IUsuarioRepositorio>();
-            var maquinaRepositorio = A.Fake<IMaquinaRepositorio>();
-            var mesaRepositorio = A.Fake<IMesaRepositorio>();
-            Mesa.Mesa mesaFake = new Mesa.Mesa();
-            mesaFake.Colaborador = null;
-            A.CallTo(() => mesaRepositorio.BuscarPorId(1)).Returns(mesaFake);
-            //MesaService mesaService = new MesaService(mesaRepositorio, usuarioRepositorio, maquinaRepositorio, ramalRepositorio);
+            Inicializa();
 
-            //mesaService.RemoverColaborador(1);
+            A.CallTo(() => mesaRepositorio.BuscarPorId(mesaFake.Id)).Returns(mesaFake);
+
+            mesaService.RemoverColaborador(mesaFake.Id);
+
+            Assert.AreEqual(null, mesaFake.Colaborador);
         }
 
         [TestMethod]
-        public void AdicionarMaquinaNaMesaComSucesso()
+        public void AdicionarMaquinaPessoal()
         {
-            var ramalRepositorio = A.Fake<IRamalRepositorio>();
-            var usuarioRepositorio = A.Fake<IUsuarioRepositorio>();
-            var maquinaRepositorio = A.Fake<IMaquinaRepositorio>();
-            var mesaRepositorio = A.Fake<IMesaRepositorio>();
-            Mesa.Mesa mesaFake = new Mesa.Mesa();
-            Maquina maquinaFake = new Maquina();
-            A.CallTo(() => mesaRepositorio.BuscarPorId(1)).Returns(mesaFake);
-            //A.CallTo(() => maquinaRepositorio.Adicionar(maquinaFake)).DoesNothing();
-            A.CallTo(() => mesaRepositorio.Atualizar(mesaFake)).DoesNothing();
-            //MesaService mesaService = new MesaService(mesaRepositorio, usuarioRepositorio, maquinaRepositorio, ramalRepositorio);
-            var tipoMaquina = 1;
-            var idMesa = 1;
-            var nomeMaquina = "MinhaMaquina";
+            Inicializa();
 
-            //mesaService.AdicionarMaquina(idMesa, nomeMaquina, tipoMaquina);
+            maquinaFake.AdicionarModelo(modeloMaquinaFake);
+            maquinaPessoalFake.Maquina = maquinaFake;
 
-            //Assert.AreNotEqual(null,mesaFake.Maquina);
+            A.CallTo(() => mesaRepositorio.BuscarPorId(mesaFake.Id)).Returns(mesaFake);
+            A.CallTo(() => modeloMaquinaRepositorio.BuscarPorId((int)maquinaPessoalFake.Maquina.ModeloMaquina_Id)).Returns(modeloMaquinaFake);
+            A.CallTo(() => maquinaPessoalRepositorio.Adicionar(maquinaPessoalFake)).Returns(maquinaPessoalFake);
+
+            mesaService.AdicionarMaquina(mesaFake.Id, maquinaPessoalFake);
+
+            Assert.AreEqual(maquinaPessoalFake, mesaFake.MaquinaPessoal);
         }
 
         [TestMethod]
-        public void RemoverMaquinaDaMesaComSucesso()
+        public void RemoverMaquinaPessoal()
         {
-            var ramalRepositorio = A.Fake<IRamalRepositorio>();
-            var usuarioRepositorio = A.Fake<IUsuarioRepositorio>();
-            var maquinaRepositorio = A.Fake<IMaquinaRepositorio>();
-            var mesaRepositorio = A.Fake<IMesaRepositorio>();
-            Mesa.Mesa mesaFake = new Mesa.Mesa();
-            //mesaFake.Maquina = new Maquina();
-            A.CallTo(() => mesaRepositorio.BuscarPorId(1)).Returns(mesaFake);
-            A.CallTo(() => mesaRepositorio.Atualizar(mesaFake)).DoesNothing();
-            //MesaService mesaService = new MesaService(mesaRepositorio, usuarioRepositorio, maquinaRepositorio, ramalRepositorio);
-            var idMesa = 1;
+            Inicializa();
 
-            //mesaService.RemoverMaquina(idMesa);
+            mesaFake.AdicionarMaquina(maquinaPessoalFake);
 
-            //Assert.AreEqual(null, mesaFake.Maquina);
+            A.CallTo(() => mesaRepositorio.BuscarPorId(mesaFake.Id)).Returns(mesaFake);
+
+            mesaService.RemoverMaquina(mesaFake.Id);
+
+            Assert.AreEqual(null, mesaFake.MaquinaPessoal);
         }
 
         [TestMethod]
         [ExpectedException(typeof(Exception), "Esta mesa não possui maquina!")]
-        public void TentaRemoverMaquinaDaMesaQueNaoTemMaquina()
+        public void RemoverMaquinaSemMaquina()
         {
-            var ramalRepositorio = A.Fake<IRamalRepositorio>();
-            var usuarioRepositorio = A.Fake<IUsuarioRepositorio>();
-            var maquinaRepositorio = A.Fake<IMaquinaRepositorio>();
-            var mesaRepositorio = A.Fake<IMesaRepositorio>();
-            Mesa.Mesa mesaFake = new Mesa.Mesa();
-            //mesaFake.Maquina = null;
-            A.CallTo(() => mesaRepositorio.BuscarPorId(1)).Returns(mesaFake);
-            //MesaService mesaService = new MesaService(mesaRepositorio, usuarioRepositorio, maquinaRepositorio, ramalRepositorio);
-            var idMesa = 1;
+            Inicializa();
 
-            //mesaService.RemoverMaquina(idMesa);
+            A.CallTo(() => mesaRepositorio.BuscarPorId(mesaFake.Id)).Returns(mesaFake);
+
+            mesaService.RemoverMaquina(mesaFake.Id);
         }
 
         [TestMethod]
-        public void AdicionarRamalNaMesaComSucesso()
+        public void AdicionarRamal()
         {
-            var ramalRepositorio = A.Fake<IRamalRepositorio>();
-            var usuarioRepositorio = A.Fake<IUsuarioRepositorio>();
-            var maquinaRepositorio = A.Fake<IMaquinaRepositorio>();
-            var mesaRepositorio = A.Fake<IMesaRepositorio>();
-            Mesa.Mesa mesaFake = new Mesa.Mesa();
-            Ramal ramalFake = new Ramal();
-            var tipoRamal = 0;
-            var idMesa = 1;
-            var nomeRamal = "MeuRamal";
-            A.CallTo(() => mesaRepositorio.BuscarPorId(idMesa)).Returns(mesaFake);
-            //A.CallTo(() => ramalRepositorio.Adicionar(ramalFake)).DoesNothing();
-            A.CallTo(() => mesaRepositorio.Atualizar(mesaFake)).DoesNothing();
-            //MesaService mesaService = new MesaService(mesaRepositorio, usuarioRepositorio, maquinaRepositorio, ramalRepositorio);            
+            Inicializa();
 
-            //mesaService.AdicionarRamal(idMesa,nomeRamal,tipoRamal);
+            A.CallTo(() => mesaRepositorio.BuscarPorId(mesaFake.Id)).Returns(mesaFake);
+
+            mesaService.AdicionarRamal(mesaFake.Id, ramalFake.Numero, (int)ramalFake.Tipo);
 
             Assert.AreNotEqual(null, mesaFake.Ramal);
         }
 
         [TestMethod]
-        public void RemoverRamalNaMesaComSucesso()
+        public void RemoverRamal()
         {
-            var ramalRepositorio = A.Fake<IRamalRepositorio>();
-            var usuarioRepositorio = A.Fake<IUsuarioRepositorio>();
-            var maquinaRepositorio = A.Fake<IMaquinaRepositorio>();
-            var mesaRepositorio = A.Fake<IMesaRepositorio>();
-            Mesa.Mesa mesaFake = new Mesa.Mesa();
-            mesaFake.Ramal = new Ramal();
-            A.CallTo(() => mesaRepositorio.BuscarPorId(1)).Returns(mesaFake);
-            A.CallTo(() => mesaRepositorio.Atualizar(mesaFake)).DoesNothing();
-            //MesaService mesaService = new MesaService(mesaRepositorio, usuarioRepositorio, maquinaRepositorio, ramalRepositorio);
-            var idMesa = 1;
+            Inicializa();
 
-            //mesaService.RemoverRamal(idMesa);
+            mesaFake.AdicionarRamal(ramalFake);
+
+            A.CallTo(() => mesaRepositorio.BuscarPorId(mesaFake.Id)).Returns(mesaFake);
+
+            mesaService.RemoverRamal(mesaFake.Id);
 
             Assert.AreEqual(null, mesaFake.Ramal);
         }
 
         [TestMethod]
         [ExpectedException(typeof(Exception), "Esta mesa não possui ramal!")]
-        public void TentaRemoverRamalNaMesaQueNaoTemRamal()
+        public void RemoverRamalSemRamal()
         {
-            var ramalRepositorio = A.Fake<IRamalRepositorio>();
-            var usuarioRepositorio = A.Fake<IUsuarioRepositorio>();
-            var maquinaRepositorio = A.Fake<IMaquinaRepositorio>();
-            var mesaRepositorio = A.Fake<IMesaRepositorio>();
-            Mesa.Mesa mesaFake = new Mesa.Mesa();
-            mesaFake.Ramal = null;
-            A.CallTo(() => mesaRepositorio.BuscarPorId(1)).Returns(mesaFake);
-            A.CallTo(() => mesaRepositorio.Atualizar(mesaFake)).DoesNothing();
-            //MesaService mesaService = new MesaService(mesaRepositorio, usuarioRepositorio, maquinaRepositorio, ramalRepositorio);
-            var idMesa = 1;
+            Inicializa();
 
-            //mesaService.RemoverRamal(idMesa);
+            A.CallTo(() => mesaRepositorio.BuscarPorId(mesaFake.Id)).Returns(mesaFake);
+
+            mesaService.RemoverRamal(mesaFake.Id);
+
+            Assert.AreEqual(null, mesaFake.Ramal);
         }
     }
 }
