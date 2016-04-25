@@ -27,5 +27,17 @@ namespace InfraMap.Dominio.Mesa.Maquina
         public string PlacaRede { get; set; }
 
         public string DriverOtico { get; set; }
+
+        public void AdicionarModelo(ModeloMaquina modelo)
+        {
+            this.ModeloMaquina = modelo;
+            this.ModeloMaquina_Id = modelo.Id;
+        }
+
+        public void RemoverModelo()
+        {
+            this.ModeloMaquina = null;
+            this.ModeloMaquina_Id = null;
+        }
     }
 }
