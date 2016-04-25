@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using InfraMap.Dominio.Mesa.Maquina;
 
 namespace InfraMap.Web.MVC.Controllers
 {
@@ -54,16 +55,37 @@ namespace InfraMap.Web.MVC.Controllers
         }
 
         [HttpGet]
-        public ActionResult AdicionarMaquina()
+        public ActionResult ConfigurarMaquina()
         {
             try
             {
-                return View("Index");
+                return View("ConfigurarMaquina");
             }
             catch (Exception e)
             {
                 return ErroTratado(e);
             }
+        }
+
+        [HttpPost]
+        public JsonResult SalvaMaquina(Maquina model)
+        {
+            try
+            {
+                var service = Factory.CriarMaquinaRepositorio();
+
+                var maquinaAdicionada = service.Adicionar(model);
+
+                if (maquinaAdicionada != null)
+                    return Json(new { success = true });
+                else
+                    return Json(new { success = false });
+            }
+            catch (Exception e)
+            {
+                return ErroTratado(e);
+            }
+
         }
     }
 }

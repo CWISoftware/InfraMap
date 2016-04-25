@@ -81,7 +81,6 @@ function RenderPartial(id) {
                     if (idModeloEscolhido == 0) {
                         return;
                     }
-
                     ReceivesServer(
                         "/Maquina/MaquinaDoModelo",
                         { idModelo: idModeloEscolhido },

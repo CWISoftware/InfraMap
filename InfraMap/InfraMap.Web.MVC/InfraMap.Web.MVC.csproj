@@ -228,7 +228,7 @@
     <Content Include="Views\Modais\_ModalError.cshtml" />
     <Content Include="Views\Modais\_ModalTrocarUsuario.cshtml" />
     <Content Include="Views\Shared\_OpcoesInfra.cshtml" />
-    <Content Include="Views\Maquina\Index.cshtml" />
+    <Content Include="Views\Maquina\ConfigurarMaquina.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

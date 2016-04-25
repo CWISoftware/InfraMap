@@ -18,17 +18,14 @@ var DisplayError = function (xhr) {
 }
 
 var SendsServer = function (url, data, successFunc, errorFunc) {
-    console.log("[DEBUG] SendsServer");
     Request("POST", url, data, successFunc, errorFunc);
 };
 
 var ReceivesServer = function (url, data, successFunc, errorFunc) {
-    console.log("[DEBUG] ReceivesServer");
     Request("GET", url, data, successFunc, errorFunc);
 };
 
 function Request(typeRequest, urlRequest, dataRequest, successFunc, errorFunc) {
-    console.log("[DEBUG] request");
     $.ajax({
         type: typeRequest,
         url: urlRequest,
@@ -38,3 +35,7 @@ function Request(typeRequest, urlRequest, dataRequest, successFunc, errorFunc) {
         error: errorFunc
     });
 };
+
+function GoBack() {
+    var newUrl = window.history.go(-1);
+}
