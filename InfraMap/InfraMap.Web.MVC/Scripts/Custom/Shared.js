@@ -29,13 +29,12 @@ function Request(typeRequest, urlRequest, dataRequest, successFunc, errorFunc) {
     $.ajax({
         type: typeRequest,
         url: urlRequest,
-        data: JSON.stringify(dataRequest),
-        contentType: "application/json",
+        data: dataRequest,
         success: successFunc,
         error: errorFunc
     });
 };
 
 function GoBack() {
-    var newUrl = window.history.go(-1);
+    var newUrl = window.history.back();
 }

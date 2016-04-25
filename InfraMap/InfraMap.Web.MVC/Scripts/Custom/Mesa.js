@@ -85,15 +85,15 @@ function RenderPartial(id) {
                         "/Maquina/MaquinaDoModelo",
                         { idModelo: idModeloEscolhido },
                         function (data) {
-                            $("#processador").prop('disabled', false).val(data.Processador);
-                            $("#placaMae").prop('disabled', false).val(data.PlacaMae);
-                            $("#unidadesMemoriaRam").prop('disabled', false).val(data.UnidadesMemoriaRam);
-                            $("#penteMemoriaRamGB").prop('disabled', false).val(data.PenteMemoriaRamGB);
-                            $("#ssd").prop('disabled', false).val(data.SSD);
-                            $("#hd").prop('disabled', false).val(data.HD);
-                            $("#fonte").prop('disabled', false).val(data.Fonte);
-                            $("#placaRede").prop('disabled', false).val(data.PlacaRede);
-                            $("#driverOtico").prop('disabled', false).val(data.DriverOtico);
+                            $("#processador").val(data.Processador);
+                            $("#placaMae").val(data.PlacaMae);
+                            $("#unidadesMemoriaRam").val(data.UnidadesMemoriaRam);
+                            $("#penteMemoriaRamGB").val(data.PenteMemoriaRamGB);
+                            $("#ssd").val(data.SSD);
+                            $("#hd").val(data.HD);
+                            $("#fonte").val(data.Fonte);
+                            $("#placaRede").val(data.PlacaRede);
+                            $("#driverOtico").val(data.DriverOtico);
                         },
                         function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
                     );
