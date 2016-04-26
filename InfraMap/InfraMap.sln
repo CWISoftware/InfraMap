@@ -21,6 +21,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfraMap.Dominio.Test", "In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfraMap.Infraestrutura.Test", "InfraMap.Infraestrutura.Test\InfraMap.Infraestrutura.Test.csproj", "{DCCA5D85-0B03-4F02-B1A1-AA7C113205F2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1320F8B3-CE7A-4E8A-A18A-A02946BC242C}"
+	ProjectSection(SolutionItems) = preProject
+		InfraMap.msbuild = InfraMap.msbuild
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
