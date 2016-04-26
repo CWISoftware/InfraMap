@@ -79,21 +79,30 @@ function RenderPartial(id) {
                 function () {
                     var idModeloEscolhido = $(this).val();
                     if (idModeloEscolhido == 0) {
+                        $("#processador").prop("disabled", true).val(data.Processador);
+                        $("#placaMae").prop("disabled", true).val(data.PlacaMae);
+                        $("#unidadesMemoriaRam").prop("disabled", true).val(data.UnidadesMemoriaRam);
+                        $("#penteMemoriaRamGB").prop("disabled", true).val(data.PenteMemoriaRamGB);
+                        $("#ssd").prop("disabled", true).val(data.SSD);
+                        $("#hd").prop("disabled", true).val(data.HD);
+                        $("#fonte").prop("disabled", true).val(data.Fonte);
+                        $("#placaRede").prop("disabled", true).val(data.PlacaRede);
+                        $("#driverOtico").prop("disabled", true).val(data.DriverOtico);
                         return;
                     }
                     ReceivesServer(
                         "/Maquina/MaquinaDoModelo",
                         { idModelo: idModeloEscolhido },
                         function (data) {
-                            $("#processador").val(data.Processador);
-                            $("#placaMae").val(data.PlacaMae);
-                            $("#unidadesMemoriaRam").val(data.UnidadesMemoriaRam);
-                            $("#penteMemoriaRamGB").val(data.PenteMemoriaRamGB);
-                            $("#ssd").val(data.SSD);
-                            $("#hd").val(data.HD);
-                            $("#fonte").val(data.Fonte);
-                            $("#placaRede").val(data.PlacaRede);
-                            $("#driverOtico").val(data.DriverOtico);
+                            $("#processador").prop("disabled", false).val(data.Processador);
+                            $("#placaMae").prop("disabled", false).val(data.PlacaMae);
+                            $("#unidadesMemoriaRam").prop("disabled", false).val(data.UnidadesMemoriaRam);
+                            $("#penteMemoriaRamGB").prop("disabled", false).val(data.PenteMemoriaRamGB);
+                            $("#ssd").prop("disabled", false).val(data.SSD);
+                            $("#hd").prop("disabled", false).val(data.HD);
+                            $("#fonte").prop("disabled", false).val(data.Fonte);
+                            $("#placaRede").prop("disabled", false).val(data.PlacaRede);
+                            $("#driverOtico").prop("disabled", false).val(data.DriverOtico);
                         },
                         function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
                     );

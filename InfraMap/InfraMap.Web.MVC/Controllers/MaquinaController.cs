@@ -50,6 +50,8 @@ namespace InfraMap.Web.MVC.Controllers
         {
             var repositorio = Factory.CriarMaquinaRepositorio();
             var maquina = repositorio.BuscarPorIdModelo(idModelo);
+            var name = repositorio.RetornaNomeMaquina(maquina);
+            maquina.ModeloMaquina = name;
 
             return Json(maquina, JsonRequestBehavior.AllowGet);
         }
@@ -60,6 +62,19 @@ namespace InfraMap.Web.MVC.Controllers
             try
             {
                 return View("ConfigurarMaquina");
+            }
+            catch (Exception e)
+            {
+                return ErroTratado(e);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult EditarMaquina()
+        {
+            try
+            {
+                return View("EditarMaquina");
             }
             catch (Exception e)
             {
@@ -87,5 +102,55 @@ namespace InfraMap.Web.MVC.Controllers
             }
 
         }
+
+        [HttpPost]
+        public JsonResult SalvaEdicaoMaquina(Maquina model)
+        {
+            try
+            {
+                if (model.ModeloMaquina.Name == null)
+                    return Json(new { success = false });
+
+                model.ModeloMaquina.Id = model.ModeloMaquina_Id.GetValueOrDefault();
+
+                var service = Factory.CriarMaquinaRepositorio();
+                var maquina = service.BuscarPorIdModelo(model.ModeloMaquina_Id.GetValueOrDefault());
+                model.Id = maquina.Id;
+                service.Atualizar(model);
+
+
+                return Json(new { success = true });
+            }
+
+            catch (Exception e)
+            {
+                return ErroTratado(e);
+            }
+
+        }
+
+        [HttpPost]
+        public JsonResult DeletaMaquina(Maquina model)
+        {
+            try
+            {
+                model.ModeloMaquina.Id = model.ModeloMaquina_Id.GetValueOrDefault();
+
+                var service = Factory.CriarMaquinaRepositorio();
+                var maquina = service.BuscarPorIdModelo(model.ModeloMaquina_Id.GetValueOrDefault());
+                model.Id = maquina.Id;
+                service.Deletar(model);
+
+
+                return Json(new { success = true });
+            }
+
+            catch (Exception e)
+            {
+                return ErroTratado(e);
+            }
+
+        }
+
     }
 }

@@ -229,6 +229,7 @@
     <Content Include="Views\Modais\_ModalTrocarUsuario.cshtml" />
     <Content Include="Views\Shared\_OpcoesInfra.cshtml" />
     <Content Include="Views\Maquina\ConfigurarMaquina.cshtml" />
+    <Content Include="Views\Maquina\EditarMaquina.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

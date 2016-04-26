@@ -1,0 +1,79 @@
+﻿<body onload="CarregaMaquinas()">
+    <div class="body-content" role="document">
+        <div class="body-content" style="align-items:center">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Editar Máquina</h4>
+            </div>
+            <div class="modal-body form-horizontal col-lg-8 col-lg-offset-2">
+                <div class="form-group">
+                    <label> Escolha o modelo para editar:</label>
+                    <select id="dropdown-EditarMaquina" class="form-control">
+                        <option value="0">Selecione o modelo</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Tipo: </label>
+                    <select id="MaquinadoTipo">
+                        <option value="0"> Padrão</option>
+                        <option value="1"> Pessoal</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Modelo: </label>
+                    <input class="form-control" id="EditaModelo" placeholder="Modelo do computador"/>
+                </div>
+                <div class="form-group">
+                    <label>Processador:</label>
+                    <input class="form-control" id="Editaprocessador" placeholder="Descrição do processador" />
+                </div>
+                <div class="form-group">
+                    <label>Placa Mãe:</label>
+                    <input class="form-control" id="EditaplacaMae" placeholder="Descrição da Placa Mãe" />
+                </div>
+                <div class="form-group">
+                    <label>Pentes de Memória RAM:</label>
+                    <input class="form-control" type="number" id="EditaeunidadesMemoriaRam" placeholder="Número de pentes de memória RAM" />
+                </div>
+                <div class="form-group">
+                    <label>Tamanho de cada pente:</label>
+                    <div class="input-group" style="width:320px">
+                        <input class="form-control form-inline" style="top:0;" type="number" id="EditapenteMemoriaRamGB" placeholder="Tamanho de cada pente de memória RAM" />
+                        <div class="input-group-addon">GB</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Tamanho SSD:</label>
+                    <div class="input-group" style="width:320px">
+                        <input class="form-control" type="number" style="top:0;" id="Editassd" placeholder="Tamanho do SSD" />
+                        <div class="input-group-addon">GB</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Tamanho HD:</label>
+                    <div class="input-group" style="width:320px">
+                        <input class="form-control" type="number" style="top:0;" id="Editahd" placeholder="Tamanho do HD" />
+                        <div class="input-group-addon">GB</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Fonte:</label>
+                    <input class="form-control" id="Editafonte"  placeholder="Descrição da fonte" />
+                </div>
+                <div class="form-group">
+                    <label>Placa de Rede:</label>
+                    <input class="form-control" id="EditaplacaRede"  placeholder="Descrição da placa de rede" />
+                </div>
+                <div class="form-group">
+                    <label>Driver Óptico:</label>
+                    <input class="form-control" id="EditadriverOtico" placeholder="Descrição do driver óptico" />
+                </div>
+                <h2></h2>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <button type="button" class="btn btn-default" onclick="GoBack()">Cancelar</button>
+        <button id="SalvaEdicaoMaquina" type="button" class="btn btn-primary">Salvar</button>
+        <button id="DeletaMaquina" type="button" class="btn btn-primary"> Deletar</button>
+    </div>
+</body>
