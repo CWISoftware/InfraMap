@@ -13,7 +13,7 @@ namespace InfraMap.Web.MVC.Seguranca
 
         public string Cor { get; set; }
 
-        public string[] Permissoes { get; private set; }
+        public string[] Permissoes { get; set; }
 
         public UsuarioLogado(Usuario usuario)
         {

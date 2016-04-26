@@ -20,6 +20,14 @@ namespace InfraMap.Web.MVC.Seguranca
             if (usuario != null && AuthorizeCore(filterContext.HttpContext))
             {
                 GenericIdentity myIdentity = new GenericIdentity(usuario.Login);
+
+                /*var list = new List<string>()
+                {
+                    "NavegacaoFacebook",
+                    "Infra.cwidsajsn 21121"
+                };
+
+                usuario.Permissoes = list.ToArray();*/
                 GenericPrincipal principal = new GenericPrincipal(myIdentity, usuario.Permissoes);
 
                 Thread.CurrentPrincipal = principal;
