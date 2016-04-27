@@ -16,5 +16,16 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
                 return db.ModeloMaquina.ToList();
             }
         }
+
+        public new void Deletar(ModeloMaquina entity)
+        {
+            using (var dbContext = new DataBaseContext())
+            {
+                var dbEntity = this.BuscarPorId(entity.Id);
+                dbContext.ModeloMaquina.Attach(dbEntity);
+                dbContext.ModeloMaquina.Remove(dbEntity);
+                dbContext.SaveChanges();
+            }
+        }
     }
 }

@@ -90,9 +90,16 @@ namespace InfraMap.Dominio.Mesa
             {
                 throw new Exception("Esta mesa não possui maquina!");
             }
+            var maquinapessoal = mesa.MaquinaPessoal;
+            var maquina = mesa.MaquinaPessoal.Maquina;
+
 
             mesa.RemoverMaquina();
+
             this.mesaRepositorio.Atualizar(mesa);
+
+            this.maquinaPessoalRepositorio.Deletar(maquinapessoal);
+            this.maquinaRepositorio.Deletar(maquina);
         }
 
         public void AdicionarRamal(int idMesa, string numeroRamal, int tipoRamal)

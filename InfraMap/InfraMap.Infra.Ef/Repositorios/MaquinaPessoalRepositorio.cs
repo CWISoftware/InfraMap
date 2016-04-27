@@ -19,5 +19,17 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
                 return entity;
             }
         }
+
+        public new void Deletar(MaquinaPessoal entity)
+        {
+            using (var dbContext = new DataBaseContext())
+            {
+                var dbEntity = this.BuscarPorId(entity.Id);
+                dbContext.MaquinaPessoal.Attach(dbEntity);
+                dbContext.MaquinaPessoal.Remove(dbEntity);
+                dbContext.SaveChanges();
+            }
+        }
+
     }
 }

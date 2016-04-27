@@ -40,7 +40,17 @@ namespace InfraMap.Web.MVC.Controllers
         public JsonResult NomesModelosPadrao()
         {
             var repositorio = Factory.CriarModeloMaquinaRepositorio();
+            var maquina = Factory.CriarMaquinaRepositorio();
             var listaModelosMaquina = repositorio.BuscarTodos();
+            var listaModelosAtualizada = listaModelosMaquina;
+            for (int modelo = 0; modelo < listaModelosMaquina.Count; modelo++)
+            {
+                if (maquina.BuscarPorIdModelo(listaModelosMaquina[modelo].Id) == null)
+                {
+                    repositorio.Deletar(listaModelosMaquina[modelo]);
+                    listaModelosMaquina.Remove(listaModelosMaquina[modelo]);
+                }
+            }
 
             return Json(listaModelosMaquina, JsonRequestBehavior.AllowGet);
         }
