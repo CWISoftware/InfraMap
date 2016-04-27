@@ -2,7 +2,6 @@
 <Project DefaultTargets="Start" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
         <DoubleQuotes>"</DoubleQuotes>
-        <!--<MsTestExePath>C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe</TestRunnerExePath>-->
         <MsTestExePath>C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\MSTest.exe</MsTestExePath>
         <Configuration>Release</Configuration>
     </PropertyGroup>
@@ -24,7 +23,6 @@
         </ItemGroup>
 
         <PropertyGroup>
-            <!--<TestRunnerCommand>"$(MsTestExePath)" @(TestAssemblies->'"%(FullPath)"', ' ') /Logger:trx"</TestRunnerCommand>-->
             <MsTestCommand>"$(MsTestExePath)" @(TestAssemblies->'/testcontainer:"%(FullPath)"', ' ') /resultsfile:"TestResults\Results.trx""</MsTestCommand>
         </PropertyGroup>
 
@@ -39,9 +37,3 @@
               ContinueOnError="true" />
     </Target>
 </Project>
-
-<!--
-Configurando para executar no jenkins
-http://automatetheplanet.com/configure-jenkins-mstest-execution/#prettyPhoto
-
--->
