@@ -3,77 +3,77 @@
 @{
     var MesaId = Model;
 }
-
-<div class="modal fade" id="maquina" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+<div class="modal fade" id="verMaquina" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Adicionar maquina</h4>
+                <h4 class="modal-title" id="myModalLabel">Máquina:</h4>
             </div>
             <div class="modal-body form-horizontal col-lg-8 col-lg-offset-2">
                 <div class="form-group">
                     <input class="form-control" id="idMesa" value=@MesaId type="hidden" />
-                    <input class="form-control" id="etiquetaServico" placeholder="Etiqueta de serviço" />
                 </div>
                 <div class="form-group">
-                    <input class="form-control" id="patrimonio" placeholder="Número do patrimônio" />
+                    <label>Etiqueta de Serviço: </label>
+                    <input class="form-control" id="veretiquetaServico" placeholder="Etiqueta de serviço" disabled />
                 </div>
                 <div class="form-group">
-                    <select id="dropdown-modeloMaquina" class="form-control">
-                        <option value="0">Selecione o modelo</option>
-                    </select>
+                    <label>Número do Patrimônio: </label>
+                    <input class="form-control" id="verpatrimonio" placeholder="Número do patrimônio" disabled />
+                </div>
+                <div class="form-group" >
+                    <input id="verModelo" class="form-control" disabled>
                 </div>
                 <div class="form-group">
                     <label>Processador:</label>
-                    <input class="form-control" id="processador" disabled placeholder="Descrição do processador" />
+                    <input class="form-control" id="verprocessador" disabled placeholder="Descrição do processador" />
                 </div>
                 <div class="form-group">
                     <label>Placa Mãe:</label>
-                    <input class="form-control" id="placaMae" disabled placeholder="Descrição da placa mãe" />
+                    <input class="form-control" id="verplacaMae" disabled placeholder="Descrição da placa mãe" />
                 </div>
                 <div class="form-group">
                     <label>Pentes de Memória Ram:</label>
-                    <input class="form-control" type="number" disabled id="unidadesMemoriaRam" placeholder="Número de pentes de memória ram" />
+                    <input class="form-control" type="number" disabled id="verunidadesMemoriaRam" placeholder="Número de pentes de memória ram" />
                 </div>
                 <div class="form-group">
                     <label>Tamanho de cada pente:</label>
                     <div class="input-group" style="width:320px">
-                        <input class="form-control form-inline" style="top:0;" type="number" disabled id="penteMemoriaRamGB" placeholder="Tamanho de cada pente de memória ram" />
+                        <input class="form-control form-inline" style="top:0;" type="number" disabled id="verpenteMemoriaRamGB" placeholder="Tamanho de cada pente de memória ram" />
                         <div class="input-group-addon">GB</div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label>Tamanho SSD:</label>
                     <div class="input-group" style="width:320px">
-                        <input class="form-control" type="number" style="top:0;" disabled id="ssd" placeholder="Tamanho do SSD" />
+                        <input class="form-control" type="number" style="top:0;" disabled id="verssd" placeholder="Tamanho do SSD" />
                         <div class="input-group-addon">GB</div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label>Tamanho HD:</label>
                     <div class="input-group" style="width:320px">
-                        <input class="form-control" type="number" style="top:0;" disabled id="hd" placeholder="Tamanho do HD" />
+                        <input class="form-control" type="number" style="top:0;" disabled id="verhd" placeholder="Tamanho do HD" />
                         <div class="input-group-addon">GB</div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label>Fonte:</label>
-                    <input class="form-control" id="fonte" disabled placeholder="Descrição da fonte" />
+                    <input class="form-control" id="verfonte" disabled placeholder="Descrição da fonte" />
                 </div>
                 <div class="form-group">
                     <label>Placa de Rede:</label>
-                    <input class="form-control" id="placaRede" disabled placeholder="Descrição da placa de rede" />
+                    <input class="form-control" id="verplacaRede" disabled placeholder="Descrição da placa de rede" />
                 </div>
                 <div class="form-group">
                     <label>Driver Ótico:</label>
-                    <input class="form-control" id="driverOtico" disabled placeholder="Descrição do driver ótico" />
+                    <input class="form-control" id="verdriverOtico" disabled placeholder="Descrição do driver ótico" />
                 </div>
                 <h2></h2>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal" onclick="RetiraDestaqueMesa()">Fechar</button>
-                <button id="adicionaMaquina" type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
             </div>
         </div>
     </div>

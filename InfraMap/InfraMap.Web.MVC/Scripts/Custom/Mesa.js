@@ -168,6 +168,30 @@ function RenderPartial(id) {
                     );
                 }
             );
+
+            $("#veMaquina").click(
+                function () {
+                    ReceivesServer(
+                        "/Maquina/VerMaquina",
+                        { idMesa: $("#idMesa").val() },
+                        function (data) {
+                            $("#veretiquetaServico").val(data.EtiquetaServico);
+                            $("#verpatrimonio").val(data.Patrimonio);
+                            $("#verModelo").val(data.Maquina.ModeloMaquina.Name);
+                            $("#verprocessador").val(data.Maquina.Processador);
+                            $("#verplacaMae").val(data.Maquina.PlacaMae);
+                            $("#verunidadesMemoriaRam").val(data.Maquina.UnidadesMemoriaRam);
+                            $("#verpenteMemoriaRamGB").val(data.Maquina.PenteMemoriaRamGB);
+                            $("#verssd").val(data.Maquina.SSD);
+                            $("#verhd").val(data.Maquina.HD);
+                            $("#verfonte").val(data.Maquina.Fonte);
+                            $("#verplacaRede").val(data.Maquina.PlacaRede);
+                            $("#verdriverOtico").val(data.Maquina.DriverOtico);
+                        },
+                        function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+                    );
+                }
+            );
         },
         function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
      );

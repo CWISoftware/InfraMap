@@ -230,6 +230,7 @@
     <Content Include="Views\Shared\_OpcoesInfra.cshtml" />
     <Content Include="Views\Maquina\ConfigurarMaquina.cshtml" />
     <Content Include="Views\Maquina\EditarMaquina.cshtml" />
+    <Content Include="Views\Modais\_ModalVerMaquina.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

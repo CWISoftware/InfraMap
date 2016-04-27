@@ -162,5 +162,21 @@ namespace InfraMap.Web.MVC.Controllers
 
         }
 
+        [HttpGet]
+        public JsonResult VerMaquina(int idMesa)
+        {
+            try
+            {
+                var service = Factory.CriarMesaRepositorio();
+                var mesa = service.BuscarPorId(idMesa);
+                var maquina = mesa.MaquinaPessoal;
+                return Json(maquina, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return ErroTratado(e);
+            }
+        }
+
     }
 }

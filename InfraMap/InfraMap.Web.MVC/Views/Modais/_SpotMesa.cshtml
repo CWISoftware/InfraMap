@@ -38,7 +38,10 @@
                         <div class="form-inline">
                             <label class="font-14 label-center"><span class="fa fa-desktop" aria-hidden="true"></span>  Computador: @maquina</label>
                             <button type="button" class="btn btn-danger form-control" data-toggle="modal" data-target="#removerMaquina" data-dismiss="modal">
-                                Remover maquina
+                                Remover máquina
+                            </button>
+                            <button type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#verMaquina" id="veMaquina" data-dismiss="modal">
+                                Ver máquina
                             </button>
                         </div>
                         <h2></h2>
@@ -46,7 +49,7 @@
                     else
                     {
                         <button type="button" class="btn btn-primary form-control" id="btnAdicionarMaquina" data-toggle="modal" data-target="#maquina" data-dismiss="modal">
-                            Adicionar maquina
+                            Adicionar máquina
                         </button>
                         <h2></h2>
                     }
@@ -83,6 +86,7 @@
     @Html.Partial("~/Views/Modais/_ModalRemRamal.cshtml", ramal);
     @Html.Partial("~/Views/Modais/_ModalError.cshtml");
     @Html.Partial("~/Views/Modais/_ModalTrocarUsuario.cshtml", Model.Id);
+    @Html.Partial("~/Views/Modais/_ModalVerMaquina.cshtml", Model.Id);
 }
 
 @if (User.IsInRole("GERENTE"))
