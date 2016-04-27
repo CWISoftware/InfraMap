@@ -1,35 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Test">
-    <ItemGroup>
-        <SolutionFile Include="InfraMap.sln" />
-        <TestResultsDir Include="TestResults" />
-    </ItemGroup>
-
+<Project DefaultTargets="Start" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
-        <BuildPlatform Condition=" '$(BuildPlatform)' == '' ">Any CPU</BuildPlatform>
-        <TestRunnerExePath>C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe</TestRunnerExePath>
+        <DoubleQuotes>"</DoubleQuotes>
+        <!--<MsTestExePath>C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe</TestRunnerExePath>-->
+        <MsTestExePath>C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\MSTest.exe</MsTestExePath>
+        <Configuration>Release</Configuration>
     </PropertyGroup>
 
-    <Target Name="Clean">
-        <RemoveDir Directories="@(TestResultsDir)" />
+    <Target Name="Start">
+        <CallTarget Targets="Compile"/>
+        <CallTarget Targets="Test"/>
     </Target>
 
-    <Target Name="Compile" DependsOnTargets="Clean">
-        <MSBuild Projects="@(SolutionFile)"
+    <Target Name="Compile">
+        <MSBuild Projects="InfraMap.sln"
                  Targets="Rebuild"
-                 Properties="Configuration=$(Configuration);Platform=$(BuildPlatform)" />
+                 Properties="Configuration=$(Configuration)" />
     </Target>
 
-    <Target Name="Test" DependsOnTargets="Compile">
+    <Target Name="Test">
         <ItemGroup>
-            <TestAssemblies Include="**bin$(Configuration)*.Test.dll" />
+            <TestAssemblies Include="$(MSBuildProjectDirectory)\**\bin\$(Configuration)\*.Test.dll"/>
         </ItemGroup>
 
         <PropertyGroup>
-            <TestRunnerCommand>"$(TestRunnerExePath)" @(TestAssemblies->'"%(FullPath)"', ' ') /Logger:trx"</TestRunnerCommand>
+            <!--<TestRunnerCommand>"$(MsTestExePath)" @(TestAssemblies->'"%(FullPath)"', ' ') /Logger:trx"</TestRunnerCommand>-->
+            <MsTestCommand>"$(MsTestExePath)" @(TestAssemblies->'/testcontainer:"%(FullPath)"', ' ') /resultsfile:"TestResults\Results.trx""</MsTestCommand>
         </PropertyGroup>
 
-        <Exec Command="$(TestRunnerCommand)" />
+        <Message Text="MsTestCommand: @(TestAssemblies->'/testcontainer:$(DoubleQuotes)%(FullPath)$(DoubleQuotes)', ' ')"
+                 Importance="high" />
+
+        <RemoveDir Directories="TestResults"
+                   Condition="Exists('TestResults')" />
+        <MakeDir Directories="TestResults" />
+
+        <Exec Command="$(MsTestCommand)"
+              ContinueOnError="true" />
     </Target>
 </Project>
+
+<!--
+Configurando para executar no jenkins
+http://automatetheplanet.com/configure-jenkins-mstest-execution/#prettyPhoto
+
+-->
