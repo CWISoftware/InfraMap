@@ -41,7 +41,7 @@
                 <div class="form-group">
                     <label>Tamanho de cada pente:</label>
                     <div class="input-group" style="width:320px">
-                        <input class="form-control form-inline" style="top:0;" type="number" disabled id="verpenteMemoriaRamGB" placeholder="Tamanho de cada pente de memória ram" />
+                        <input class="form-control" style="top:0;" type="number" disabled id="verpenteMemoriaRamGB" placeholder="Tamanho de cada pente de memória ram" />
                         <div class="input-group-addon">GB</div>
                     </div>
                 </div>
@@ -73,8 +73,20 @@
                 </div>
                 <h2></h2>
             </div>
+            <div class="form-group">
+                <input class="form-control" id="IdPessoal" type="hidden" />
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="idMaquina" type="hidden" />
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="MaquinaTipo" type="hidden" />
+            </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="RetiraDestaqueMesa()">Fechar</button>
+                <button type="button" class="btn btn-default" onclick="RetiraDestaqueMesa()" id="FechaModal" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary" id="EditarMaquinaPessoal">Editar</button>
+                <button type="button" class="btn btn-primary hide pull-right" id="SalvaConfigMaquina" data-dismiss="modal"> Salvar</button>
+                <button type="button" class="btn btn-default hide pull-right" id="CancelaConfigMaquina" onclick="RetiraDestaqueMesa()" data-dismiss="modal"> Cancelar</button>
             </div>
         </div>
     </div>

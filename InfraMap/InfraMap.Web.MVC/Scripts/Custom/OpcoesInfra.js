@@ -14,7 +14,7 @@ $("#SalvaMaquina").click(function () {
                 ModeloMaquina: {
                     Name: $("#InsereModelo").val().toUpperCase()
                 },
-                TipoMaquina: $("#MaquinadoTipo").val().toUpperCase(),
+                TipoMaquina: $("#MaquinadoTipo").val(),
                 Processador: $("#Insereprocessador").val().toUpperCase(),
                 PlacaMae: $("#InsereplacaMae").val().toUpperCase(),
                 UnidadesMemoriaRam: $("#InsereunidadesMemoriaRam").val(),
@@ -58,7 +58,7 @@ $("#dropdown-EditarMaquina").change(
             $("#EditaModelo").prop("disabled", true).val();
             $("#Editaprocessador").prop("disabled", true).val();
             $("#EditaplacaMae").prop("disabled", true).val();
-            $("#EditaeunidadesMemoriaRam").prop("disabled", true).val();
+            $("#EditaunidadesMemoriaRam").prop("disabled", true).val();
             $("#EditapenteMemoriaRamGB").prop("disabled", true).val();
             $("#Editassd").prop("disabled", true).val();
             $("#Editahd").prop("disabled", true).val();
@@ -78,7 +78,7 @@ $("#dropdown-EditarMaquina").change(
                 $("#EditaModelo").prop("disabled", false).val(data.ModeloMaquina.Name);
                 $("#Editaprocessador").prop("disabled", false).val(data.Processador);
                 $("#EditaplacaMae").prop("disabled", false).val(data.PlacaMae);
-                $("#EditaeunidadesMemoriaRam").prop("disabled", false).val(data.UnidadesMemoriaRam);
+                $("#EditaunidadesMemoriaRam").prop("disabled", false).val(data.UnidadesMemoriaRam);
                 $("#EditapenteMemoriaRamGB").prop("disabled", false).val(data.PenteMemoriaRamGB);
                 $("#Editassd").prop("disabled", false).val(data.SSD);
                 $("#Editahd").prop("disabled", false).val(data.HD);
@@ -127,7 +127,7 @@ $("#SalvaEdicaoMaquina").click(function () {
                 ModeloMaquina: {
                     Name: $("#EditaModelo").val().toUpperCase()
                 },
-                TipoMaquina: $("#MaquinadoTipo").val().toUpperCase(),
+                TipoMaquina: $("#MaquinadoTipo").val(),
                 Processador: $("#Editaprocessador").val().toUpperCase(),
                 PlacaMae: $("#EditaplacaMae").val().toUpperCase(),
                 UnidadesMemoriaRam: $("#EditaunidadesMemoriaRam").val(),
@@ -137,7 +137,7 @@ $("#SalvaEdicaoMaquina").click(function () {
                 Fonte: $("#Editafonte").val().toUpperCase(),
                 PlacaRede: $("#EditaplacaRede").val().toUpperCase(),
                 DriverOtico: $("#EditadriverOtico").val().toUpperCase(),
-                ModeloMaquina_Id: $("#dropdown-EditarMaquina").val().toUpperCase()
+                ModeloMaquina_Id: $("#dropdown-EditarMaquina").val()
             }
         },
         function (response) { GoBack(); },
