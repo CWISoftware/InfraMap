@@ -2,19 +2,32 @@
 <Project DefaultTargets="Start" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
         <DoubleQuotes>"</DoubleQuotes>
+        <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+        <SolutionName>InfraMap</SolutionName>
+        <SolutionFile>$(SolutionName).sln</SolutionFile>
+        <ProjectName>InfraMap.Web.MVC</ProjectName>
+        <ProjectFile>$(ProjectName)\$(ProjectName).csproj</ProjectFile>
         <MsTestExePath>C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\MSTest.exe</MsTestExePath>
-        <Configuration>Release</Configuration>
     </PropertyGroup>
 
     <Target Name="Start">
-        <CallTarget Targets="Compile"/>
+        <CallTarget Targets="BuildPackage"/>
         <CallTarget Targets="Test"/>
+        <CallTarget Targets="Deploy"/>
     </Target>
 
-    <Target Name="Compile">
-        <MSBuild Projects="InfraMap.sln"
+    <Target Name="BuildPackage">
+        <!-- Builda toda a aplicação -->
+        <MSBuild Projects="$(SolutionFile)"
+                 ContinueOnError="false"
                  Targets="Rebuild"
                  Properties="Configuration=$(Configuration)" />
+        <!-- Constroi pacote para deploy -->
+        <MSBuild Projects="$(ProjectFile)"
+                 ContinueOnError="false"
+                 Targets="Package"
+                 Properties="Configuration=$(Configuration);
+                             AutoParameterizationWebConfigConnectionStrings=False" />
     </Target>
 
     <Target Name="Test">
@@ -33,7 +46,13 @@
                    Condition="Exists('TestResults')" />
         <MakeDir Directories="TestResults" />
 
-        <Exec Command="$(MsTestCommand)"
-              ContinueOnError="true" />
+        <Exec Command="$(MsTestCommand)" />
+    </Target>
+
+    <Target Name="Deploy">
+        <ItemGroup>
+            <PackagedFiles Include="$(ProjectName)\obj\$(Configuration)\Package\PackageTmp\**\*.*"/>
+        </ItemGroup>
+        <Copy SourceFiles="@(PackagedFiles)" DestinationFiles="@(PackagedFiles->'C:\inetpub\wwwroot\$(SolutionName)\%(RecursiveDir)%(Filename)%(Extension)')"/>
     </Target>
 </Project>
