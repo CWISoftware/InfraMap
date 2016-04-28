@@ -78,6 +78,16 @@ namespace InfraMap.Dominio.Mesa
             var mesa = this.mesaRepositorio.BuscarPorId(idMesa);
             maquinaPessoal.Maquina.ModeloMaquina = this.modeloMaquinaRepositorio.BuscarPorId((int)maquinaPessoal.Maquina.ModeloMaquina_Id);
 
+            int patrimonio = this.maquinaPessoalRepositorio.BuscarPorPatrimonio(maquinaPessoal);
+            if (patrimonio > 0)
+            {
+                throw new MaquinaEmOutraMesaException("Este patrimônio já está sendo utlizado na Mesa " + patrimonio);
+            }
+            int etiqueta = this.maquinaPessoalRepositorio.BuscarPorEtiquetaServico(maquinaPessoal);
+            if (etiqueta > 0)
+            {
+                throw new MaquinaEmOutraMesaException("Esta Service Tag já está sendo utlizada na Mesa " + etiqueta);
+            }
             var novaMaquinaPessoal = this.maquinaPessoalRepositorio.Adicionar(maquinaPessoal);
             mesa.AdicionarMaquina(novaMaquinaPessoal);
             this.mesaRepositorio.Atualizar(mesa);

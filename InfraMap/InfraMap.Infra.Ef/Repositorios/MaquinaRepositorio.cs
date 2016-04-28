@@ -56,6 +56,5 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
                 dbContext.SaveChanges();
             }
         }
-
     }
 }

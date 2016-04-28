@@ -9,5 +9,7 @@ namespace InfraMap.Dominio.Mesa.Maquina
 {
     public interface IMaquinaPessoalRepositorio : IRepositorio<MaquinaPessoal>
     {
+        int BuscarPorEtiquetaServico(MaquinaPessoal maquina);
+        int BuscarPorPatrimonio(MaquinaPessoal maquina);
     }
 }

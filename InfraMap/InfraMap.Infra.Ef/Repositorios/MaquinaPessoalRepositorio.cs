@@ -31,5 +31,35 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
             }
         }
 
+        public int BuscarPorPatrimonio(MaquinaPessoal maquina)
+        {
+            using (var db = new DataBaseContext())
+            {
+                var maq = db.MaquinaPessoal.FirstOrDefault(t => t.Patrimonio == maquina.Patrimonio);
+                if (maq != null)
+                {
+                    var mesa = db.Mesa.First(r => r.MaquinaPessoal_Id == maq.Id);
+                    return mesa.Id;
+                }
+                else
+                    return -1;
+            }
+        }
+
+        public int BuscarPorEtiquetaServico(MaquinaPessoal maquina)
+        {
+            using (var db = new DataBaseContext())
+            {
+                var maq = db.MaquinaPessoal.FirstOrDefault(t => t.EtiquetaServico == maquina.EtiquetaServico);
+                if (maq != null)
+                {
+                    var mesa = db.Mesa.First(r => r.MaquinaPessoal_Id == maq.Id);
+                    return mesa.Id;
+                }
+                else
+                    return -1;
+            }
+        }
+
     }
 }

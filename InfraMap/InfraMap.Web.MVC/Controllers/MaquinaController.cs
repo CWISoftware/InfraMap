@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using InfraMap.Dominio.Mesa.Maquina;
+using InfraMap.Dominio.Mesa;
 
 namespace InfraMap.Web.MVC.Controllers
 {
@@ -14,10 +15,17 @@ namespace InfraMap.Web.MVC.Controllers
         [HttpPost]
         public JsonResult AdicionarMaquina(MaquinaPessoalModel model)
         {
-            var service = Factory.CriarMesaService();
-            var maquinaPessoal = MaquinaPessoalModelHelper.ToEntity(model);
-            service.AdicionarMaquina(model.IdMesa, maquinaPessoal);
-            return Json(new { success = true });
+            try
+            {
+                var service = Factory.CriarMesaService();
+                var maquinaPessoal = MaquinaPessoalModelHelper.ToEntity(model);
+                service.AdicionarMaquina(model.IdMesa, maquinaPessoal);
+            }
+            catch (MaquinaEmOutraMesaException maquina)
+            {
+                return Json(new { message = maquina.Message }, JsonRequestBehavior.AllowGet);
+            }
+            return Json(new { message = "true" }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]

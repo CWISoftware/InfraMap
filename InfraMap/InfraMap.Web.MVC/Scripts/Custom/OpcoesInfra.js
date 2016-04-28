@@ -12,18 +12,18 @@ $("#SalvaMaquina").click(function () {
         {
             model: {
                 ModeloMaquina: {
-                    Name: $("#InsereModelo").val()
+                    Name: $("#InsereModelo").val().toUpperCase()
                 },
-                TipoMaquina: $("#MaquinadoTipo").val(),
-                Processador: $("#Insereprocessador").val(),
-                PlacaMae: $("#InsereplacaMae").val(),
+                TipoMaquina: $("#MaquinadoTipo").val().toUpperCase(),
+                Processador: $("#Insereprocessador").val().toUpperCase(),
+                PlacaMae: $("#InsereplacaMae").val().toUpperCase(),
                 UnidadesMemoriaRam: $("#InsereunidadesMemoriaRam").val(),
                 PenteMemoriaRamGB: $("#InserepenteMemoriaRamGB").val(),
                 Ssd: $("#Inseressd").val(),
                 Hd: $("#Inserehd").val(),
-                Fonte: $("#Inserefonte").val(),
-                PlacaRede: $("#InsereplacaRede").val(),
-                DriverOtico: $("#InseredriverOtico").val()
+                Fonte: $("#Inserefonte").val().toUpperCase(),
+                PlacaRede: $("#InsereplacaRede").val().toUpperCase(),
+                DriverOtico: $("#InseredriverOtico").val().toUpperCase()
             }
         },
         function (response) { GoBack(); },
@@ -97,20 +97,20 @@ $("#adicionaMaquina").click(
         SendsServer(
             "/Maquina/AdicionarMaquina",
             {
-                EtiquetaServico: $("#etiquetaServico").val(),
-                Patrimonio: $("#patrimonio").val(),
+                EtiquetaServico: $("#etiquetaServico").val().toUpperCase(),
+                Patrimonio: $("#patrimonio").val().toUpperCase(),
                 IdMesa: $("#idMesa").val(),
                 Maquina: {
                     IdModeloMaquina: $("#dropdown-modeloMaquina").val(),
-                    Processador: $("#processador").val(),
-                    PlacaMae: $("#placaMae").val(),
+                    Processador: $("#processador").val().toUpperCase(),
+                    PlacaMae: $("#placaMae").val().toUpperCase(),
                     UnidadesMemoriaRam: $("#unidadesMemoriaRam").val(),
                     PenteMemoriaRamGB: $("#penteMemoriaRamGB").val(),
                     Ssd: $("#ssd").val(),
                     Hd: $("#hd").val(),
-                    Fonte: $("#fonte").val(),
-                    PlacaRede: $("#placaRede").val(),
-                    DriverOtico: $("#driverOtico").val()
+                    Fonte: $("#fonte").val().toUpperCase(),
+                    PlacaRede: $("#placaRede").val().toUpperCase(),
+                    DriverOtico: $("#driverOtico").val().toUpperCase()
                 }
             },
             function (response) { RetiraDestaqueMesa(); },
@@ -125,19 +125,19 @@ $("#SalvaEdicaoMaquina").click(function () {
         {
             model: {
                 ModeloMaquina: {
-                    Name: $("#EditaModelo").val()
+                    Name: $("#EditaModelo").val().toUpperCase()
                 },
-                TipoMaquina: $("#MaquinadoTipo").val(),
-                Processador: $("#Editaprocessador").val(),
-                PlacaMae: $("#EditaplacaMae").val(),
+                TipoMaquina: $("#MaquinadoTipo").val().toUpperCase(),
+                Processador: $("#Editaprocessador").val().toUpperCase(),
+                PlacaMae: $("#EditaplacaMae").val().toUpperCase(),
                 UnidadesMemoriaRam: $("#EditaunidadesMemoriaRam").val(),
                 PenteMemoriaRamGB: $("#EditapenteMemoriaRamGB").val(),
                 Ssd: $("#Editassd").val(),
                 Hd: $("#Editahd").val(),
-                Fonte: $("#Editafonte").val(),
-                PlacaRede: $("#EditaplacaRede").val(),
-                DriverOtico: $("#EditadriverOtico").val(),
-                ModeloMaquina_Id: $("#dropdown-EditarMaquina").val()
+                Fonte: $("#Editafonte").val().toUpperCase(),
+                PlacaRede: $("#EditaplacaRede").val().toUpperCase(),
+                DriverOtico: $("#EditadriverOtico").val().toUpperCase(),
+                ModeloMaquina_Id: $("#dropdown-EditarMaquina").val().toUpperCase()
             }
         },
         function (response) { GoBack(); },

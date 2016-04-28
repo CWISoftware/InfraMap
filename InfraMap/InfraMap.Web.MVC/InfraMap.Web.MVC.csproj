@@ -231,6 +231,7 @@
     <Content Include="Views\Maquina\ConfigurarMaquina.cshtml" />
     <Content Include="Views\Maquina\EditarMaquina.cshtml" />
     <Content Include="Views\Modais\_ModalVerMaquina.cshtml" />
+    <Content Include="Views\Modais\_ModalTrocarMaquina.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
