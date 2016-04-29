@@ -55,7 +55,7 @@ namespace InfraMap.Web.MVC.Controllers
             return PartialView("~/Views/Modais/_SpotMesa.cshtml", model);
         }
 
-        private JsonResult ErroTratado(Exception e)
+        private new JsonResult ErroTratado(Exception e)
         {
             Response.StatusCode = (int)System.Net.HttpStatusCode.BadRequest;
             return Json(new { Message = e.Message });
