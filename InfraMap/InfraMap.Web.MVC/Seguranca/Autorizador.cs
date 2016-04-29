@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Principal;
-using System.Text;
+﻿using System.Security.Principal;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -20,19 +15,9 @@ namespace InfraMap.Web.MVC.Seguranca
             if (usuario != null && AuthorizeCore(filterContext.HttpContext))
             {
                 GenericIdentity myIdentity = new GenericIdentity(usuario.Login);
-
-                /*var list = new List<string>()
-                {
-                    "NavegacaoFacebook",
-                    "Infra.cwidsajsn 21121"
-                };
-
-                usuario.Permissoes = list.ToArray();*/
-                GenericPrincipal principal = new GenericPrincipal(myIdentity, usuario.Permissoes);
-
+                GenericPrincipal principal = new GenericPrincipal(myIdentity, usuario.Grupos.ToArray());
                 Thread.CurrentPrincipal = principal;
                 HttpContext.Current.User = principal;
-
                 base.OnAuthorization(filterContext);
             }
             else
@@ -40,7 +25,6 @@ namespace InfraMap.Web.MVC.Seguranca
                 RedirecionarParaLogin(filterContext);
             }
         }
-
 
         private void RedirecionarParaLogin(AuthorizationContext filterContext)
         {

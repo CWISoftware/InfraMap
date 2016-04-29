@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using InfraMap.Dominio.Autenticacao;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using InfraMap.Dominio.Comum;
 
 namespace InfraMap.Dominio.Usuario
@@ -11,14 +10,24 @@ namespace InfraMap.Dominio.Usuario
 
         public string Login { get; set; }
 
-        public string Cor { get; set; }        
-
-        public ICollection<Permissao> Permissoes { get; set; }
+        public string Cor { get; set; }
 
         public int? GerenteId { get; set; }
 
         public virtual Usuario Gerente { get; set; }
 
-        public virtual ICollection<Usuario> ColaboradoresVinculados { get; set; }       
+        public virtual ICollection<Usuario> ColaboradoresVinculados { get; set; }
+
+        [NotMapped]
+        public List<string> Grupos;
+
+        public Usuario() { }
+
+        public Usuario(string login, string nome, List<string> grupos)
+        {
+            this.Login = login;
+            this.Nome = nome;
+            this.Grupos = grupos;
+        }
     }
 }

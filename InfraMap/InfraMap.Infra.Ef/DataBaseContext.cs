@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.Entity;
-using InfraMap.Dominio.Mesa;
+﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using InfraMap.Dominio.Autenticacao;
+using InfraMap.Dominio.Mesa;
 using InfraMap.Dominio.Mesa.Maquina;
 using InfraMap.Dominio.Mesa.Ramal;
 using InfraMap.Dominio.Sede;
@@ -24,7 +18,6 @@ namespace InfraMap.Infraestrutura.Ef
         }
 
         public DbSet<Usuario> Usuario { get; set; }
-        public DbSet<Permissao> Permissao { get; set; }
         public DbSet<Mesa> Mesa { get; set; }
         public DbSet<Maquina> Maquina { get; set; }
         public DbSet<Ramal> Ramal { get; set; }
@@ -37,7 +30,6 @@ namespace InfraMap.Infraestrutura.Ef
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Configurations.Add(new Mapeamento.MapeamentoUsuario());
-            modelBuilder.Configurations.Add(new Mapeamento.MapeamentoPermissao());
             modelBuilder.Configurations.Add(new Mapeamento.MapeamentoMesa());
             modelBuilder.Configurations.Add(new Mapeamento.MapeamentoMaquina());
             modelBuilder.Configurations.Add(new Mapeamento.MapeamentoRamal());

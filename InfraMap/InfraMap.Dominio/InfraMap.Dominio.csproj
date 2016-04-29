@@ -36,6 +36,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Xml.Linq" />
@@ -45,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LDAP\LDAPService.cs" />
     <Compile Include="Comum\EntidadeBase.cs" />
     <Compile Include="Comum\IQuery.cs" />
     <Compile Include="Comum\IRepositorio.cs" />
@@ -67,7 +70,6 @@
     <Compile Include="Mesa\Ramal\TipoRamal.cs" />
     <Compile Include="Sede\ISedeRepositorio.cs" />
     <Compile Include="Sede\Sede.cs" />
-    <Compile Include="Autenticacao\Permissao.cs" />
     <Compile Include="Usuario\Queries\BuscarUsuarioPorNomeQuery.cs" />
     <Compile Include="Usuario\Queries\BuscarUsuariosPorLoginQuery.cs" />
     <Compile Include="Usuario\Queries\BuscarUsuariosPorNomeQuery.cs" />

@@ -21,9 +21,8 @@ namespace InfraMap.Web.MVC.Seguranca
             }
         }
 
-        public static void CriarSessaoDeUsuario(Usuario usuarioAutenticado)
+        public static void CriarSessaoDeUsuario(UsuarioLogado usuarioLogado)
         {
-            var usuarioLogado = new UsuarioLogado(usuarioAutenticado);
             FormsAuthentication.SetAuthCookie(usuarioLogado.Login, true);
             HttpContext.Current.Session[USUARIO_LOGADO] = usuarioLogado;
         }

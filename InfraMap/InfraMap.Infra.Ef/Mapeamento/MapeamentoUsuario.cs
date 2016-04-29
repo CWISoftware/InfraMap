@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.Infrastructure.Annotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using InfraMap.Dominio.Usuario;
 
 namespace InfraMap.Infraestrutura.Ef.Mapeamento
@@ -22,7 +17,6 @@ namespace InfraMap.Infraestrutura.Ef.Mapeamento
                 .HasMaxLength(50)
                 .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute("IX_Usuario_Login") { IsUnique = true }));
             Property(t => t.Cor).IsOptional().HasMaxLength(50);
-            HasMany(t => t.Permissoes).WithMany(t => t.Usuarios);
             HasOptional(t => t.Gerente).WithMany(t => t.ColaboradoresVinculados).HasForeignKey(t => t.GerenteId).WillCascadeOnDelete(false);
         }
     }

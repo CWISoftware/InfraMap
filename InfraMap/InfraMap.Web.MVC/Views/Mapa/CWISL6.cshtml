@@ -7,7 +7,7 @@
     {
         Html.RenderPartial("_OpcoesGerente");
     }
-    else
+    @if (User.IsInRole("INFRA"))
     {
         Html.RenderPartial("_OpcoesInfra");
     }

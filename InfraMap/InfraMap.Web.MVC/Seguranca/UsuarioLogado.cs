@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using InfraMap.Dominio.Usuario;
 
 namespace InfraMap.Web.MVC.Seguranca
@@ -11,22 +7,12 @@ namespace InfraMap.Web.MVC.Seguranca
     {
         public string Login { get; private set; }
 
-        public string Cor { get; set; }
-
-        public string[] Permissoes { get; set; }
+        public List<string> Grupos { get; private set; }
 
         public UsuarioLogado(Usuario usuario)
         {
             this.Login = usuario.Login;
-            this.Cor = usuario.Cor;
-            this.Permissoes = usuario.Permissoes.Select(p => p.Texto).ToArray();
+            this.Grupos = usuario.Grupos;
         }
-
-        public bool TemPermissao(string nomePermissao)
-        {
-            return this.Permissoes != null
-                && this.Permissoes.Contains(nomePermissao);
-        }
-
     }
 }

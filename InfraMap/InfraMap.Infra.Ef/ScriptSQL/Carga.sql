@@ -1,18 +1,3 @@
-INSERT INTO Permissao
-VALUES('INFRA')
-
-INSERT INTO Permissao
-VALUES('GERENTE')
-
-INSERT INTO UsuarioPermissao (Usuario_Id, Permissao_Id)
-VALUES (221, 1)
-
-INSERT INTO UsuarioPermissao (Usuario_Id, Permissao_Id)
-VALUES (140, 1)
-
-INSERT INTO UsuarioPermissao (Usuario_Id, Permissao_Id)
-VALUES (207, 2)
-
 INSERT INTO Sede (NomeCidade, Nome)
 VALUES ('São Leopoldo', 'CWISL')
 

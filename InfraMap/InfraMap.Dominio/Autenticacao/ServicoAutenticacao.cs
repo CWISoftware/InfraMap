@@ -1,5 +1,7 @@
 ﻿using InfraMap.Dominio.Usuario;
+using System.Collections.Generic;
 using System.Web.Security;
+using InfraMap.Dominio.LDAP;
 
 namespace InfraMap.Dominio.Autenticacao
 {
@@ -14,21 +16,18 @@ namespace InfraMap.Dominio.Autenticacao
 
         public Usuario.Usuario BuscarPorAutenticacao(string login, string senha)
         {
-            //if (Membership.ValidateUser(login,senha))
+            if (Membership.ValidateUser(login,senha))
             {
-                Usuario.Usuario usuario = this.usuarioRepositorio.BuscarPorLogin(login);
-
-                if(usuario == null)
+                MembershipUser usuarioAD = Membership.GetUser(login);
+                var gruposAD = new List<string>();
+                //TODO - Adicionar nome dos grupos de infra e gerentes do AD.
+                if ("dloutrs" == LDAPService.GetUserGroups(usuarioAD.UserName).Find(x => x.Contains("dloutrs")))
                 {
-                    var usuarioAD = Membership.GetUser(login);
-                    var usuarioLogado = new Usuario.Usuario()
-                    {
-                        Login = usuarioAD.UserName,
-                        Nome = usuarioAD.ProviderName
-                    };
-                    return this.usuarioRepositorio.Adicionar(usuarioLogado);
+                    gruposAD.Add("OUTROS");
+                    gruposAD.Add("INFRA");
+                    gruposAD.Add("GERENTE");
                 }
-                return usuario;
+                return new Usuario.Usuario(usuarioAD.UserName, LDAPService.GetUserDisplayName(usuarioAD.UserName), gruposAD);
             }
 
             return null;

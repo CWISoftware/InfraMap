@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using InfraMap.Dominio.Usuario;
 using InfraMap.Dominio.Usuario.Queries;
 
@@ -14,7 +11,7 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
         {
             using (var db = new DataBaseContext())
             {
-                return db.Usuario.Include("Permissoes").Include("ColaboradoresVinculados").FirstOrDefault(p => p.Login == login);
+                return db.Usuario.Include("ColaboradoresVinculados").FirstOrDefault(p => p.Login == login);
             }
         }
 

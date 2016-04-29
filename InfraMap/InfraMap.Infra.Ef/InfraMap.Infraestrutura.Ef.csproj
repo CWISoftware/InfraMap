@@ -56,7 +56,6 @@
     <Compile Include="Mapeamento\MapeamentoMaquina.cs" />
     <Compile Include="Mapeamento\MapeamentoMesa.cs" />
     <Compile Include="Mapeamento\MapeamentoModeloMaquina.cs" />
-    <Compile Include="Mapeamento\MapeamentoPermissao.cs" />
     <Compile Include="Mapeamento\MapeamentoRamal.cs" />
     <Compile Include="Mapeamento\MapeamentoSede.cs" />
     <Compile Include="Mapeamento\MapeamentoUsuario.cs" />
@@ -84,6 +83,10 @@
     <Compile Include="Migrations\201604220318105_Mudança mapeamento de mesa.cs" />
     <Compile Include="Migrations\201604220318105_Mudança mapeamento de mesa.Designer.cs">
       <DependentUpon>201604220318105_Mudança mapeamento de mesa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604292044294_Permissoes.cs" />
+    <Compile Include="Migrations\201604292044294_Permissoes.Designer.cs">
+      <DependentUpon>201604292044294_Permissoes.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -137,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604220318105_Mudança mapeamento de mesa.resx">
       <DependentUpon>201604220318105_Mudança mapeamento de mesa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604292044294_Permissoes.resx">
+      <DependentUpon>201604292044294_Permissoes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
