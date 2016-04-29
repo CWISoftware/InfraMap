@@ -148,6 +148,31 @@ namespace InfraMap.Web.MVC.Controllers
         }
 
         [HttpPost]
+        public JsonResult SalvaEdicaoMaquinaPessoal(Maquina model)
+        {
+            try
+            {
+                if (model.ModeloMaquina.Name == null)
+                    return Json(new { success = false });
+
+                model.ModeloMaquina.Id = model.ModeloMaquina_Id.GetValueOrDefault();
+
+                var service = Factory.CriarMaquinaRepositorio();
+                var maquina = service.BuscarPorId(model.Id);
+                service.Atualizar(model);
+
+
+                return Json(new { success = true });
+            }
+
+            catch (Exception e)
+            {
+                return ErroTratado(e);
+            }
+
+        }
+
+        [HttpPost]
         public JsonResult DeletaMaquina(Maquina model)
         {
             try

@@ -195,8 +195,60 @@ function RenderPartial(id) {
                             $("#verfonte").val(data.Maquina.Fonte);
                             $("#verplacaRede").val(data.Maquina.PlacaRede);
                             $("#verdriverOtico").val(data.Maquina.DriverOtico);
+                            $("#idMaquina").val(data.Maquina.ModeloMaquina_Id);
+                            $("#MaquinaTipo").val(data.Maquina.TipoMaquina);
+                            $("#IdPessoal").val(data.Maquina.Id);
                         },
                         function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+                    );
+                }
+            );
+            $("#EditarMaquinaPessoal").click(
+                function () {
+                    $("#SalvaConfigMaquina").addClass("show");
+                    $("#CancelaConfigMaquina").addClass("show");
+                    $("#EditarMaquinaPessoal").hide();
+                    $("#FechaModal").hide();
+                    $("#verModelo").prop("disabled", false).val();
+                    $("#verprocessador").prop("disabled", false).val();
+                    $("#verplacaMae").prop("disabled", false).val();
+                    $("#verunidadesMemoriaRam").prop("disabled", false).val();
+                    $("#verpenteMemoriaRamGB").prop("disabled", false).val();
+                    $("#verssd").prop("disabled", false).val();
+                    $("#verhd").prop("disabled", false).val();
+                    $("#verfonte").prop("disabled", false).val();
+                    $("#verplacaRede").prop("disabled", false).val();
+                    $("#verdriverOtico").prop("disabled", false).val();
+                }
+            );
+
+            $("#SalvaConfigMaquina").click(
+                function () {
+                    SendsServer(
+                    "/Maquina/SalvaEdicaoMaquinaPessoal",
+                    {
+                       model: {
+                           ModeloMaquina_Id: $("#idMaquina").val(),
+                           Id: $("#IdPessoal").val(),
+
+                           ModeloMaquina: {
+                               Name: $("#verModelo").val().toUpperCase(),
+                               Id: $("#IdPessoal").val()
+                            },
+                            TipoMaquina: $("#MaquinaTipo").val(),
+                            Processador: $("#verprocessador").val().toUpperCase(),
+                            PlacaMae: $("#verplacaMae").val().toUpperCase(),
+                            UnidadesMemoriaRam: $("#verunidadesMemoriaRam").val(),
+                            PenteMemoriaRamGB: $("#verpenteMemoriaRamGB").val(),
+                            Ssd: $("#verssd").val(),
+                            Hd: $("#verhd").val(),
+                            Fonte: $("#verfonte").val().toUpperCase(),
+                            PlacaRede: $("#verplacaRede").val().toUpperCase(),
+                            DriverOtico: $("#verdriverOtico").val().toUpperCase()
+                        }
+                    },
+                    function (response) { RetiraDestaqueMesa(); },
+                    function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
                     );
                 }
             );
