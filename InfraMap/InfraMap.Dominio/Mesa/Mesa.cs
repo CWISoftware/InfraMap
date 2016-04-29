@@ -81,5 +81,29 @@ namespace InfraMap.Dominio.Mesa
                 return this.Colaborador != null;
             }
         }
+
+        public bool TemPontoRede
+        {
+            get
+            {
+                return this.PontoRede != null;
+            }
+        }
+
+        public bool TemPontoTelefone
+        {
+            get
+            {
+                return this.PontoTelefone != null;
+            }
+        }
+
+        public bool TemPontoEletrico
+        {
+            get
+            {
+                return this.PontoEletrico != null;
+            }
+        }
     }
 }

@@ -23,6 +23,12 @@ namespace InfraMap.Web.MVC.Models
 
         public Usuario Colaborador { get; set; }
 
+        public string PontoRede { get; set; }
+
+        public string PontoTelefone { get; set; }
+
+        public string PontoEletrico { get; set; }
+
         public MesaModel(Mesa mesa)
         {
             this.Id = mesa.Id;
@@ -41,6 +47,22 @@ namespace InfraMap.Web.MVC.Models
             {
                 this.Ramal = mesa.Ramal;
             }
+
+            if (mesa.PontoRede != null)
+            {
+                this.PontoRede = mesa.PontoRede;
+            }
+
+            if (mesa.PontoEletrico != null)
+            {
+                this.PontoEletrico = mesa.PontoEletrico;
+            }
+
+            if (mesa.PontoTelefone != null)
+            {
+                this.PontoTelefone = mesa.PontoTelefone;
+            }
+
         }
 
         public bool TemMaquina
@@ -66,6 +88,31 @@ namespace InfraMap.Web.MVC.Models
                 return this.Colaborador != null;
             }
         }
+
+        public bool TemPontoRede
+        {
+            get
+            {
+                return this.PontoRede != null;
+            }
+        }
+
+        public bool TemPontoTelefone
+        {
+            get
+            {
+                return this.PontoTelefone != null;
+            }
+        }
+
+        public bool TemPontoEletrico
+        {
+            get
+            {
+                return this.PontoEletrico != null;
+            }
+        }
+
     }
 
     public class RamalModel
