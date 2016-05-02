@@ -85,5 +85,47 @@ namespace InfraMap.Web.MVC.Controllers
             }
             return Json(new { success = true });
         }
+
+        [HttpGet]
+        public JsonResult RetornaCorGerente()
+        {
+            try
+            {
+                var service = Factory.CriarUsuarioRepositorio();
+                var user = service.BuscarPorLogin(ControleDeSessao.UsuarioLogado.Login);
+                object color = user.Cor;
+                return Json(new { message = color }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return ErroTratado(e);
+            }
+        }
+
+        [HttpPost]
+        public JsonResult SalvaCorGerente(string color)
+        {
+            try
+            {
+                var service = Factory.CriarUsuarioRepositorio();
+                var user = service.BuscarPorLogin(ControleDeSessao.UsuarioLogado.Login);
+                var coloruser = service.BuscarPorCor(color);
+                var message = "";
+                if (coloruser == null)
+                {
+                    user.Cor = color;
+                    service.Atualizar(user);
+                }
+                else
+                {
+                    message = "O usuário " + coloruser.Nome + " já está usando esta cor!";
+                }
+                return Json(new { response = message }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return ErroTratado(e);
+            }
+        }
     }
 }

@@ -14,5 +14,7 @@ namespace InfraMap.Dominio.Usuario
         IList<Usuario> BuscarUsuariosPorLogin(string login);
 
         IList<Usuario> Buscar();
+
+        Usuario BuscarPorCor(string color);
     }
 }

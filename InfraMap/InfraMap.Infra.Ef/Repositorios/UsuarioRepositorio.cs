@@ -39,5 +39,13 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
                 return db.Usuario.ToList();
             }
         }
+
+        public Usuario BuscarPorCor(string color)
+        {
+            using (var db = new DataBaseContext())
+            {
+                return db.Usuario.FirstOrDefault(p => p.Cor == color);
+            }
+        }
     }
 }

@@ -26,7 +26,15 @@ $("#SalvaMaquina").click(function () {
                 DriverOtico: $("#InseredriverOtico").val().toUpperCase()
             }
         },
-        function (response) { GoBack(); },
+        function (response) {
+            $('#modalGeral').modal('show');
+            if (response.success == true) {
+                $("#modalGeral .modal-body").empty();
+                $("#selectcolor").empty();
+                $("#modalGeral .modal-body").append("<h2>Configuração salva com sucesso!</h2>");
+                $("#SalvarCorGerente").addClass("hide");
+            }
+        },
         function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
         );
 });
@@ -113,7 +121,9 @@ $("#adicionaMaquina").click(
                     DriverOtico: $("#driverOtico").val().toUpperCase()
                 }
             },
-            function (response) { RetiraDestaqueMesa(); },
+            function (response) {
+
+            },
             function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
         );
     }
@@ -140,7 +150,16 @@ $("#SalvaEdicaoMaquina").click(function () {
                 ModeloMaquina_Id: $("#dropdown-EditarMaquina").val()
             }
         },
-        function (response) { GoBack(); },
+        function (response) {
+            $('#modalGeral').modal('show');
+            if (response.success == true)
+            {
+                $("#modalGeral .modal-body").empty();
+                $("#selectcolor").empty();
+                $("#modalGeral .modal-body").append("<h2>Configuração salva com sucesso!</h2>");
+                $("#SalvarCorGerente").addClass("hide");
+            }
+        },
         function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
         );
 });
@@ -166,7 +185,15 @@ $("#DeletaMaquina").click(function () {
             ModeloMaquina_Id: $("#dropdown-EditarMaquina").val()
         }
     },
-    function (response) { GoBack(); },
+    function (response) {
+        $('#modalGeral').modal('show');
+        if (response.success == true) {
+            $("#modalGeral .modal-body").empty();
+            $("#selectcolor").empty();
+            $("#modalGeral .modal-body").append("<h2>Configuração apagada com sucesso!</h2>");
+            $("#SalvarCorGerente").addClass("hide");
+        }
+    },
     function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
     );
 });
