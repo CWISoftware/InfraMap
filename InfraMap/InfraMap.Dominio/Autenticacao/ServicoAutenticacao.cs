@@ -25,7 +25,7 @@ namespace InfraMap.Dominio.Autenticacao
                 {
                     gruposAD.Add("OUTROS");
                     gruposAD.Add("INFRA");
-                    gruposAD.Add("GERENTE");
+                    //gruposAD.Add("GERENTE");
                 }
                 return new Usuario.Usuario(usuarioAD.UserName, LDAPService.GetUserDisplayName(usuarioAD.UserName), gruposAD);
             }
