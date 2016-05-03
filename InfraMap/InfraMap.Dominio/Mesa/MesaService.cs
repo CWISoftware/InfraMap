@@ -134,9 +134,12 @@ namespace InfraMap.Dominio.Mesa
             {
                 throw new Exception("Esta mesa não possui ramal!");
             }
+            var ramal = mesa.Ramal;
 
             mesa.RemoverRamal();
             this.mesaRepositorio.Atualizar(mesa);
+
+            this.ramalRepositorio.Deletar(ramal);
         }
 
         public void SalvarCorDosColaboradores(int[] listaIdColaborador, string gerenteLogin)
