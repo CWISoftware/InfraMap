@@ -89,9 +89,10 @@ namespace InfraMap.Dominio.Test
             Inicializa();
 
             A.CallTo(() => mesaRepositorio.BuscarPorId(mesaFake.Id)).Returns(mesaFake);
-            A.CallTo(() => usuarioRepositorio.BuscarPorNome(usuarioFake.Nome)).Returns(null);
+            A.CallTo(() => usuarioRepositorio.BuscarPorNome("")).Returns(null);
+            A.CallTo(() => usuarioRepositorio.Adicionar(null)).Returns(null);
 
-            mesaService.AdicionarColaborador(mesaFake.Id, usuarioFake.Nome);
+            mesaService.AdicionarColaborador(mesaFake.Id, "");
         }
 
         [TestMethod]

@@ -15,7 +15,36 @@ function RenderPartial(id) {
             $("#partial").html(data);
             $('#InfraModal').modal('show');
             $('#GerenteModal').modal('show');
-            $("#login").easyAutocomplete(usuarioAutoComplete);
+
+            /* easyAutocomplete com Ajax POST
+             * http://easyautocomplete.com/examples#examples-ddg
+             */
+            var options = {
+                url: function (term) {
+                    return "/Base/AdicionarUsuarioAutoComplete";
+                },
+
+                getValue: function (response) {
+                    return response.nome;
+                },
+
+                ajaxSettings: {
+                    dataType: "json",
+                    method: "POST",
+                    data: {
+                        dataType: "json"
+                    }
+                },
+
+                preparePostData: function (data) {
+                    data.term = $("#login").val();
+                    return data;
+                },
+
+                requestDelay: 400
+            };
+            $("#login").easyAutocomplete(options);
+
             $("#adicionaUsuario").click(
                 function () {
                     SendsServer(
@@ -209,7 +238,6 @@ function RenderPartial(id) {
                     $("#CancelaConfigMaquina").addClass("show");
                     $("#EditarMaquinaPessoal").hide();
                     $("#FechaModal").hide();
-                    $("#verModelo").prop("disabled", false).val();
                     $("#verprocessador").prop("disabled", false).val();
                     $("#verplacaMae").prop("disabled", false).val();
                     $("#verunidadesMemoriaRam").prop("disabled", false).val();

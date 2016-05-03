@@ -38,7 +38,7 @@ textarea {
 }
 
 .font-14{
-    font-size:14px;    
+    font-size:14px;
 }
 
 .label-center{
@@ -173,7 +173,7 @@ textarea {
 }
 
 .tamanho-colaborador{
-    width: 200px;
+    width: 320px;
 }
 
 .input-group{
@@ -207,7 +207,7 @@ textarea {
 }
 
 .icon-addon.addon-md .glyphicon,
-.icon-addon .glyphicon, 
+.icon-addon .glyphicon,
 .icon-addon.addon-md .fa,
 .icon-addon .fa {
     position: absolute;

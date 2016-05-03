@@ -1,11 +1,11 @@
-﻿using InfraMap.Web.MVC.Helpers;
-using InfraMap.Web.MVC.Seguranca;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using InfraMap.Web.MVC.Helpers;
+using InfraMap.Web.MVC.Seguranca;
 using InfraMap.Dominio.Usuario;
+using InfraMap.Dominio.LDAP;
 
 namespace InfraMap.Web.MVC.Controllers
 {
@@ -29,6 +29,14 @@ namespace InfraMap.Web.MVC.Controllers
             var json = usuarioEncontrado.Select(usuarios => new { label = usuarios.Nome, id = usuarios.Id });
             return Json(json, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult AdicionarUsuarioAutoComplete(string term)
+        {
+            var list = LDAPService.AutocompleteUsers(term);
+            var json = list.Select(s => new { nome = s });
+            return Json(json, JsonRequestBehavior.AllowGet);
+        }
+
 
         private IList<Usuario> BuscarUsuarioPorLogin(string term)
         {

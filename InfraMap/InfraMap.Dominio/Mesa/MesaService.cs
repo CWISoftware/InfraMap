@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using InfraMap.Dominio.Mesa.Maquina;
 using InfraMap.Dominio.Mesa.Ramal;
 using InfraMap.Dominio.Usuario;
-using InfraMap.Dominio.Autenticacao;
+using InfraMap.Dominio.LDAP;
 
 namespace InfraMap.Dominio.Mesa
 {
@@ -35,7 +31,15 @@ namespace InfraMap.Dominio.Mesa
             var colaborador = this.usuarioRepositorio.BuscarPorNome(nomeColaborador);
             if (colaborador == null)
             {
-                throw new ArgumentException("Colaborador não encontrado!");
+                var login = LDAPService.GetUserLogin(nomeColaborador);
+                if (login.Length > 0)
+                    colaborador = new Usuario.Usuario(LDAPService.GetUserLogin(nomeColaborador), nomeColaborador, null);
+
+                colaborador = this.usuarioRepositorio.Adicionar(colaborador);
+                if (colaborador == null)
+                {
+                    throw new ArgumentException("Colaborador não encontrado!");
+                }
             }
             var mesaColaborador = this.mesaRepositorio.BuscarMesaPorColaborador(colaborador.Login);
             if (mesaColaborador != null)

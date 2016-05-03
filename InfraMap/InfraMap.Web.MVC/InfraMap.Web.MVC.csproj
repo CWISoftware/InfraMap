@@ -129,7 +129,6 @@
     <Content Include="Scripts\Custom\OpcoesGerente.js" />
     <Content Include="Scripts\Custom\OpcoesInfra.js" />
     <Content Include="Scripts\Custom\Shared.js" />
-    <Content Include="Scripts\infra-map-auto-complete.js" />
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery-ui.min.js" />
     <Content Include="Scripts\jquery.easy-autocomplete.js" />
