@@ -21,7 +21,7 @@ namespace InfraMap.Dominio.LDAP
             if (login.Length == 0)
                 return "";
 
-            List<string> properties = new List<string> { "displayName" };
+            List<string> properties = new List<string> { "displayName", "sAMAccountName" };
             string filter = string.Format("(&(!(extensionAttribute9=Deleted))(objectCategory=user)(objectClass=user)(sAMAccountName={0}))", login);
             var searchResult = LdapSearch(filter, 1, properties, null);
 
@@ -29,7 +29,10 @@ namespace InfraMap.Dominio.LDAP
             if (searchResult != null && searchResult.Count != 0)
             {
                 var directoryEntry = new DirectoryEntry(searchResult[0].Path);
-                result = directoryEntry.Properties["displayName"].Value != null ? directoryEntry.Properties["displayName"].Value.ToString() : "";
+                if ((directoryEntry.Properties["displayName"].Value != null) && (directoryEntry.Properties["sAMAccountName"].Value.ToString() == login))
+                {
+                    result = directoryEntry.Properties["displayName"].Value.ToString();
+                }
                 directoryEntry.Close();
             }
 
@@ -43,7 +46,7 @@ namespace InfraMap.Dominio.LDAP
         /// <returns>Return a Dictionary<string, List<string>> of Organization Unit(key) and Common name list </returns>
         public static Dictionary<string, List<string>> GetUserGroups(string login)
         {
-            List<string> properties = new List<string> { "memberOf" };
+            List<string> properties = new List<string> { "memberOf", "sAMAccountName" };
             string filter =  string.Format("(&(!(extensionAttribute9=Deleted))(objectCategory=user)(objectClass=user)(sAMAccountName={0}))", login);
             var searchResult = LdapSearch(filter, 1, properties, null);
 
@@ -51,19 +54,23 @@ namespace InfraMap.Dominio.LDAP
             if (searchResult != null && searchResult.Count != 0)
             {
                 var directoryEntry = new DirectoryEntry(searchResult[0].Path);
-                object result = directoryEntry.Properties["memberOf"].Value != null ? directoryEntry.Properties["memberOf"].Value : null;
-                foreach( string s in (IList)result)
+                object result = null;
+                if ((directoryEntry.Properties["memberOf"].Value != null) && (directoryEntry.Properties["sAMAccountName"].Value.ToString() == login))
                 {
-                    if (s.IndexOf("OU=") > 0)
+                    result = directoryEntry.Properties["memberOf"].Value;
+                    foreach (string s in (IList)result)
                     {
-                        //Example: s = "CN=SW-Nav Moderado,OU=SonicWALL,DC=cwinet,DC=local"
-                        string key = s.Substring(s.IndexOf("OU=") + 3, s.IndexOf(",DC=") - s.IndexOf("OU=") - 3);
-                        string value = s.Substring(s.IndexOf("CN=") + 3, s.IndexOf(",OU=") - s.IndexOf("CN=") - 3);
+                        if (s.IndexOf("OU=") > 0)
+                        {
+                            //Example: s = "CN=SW-Nav Moderado,OU=SonicWALL,DC=cwinet,DC=local"
+                            string key = s.Substring(s.IndexOf("OU=") + 3, s.IndexOf(",DC=") - s.IndexOf("OU=") - 3);
+                            string value = s.Substring(s.IndexOf("CN=") + 3, s.IndexOf(",OU=") - s.IndexOf("CN=") - 3);
 
-                        List<string> listValues;
-                        if (!userGroups.TryGetValue(key, out listValues))
-                            userGroups[key] = listValues = new List<string>();
-                        listValues.Add(value);
+                            List<string> listValues;
+                            if (!userGroups.TryGetValue(key, out listValues))
+                                userGroups[key] = listValues = new List<string>();
+                            listValues.Add(value);
+                        }
                     }
                 }
                 directoryEntry.Close();
@@ -81,7 +88,7 @@ namespace InfraMap.Dominio.LDAP
             if (name.Length == 0)
                 return "";
 
-            List<string> properties = new List<string> { "displayName" };
+            List<string> properties = new List<string> { "displayName", "sAMAccountName" };
             string filter = string.Format("(&(!(extensionAttribute9=Deleted))(objectCategory=user)(objectClass=user)(displayName={0}*))", name);
             var searchResult = LdapSearch(filter, 1, properties, null);
 
@@ -89,7 +96,10 @@ namespace InfraMap.Dominio.LDAP
             if (searchResult != null && searchResult.Count != 0)
             {
                 var directoryEntry = new DirectoryEntry(searchResult[0].Path);
-                result = directoryEntry.Properties["sAMAccountName"].Value != null ? directoryEntry.Properties["sAMAccountName"].Value.ToString() : "";
+                if ((directoryEntry.Properties["sAMAccountName"].Value != null) && (directoryEntry.Properties["displayName"].Value.ToString() == name))
+                {
+                    result = directoryEntry.Properties["sAMAccountName"].Value.ToString();
+                }
                 directoryEntry.Close();
             }
 
@@ -107,7 +117,7 @@ namespace InfraMap.Dominio.LDAP
             string filter = string.Format("(&(!(extensionAttribute9=Deleted))(objectCategory=user)(objectClass=user)(memberOf=CN=gAllUsers,OU=OUGrupos,DC=cwinet,DC=local)(|(displayName={0}*)(givenName={0}*)(sn={0}*)))", term);
             var searchResult = LdapSearch(filter, 100, properties, null);
 
-            List<string> persons = new List<string>();
+            List<string> users = new List<string>();
             if (searchResult != null && searchResult.Count != 0)
             {
                 foreach (SearchResult result in searchResult)
@@ -116,11 +126,11 @@ namespace InfraMap.Dominio.LDAP
                     string name = (entry.Properties["displayName"].Value ?? "").ToString();
                     if (!String.IsNullOrEmpty(name))
                     {
-                        persons.Add(name);
+                        users.Add(name);
                     }
                 }
             }
-            return persons;
+            return users;
         }
 
         /// <summary>

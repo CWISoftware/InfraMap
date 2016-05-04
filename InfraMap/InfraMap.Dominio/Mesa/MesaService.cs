@@ -33,9 +33,11 @@ namespace InfraMap.Dominio.Mesa
             {
                 var login = LDAPService.GetUserLogin(nomeColaborador);
                 if (login.Length > 0)
+                {
                     colaborador = new Usuario.Usuario(LDAPService.GetUserLogin(nomeColaborador), nomeColaborador, null);
+                    colaborador = this.usuarioRepositorio.Adicionar(colaborador);
+                }
 
-                colaborador = this.usuarioRepositorio.Adicionar(colaborador);
                 if (colaborador == null)
                 {
                     throw new ArgumentException("Colaborador não encontrado!");
