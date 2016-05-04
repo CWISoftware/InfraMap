@@ -40,29 +40,35 @@ namespace InfraMap.Dominio.LDAP
         /// Gets groups of the user.
         /// </summary>
         /// <param name="login">The login of the user to search.</param>
-        /// <returns></returns>
-        public static List<string> GetUserGroups(string login)
+        /// <returns>Return a Dictionary<string, List<string>> of Organization Unit(key) and Common name list </returns>
+        public static Dictionary<string, List<string>> GetUserGroups(string login)
         {
-            if (login.Length == 0)
-                return null;
-
             List<string> properties = new List<string> { "memberOf" };
             string filter =  string.Format("(&(!(extensionAttribute9=Deleted))(objectCategory=user)(objectClass=user)(sAMAccountName={0}))", login);
             var searchResult = LdapSearch(filter, 1, properties, null);
 
-            List<string> userListGroups = new List<string>();
+            Dictionary<string, List<string>> userGroups = new Dictionary<string, List<string>>();
             if (searchResult != null && searchResult.Count != 0)
             {
                 var directoryEntry = new DirectoryEntry(searchResult[0].Path);
                 object result = directoryEntry.Properties["memberOf"].Value != null ? directoryEntry.Properties["memberOf"].Value : null;
                 foreach( string s in (IList)result)
                 {
-                    userListGroups.Add(s.Substring( s.IndexOf("=")+1, s.IndexOf(",")-s.IndexOf("=")-1));
+                    if (s.IndexOf("OU=") > 0)
+                    {
+                        //Example: s = "CN=SW-Nav Moderado,OU=SonicWALL,DC=cwinet,DC=local"
+                        string key = s.Substring(s.IndexOf("OU=") + 3, s.IndexOf(",DC=") - s.IndexOf("OU=") - 3);
+                        string value = s.Substring(s.IndexOf("CN=") + 3, s.IndexOf(",OU=") - s.IndexOf("CN=") - 3);
+
+                        List<string> listValues;
+                        if (!userGroups.TryGetValue(key, out listValues))
+                            userGroups[key] = listValues = new List<string>();
+                        listValues.Add(value);
+                    }
                 }
                 directoryEntry.Close();
             }
-
-            return userListGroups;
+            return userGroups;
         }
 
         /// <summary>
@@ -97,9 +103,6 @@ namespace InfraMap.Dominio.LDAP
         /// <returns></returns>
         public static List<string> AutocompleteUsers(string term)
         {
-            if (term.Length == 0)
-                return null;
-
             List<string> properties = new List<string> { "displayName" };
             string filter = string.Format("(&(!(extensionAttribute9=Deleted))(objectCategory=user)(objectClass=user)(|(displayName={0}*)(givenName={0}*)(sn={0}*)))", term);
             var searchResult = LdapSearch(filter, 100, properties, null);

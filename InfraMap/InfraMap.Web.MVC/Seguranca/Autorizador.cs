@@ -15,7 +15,7 @@ namespace InfraMap.Web.MVC.Seguranca
             if (usuario != null && AuthorizeCore(filterContext.HttpContext))
             {
                 GenericIdentity myIdentity = new GenericIdentity(usuario.Login);
-                GenericPrincipal principal = new GenericPrincipal(myIdentity, usuario.Grupos.ToArray());
+                GenericPrincipal principal = new GenericPrincipal(myIdentity, usuario.Permissoes.ToArray());
                 Thread.CurrentPrincipal = principal;
                 HttpContext.Current.User = principal;
                 base.OnAuthorization(filterContext);
