@@ -1,6 +1,6 @@
-﻿using InfraMap.Dominio.Usuario;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Web.Security;
+using InfraMap.Dominio.Usuario;
 using InfraMap.Dominio.LDAP;
 
 namespace InfraMap.Dominio.Autenticacao
@@ -18,18 +18,17 @@ namespace InfraMap.Dominio.Autenticacao
         {
             if (Membership.ValidateUser(login,senha))
             {
+                var permissoesUsuario = new List<string>();
                 MembershipUser usuarioAD = Membership.GetUser(login);
-                var gruposAD = new List<string>();
-                if ("DLgerentes" == LDAPService.GetUserGroups(usuarioAD.UserName).Find(x => x.Contains("DLgerentes")))
-                    gruposAD.Add("GERENTE");
-                if ("dloutrs" == LDAPService.GetUserGroups(usuarioAD.UserName).Find(x => x.Contains("dloutrs")))
-                    gruposAD.Add("OUTROS");
+                var gruposUsuarioAD = LDAPService.GetUserGroups(usuarioAD.UserName);
+                if (gruposUsuarioAD.ContainsKey("OUGrupos") && gruposUsuarioAD["OUGrupos"].Contains("DL gerentes"))
+                    permissoesUsuario.Add("GERENTE");
+                if (gruposUsuarioAD.ContainsKey("OUGrupos") && gruposUsuarioAD["OUGrupos"].Contains("Infraestrutura CWI"))
+                    permissoesUsuario.Add("INFRA");
+                if (gruposUsuarioAD.ContainsKey("OUGrupos") && gruposUsuarioAD["OUGrupos"].Contains("dloutrs"))
+                    permissoesUsuario.Add("OUTROS");
 
-                //-- TODO - Adicionar nome dos grupos de infra e gerentes do AD.
-                gruposAD.Add("INFRA");
-                //-------------------------------------------------------------
-
-                Usuario.Usuario usuario = new Usuario.Usuario(usuarioAD.UserName, LDAPService.GetUserDisplayName(usuarioAD.UserName), gruposAD);
+                Usuario.Usuario usuario = new Usuario.Usuario(usuarioAD.UserName, LDAPService.GetUserDisplayName(usuarioAD.UserName), permissoesUsuario);
                 if (this.usuarioRepositorio.BuscarPorLogin(login) == null)
                     return this.usuarioRepositorio.Adicionar(usuario);
                 return usuario;

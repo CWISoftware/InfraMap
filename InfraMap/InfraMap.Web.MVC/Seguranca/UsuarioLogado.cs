@@ -7,12 +7,12 @@ namespace InfraMap.Web.MVC.Seguranca
     {
         public string Login { get; private set; }
 
-        public List<string> Grupos { get; private set; }
+        public List<string> Permissoes { get; private set; }
 
         public UsuarioLogado(Usuario usuario)
         {
             this.Login = usuario.Login;
-            this.Grupos = usuario.Grupos;
+            this.Permissoes = usuario.Permissoes;
         }
     }
 }

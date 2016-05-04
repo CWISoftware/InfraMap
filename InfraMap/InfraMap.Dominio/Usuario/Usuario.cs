@@ -19,15 +19,15 @@ namespace InfraMap.Dominio.Usuario
         public virtual ICollection<Usuario> ColaboradoresVinculados { get; set; }
 
         [NotMapped]
-        public List<string> Grupos;
+        public List<string> Permissoes;
 
         public Usuario() { }
 
-        public Usuario(string login, string nome, List<string> grupos)
+        public Usuario(string login, string nome, List<string> permissoes)
         {
             this.Login = login;
             this.Nome = nome;
-            this.Grupos = grupos;
+            this.Permissoes = permissoes;
         }
     }
 }
