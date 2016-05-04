@@ -47,5 +47,13 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
                 return db.Usuario.FirstOrDefault(p => p.Cor == color);
             }
         }
+
+        public List<Usuario> BuscarColaboradoresVinculados(int id)
+        {
+            using (var db = new DataBaseContext())
+            {
+                return db.Usuario.Include("ColaboradoresVinculados").Where(p => p.GerenteId == id).ToList();
+            }
+        }
     }
 }

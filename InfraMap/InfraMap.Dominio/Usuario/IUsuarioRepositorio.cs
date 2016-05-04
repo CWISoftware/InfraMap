@@ -16,5 +16,9 @@ namespace InfraMap.Dominio.Usuario
         IList<Usuario> Buscar();
 
         Usuario BuscarPorCor(string color);
+
+        List<Usuario> BuscarColaboradoresVinculados(int id);
+
+
     }
 }

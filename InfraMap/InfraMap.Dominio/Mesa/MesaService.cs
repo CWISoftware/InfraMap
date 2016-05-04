@@ -164,5 +164,20 @@ namespace InfraMap.Dominio.Mesa
                 }
             }
         }
+
+        public void SalvarCorDosColaboradores(System.Collections.Generic.List<Usuario.Usuario> listaIdColaborador, string gerenteLogin)
+        {
+            var gerente = this.usuarioRepositorio.BuscarPorLogin(gerenteLogin);
+            if (gerente == null)
+            {
+                throw new ArgumentException("Gerente não encontrado!");
+            }
+            foreach (var idColaborador in listaIdColaborador)
+            {
+                    idColaborador.Cor = gerente.Cor;
+                    idColaborador.GerenteId = gerente.Id;
+                    this.usuarioRepositorio.Atualizar(idColaborador);
+            }
+        }
     }
 }

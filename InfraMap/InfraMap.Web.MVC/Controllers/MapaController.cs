@@ -108,6 +108,7 @@ namespace InfraMap.Web.MVC.Controllers
             try
             {
                 var service = Factory.CriarUsuarioRepositorio();
+                var mesaservice = Factory.CriarMesaService();
                 var user = service.BuscarPorLogin(ControleDeSessao.UsuarioLogado.Login);
                 var coloruser = service.BuscarPorCor(color);
                 var message = "";
@@ -115,6 +116,9 @@ namespace InfraMap.Web.MVC.Controllers
                 {
                     user.Cor = color;
                     service.Atualizar(user);
+                    var userlist = service.BuscarColaboradoresVinculados(user.Id);
+                    mesaservice.SalvarCorDosColaboradores(userlist, ControleDeSessao.UsuarioLogado.Login);
+
                 }
                 else
                 {
