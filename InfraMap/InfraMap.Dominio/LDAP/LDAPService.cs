@@ -104,7 +104,7 @@ namespace InfraMap.Dominio.LDAP
         public static List<string> AutocompleteUsers(string term)
         {
             List<string> properties = new List<string> { "displayName" };
-            string filter = string.Format("(&(!(extensionAttribute9=Deleted))(objectCategory=user)(objectClass=user)(|(displayName={0}*)(givenName={0}*)(sn={0}*)))", term);
+            string filter = string.Format("(&(!(extensionAttribute9=Deleted))(objectCategory=user)(objectClass=user)(memberOf=CN=gAllUsers,OU=OUGrupos,DC=cwinet,DC=local)(|(displayName={0}*)(givenName={0}*)(sn={0}*)))", term);
             var searchResult = LdapSearch(filter, 100, properties, null);
 
             List<string> persons = new List<string>();

@@ -25,8 +25,8 @@ namespace InfraMap.Dominio.Autenticacao
                     permissoesUsuario.Add("GERENTE");
                 if (gruposUsuarioAD.ContainsKey("OUGrupos") && gruposUsuarioAD["OUGrupos"].Contains("Infraestrutura CWI"))
                     permissoesUsuario.Add("INFRA");
-                if (gruposUsuarioAD.ContainsKey("OUGrupos") && gruposUsuarioAD["OUGrupos"].Contains("dloutrs"))
-                    permissoesUsuario.Add("OUTROS");
+                if (permissoesUsuario.Count == 0)
+                    permissoesUsuario.Add("USUARIO");
 
                 Usuario.Usuario usuario = new Usuario.Usuario(usuarioAD.UserName, LDAPService.GetUserDisplayName(usuarioAD.UserName), permissoesUsuario);
                 if (this.usuarioRepositorio.BuscarPorLogin(login) == null)
