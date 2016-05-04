@@ -47,6 +47,10 @@ namespace InfraMap.Dominio.Test
             ramalFake.Id = 1;
             ramalFake.Numero = "9999";
             ramalFake.Tipo = TipoRamal.Analogico;
+
+            maquinaPessoalFake.EtiquetaServico = "Teste";
+            maquinaPessoalFake.Patrimonio = 1;
+
         }
 
         private void Inicializa()
@@ -179,11 +183,85 @@ namespace InfraMap.Dominio.Test
 
             A.CallTo(() => mesaRepositorio.BuscarPorId(mesaFake.Id)).Returns(mesaFake);
             A.CallTo(() => modeloMaquinaRepositorio.BuscarPorId((int)maquinaPessoalFake.Maquina.ModeloMaquina_Id)).Returns(modeloMaquinaFake);
+            A.CallTo(() => maquinaPessoalRepositorio.BuscarPorPatrimonio(maquinaPessoalFake)).Returns(0);
+            A.CallTo(() => maquinaPessoalRepositorio.BuscarPorEtiquetaServico(maquinaPessoalFake)).Returns(0);
             A.CallTo(() => maquinaPessoalRepositorio.Adicionar(maquinaPessoalFake)).Returns(maquinaPessoalFake);
 
             mesaService.AdicionarMaquina(mesaFake.Id, maquinaPessoalFake);
 
             Assert.AreEqual(maquinaPessoalFake, mesaFake.MaquinaPessoal);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(MaquinaEmOutraMesaException), "Por favor, insira uma Etiqueta de Serviço válida!")]
+        public void AdicionarMaquinaPessoalSemEtiqueta()
+        {
+            Inicializa();
+
+            maquinaPessoalFake.EtiquetaServico = "";
+            maquinaFake.AdicionarModelo(modeloMaquinaFake);
+            maquinaPessoalFake.Maquina = maquinaFake;
+
+            mesaService.AdicionarMaquina(mesaFake.Id, maquinaPessoalFake);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(MaquinaEmOutraMesaException), "Por favor, insira um Patrimônio válido!")]
+        public void AdicionarMaquinaPessoalSemPatrimonio()
+        {
+            Inicializa();
+
+            maquinaPessoalFake.Patrimonio = 0;
+            maquinaFake.AdicionarModelo(modeloMaquinaFake);
+            maquinaPessoalFake.Maquina = maquinaFake;
+
+            mesaService.AdicionarMaquina(mesaFake.Id, maquinaPessoalFake);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(MaquinaEmOutraMesaException), "Por favor, selecione uma máquina válida!")]
+        public void AdicionarMaquinaPessoalSemModelo()
+        {
+            Inicializa();
+
+            modeloMaquinaFake.Id = 0;
+            maquinaFake.AdicionarModelo(modeloMaquinaFake);
+            maquinaPessoalFake.Maquina = maquinaFake;
+
+            mesaService.AdicionarMaquina(mesaFake.Id, maquinaPessoalFake);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(MaquinaEmOutraMesaException))]
+        public void AdicionarMaquinaPessoalPatrimonioOutraMesa()
+        {
+            Inicializa();
+
+            maquinaFake.AdicionarModelo(modeloMaquinaFake);
+            maquinaPessoalFake.Maquina = maquinaFake;
+
+            A.CallTo(() => mesaRepositorio.BuscarPorId(mesaFake.Id)).Returns(mesaFake);
+            A.CallTo(() => modeloMaquinaRepositorio.BuscarPorId((int)maquinaPessoalFake.Maquina.ModeloMaquina_Id)).Returns(modeloMaquinaFake);
+            A.CallTo(() => maquinaPessoalRepositorio.BuscarPorPatrimonio(maquinaPessoalFake)).Returns(1);
+
+            mesaService.AdicionarMaquina(mesaFake.Id, maquinaPessoalFake);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(MaquinaEmOutraMesaException))]
+        public void AdicionarMaquinaPessoalEtiquetaOutraMesa()
+        {
+            Inicializa();
+
+            maquinaFake.AdicionarModelo(modeloMaquinaFake);
+            maquinaPessoalFake.Maquina = maquinaFake;
+
+            A.CallTo(() => mesaRepositorio.BuscarPorId(mesaFake.Id)).Returns(mesaFake);
+            A.CallTo(() => modeloMaquinaRepositorio.BuscarPorId((int)maquinaPessoalFake.Maquina.ModeloMaquina_Id)).Returns(modeloMaquinaFake);
+            A.CallTo(() => maquinaPessoalRepositorio.BuscarPorPatrimonio(maquinaPessoalFake)).Returns(0);
+            A.CallTo(() => maquinaPessoalRepositorio.BuscarPorEtiquetaServico(maquinaPessoalFake)).Returns(1);
+
+            mesaService.AdicionarMaquina(mesaFake.Id, maquinaPessoalFake);
         }
 
         [TestMethod]

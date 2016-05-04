@@ -42,7 +42,7 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
                     return mesa.Id;
                 }
                 else
-                    return -1;
+                    return 0;
             }
         }
 
@@ -57,7 +57,7 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
                     return mesa.Id;
                 }
                 else
-                    return -1;
+                    return 0;
             }
         }
 
