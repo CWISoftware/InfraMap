@@ -79,6 +79,12 @@ namespace InfraMap.Dominio.Mesa
 
         public void AdicionarMaquina(int idMesa, MaquinaPessoal maquinaPessoal)
         {
+            if (maquinaPessoal.EtiquetaServico == "")
+                throw new MaquinaEmOutraMesaException("Por favor, insira uma Etiqueta de Serviço válida!");
+            if  (maquinaPessoal.Patrimonio < 1)
+                throw new MaquinaEmOutraMesaException("Por favor, insira um Patrimônio válido!");
+            if (maquinaPessoal.Maquina.ModeloMaquina_Id == 0)
+                throw new MaquinaEmOutraMesaException("Por favor, selecione uma máquina válida!");
             var mesa = this.mesaRepositorio.BuscarPorId(idMesa);
             maquinaPessoal.Maquina.ModeloMaquina = this.modeloMaquinaRepositorio.BuscarPorId((int)maquinaPessoal.Maquina.ModeloMaquina_Id);
 
@@ -90,7 +96,7 @@ namespace InfraMap.Dominio.Mesa
             int etiqueta = this.maquinaPessoalRepositorio.BuscarPorEtiquetaServico(maquinaPessoal);
             if (etiqueta > 0)
             {
-                throw new MaquinaEmOutraMesaException("Esta Service Tag já está sendo utlizada na Mesa " + etiqueta);
+                throw new MaquinaEmOutraMesaException("Esta Etiqueta de Serviço já está sendo utlizada na Mesa " + etiqueta);
             }
             var novaMaquinaPessoal = this.maquinaPessoalRepositorio.Adicionar(maquinaPessoal);
             mesa.AdicionarMaquina(novaMaquinaPessoal);
