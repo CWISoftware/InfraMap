@@ -7,10 +7,13 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="btn btn-default pull-right" data-dismiss="modal" onclick="RetiraDestaqueMesa()" id="FechaModal">Fechar</button>
+                <button type="button" class="btn btn-primary pull-right margin-right-5" id="EditarMaquinaPessoal">Editar</button>
+                <button type="button" class="btn btn-default hide pull-right" id="CancelaConfigMaquina">Cancelar</button>
+                <button type="button" class="btn btn-primary hide pull-right margin-right-5" data-dismiss="modal" id="SalvaConfigMaquina">Salvar</button>
                 <h4 class="modal-title" id="myModalLabel">Máquina:</h4>
             </div>
-            <div class="modal-body form-horizontal col-lg-8 col-lg-offset-2">
+            <div class="modal-body">
                 <div class="form-group">
                     <input class="form-control" id="idMesa" value=@MesaId type="hidden" />
                 </div>
@@ -82,12 +85,7 @@
             <div class="form-group">
                 <input class="form-control" id="MaquinaTipo" type="hidden" />
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" onclick="RetiraDestaqueMesa()" id="FechaModal" data-dismiss="modal">Fechar</button>
-                <button type="button" class="btn btn-primary" id="EditarMaquinaPessoal">Editar</button>
-                <button type="button" class="btn btn-primary hide pull-right" id="SalvaConfigMaquina" data-dismiss="modal"> Salvar</button>
-                <button type="button" class="btn btn-default hide pull-right" id="CancelaConfigMaquina" onclick="RetiraDestaqueMesa()" data-dismiss="modal"> Cancelar</button>
-            </div>
+            <div class="modal-footer"></div>
         </div>
     </div>
 </div>

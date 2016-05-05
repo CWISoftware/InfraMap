@@ -7,6 +7,8 @@ function mesaClick(id) {
 };
 
 function RenderPartial(id) {
+    var dadosMaquina;
+
     SendsServer(
         "/Mapa/RenderPartialViewSpotMesa",
         { id: id },
@@ -227,11 +229,13 @@ function RenderPartial(id) {
                             $("#idMaquina").val(data.Maquina.ModeloMaquina_Id);
                             $("#MaquinaTipo").val(data.Maquina.TipoMaquina);
                             $("#IdPessoal").val(data.Maquina.Id);
+                            dadosMaquina = data;
                         },
                         function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
                     );
                 }
             );
+
             $("#EditarMaquinaPessoal").click(
                 function () {
                     $("#SalvaConfigMaquina").addClass("show");
@@ -247,6 +251,40 @@ function RenderPartial(id) {
                     $("#verfonte").prop("disabled", false).val();
                     $("#verplacaRede").prop("disabled", false).val();
                     $("#verdriverOtico").prop("disabled", false).val();
+                }
+            );
+
+            $("#CancelaConfigMaquina").click(
+                function () {
+                    $("#SalvaConfigMaquina").removeClass("show");
+                    $("#CancelaConfigMaquina").removeClass("show");
+                    $("#EditarMaquinaPessoal").show();
+                    $("#FechaModal").show();
+                    $("#verprocessador").prop("disabled", true).val();
+                    $("#verplacaMae").prop("disabled", true).val();
+                    $("#verunidadesMemoriaRam").prop("disabled", true).val();
+                    $("#verpenteMemoriaRamGB").prop("disabled", true).val();
+                    $("#verssd").prop("disabled", true).val();
+                    $("#verhd").prop("disabled", true).val();
+                    $("#verfonte").prop("disabled", true).val();
+                    $("#verplacaRede").prop("disabled", true).val();
+                    $("#verdriverOtico").prop("disabled", true).val();
+
+                    $("#veretiquetaServico").val(dadosMaquina.EtiquetaServico);
+                    $("#verpatrimonio").val(dadosMaquina.Patrimonio);
+                    $("#verModelo").val(dadosMaquina.Maquina.ModeloMaquina.Name);
+                    $("#verprocessador").val(dadosMaquina.Maquina.Processador);
+                    $("#verplacaMae").val(dadosMaquina.Maquina.PlacaMae);
+                    $("#verunidadesMemoriaRam").val(dadosMaquina.Maquina.UnidadesMemoriaRam);
+                    $("#verpenteMemoriaRamGB").val(dadosMaquina.Maquina.PenteMemoriaRamGB);
+                    $("#verssd").val(dadosMaquina.Maquina.SSD);
+                    $("#verhd").val(dadosMaquina.Maquina.HD);
+                    $("#verfonte").val(dadosMaquina.Maquina.Fonte);
+                    $("#verplacaRede").val(dadosMaquina.Maquina.PlacaRede);
+                    $("#verdriverOtico").val(dadosMaquina.Maquina.DriverOtico);
+                    $("#idMaquina").val(dadosMaquina.Maquina.ModeloMaquina_Id);
+                    $("#MaquinaTipo").val(dadosMaquina.Maquina.TipoMaquina);
+                    $("#IdPessoal").val(dadosMaquina.Maquina.Id);
                 }
             );
 

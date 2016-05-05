@@ -8,10 +8,11 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Adicionar maquina</h4>
+                <button type="button" class="btn btn-default pull-right" data-dismiss="modal" onclick="RetiraDestaqueMesa()">Fechar</button>
+                <button type="button" class="btn btn-primary pull-right margin-right-5" data-dismiss="modal" id="adicionaMaquina">Salvar</button>
+                <h4 class="modal-title" id="myModalLabel">Adicionar máquina</h4>
             </div>
-            <div class="modal-body form-horizontal col-lg-8 col-lg-offset-2">
+            <div class="modal-body">
                 <div class="form-group">
                     <input class="form-control" id="idMesa" value=@MesaId type="hidden" />
                     <input class="form-control" id="etiquetaServico" placeholder="Etiqueta de serviço" />
@@ -34,12 +35,12 @@
                 </div>
                 <div class="form-group">
                     <label>Pentes de Memória Ram:</label>
-                    <input class="form-control" type="number" disabled id="unidadesMemoriaRam" placeholder="Número de pentes de memória ram" />
+                    <input class="form-control" type="number" disabled id="unidadesMemoriaRam" placeholder="Número de pentes de memória RAM" />
                 </div>
                 <div class="form-group">
                     <label>Tamanho de cada pente:</label>
                     <div class="input-group" style="width:320px">
-                        <input class="form-control" style="top:0;" type="number" disabled id="penteMemoriaRamGB" placeholder="Tamanho de cada pente de memória ram" />
+                        <input class="form-control" style="top:0;" type="number" disabled id="penteMemoriaRamGB" placeholder="Tamanho de cada pente de memória RAM" />
                         <div class="input-group-addon">GB</div>
                     </div>
                 </div>
@@ -71,10 +72,7 @@
                 </div>
                 <h2></h2>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="RetiraDestaqueMesa()">Fechar</button>
-                <button id="adicionaMaquina" type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
-            </div>
+            <div class="modal-footer"></div>
         </div>
     </div>
 </div>
