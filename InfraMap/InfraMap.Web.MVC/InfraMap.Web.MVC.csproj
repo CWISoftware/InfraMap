@@ -226,7 +226,6 @@
     <Content Include="Views\Modais\_ModalRemMaquina.cshtml" />
     <Content Include="Views\Modais\_ModalError.cshtml" />
     <Content Include="Views\Modais\_ModalTrocarUsuario.cshtml" />
-    <Content Include="Views\Shared\_OpcoesInfra.cshtml" />
     <Content Include="Views\Maquina\ConfigurarMaquina.cshtml" />
     <Content Include="Views\Maquina\EditarMaquina.cshtml" />
     <Content Include="Views\Modais\_ModalVerMaquina.cshtml" />

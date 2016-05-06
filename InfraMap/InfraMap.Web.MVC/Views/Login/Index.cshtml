@@ -14,10 +14,10 @@
 }
 <div class="wrapper">
     @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "form-signin" }))
-    {     
+    {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
-        <h2 class="form-signin-heading inframap">Inframap</h2>
+        <h2 class="form-signin-heading inframap">InfraMap</h2>
         <div class="form-group">
             <div class="icon-addon addon-lg">
                 @Html.TextBoxFor(m => m.Login, new { @type = "text", @class = "form-control", @placeholder = "Username" })
