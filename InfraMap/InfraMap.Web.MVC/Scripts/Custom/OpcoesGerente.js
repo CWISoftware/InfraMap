@@ -6,6 +6,7 @@
     $("#btn-cancelar").removeClass("hide");
     $(".mesa").attr("onclick", null);
     $(".mesa").addClass("ui-widget-content");
+    $("#btn-mudarCor").addClass("hide");
     startSelectable();
 });
 
@@ -19,6 +20,7 @@ $("#btn-salvarColaboradores").click(function () {
         { listaIdColaborador: listId },
         function (response) {
             $("#btn-selecionarColaboradores").removeClass("hide");
+            $("#btn-mudarCor").removeClass("hide");
             $("#btn-salvarColaboradores").addClass("hide");
             $("#btn-cancelar").addClass("hide");
             RetiraDestaqueMesa();
@@ -42,6 +44,7 @@ function startSelectable() {
 $("#btn-cancelar").click(function () {
     $("#btn-selecionarColaboradores").removeClass("hide");
     $("#btn-salvarColaboradores").addClass("hide");
+    $("#btn-mudarCor").removeClass("hide");
     $("#btn-cancelar").addClass("hide");
     RetiraDestaqueMesa();
 });
@@ -54,7 +57,12 @@ $("#btn-mudarCor").click(function () {
         "/Mapa/RetornaCorGerente",
         { } ,
         function (response) {
-            $("#modalGeral .modal-body").append("<h2> Sua cor é: </h2>" + "<h2 style=color:" + response.message + ">" + response.message + "</h2>");
+            if (response.message != null) {
+                $("#modalGeral .modal-body").append("<h2> Sua cor atual é: </h2>" + "<h2 style=color:" + response.message + ">" + response.message + "</h2>");
+            }
+            else {
+                $("#modalGeral .modal-body").append("<h2> Ainda não possui uma cor</h2>");
+            }
         },
         function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
     );
