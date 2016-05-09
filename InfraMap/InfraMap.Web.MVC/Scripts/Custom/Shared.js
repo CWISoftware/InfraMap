@@ -1,21 +1,12 @@
 ﻿var RetiraDestaqueMesa = function () {
-    var myUrl = window.location.href;
-    var newUrl = myUrl.substr(0, window.location.href.length - (window.location.href.length - myUrl.lastIndexOf("/")));
-    var UrlTest = newUrl.match("[a-zA-Z]$");
-    if (UrlTest != null) {
-        var andar = myUrl.substr(myUrl.lastIndexOf("/"), window.location.href.length);
-        newUrl = newUrl + andar + "/";
-    }
-    if ((newUrl[window.location.href.length]) != "/")
-        newUrl = newUrl + "/";
-    window.location.href = newUrl;
-}
+    window.location.href = window.location.href.match(/([https]+\:\/\/)?([\dA-Za-z\.\-\:]+)\/([\dA-Za-z]+)\/([\dA-Za-z]+)\/([\dA-Za-z\/])/g);
+};
 
 var DisplayError = function (xhr) {
     var msg = JSON.parse(xhr.responseText);
     $("#error .modal-body").append("<h2>" + msg.Message + "</h2>");
     $('#error').modal('show');
-}
+};
 
 var SendsServer = function (url, data, successFunc, errorFunc) {
     Request("POST", url, data, successFunc, errorFunc);

@@ -1,4 +1,21 @@
-﻿var usuarioAutoComplete = {
+﻿function CarregarUsuario()
+{
+    var usuario = $("#carregar-usuario").val();
+
+    SendsServer(
+        "/Base/CarregarMapaDoUsuarioPesquisado",
+        { nome: usuario },
+        function (response) {
+            window.location.href = "/Mapa/" + response.sede + "/" + response.idAndar + "/" + response.mesa + "/#" + response.mesa;
+        },
+        function (jqXHR, textStatus, errorThrown) {
+            $("#carregar-usuario").val('');
+            $('#erroUsuarioEmNenhumaMesa').modal('show');
+        }
+    );
+};
+
+var usuarioAutoComplete = {
     url: "/Base/UsuarioAutoComplete",
     getValue: "label",
     list: {
@@ -7,35 +24,11 @@
         },
 
         onClickEvent: function () {
-            var usuario = $("#carregar-usuario").val();
-
-            SendsServer(
-                "/Base/CarregarMapaDoUsuarioPesquisado",
-                { nome: usuario },
-                function (response) {
-                    window.location.href = "/Mapa/" + response.sede + "/" + response.idAndar + "/" + response.mesa;
-                },
-                function (jqXHR, textStatus, errorThrown) {
-                    $("#carregar-usuario").val('');
-                    $('#erroUsuarioEmNenhumaMesa').modal('show');
-                }
-            );
+            CarregarUsuario();
         },
 
         onKeyEnterEvent: function () {
-            var usuario = $("#carregar-usuario").val();
-
-            SendsServer(
-                "/Base/CarregarMapaDoUsuarioPesquisado",
-                { nome: usuario },
-                function (response) {
-                    window.location.href = "/Mapa/" + response.sede + "/" + response.idAndar + "/" + response.mesa;
-                },
-                function (jqXHR, textStatus, errorThrown) {
-                    $("#carregar-usuario").val('');
-                    $('#erroUsuarioEmNenhumaMesa').modal('show');
-                }
-            );
+            CarregarUsuario();
         }
     }
 };
