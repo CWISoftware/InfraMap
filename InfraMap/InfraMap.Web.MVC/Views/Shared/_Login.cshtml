@@ -13,17 +13,28 @@
             <!-- Cabeçalho barra de navegação -->
             <div class="navbar-header">
                 <!-- Logo -->
-                <a class="navbar-brand" href="~/Sede/Index">
+                <a class="navbar-brand margin-navbar" href="~/Sede/Index">
                     <img alt="Brand" src="~/Content/img/logo.png">
                 </a>
             </div>
         </div>
     </header>
+
     <section class="container">
         @RenderBody()
     </section>
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/login")
     @RenderSection("Scripts", false)
+
+    <footer class="footer color-menu">
+        <div class="container">
+            <div class="container margin-footer">
+                <p class="text-muted text-center">InfraMap - CWI Software - 2016</p>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>

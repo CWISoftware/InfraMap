@@ -12,30 +12,30 @@
 </head>
 <body>
     <!-- Barra de Navegação -->
-    <header class="navbar navbar-default color-menu">
+    <header class="navbar navbar-default color-menu header">
         <div class="container-fluid">
             <!-- Cabeçalho barra de navegação -->
             <div class="navbar-header">
                 <!-- Logo -->
-                <a class="navbar-brand" href="~/Sede/Index">
+                <a class="navbar-brand margin-navbar" href="~/Sede/Index">
                     <img alt="Brand" src="~/Content/img/logo.png">
                 </a>
             </div>
             <!-- Botão de ação -->
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a class="dropdown-toggle fa fa-user" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">  @User.Identity.Name<span class="caret"></span></a>
+                    <a class="dropdown-toggle fa fa-user margin-navbar" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="">  @User.Identity.Name<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         @if (User.IsInRole("GERENTE"))
                         {
-                            <li><a class="fa" id="btn-selecionarColaboradores">Habilitar seleção de colaboradores</a></li>
-                            <li><a class="fa" id="btn-mudarCor">Mudar minha cor</a></li>
+                            <li><a class="fa" id="btn-selecionarColaboradores" href="">Habilitar seleção de colaboradores</a></li>
+                            <li><a class="fa" id="btn-mudarCor" href="">Mudar minha cor</a></li>
                             <li role="separator" class="divider"></li>
                         }
                         @if (User.IsInRole("INFRA"))
                         {
-                            <li><a class="fa" id="btn-AdicionarMaquinas">Adicionar novo modelo de máquina</a></li>
-                            <li><a class="fa" id="btn-EditarMaquinas">Editar modelo de máquina</a></li>
+                            <li><a class="fa" id="btn-AdicionarMaquinas" href="">Adicionar novo modelo de máquina</a></li>
+                            <li><a class="fa" id="btn-EditarMaquinas" href="">Editar modelo de máquina</a></li>
                             <li role="separator" class="divider"></li>
                         }
                         <li><a class="fa fa-sign-out" href='@Url.Action("Sair","Login")'>  Sair</a></li>
@@ -45,7 +45,7 @@
             <!-- Barra de pesquisa -->
             <form class="navbar-form navbar-right" role="search">
                 <div class="form-group">
-                    <input type="text" class="form-control fa fa-search" placeholder="&#xF002; Digite o nome do colaborador" id="carregar-usuario" name="nomeCarregar">
+                    <input type="text" class="form-control fa fa-search margin-navbar" placeholder="&#xF002; Digite o nome do colaborador" id="carregar-usuario" name="nomeCarregar">
                  </div>
             </form>
         </div>
@@ -106,9 +106,19 @@
     <section class="box-container body-content">
         @RenderBody()
     </section>
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/Scripts/jquery-ui.js")
     @RenderSection("Scripts", false)
+
+    <footer class="footer color-menu">
+        <div class="container">
+            <div class="container margin-footer">
+                <p class="text-muted text-center">InfraMap - CWI Software - 2016</p>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>

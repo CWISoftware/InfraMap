@@ -24,6 +24,7 @@ textarea {
 .box-container{
     padding-left:10px;
     padding-right:10px;
+    margin-top: 100px;
 }
 
 .navbar-header{
@@ -99,7 +100,7 @@ textarea {
     position:relative;
 }
 
-.margin-5{
+.margin-navbar{
     margin:5px 5px;
 }
 
@@ -111,6 +112,11 @@ textarea {
     width:100%;
     height:15%;
     color:white;
+}
+
+.margin-footer {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .margin-20{
@@ -245,4 +251,18 @@ textarea {
 .icon-addon .form-control:focus + .fa,
 .icon-addon:hover .fa {
     color: #2580db;
+}
+
+.header {
+   position:fixed;
+   left:0px;
+   top:0px;
+   width:100%;
+}
+
+.footer {
+   position:fixed;
+   left:0px;
+   bottom:0px;
+   width:100%;
 }

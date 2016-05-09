@@ -1,12 +1,7 @@
 ﻿.andar {
     width: 1092px;
+    height: 1224px;
     margin: 0 auto;
-    margin-top: 20px;
-}
-
-.container {
-    padding-left: 0;
-    padding-right: 0;
 }
 
 .salas-sul-cwi-sl {
@@ -82,19 +77,6 @@
     top: -2px;
 }
 
-/*.nome {
-    width: 90%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    position: relative;
-    text-align: center;
-    margin-left: 6px;
-    font-size: 12px;
-    top: 6px;
-    left: -5px;
-}*/
-
 .nome {
     width: 100%;
     white-space: nowrap;
@@ -107,6 +89,7 @@
     top: -2px;
     left: auto;
 }
+
 label {
     position: relative;
     font-size: 8px;
@@ -132,9 +115,6 @@ label {
     float: right;
     margin-right: 16px;
     margin-top: -11px;
-}
-}
-
 }
 
 .fa {
@@ -168,11 +148,7 @@ label {
     margin-right: 3px;
 }
 
-.usuario {/*
-    position: relative;
-    font-size: 25px;
-    display: table;
-    margin: 0 auto;*/
+.usuario {
     position: relative;
     font-size: 24px;
     display: table;
