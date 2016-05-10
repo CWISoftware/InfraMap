@@ -24,18 +24,18 @@
             <!-- Botão de ação -->
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a class="dropdown-toggle fa fa-user margin-navbar" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="">  @User.Identity.Name<span class="caret"></span></a>
+                    <a class="dropdown-toggle fa fa-user margin-navbar mouse-pointer" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">  @User.Identity.Name<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         @if (User.IsInRole("GERENTE"))
                         {
-                            <li><a class="fa" id="btn-selecionarColaboradores" href="">Habilitar seleção de colaboradores</a></li>
-                            <li><a class="fa" id="btn-mudarCor" href="">Mudar minha cor</a></li>
+                            <li><a class="fa mouse-pointer" id="btn-selecionarColaboradores">Habilitar seleção de colaboradores</a></li>
+                            <li><a class="fa mouse-pointer" id="btn-mudarCor">Mudar minha cor</a></li>
                             <li role="separator" class="divider"></li>
                         }
                         @if (User.IsInRole("INFRA"))
                         {
-                            <li><a class="fa" id="btn-AdicionarMaquinas" href="">Adicionar novo modelo de máquina</a></li>
-                            <li><a class="fa" id="btn-EditarMaquinas" href="">Editar modelo de máquina</a></li>
+                            <li><a class="fa mouse-pointer" id="btn-AdicionarMaquinas">Adicionar novo modelo de máquina</a></li>
+                            <li><a class="fa mouse-pointer" id="btn-EditarMaquinas">Editar modelo de máquina</a></li>
                             <li role="separator" class="divider"></li>
                         }
                         <li><a class="fa fa-sign-out" href='@Url.Action("Sair","Login")'>  Sair</a></li>

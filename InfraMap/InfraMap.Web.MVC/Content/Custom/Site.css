@@ -266,3 +266,7 @@ textarea {
    bottom:0px;
    width:100%;
 }
+
+.mouse-pointer {
+    cursor: pointer;
+}
