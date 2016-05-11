@@ -1,0 +1,15 @@
+﻿@model InfraMap.Dominio.Sede.Sede
+
+@{
+    ViewBag.Title = "Sede";
+    var sede = Model;
+}
+
+<div class="sede" onclick="sedeClick(@sede.Id)">
+    <div class="sede-img">
+        <img src="~/Content/img/@sede.Imagem" class="sede-img" />
+    </div>
+    <div class="sede-descricao">
+        <p class="sede-text">@sede.Nome - @sede.Cidade</p>
+    </div>
+</div>

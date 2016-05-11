@@ -8,7 +8,9 @@ namespace InfraMap.Dominio.Sede
     {
         public string Nome { get; set; }
 
-        public string NomeCidade { get; set; }
+        public string Cidade { get; set; }
+
+        public string Imagem { get; set; }
 
         public ICollection<Andar.Andar> Andares { get; set; }
     }

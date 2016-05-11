@@ -17,7 +17,8 @@ namespace InfraMap.Infraestrutura.Ef.Mapeamento
                 .IsRequired()
                 .HasMaxLength(100)
                 .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute("IX_Sede_Nome"){ IsUnique = false} ));
-            Property(t => t.NomeCidade).IsRequired().HasMaxLength(100);
+            Property(t => t.Cidade).IsRequired().HasMaxLength(100);
+            Property(t => t.Imagem).IsRequired().HasMaxLength(100);
             HasMany(t => t.Andares).WithRequired();
         }
     }

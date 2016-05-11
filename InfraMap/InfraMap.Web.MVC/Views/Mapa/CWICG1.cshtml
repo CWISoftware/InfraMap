@@ -1,0 +1,12 @@
+﻿@model InfraMap.Dominio.Sede.Andar.Andar
+@{
+    ViewBag.Title = "CWICG";
+}
+<section class="andar">
+    @if (User.IsInRole("GERENTE"))
+    {
+        Html.RenderPartial("_OpcoesGerente");
+    }
+    <h2>CWI - Carlos Gomes - Porto Alegre</h2>
+    <div id="partial"></div>
+</section>

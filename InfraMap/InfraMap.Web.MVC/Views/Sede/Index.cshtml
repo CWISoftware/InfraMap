@@ -1,20 +1,28 @@
-﻿@{
+﻿@model ICollection<InfraMap.Dominio.Sede.Sede>
+
+@{
     ViewBag.Title = "Index";
 }
 
-<div class="bloco-sede col-md-3 col-sm-6 col-lg-3 col-md-offset-4 col-sm-3" id="sede-sao-leo">
-    <input type="hidden" value="1" />
-    <div class="div-img-sede">
-        <img src="~/Content/img/sede-sao-leo-cwi.png" class="img-sede" />
-    </div>
-    <div class="descricao-sede text-center">
-        <p>CWI Software São Leopoldo</p>
-    </div>
+<div class="sede-container">
+    @for (var i = 0; i < Model.Count; i++)
+    {
+        @Html.Partial("_Sede", Model.ElementAt(i));
+    }
 </div>
 
-<div class="col-md-offset-4 col-md-3">
-    <select name="andar" id="dropdown-andar" class="hide form-control margin-20"></select>
-
-    <button type="button" class="hide btn btn-default btn-block margin-20" id="btn-ir">Ir</button>
+<div class="modal fade" id="modalSede" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Fechar</button>
+                <h4 class="modal-title" id="myModalLabel">Selecione o andar</h4>
+            </div>
+            <div class="modal-body">
+                <select name="andar"  class="form-control center-block margin-top-20" id="dropdown-andar"></select>
+                <button type="button" class="btn btn-primary btn-block margin-top-20" id="btn-ir">Ir</button>
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
 </div>
-

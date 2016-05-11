@@ -17,7 +17,9 @@ namespace InfraMap.Web.MVC.Controllers
     {
         public ActionResult Index()
         {
-            return View("Index");
+            var repositorioSede = Factory.CriarSedeRepositorio();
+            var listaSedes = repositorioSede.Buscar();
+            return View("Index", listaSedes);
         }
 
         [HttpGet]

@@ -1,5 +1,5 @@
-INSERT INTO Sede (NomeCidade, Nome)
-VALUES ('São Leopoldo', 'CWISL')
+INSERT INTO Sede (Cidade, Nome, Imagem)
+VALUES ('São Leopoldo', 'CWISL', 'cwi-sl.jpg')
 
 INSERT INTO Andar (Descricao, Sede_Id)
 VALUES ('1º Andar', 1)

@@ -20,8 +20,7 @@ namespace InfraMap.Web.MVC.Controllers
             {
                 var sedeRepositorio = Factory.CriarSedeRepositorio();
                 var andarDb = sedeRepositorio.BuscarSedePorNome(sede).Andares.FirstOrDefault(t => t.Id == andar);
-                var model = andarDb;
-                return View(sede + andarDb.Id, model);
+                return View(sede + andar, andarDb);
             }
             catch (Exception e)
             {

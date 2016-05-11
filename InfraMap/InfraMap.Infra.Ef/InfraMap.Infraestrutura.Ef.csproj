@@ -88,6 +88,10 @@
     <Compile Include="Migrations\201604292044294_Permissoes.Designer.cs">
       <DependentUpon>201604292044294_Permissoes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605111622489_ImagemSede.cs" />
+    <Compile Include="Migrations\201605111622489_ImagemSede.Designer.cs">
+      <DependentUpon>201605111622489_ImagemSede.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -143,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604292044294_Permissoes.resx">
       <DependentUpon>201604292044294_Permissoes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605111622489_ImagemSede.resx">
+      <DependentUpon>201605111622489_ImagemSede.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
