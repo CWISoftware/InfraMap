@@ -1,10 +1,21 @@
 ﻿var RetiraDestaqueMesa = function () {
-    window.location.href = window.location.href.match(/([https]+\:\/\/)?([\dA-Za-z\.\-\:]+)\/([\dA-Za-z]+)\/([\dA-Za-z]+)\/([\dA-Za-z\/])/g);
+    //Primeiro caso testa se a página está em index
+    //Ex: http://localhost:64464/Mapa/CWISL/5/
+    console.log("[DEBUG] " + window.location.href);
+    var url = window.location.href.match(/([https]+\:\/\/)?([\dA-Za-z\.\-\:]+)\/([\dA-Za-z]+)\/([\dA-Za-z]+)\/([\d\/])/g);
+    console.log("[DEBUG] " + url);
+    if (url === null) {
+        //Segundo caso testa se url está em algum mapa
+        //Ex: http://localhost:64464/Sede/Index
+        //    http://localhost:64464/Sede
+        url = window.location.href.match(/([https]+\:\/\/)?([\dA-Za-z\.\-\:]+)\/([\dA-Za-z]+)/g);
+        console.log("[DEBUG] " + url);
+    }
+    window.location.href = url;
 };
 
-var DisplayError = function (xhr) {
-    var msg = JSON.parse(xhr.responseText);
-    $("#error .modal-body").append("<h2>" + msg.Message + "</h2>");
+var DisplayError = function (msg) {
+    $("#error .modal-body").append("<h2>" + msg + "</h2>");
     $('#error').modal('show');
 };
 

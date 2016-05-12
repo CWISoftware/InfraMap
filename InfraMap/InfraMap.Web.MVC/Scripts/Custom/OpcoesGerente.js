@@ -25,7 +25,7 @@ $("#btn-salvarColaboradores").click(function () {
             $("#btn-cancelar").addClass("hide");
             RetiraDestaqueMesa();
         },
-        function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+        function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }
     );
 });
 
@@ -58,46 +58,46 @@ $("#btn-mudarCor").click(function () {
         { } ,
         function (response) {
             if (response.message != null) {
-                $("#modalGeral .modal-body").append("<h2> Sua cor atual é: </h2>" + "<h2 style=color:" + response.message + ">" + response.message + "</h2>");
+                $("#modalGeral .modal-body").append("<h2> Sua cor atual é: </h2><div class=\"box-cor center-block\" style=background-color:" + response.message + "></div><h2>Nova cor:</h2>");
+
             }
             else {
                 $("#modalGeral .modal-body").append("<h2> Ainda não possui uma cor</h2>");
             }
         },
-        function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+        function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }
     );
     $('#modalGeral').modal('show');
 });
 
+$("#selectcolor").change(function () {
+    $('#choosecolor').css('background-color', document.getElementById("choosecolor").value);
+});
 
 $("#SalvarCorGerente").click(function () {
-    var index = document.getElementById("choosecolor").value;
-    var text = document.getElementById("choosecolor").options[index].text;
-    SendsServer(
-        "/Mapa/SalvaCorGerente",
-        { color: text },
-        function (mensagem) {
-            if (mensagem.response != "")
-            {
-                $("#modalGeral .modal-body").empty();
-                $("#selectcolor").empty();
-                $("#modalGeral .modal-body").append("<h2>" + mensagem.response + "</h2>");
-                $("#SalvarCorGerente").addClass("hide");
-            }
-            else
-            {
-                $("#modalGeral .modal-body").empty();
-                $("#selectcolor").empty();
-                $("#modalGeral .modal-body").append("<h2>Cor trocada com sucesso! </h2>");
-                $("#SalvarCorGerente").addClass("hide");
-            }
-        },
-        function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
-    );
+    var cor = document.getElementById("choosecolor").value;
+    if (cor.lenght) {
+        SendsServer(
+            "/Mapa/SalvaCorGerente",
+            { color: cor },
+            function (mensagem) {
+                if (mensagem.response != "") {
+                    $("#modalGeral .modal-body").empty();
+                    $("#selectcolor").empty();
+                    $("#modalGeral .modal-body").append("<h2>" + mensagem.response + "</h2>");
+                    $("#SalvarCorGerente").addClass("hide");
+                }
+                else {
+                    $("#modalGeral .modal-body").empty();
+                    $("#selectcolor").empty();
+                    $("#modalGeral .modal-body").append("<h2>Cor trocada com sucesso! </h2>");
+                    $("#SalvarCorGerente").addClass("hide");
+                }
+            },
+            function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }
+        );
+    }
+    else {
+        DisplayError("Nenhuma cor foi escolhida")
+    }
 });
-
-$("#CancelaModal").click(function () {
-    RetiraDestaqueMesa();
-});
-
-

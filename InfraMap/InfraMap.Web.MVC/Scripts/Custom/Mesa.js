@@ -60,7 +60,7 @@ function RenderPartial(id) {
                                 RetiraDestaqueMesa();
                             }
                         },
-                        function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+                        function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }
                     );
                 }
             );
@@ -71,7 +71,7 @@ function RenderPartial(id) {
                         "/Colaborador/TrocarMesaColaborador",
                         { id: $("#idMesa").val(), colaborador: $("#login").val() },
                         function (response) { RetiraDestaqueMesa(); },
-                        function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+                        function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }
                     );
                 }
             );
@@ -82,7 +82,7 @@ function RenderPartial(id) {
                         "/Colaborador/RemoverColaborador",
                         { id: $("#idMesa").val() },
                         function (response) { RetiraDestaqueMesa(); },
-                        function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+                        function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }
                     );
                 }
             );
@@ -101,7 +101,7 @@ function RenderPartial(id) {
                             )
                             $("#dropdown-modeloMaquina").empty().append(options);
                         },
-                        function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+                        function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }
                     );
                 }
             );
@@ -135,7 +135,7 @@ function RenderPartial(id) {
                             $("#placaRede").prop("disabled", false).val(data.PlacaRede);
                             $("#driverOtico").prop("disabled", false).val(data.DriverOtico);
                         },
-                        function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+                        function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }
                     );
                 }
             );
@@ -170,7 +170,7 @@ function RenderPartial(id) {
                                 $('#modalTrocarMaquina').modal('show');
                             }
                         },
-                        function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+                        function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }
                     );
                 }
             );
@@ -181,7 +181,7 @@ function RenderPartial(id) {
                         "/Maquina/RemoverMaquina",
                         { id: $("#idMesa").val() },
                         function (response) { RetiraDestaqueMesa(); },
-                        function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+                        function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }
                     );
                 }
             );
@@ -192,7 +192,7 @@ function RenderPartial(id) {
                         "/Ramal/AdicionarRamal",
                         { id: $("#idMesa").val(), ramal: $("#numero").val(), tipo: $("#tipoRamal").val() },
                         function (response) { RetiraDestaqueMesa(); },
-                        function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+                        function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }
                     );
                 }
             );
@@ -203,7 +203,7 @@ function RenderPartial(id) {
                         "/Ramal/RemoverRamal",
                         { id: $("#idMesa").val() },
                         function (response) { RetiraDestaqueMesa(); },
-                        function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+                        function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }
                     );
                 }
             );
@@ -231,7 +231,7 @@ function RenderPartial(id) {
                             $("#IdPessoal").val(data.Maquina.Id);
                             dadosMaquina = data;
                         },
-                        function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+                        function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }
                     );
                 }
             );
@@ -314,11 +314,11 @@ function RenderPartial(id) {
                         }
                     },
                     function (response) { RetiraDestaqueMesa(); },
-                    function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+                    function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }
                     );
                 }
             );
         },
-        function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+        function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }
      );
 }

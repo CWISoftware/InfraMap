@@ -35,7 +35,7 @@ $("#SalvaMaquina").click(function () {
                 $("#SalvarCorGerente").addClass("hide");
             }
         },
-        function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+        function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }
         );
 });
 
@@ -55,7 +55,7 @@ function CarregaMaquinas() {
             $("#dropdown-EditarMaquina").empty().append(options);
             $("#DeletaMaquina").hide();
         },
-        function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+        function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }
     );
 }
 
@@ -95,7 +95,7 @@ $("#dropdown-EditarMaquina").change(
                 $("#EditadriverOtico").prop("disabled", false).val(data.DriverOtico);
                 $("#MaquinadoTipo").prop("disabled", false).val(data.TipoMaquina);
             },
-            function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+            function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }
         );
     }
 );
@@ -124,7 +124,7 @@ $("#adicionaMaquina").click(
             function (response) {
 
             },
-            function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+            function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }
         );
     }
 );
@@ -160,7 +160,7 @@ $("#SalvaEdicaoMaquina").click(function () {
                 $("#SalvarCorGerente").addClass("hide");
             }
         },
-        function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+        function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }
         );
 });
 
@@ -194,6 +194,6 @@ $("#DeletaMaquina").click(function () {
             $("#SalvarCorGerente").addClass("hide");
         }
     },
-    function (jqXHR, textStatus, errorThrown) { DisplayError(jqXHR); }
+    function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }
     );
 });

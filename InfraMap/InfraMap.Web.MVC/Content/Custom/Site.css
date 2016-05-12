@@ -286,3 +286,13 @@ textarea {
 .mouse-pointer {
     cursor: pointer;
 }
+
+.btn-andar-ir {
+    width: 60%;
+}
+
+.box-cor {
+    width: 50%;
+    height:32px;
+    border-radius: 4px;
+}
