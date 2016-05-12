@@ -19,11 +19,7 @@ namespace InfraMap.Web.MVC.Helpers
         {
             return new Maquina()
             {
-                DriverOtico = model.DriverOtico,
-                Fonte = model.Fonte,
                 HD = model.Hd,
-                PlacaMae = model.PlacaMae,
-                PlacaRede = model.PlacaRede,
                 SSD = model.Ssd,
                 Processador = model.Processador,
                 PenteMemoriaRamGB = model.PenteMemoriaRamGB,

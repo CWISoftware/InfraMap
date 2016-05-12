@@ -67,6 +67,7 @@ $("#btn-mudarCor").click(function () {
         },
         function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }
     );
+    $("#modalGeralLabel").append("Mudar cor");
     $('#modalGeral').modal('show');
 });
 

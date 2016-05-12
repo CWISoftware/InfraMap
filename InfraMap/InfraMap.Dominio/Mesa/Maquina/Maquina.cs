@@ -17,16 +17,8 @@ namespace InfraMap.Dominio.Mesa.Maquina
         public int PenteMemoriaRamGB { get; set; }
 
         public int UnidadesMemoriaRam { get; set; }
-
-        public string Fonte { get; set; }
-
-        public string PlacaMae { get; set; }
-
+        
         public string Processador { get; set; }
-
-        public string PlacaRede { get; set; }
-
-        public string DriverOtico { get; set; }
 
         public void AdicionarModelo(ModeloMaquina modelo)
         {

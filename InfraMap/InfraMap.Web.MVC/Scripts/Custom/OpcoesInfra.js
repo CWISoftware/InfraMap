@@ -14,25 +14,24 @@ $("#SalvaMaquina").click(function () {
                 ModeloMaquina: {
                     Name: $("#InsereModelo").val().toUpperCase()
                 },
-                TipoMaquina: $("#MaquinadoTipo").val(),
+                TipoMaquina: '0', //0-Padrão 1-Pessoal
                 Processador: $("#Insereprocessador").val().toUpperCase(),
-                PlacaMae: $("#InsereplacaMae").val().toUpperCase(),
                 UnidadesMemoriaRam: $("#InsereunidadesMemoriaRam").val(),
                 PenteMemoriaRamGB: $("#InserepenteMemoriaRamGB").val(),
                 Ssd: $("#Inseressd").val(),
-                Hd: $("#Inserehd").val(),
-                Fonte: $("#Inserefonte").val().toUpperCase(),
-                PlacaRede: $("#InsereplacaRede").val().toUpperCase(),
-                DriverOtico: $("#InseredriverOtico").val().toUpperCase()
+                Hd: $("#Inserehd").val()
             }
         },
         function (response) {
+            $("#modalGeralLabel").append("Edição de modelo");
             $('#modalGeral').modal('show');
             if (response.success == true) {
                 $("#modalGeral .modal-body").empty();
                 $("#selectcolor").empty();
                 $("#modalGeral .modal-body").append("<h2>Configuração salva com sucesso!</h2>");
                 $("#SalvarCorGerente").addClass("hide");
+                $("#fecharRetiraDestaqueMesa").addClass("hide");
+                $("#fecharGoBack").removeClass("hide");
             }
         },
         function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }
@@ -65,15 +64,10 @@ $("#dropdown-EditarMaquina").change(
         if (idModeloEscolhido == 0) {
             $("#EditaModelo").prop("disabled", true).val();
             $("#Editaprocessador").prop("disabled", true).val();
-            $("#EditaplacaMae").prop("disabled", true).val();
             $("#EditaunidadesMemoriaRam").prop("disabled", true).val();
             $("#EditapenteMemoriaRamGB").prop("disabled", true).val();
             $("#Editassd").prop("disabled", true).val();
             $("#Editahd").prop("disabled", true).val();
-            $("#Editafonte").prop("disabled", true).val();
-            $("#EditaplacaRede").prop("disabled", true).val();
-            $("#EditadriverOtico").prop("disabled", true).val();
-            $("#MaquinadoTipo").prop("disabled", true).val();
             $("#DeletaMaquina").hide();
 
             return;
@@ -85,15 +79,10 @@ $("#dropdown-EditarMaquina").change(
             function (data) {
                 $("#EditaModelo").prop("disabled", false).val(data.ModeloMaquina.Name);
                 $("#Editaprocessador").prop("disabled", false).val(data.Processador);
-                $("#EditaplacaMae").prop("disabled", false).val(data.PlacaMae);
                 $("#EditaunidadesMemoriaRam").prop("disabled", false).val(data.UnidadesMemoriaRam);
                 $("#EditapenteMemoriaRamGB").prop("disabled", false).val(data.PenteMemoriaRamGB);
                 $("#Editassd").prop("disabled", false).val(data.SSD);
                 $("#Editahd").prop("disabled", false).val(data.HD);
-                $("#Editafonte").prop("disabled", false).val(data.Fonte);
-                $("#EditaplacaRede").prop("disabled", false).val(data.PlacaRede);
-                $("#EditadriverOtico").prop("disabled", false).val(data.DriverOtico);
-                $("#MaquinadoTipo").prop("disabled", false).val(data.TipoMaquina);
             },
             function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }
         );
@@ -111,14 +100,10 @@ $("#adicionaMaquina").click(
                 Maquina: {
                     IdModeloMaquina: $("#dropdown-modeloMaquina").val(),
                     Processador: $("#processador").val().toUpperCase(),
-                    PlacaMae: $("#placaMae").val().toUpperCase(),
                     UnidadesMemoriaRam: $("#unidadesMemoriaRam").val(),
                     PenteMemoriaRamGB: $("#penteMemoriaRamGB").val(),
                     Ssd: $("#ssd").val(),
-                    Hd: $("#hd").val(),
-                    Fonte: $("#fonte").val().toUpperCase(),
-                    PlacaRede: $("#placaRede").val().toUpperCase(),
-                    DriverOtico: $("#driverOtico").val().toUpperCase()
+                    Hd: $("#hd").val()
                 }
             },
             function (response) {
@@ -137,20 +122,17 @@ $("#SalvaEdicaoMaquina").click(function () {
                 ModeloMaquina: {
                     Name: $("#EditaModelo").val().toUpperCase()
                 },
-                TipoMaquina: $("#MaquinadoTipo").val(),
+                TipoMaquina: '0', //0-Padrão 1-Pessoal
                 Processador: $("#Editaprocessador").val().toUpperCase(),
-                PlacaMae: $("#EditaplacaMae").val().toUpperCase(),
                 UnidadesMemoriaRam: $("#EditaunidadesMemoriaRam").val(),
                 PenteMemoriaRamGB: $("#EditapenteMemoriaRamGB").val(),
                 Ssd: $("#Editassd").val(),
                 Hd: $("#Editahd").val(),
-                Fonte: $("#Editafonte").val().toUpperCase(),
-                PlacaRede: $("#EditaplacaRede").val().toUpperCase(),
-                DriverOtico: $("#EditadriverOtico").val().toUpperCase(),
                 ModeloMaquina_Id: $("#dropdown-EditarMaquina").val()
             }
         },
         function (response) {
+            $("#modalGeralLabel").append("Edição de modelo");
             $('#modalGeral').modal('show');
             if (response.success == true)
             {
@@ -158,6 +140,8 @@ $("#SalvaEdicaoMaquina").click(function () {
                 $("#selectcolor").empty();
                 $("#modalGeral .modal-body").append("<h2>Configuração salva com sucesso!</h2>");
                 $("#SalvarCorGerente").addClass("hide");
+                $("#fecharRetiraDestaqueMesa").addClass("hide");
+                $("#fecharGoBack").removeClass("hide");
             }
         },
         function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }
@@ -172,26 +156,25 @@ $("#DeletaMaquina").click(function () {
             ModeloMaquina: {
                 Name: $("#EditaModelo").val()
             },
-            TipoMaquina: $("#MaquinadoTipo").val(),
+            TipoMaquina: '0', //0-Padrão 1-Pessoal
             Processador: $("#Editaprocessador").val(),
-            PlacaMae: $("#EditaplacaMae").val(),
             UnidadesMemoriaRam: $("#EditaunidadesMemoriaRam").val(),
             PenteMemoriaRamGB: $("#EditapenteMemoriaRamGB").val(),
             Ssd: $("#Editassd").val(),
             Hd: $("#Editahd").val(),
-            Fonte: $("#Editafonte").val(),
-            PlacaRede: $("#EditaplacaRede").val(),
-            DriverOtico: $("#EditadriverOtico").val(),
             ModeloMaquina_Id: $("#dropdown-EditarMaquina").val()
         }
     },
     function (response) {
+        $("#modalGeralLabel").append("Excluir modelo");
         $('#modalGeral').modal('show');
         if (response.success == true) {
             $("#modalGeral .modal-body").empty();
             $("#selectcolor").empty();
             $("#modalGeral .modal-body").append("<h2>Configuração apagada com sucesso!</h2>");
             $("#SalvarCorGerente").addClass("hide");
+            $("#fecharRetiraDestaqueMesa").addClass("hide");
+            $("#fecharGoBack").removeClass("hide");
         }
     },
     function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }

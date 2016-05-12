@@ -111,14 +111,10 @@ function RenderPartial(id) {
                     var idModeloEscolhido = $(this).val();
                     if (idModeloEscolhido == 0) {
                         $("#processador").prop("disabled", true).val(data.Processador);
-                        $("#placaMae").prop("disabled", true).val(data.PlacaMae);
                         $("#unidadesMemoriaRam").prop("disabled", true).val(data.UnidadesMemoriaRam);
                         $("#penteMemoriaRamGB").prop("disabled", true).val(data.PenteMemoriaRamGB);
                         $("#ssd").prop("disabled", true).val(data.SSD);
                         $("#hd").prop("disabled", true).val(data.HD);
-                        $("#fonte").prop("disabled", true).val(data.Fonte);
-                        $("#placaRede").prop("disabled", true).val(data.PlacaRede);
-                        $("#driverOtico").prop("disabled", true).val(data.DriverOtico);
                         return;
                     }
                     ReceivesServer(
@@ -126,14 +122,10 @@ function RenderPartial(id) {
                         { idModelo: idModeloEscolhido },
                         function (data) {
                             $("#processador").prop("disabled", false).val(data.Processador);
-                            $("#placaMae").prop("disabled", false).val(data.PlacaMae);
                             $("#unidadesMemoriaRam").prop("disabled", false).val(data.UnidadesMemoriaRam);
                             $("#penteMemoriaRamGB").prop("disabled", false).val(data.PenteMemoriaRamGB);
                             $("#ssd").prop("disabled", false).val(data.SSD);
                             $("#hd").prop("disabled", false).val(data.HD);
-                            $("#fonte").prop("disabled", false).val(data.Fonte);
-                            $("#placaRede").prop("disabled", false).val(data.PlacaRede);
-                            $("#driverOtico").prop("disabled", false).val(data.DriverOtico);
                         },
                         function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }
                     );
@@ -151,14 +143,10 @@ function RenderPartial(id) {
                             Maquina: {
                                 IdModeloMaquina: $("#dropdown-modeloMaquina").val(),
                                 Processador: $("#processador").val().toUpperCase(),
-                                PlacaMae: $("#placaMae").val().toUpperCase(),
                                 UnidadesMemoriaRam: $("#unidadesMemoriaRam").val(),
                                 PenteMemoriaRamGB: $("#penteMemoriaRamGB").val(),
                                 Ssd: $("#ssd").val(),
-                                Hd: $("#hd").val(),
-                                Fonte: $("#fonte").val().toUpperCase(),
-                                PlacaRede: $("#placaRede").val().toUpperCase(),
-                                DriverOtico: $("#driverOtico").val().toUpperCase()
+                                Hd: $("#hd").val()
                             }
                         },
                         function (response) {
@@ -218,16 +206,11 @@ function RenderPartial(id) {
                             $("#verpatrimonio").val(data.Patrimonio);
                             $("#verModelo").val(data.Maquina.ModeloMaquina.Name);
                             $("#verprocessador").val(data.Maquina.Processador);
-                            $("#verplacaMae").val(data.Maquina.PlacaMae);
                             $("#verunidadesMemoriaRam").val(data.Maquina.UnidadesMemoriaRam);
                             $("#verpenteMemoriaRamGB").val(data.Maquina.PenteMemoriaRamGB);
                             $("#verssd").val(data.Maquina.SSD);
                             $("#verhd").val(data.Maquina.HD);
-                            $("#verfonte").val(data.Maquina.Fonte);
-                            $("#verplacaRede").val(data.Maquina.PlacaRede);
-                            $("#verdriverOtico").val(data.Maquina.DriverOtico);
                             $("#idMaquina").val(data.Maquina.ModeloMaquina_Id);
-                            $("#MaquinaTipo").val(data.Maquina.TipoMaquina);
                             $("#IdPessoal").val(data.Maquina.Id);
                             dadosMaquina = data;
                         },
@@ -243,14 +226,10 @@ function RenderPartial(id) {
                     $("#EditarMaquinaPessoal").hide();
                     $("#FechaModal").hide();
                     $("#verprocessador").prop("disabled", false).val();
-                    $("#verplacaMae").prop("disabled", false).val();
                     $("#verunidadesMemoriaRam").prop("disabled", false).val();
                     $("#verpenteMemoriaRamGB").prop("disabled", false).val();
                     $("#verssd").prop("disabled", false).val();
                     $("#verhd").prop("disabled", false).val();
-                    $("#verfonte").prop("disabled", false).val();
-                    $("#verplacaRede").prop("disabled", false).val();
-                    $("#verdriverOtico").prop("disabled", false).val();
                 }
             );
 
@@ -261,29 +240,20 @@ function RenderPartial(id) {
                     $("#EditarMaquinaPessoal").show();
                     $("#FechaModal").show();
                     $("#verprocessador").prop("disabled", true).val();
-                    $("#verplacaMae").prop("disabled", true).val();
                     $("#verunidadesMemoriaRam").prop("disabled", true).val();
                     $("#verpenteMemoriaRamGB").prop("disabled", true).val();
                     $("#verssd").prop("disabled", true).val();
                     $("#verhd").prop("disabled", true).val();
-                    $("#verfonte").prop("disabled", true).val();
-                    $("#verplacaRede").prop("disabled", true).val();
-                    $("#verdriverOtico").prop("disabled", true).val();
 
                     $("#veretiquetaServico").val(dadosMaquina.EtiquetaServico);
                     $("#verpatrimonio").val(dadosMaquina.Patrimonio);
                     $("#verModelo").val(dadosMaquina.Maquina.ModeloMaquina.Name);
                     $("#verprocessador").val(dadosMaquina.Maquina.Processador);
-                    $("#verplacaMae").val(dadosMaquina.Maquina.PlacaMae);
                     $("#verunidadesMemoriaRam").val(dadosMaquina.Maquina.UnidadesMemoriaRam);
                     $("#verpenteMemoriaRamGB").val(dadosMaquina.Maquina.PenteMemoriaRamGB);
                     $("#verssd").val(dadosMaquina.Maquina.SSD);
                     $("#verhd").val(dadosMaquina.Maquina.HD);
-                    $("#verfonte").val(dadosMaquina.Maquina.Fonte);
-                    $("#verplacaRede").val(dadosMaquina.Maquina.PlacaRede);
-                    $("#verdriverOtico").val(dadosMaquina.Maquina.DriverOtico);
                     $("#idMaquina").val(dadosMaquina.Maquina.ModeloMaquina_Id);
-                    $("#MaquinaTipo").val(dadosMaquina.Maquina.TipoMaquina);
                     $("#IdPessoal").val(dadosMaquina.Maquina.Id);
                 }
             );
@@ -301,16 +271,12 @@ function RenderPartial(id) {
                                Name: $("#verModelo").val().toUpperCase(),
                                Id: $("#IdPessoal").val()
                             },
-                            TipoMaquina: $("#MaquinaTipo").val(),
+                           TipoMaquina: '1', //0-Padrão 1-Pessoal
                             Processador: $("#verprocessador").val().toUpperCase(),
-                            PlacaMae: $("#verplacaMae").val().toUpperCase(),
                             UnidadesMemoriaRam: $("#verunidadesMemoriaRam").val(),
                             PenteMemoriaRamGB: $("#verpenteMemoriaRamGB").val(),
                             Ssd: $("#verssd").val(),
-                            Hd: $("#verhd").val(),
-                            Fonte: $("#verfonte").val().toUpperCase(),
-                            PlacaRede: $("#verplacaRede").val().toUpperCase(),
-                            DriverOtico: $("#verdriverOtico").val().toUpperCase()
+                            Hd: $("#verhd").val()
                         }
                     },
                     function (response) { RetiraDestaqueMesa(); },

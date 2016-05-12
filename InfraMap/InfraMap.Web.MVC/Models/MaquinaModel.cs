@@ -11,8 +11,6 @@ namespace InfraMap.Web.MVC.Models
 
         public string Processador { get; set; }
 
-        public string PlacaMae { get; set; }
-
         public int UnidadesMemoriaRam { get; set; }
 
         public int PenteMemoriaRamGB { get; set; }
@@ -20,11 +18,5 @@ namespace InfraMap.Web.MVC.Models
         public int Ssd { get; set; }
 
         public int Hd { get; set; }
-
-        public string Fonte { get; set; }
-
-        public string PlacaRede { get; set; }
-
-        public string DriverOtico { get; set; }
     }
 }

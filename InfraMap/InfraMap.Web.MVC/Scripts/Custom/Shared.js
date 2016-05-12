@@ -14,6 +14,10 @@
     window.location.href = url;
 };
 
+function GoBack() {
+    window.history.back();
+};
+
 var DisplayError = function (msg) {
     $("#error .modal-body").append("<h2>" + msg + "</h2>");
     $('#error').modal('show');
@@ -36,7 +40,3 @@ function Request(typeRequest, urlRequest, dataRequest, successFunc, errorFunc) {
         error: errorFunc
     });
 };
-
-function GoBack() {
-    var newUrl = window.history.back();
-}
