@@ -23,22 +23,15 @@ $("#SalvaMaquina").click(function () {
             }
         },
         function (response) {
-            $("#modalGeralLabel").append("Edição de modelo");
-            $('#modalGeral').modal('show');
+
             if (response.success == true) {
-                $("#modalGeral .modal-body").empty();
-                $("#selectcolor").empty();
-                $("#modalGeral .modal-body").append("<h2>Configuração salva com sucesso!</h2>");
-                $("#SalvarCorGerente").addClass("hide");
-                $("#fecharRetiraDestaqueMesa").addClass("hide");
-                $("#fecharGoBack").removeClass("hide");
+                LimpaForm();
+                MostrarModal("Edição de modelo", "Configuração salva com sucesso!");
             }
         },
         function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }
-        );
+    );
 });
-
-
 
 function CarregaMaquinas() {
     ReceivesServer(
@@ -132,20 +125,12 @@ $("#SalvaEdicaoMaquina").click(function () {
             }
         },
         function (response) {
-            $("#modalGeralLabel").append("Edição de modelo");
-            $('#modalGeral').modal('show');
-            if (response.success == true)
-            {
-                $("#modalGeral .modal-body").empty();
-                $("#selectcolor").empty();
-                $("#modalGeral .modal-body").append("<h2>Configuração salva com sucesso!</h2>");
-                $("#SalvarCorGerente").addClass("hide");
-                $("#fecharRetiraDestaqueMesa").addClass("hide");
-                $("#fecharGoBack").removeClass("hide");
+            if (response.success == true) {
+                MostrarModal("Edição de modelo", "Configuração salva com sucesso!");
             }
         },
         function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }
-        );
+    );
 });
 
 $("#DeletaMaquina").click(function () {
@@ -166,17 +151,44 @@ $("#DeletaMaquina").click(function () {
         }
     },
     function (response) {
-        $("#modalGeralLabel").append("Excluir modelo");
-        $('#modalGeral').modal('show');
         if (response.success == true) {
-            $("#modalGeral .modal-body").empty();
-            $("#selectcolor").empty();
-            $("#modalGeral .modal-body").append("<h2>Configuração apagada com sucesso!</h2>");
-            $("#SalvarCorGerente").addClass("hide");
-            $("#fecharRetiraDestaqueMesa").addClass("hide");
-            $("#fecharGoBack").removeClass("hide");
+            LimpaForm();
+            CarregaMaquinas();
+            MostrarModal("Excluir modelo", "Configuração apagada com sucesso!");
         }
     },
     function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }
     );
 });
+
+function validarEntrada(inputId) {
+    var valor = $("#" + inputId).val();
+    if (Number(valor))
+    $("#" + inputId).val(valor);
+else
+    $("#" + inputId).val(1);
+};
+
+function LimpaForm() {
+    $("dropdown-EditarMaquina").val(0);
+    $("#InsereModelo").val("");
+    $("#EditaModelo").val("");
+    $("#Insereprocessador").val("");
+    $("#Editaprocessador").val("");
+    $("#InsereunidadesMemoriaRam").val(1);
+    $("#EditaunidadesMemoriaRam").val(1);
+    $("#InserepenteMemoriaRamGB").val(1);
+    $("#EditapenteMemoriaRamGB").val(1);
+    $("#Inseressd").val(1);
+    $("#Editassd").val(1);
+    $("#Inserehd").val(1);
+    $("#Editahd").val(1);
+};
+
+function MostrarModal(label, info) {
+    $("#selectcolor").empty();
+    $("#modalGeral .modal-body").empty().append("<h2>" + info + "</h2>");
+    $("#SalvarCorGerente").addClass("hide");
+    $("#modalGeralLabel").empty().append(label);
+    $('#modalGeral').modal('show');
+};

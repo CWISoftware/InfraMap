@@ -19,7 +19,7 @@ function GoBack() {
 };
 
 var DisplayError = function (msg) {
-    $("#error .modal-body").append("<h2>" + msg + "</h2>");
+    $("#error .modal-body").empty().append("<h2>" + msg + "</h2>");
     $('#error').modal('show');
 };
 

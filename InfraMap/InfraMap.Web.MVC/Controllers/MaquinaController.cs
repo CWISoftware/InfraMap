@@ -112,7 +112,7 @@ namespace InfraMap.Web.MVC.Controllers
                 if (maquinaAdicionada != null)
                     return Json(new { success = true });
                 else
-                    return Json(new { success = false });
+                    return ErroTratado(new Exception("Não foi possível salvar o novo modelo"));
             }
             catch (Exception e)
             {
@@ -127,7 +127,7 @@ namespace InfraMap.Web.MVC.Controllers
             try
             {
                 if (model.ModeloMaquina.Name == null)
-                    return Json(new { success = false });
+                    return ErroTratado(new Exception("Preencha os campos corretamente"));
 
                 model.ModeloMaquina.Id = model.ModeloMaquina_Id.GetValueOrDefault();
 
@@ -153,7 +153,7 @@ namespace InfraMap.Web.MVC.Controllers
             try
             {
                 if (model.ModeloMaquina.Name == null)
-                    return Json(new { success = false });
+                    return ErroTratado(new Exception("Preencha os campos corretamente"));
 
                 model.ModeloMaquina.Id = model.ModeloMaquina_Id.GetValueOrDefault();
 
@@ -161,10 +161,8 @@ namespace InfraMap.Web.MVC.Controllers
                 var maquina = service.BuscarPorId(model.Id);
                 service.Atualizar(model);
 
-
                 return Json(new { success = true });
             }
-
             catch (Exception e)
             {
                 return ErroTratado(e);
