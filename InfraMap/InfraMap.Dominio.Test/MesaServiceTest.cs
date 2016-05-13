@@ -242,7 +242,8 @@ namespace InfraMap.Dominio.Test
 
             A.CallTo(() => mesaRepositorio.BuscarPorId(mesaFake.Id)).Returns(mesaFake);
             A.CallTo(() => modeloMaquinaRepositorio.BuscarPorId((int)maquinaPessoalFake.Maquina.ModeloMaquina_Id)).Returns(modeloMaquinaFake);
-            A.CallTo(() => maquinaPessoalRepositorio.BuscarPorPatrimonio(maquinaPessoalFake)).Returns(1);
+            A.CallTo(() => mesaRepositorio.TemMaquinaComEtiqueta(maquinaPessoalFake.EtiquetaServico)).Returns(true);
+            A.CallTo(() => mesaRepositorio.TemMaquinaComPatrimonio(maquinaPessoalFake.Patrimonio)).Returns(false);
 
             mesaService.AdicionarMaquina(mesaFake.Id, maquinaPessoalFake);
         }
@@ -258,8 +259,8 @@ namespace InfraMap.Dominio.Test
 
             A.CallTo(() => mesaRepositorio.BuscarPorId(mesaFake.Id)).Returns(mesaFake);
             A.CallTo(() => modeloMaquinaRepositorio.BuscarPorId((int)maquinaPessoalFake.Maquina.ModeloMaquina_Id)).Returns(modeloMaquinaFake);
-            A.CallTo(() => maquinaPessoalRepositorio.BuscarPorPatrimonio(maquinaPessoalFake)).Returns(0);
-            A.CallTo(() => maquinaPessoalRepositorio.BuscarPorEtiquetaServico(maquinaPessoalFake)).Returns(1);
+            A.CallTo(() => mesaRepositorio.TemMaquinaComEtiqueta(maquinaPessoalFake.EtiquetaServico)).Returns(false);
+            A.CallTo(() => mesaRepositorio.TemMaquinaComPatrimonio(maquinaPessoalFake.Patrimonio)).Returns(true);
 
             mesaService.AdicionarMaquina(mesaFake.Id, maquinaPessoalFake);
         }

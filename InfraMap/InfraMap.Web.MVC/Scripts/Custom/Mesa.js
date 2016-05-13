@@ -106,6 +106,44 @@ function RenderPartial(id) {
                 }
             );
 
+            $("#resetaFormMaquina").click(function () {
+                $('.modal-body .form-group').find('input').val('');
+                $("#btnAdicionarMaquina").click();
+                $("#etiquetaServico").prop("disabled", false);
+            });
+
+            $("#btnPesquisaPatrimonio").click(function () {
+                var numeroPatrimonio = $("#patrimonio").val();
+                console.log("passou");
+                if (numeroPatrimonio && numeroPatrimonio.length == 6) {
+                    ReceivesServer(
+                        "/Maquina/PesquisaPorPatrimonio",
+                        { patrimonio: numeroPatrimonio },
+                        function (response) {
+                            if (!response.Message) {
+                                $("#etiquetaServico").val(response.EtiquetaServico).prop("disabled", true);
+
+                                $("#dropdown-modeloMaquina").empty().html("<option value=" + response.Maquina.ModeloMaquina.Id + ">"+ response.Maquina.ModeloMaquina.Name +"</option>");
+
+                                var maquina = response.Maquina;
+                                $("#processador").prop("disabled", false).val(maquina.Processador);
+                                $("#unidadesMemoriaRam").prop("disabled", false).val(maquina.UnidadesMemoriaRam);
+                                $("#penteMemoriaRamGB").prop("disabled", false).val(maquina.PenteMemoriaRamGB);
+                                $("#ssd").prop("disabled", false).val(maquina.SSD);
+                                $("#hd").prop("disabled", false).val(maquina.HD);
+                            } else {
+                                //colocar mensagem dizendo que patrimonio ja esta em outra mesa
+                                $("#patrimonio").parent().parent().append("<p>" + response.Message + "</p>");
+                                setTimeout(function () {
+                                    $('#patrimonio').parent().parent().find('p').empty();
+                                }, 5000);
+                            }
+                        },
+                        function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }
+                    );
+                }
+            });
+
             $("#dropdown-modeloMaquina").change(
                 function () {
                     var idModeloEscolhido = $(this).val();

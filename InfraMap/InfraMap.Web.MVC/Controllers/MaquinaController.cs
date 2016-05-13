@@ -64,6 +64,25 @@ namespace InfraMap.Web.MVC.Controllers
         }
 
         [HttpGet]
+        public JsonResult PesquisaPorPatrimonio(int patrimonio)
+        {
+            var repositorio = Factory.CriarMaquinaPessoalRepositorio();
+            var mesaRepositorio = Factory.CriarMesaRepositorio();
+
+            var maquina = repositorio.BuscarPorPatrimonio2(patrimonio);
+            if (maquina == null)
+            {
+                return Json(new { Message = "Este patrimonio não existe" }, JsonRequestBehavior.AllowGet);
+            }
+            if (mesaRepositorio.TemMaquinaComPatrimonio(maquina.Patrimonio))
+            {
+                return Json(new { Message = "Este patrimonio já esta em outra mesa" }, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(maquina, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
         public JsonResult MaquinaDoModelo(int idModelo)
         {
             var repositorio = Factory.CriarMaquinaRepositorio();

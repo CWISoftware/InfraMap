@@ -17,5 +17,9 @@ namespace InfraMap.Dominio.Mesa
         IList<Mesa> Buscar();
 
         Mesa BuscarMesaPorColaborador(string loginColaborador);
+
+        bool TemMaquinaComPatrimonio(int patrimonio);
+
+        bool TemMaquinaComEtiqueta(string etiqueta);
     }
 }

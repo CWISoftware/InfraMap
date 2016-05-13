@@ -33,6 +33,7 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
 
         public int BuscarPorPatrimonio(MaquinaPessoal maquina)
         {
+            // se retorna o id da mesa deveria estar no repositorio da mesa, não precisa buscar a maquina já que recebe por parametro
             using (var db = new DataBaseContext())
             {
                 var maq = db.MaquinaPessoal.FirstOrDefault(t => t.Patrimonio == maquina.Patrimonio);
@@ -61,5 +62,12 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
             }
         }
 
+        public MaquinaPessoal BuscarPorPatrimonio2(int patrimonio)
+        {
+            using (var db = new DataBaseContext())
+            {
+                return db.MaquinaPessoal.Include("Maquina.ModeloMaquina").FirstOrDefault(m => m.Patrimonio == patrimonio);
+            }
+        }
     }
 }

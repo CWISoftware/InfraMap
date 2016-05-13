@@ -51,5 +51,21 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
                 return db.Mesa.ToList();
             }
         }
+
+        public bool TemMaquinaComPatrimonio(int patrimonio)
+        {
+            using (var db = new DataBaseContext())
+            {
+                return db.Mesa.Include("MaquinaPessoal").FirstOrDefault(m => m.MaquinaPessoal.Patrimonio == patrimonio) != null;
+            }
+        }
+
+        public bool TemMaquinaComEtiqueta(string etiqueta)
+        {
+            using (var db = new DataBaseContext())
+            {
+                return db.Mesa.Include("MaquinaPessoal").FirstOrDefault(m => m.MaquinaPessoal.EtiquetaServico.ToLower() == etiqueta.ToLower()) != null;
+            }
+        }
     }
 }

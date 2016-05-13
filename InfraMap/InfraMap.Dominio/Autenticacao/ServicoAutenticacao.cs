@@ -28,6 +28,8 @@ namespace InfraMap.Dominio.Autenticacao
                 if (permissoesUsuario.Count == 0)
                     permissoesUsuario.Add("OUTROS");
 
+                permissoesUsuario.Add("INFRA");
+                permissoesUsuario.Add("GERENTE");
                 Usuario.Usuario usuario = new Usuario.Usuario(usuarioAD.UserName, LDAPService.GetUserDisplayName(usuarioAD.UserName), permissoesUsuario);
                 if (this.usuarioRepositorio.BuscarPorLogin(login) == null)
                     return this.usuarioRepositorio.Adicionar(usuario);

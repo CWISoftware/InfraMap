@@ -90,15 +90,14 @@ namespace InfraMap.Dominio.Mesa
             var mesa = this.mesaRepositorio.BuscarPorId(idMesa);
             maquinaPessoal.Maquina.ModeloMaquina = this.modeloMaquinaRepositorio.BuscarPorId((int)maquinaPessoal.Maquina.ModeloMaquina_Id);
 
-            int patrimonio = this.maquinaPessoalRepositorio.BuscarPorPatrimonio(maquinaPessoal);
-            if (patrimonio > 0)
+            if (this.mesaRepositorio.TemMaquinaComPatrimonio(maquinaPessoal.Patrimonio))
             {
-                throw new MaquinaEmOutraMesaException("Este patrimônio já está sendo utlizado na Mesa " + patrimonio);
+                throw new MaquinaEmOutraMesaException("Este patrimônio já está sendo utlizado em outra mesa");
             }
-            int etiqueta = this.maquinaPessoalRepositorio.BuscarPorEtiquetaServico(maquinaPessoal);
-            if (etiqueta > 0)
+
+            if (this.mesaRepositorio.TemMaquinaComEtiqueta(maquinaPessoal.EtiquetaServico))
             {
-                throw new MaquinaEmOutraMesaException("Esta Etiqueta de Serviço já está sendo utlizada na Mesa " + etiqueta);
+                throw new MaquinaEmOutraMesaException("Esta Etiqueta de Serviço já está sendo utlizada em outra mesa");
             }
             var novaMaquinaPessoal = this.maquinaPessoalRepositorio.Adicionar(maquinaPessoal);
             mesa.AdicionarMaquina(novaMaquinaPessoal);
@@ -112,16 +111,10 @@ namespace InfraMap.Dominio.Mesa
             {
                 throw new Exception("Esta mesa não possui maquina!");
             }
-            var maquinapessoal = mesa.MaquinaPessoal;
-            var maquina = mesa.MaquinaPessoal.Maquina;
-
 
             mesa.RemoverMaquina();
 
             this.mesaRepositorio.Atualizar(mesa);
-
-            this.maquinaPessoalRepositorio.Deletar(maquinapessoal);
-            this.maquinaRepositorio.Deletar(maquina);
         }
 
         public void AdicionarRamal(int idMesa, string numeroRamal, int tipoRamal)

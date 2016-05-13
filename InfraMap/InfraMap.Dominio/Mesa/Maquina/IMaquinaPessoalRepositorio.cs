@@ -11,5 +11,6 @@ namespace InfraMap.Dominio.Mesa.Maquina
     {
         int BuscarPorEtiquetaServico(MaquinaPessoal maquina);
         int BuscarPorPatrimonio(MaquinaPessoal maquina);
+        MaquinaPessoal BuscarPorPatrimonio2(int patrimonio);
     }
 }
