@@ -179,6 +179,7 @@
     </Compile>
     <Compile Include="Helpers\Factory.cs" />
     <Compile Include="Helpers\MaquinaPessoalModelHelper.cs" />
+    <Compile Include="Models\ListaMaquinaModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MaquinaModel.cs" />
     <Compile Include="Models\MaquinaPessoalModel.cs" />
@@ -234,6 +235,7 @@
     <Content Include="Views\Sede\_Sede.cshtml" />
     <Content Include="Views\Mapa\CWICG1.cshtml" />
     <Content Include="Views\Mapa\CWISP1.cshtml" />
+    <Content Include="Views\Maquina\ListagemMaquinas.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

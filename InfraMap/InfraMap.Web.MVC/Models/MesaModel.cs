@@ -23,9 +23,9 @@ namespace InfraMap.Web.MVC.Models
 
         public Usuario Colaborador { get; set; }
 
-        public string PontoRede { get; set; }
+        public string PontoLogico1 { get; set; }
 
-        public string PontoTelefone { get; set; }
+        public string PontoLogico2 { get; set; }
 
         public string PontoEletrico { get; set; }
 
@@ -48,9 +48,9 @@ namespace InfraMap.Web.MVC.Models
                 this.Ramal = mesa.Ramal;
             }
 
-            if (mesa.PontoRede != null)
+            if (mesa.PontoLogico1 != null)
             {
-                this.PontoRede = mesa.PontoRede;
+                this.PontoLogico1 = mesa.PontoLogico1;
             }
 
             if (mesa.PontoEletrico != null)
@@ -58,9 +58,9 @@ namespace InfraMap.Web.MVC.Models
                 this.PontoEletrico = mesa.PontoEletrico;
             }
 
-            if (mesa.PontoTelefone != null)
+            if (mesa.PontoLogico2 != null)
             {
-                this.PontoTelefone = mesa.PontoTelefone;
+                this.PontoLogico2 = mesa.PontoLogico2;
             }
 
         }
@@ -89,19 +89,19 @@ namespace InfraMap.Web.MVC.Models
             }
         }
 
-        public bool TemPontoRede
+        public bool TemPontoLogico1
         {
             get
             {
-                return this.PontoRede != null;
+                return this.PontoLogico1 != null;
             }
         }
 
-        public bool TemPontoTelefone
+        public bool TemPontoLogico2
         {
             get
             {
-                return this.PontoTelefone != null;
+                return this.PontoLogico2 != null;
             }
         }
 

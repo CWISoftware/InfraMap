@@ -18,8 +18,8 @@ namespace InfraMap.Dominio.Mesa
         public int? Ramal_Id { get; set; }
         public Ramal.Ramal Ramal { get; set; }
 
-        public string PontoRede { get; set; }
-        public string PontoTelefone { get; set; }
+        public string PontoLogico1 { get; set; }
+        public string PontoLogico2 { get; set; }
         public string PontoEletrico { get; set; }
 
         public void AdicionarColaborador(Usuario.Usuario colaborador)
@@ -82,19 +82,19 @@ namespace InfraMap.Dominio.Mesa
             }
         }
 
-        public bool TemPontoRede
+        public bool TemPontoLogico1
         {
             get
             {
-                return this.PontoRede != null;
+                return this.PontoLogico1 != null;
             }
         }
 
-        public bool TemPontoTelefone
+        public bool TemPontoLogico2
         {
             get
             {
-                return this.PontoTelefone != null;
+                return this.PontoLogico2 != null;
             }
         }
 

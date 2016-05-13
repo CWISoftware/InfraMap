@@ -1,0 +1,37 @@
+﻿@model InfraMap.Web.MVC.Models.ListaMaquinaModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <div class="container">
+        <h2 class="text-center">Listagem de Maquinas</h2>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="col-lg-offset-2"></th>
+                <th class="col-md-2 text-center">Patrimonio</th>
+                <th class="col-md-2 text-center">Tag</th>
+                <th class="col-md-4 text-center">Modelo</th>
+                <th class="col-lg-offset-2"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var maquina in Model.Maquinas)
+            {
+                <tr>
+                    <th class="col-lg-offset-2"></th>
+                    <td class="col-md-2 text-center">@maquina.Patrimonio</td>
+                    <td class="col-md-2 text-center">@maquina.EtiquetaServico</td>
+                    <td class="col-md-4 text-center">@maquina.Maquina.ModeloMaquina.Name</td>
+                    <th class="col-lg-offset-2"></th>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+

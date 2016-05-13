@@ -4,8 +4,8 @@
     var colaborador = Model.Colaborador != null ? Model.Colaborador.Nome.Truncate(22) : "";
     var maquina = Model.Maquina != null ? Model.Maquina.Maquina.ModeloMaquina.Name : "";
     var ramal = Model.Ramal != null ? Model.Ramal.Numero : "";
-    var pontorede = Model.PontoRede != null ? Model.PontoRede : "";
-    var pontotelefone = Model.PontoTelefone != null ? Model.PontoTelefone : "";
+    var pontoLogico1 = Model.PontoLogico1 != null ? Model.PontoLogico1 : "";
+    var pontoLogico2 = Model.PontoLogico2 != null ? Model.PontoLogico2 : "";
     var pontoeletrico = Model.PontoEletrico != null ? Model.PontoEletrico : "";
 }
 
@@ -81,18 +81,18 @@
                         <h2></h2>
                     }
 
-                    @if (Model.TemPontoRede)
+                    @if (Model.TemPontoLogico1)
                     {
                         <div class="form-inline">
-                            <label class="font-14 label-center"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span>  Ponto Lógico: @pontorede</label>
+                            <label class="font-14 label-center"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span>  Ponto Lógico 1: @pontoLogico1</label>
                         </div>
                         <h2></h2>
                     }
 
-                    @if (Model.TemPontoTelefone)
+                    @if (Model.TemPontoLogico2)
                     {
                         <div class="form-inline">
-                            <label class="font-14 label-center"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>  Ponto de Telefone: @pontotelefone</label>
+                            <label class="font-14 label-center"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>  Ponto de Lógico 2: @pontoLogico2</label>
                         </div>
                         <h2></h2>
                     }

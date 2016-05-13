@@ -12,6 +12,18 @@ namespace InfraMap.Web.MVC.Controllers
 {
     public class MaquinaController : BaseController
     {
+        [HttpGet]
+        public ActionResult ListarMaquinas()
+        {
+            var repositorio = Factory.CriarMaquinaPessoalRepositorio();
+            var model = new ListaMaquinaModel()
+            {
+                Maquinas = repositorio.BuscarTodas()
+            };
+
+            return View("ListagemMaquinas", model);
+        }
+
         [HttpPost]
         public JsonResult AdicionarMaquina(MaquinaPessoalModel model)
         {

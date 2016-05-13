@@ -69,5 +69,13 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
                 return db.MaquinaPessoal.Include("Maquina.ModeloMaquina").FirstOrDefault(m => m.Patrimonio == patrimonio);
             }
         }
+
+        public List<MaquinaPessoal> BuscarTodas()
+        {
+            using (var db = new DataBaseContext())
+            {
+                return db.MaquinaPessoal.Include("Maquina.ModeloMaquina").ToList();
+            }
+        }
     }
 }
