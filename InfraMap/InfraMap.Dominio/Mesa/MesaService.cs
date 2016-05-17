@@ -53,16 +53,30 @@ namespace InfraMap.Dominio.Mesa
             this.mesaRepositorio.Atualizar(mesa);
         }
 
-        public void TrocarColaborador(int idMesa, string nomeColaborador)
+        public void TrocarColaborador(int idMesa, string nomeColaborador, bool temMaquina, bool temRamal)
         {
-            var mesa = this.mesaRepositorio.BuscarPorId(idMesa);
+            //TODO: verificar se a troca está correta(teste)
+            var mesaNova = this.mesaRepositorio.BuscarPorId(idMesa);
             var colaborador = this.usuarioRepositorio.BuscarPorNome(nomeColaborador);
             var mesaAtual = this.mesaRepositorio.BuscarMesaPorColaborador(colaborador.Login);
+
             if (mesaAtual != null)
             {
-                mesa.AdicionarColaborador(mesaAtual.Colaborador);
+                if (temMaquina && mesaAtual.MaquinaPessoal != null)
+                {
+                    mesaNova.AdicionarMaquina(mesaAtual.MaquinaPessoal);
+                    mesaAtual.RemoverMaquina();
+                }
+
+                if (temRamal && mesaAtual.Ramal != null)
+                {
+                    mesaNova.AdicionarRamal(mesaAtual.Ramal);
+                    mesaAtual.RemoverRamal();
+                }
+
+                mesaNova.AdicionarColaborador(mesaAtual.Colaborador);
                 mesaAtual.RemoverColaborador();
-                mesaRepositorio.Atualizar(mesa);
+                mesaRepositorio.Atualizar(mesaNova);
                 mesaRepositorio.Atualizar(mesaAtual);
             }
         }
@@ -92,12 +106,12 @@ namespace InfraMap.Dominio.Mesa
 
             if (this.mesaRepositorio.TemMaquinaComPatrimonio(maquinaPessoal.Patrimonio))
             {
-                throw new MaquinaEmOutraMesaException("Este patrimônio já está sendo utlizado em outra mesa");
+                throw new MaquinaEmOutraMesaException("Este patrimônio já está sendo utlizado em outra mesa!");
             }
 
             if (this.mesaRepositorio.TemMaquinaComEtiqueta(maquinaPessoal.EtiquetaServico))
             {
-                throw new MaquinaEmOutraMesaException("Esta Etiqueta de Serviço já está sendo utlizada em outra mesa");
+                throw new MaquinaEmOutraMesaException("Esta Etiqueta de Serviço já está sendo utlizada em outra mesa!");
             }
             var novaMaquinaPessoal = this.maquinaPessoalRepositorio.Adicionar(maquinaPessoal);
             mesa.AdicionarMaquina(novaMaquinaPessoal);

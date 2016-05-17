@@ -126,7 +126,7 @@ namespace InfraMap.Dominio.Test
             A.CallTo(() => usuarioRepositorio.BuscarPorNome(usuarioFake.Nome)).Returns(usuarioFake);
             A.CallTo(() => mesaRepositorio.BuscarMesaPorColaborador(usuarioFake.Login)).Returns(mesaFakeAtual);
 
-            mesaService.TrocarColaborador(mesaFake.Id, usuarioFake.Nome);
+            mesaService.TrocarColaborador(mesaFake.Id, usuarioFake.Nome,false,false);
 
             Assert.AreEqual(null,mesaFakeAtual.Colaborador);
             Assert.AreEqual(usuarioFake, mesaFake.Colaborador);
@@ -141,7 +141,7 @@ namespace InfraMap.Dominio.Test
             A.CallTo(() => usuarioRepositorio.BuscarPorNome(usuarioFake.Nome)).Returns(usuarioFake);
             A.CallTo(() => mesaRepositorio.BuscarMesaPorColaborador(usuarioFake.Login)).Returns(null);
 
-            mesaService.TrocarColaborador(mesaFake.Id, usuarioFake.Nome);
+            mesaService.TrocarColaborador(mesaFake.Id, usuarioFake.Nome,false,false);
 
             Assert.AreEqual(null, mesaFake.Colaborador);
         }

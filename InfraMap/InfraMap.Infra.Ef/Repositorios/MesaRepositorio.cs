@@ -14,7 +14,7 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
         {
             using (var db = new DataBaseContext())
             {
-                return db.Mesa.Include("Colaborador").FirstOrDefault(t => t.Colaborador.Login == loginColaborador);
+                return db.Mesa.Include("Colaborador").Include("MaquinaPessoal").Include("Ramal").FirstOrDefault(t => t.Colaborador.Login == loginColaborador);
             }
         }
 

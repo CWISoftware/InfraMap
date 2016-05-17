@@ -35,9 +35,10 @@ namespace InfraMap.Web.MVC.Controllers
             }
             catch (MaquinaEmOutraMesaException maquina)
             {
-                return Json(new { message = maquina.Message }, JsonRequestBehavior.AllowGet);
+                return ErroTratado(maquina);
+                //return Json(new { message = maquina.Message }, JsonRequestBehavior.AllowGet);
             }
-            return Json(new { message = "true" }, JsonRequestBehavior.AllowGet);
+            return Json(new { success = true }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]

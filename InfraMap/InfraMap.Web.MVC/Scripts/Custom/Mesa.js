@@ -69,7 +69,7 @@ function RenderPartial(id) {
                 function () {
                     SendsServer(
                         "/Colaborador/TrocarMesaColaborador",
-                        { id: $("#idMesa").val(), colaborador: $("#login").val() },
+                        { id: $("#idMesa").val(), colaborador: $("#login").val(), comMaquina: $('#chkMaquina').is(":checked"), comRamal: $('#chkRamal').is(":checked") },
                         function (response) { RetiraDestaqueMesa(); },
                         function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }
                     );
@@ -191,12 +191,8 @@ function RenderPartial(id) {
                             if (response.message == "true") {
                                 RetiraDestaqueMesa();
                             }
-                            else {
-                                document.getElementById("TextException").innerHTML = response.message;
-                                $('#modalTrocarMaquina').modal('show');
-                            }
                         },
-                        function (jqXHR, textStatus, errorThrown) { DisplayError(JSON.parse(jqXHR.responseText).Message); }
+                        function (jqXHR, textStatus, errorThrown) { console.log(JSON.parse(jqXHR.responseText)); DisplayError(JSON.parse(jqXHR.responseText).Message); }
                     );
                 }
             );

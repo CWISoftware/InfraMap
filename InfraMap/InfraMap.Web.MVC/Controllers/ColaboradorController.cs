@@ -31,12 +31,13 @@ namespace InfraMap.Web.MVC.Controllers
         }
 
         [HttpPost]
-        public JsonResult TrocarMesaColaborador(int id, string colaborador)
+        public JsonResult TrocarMesaColaborador(int id, string colaborador, bool comMaquina, bool comRamal)
         {
             try
             {
+                //TODO: fazer a troca com maquina e com ramal, verificar entrada dos dados
                 var service = Factory.CriarMesaService();
-                service.TrocarColaborador(id, colaborador);
+                service.TrocarColaborador(id, colaborador, comMaquina, comRamal);
             }
             catch (Exception e)
             {

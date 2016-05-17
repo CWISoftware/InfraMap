@@ -97,6 +97,10 @@ label {
     left: 1px;
 }
 
+.medium-label{
+    font-size: 14px;
+}
+
 .mesa-div {
     position: relative;
     width: 100%;
