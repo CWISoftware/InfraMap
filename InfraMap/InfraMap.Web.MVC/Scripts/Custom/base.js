@@ -6,7 +6,7 @@
         "/Base/CarregarMapaDoUsuarioPesquisado",
         { nome: usuario },
         function (response) {
-            window.location.href = "/Mapa/" + response.sede + "/" + response.idAndar + "/" + response.mesa + "/#" + response.mesa;
+            window.location.href = "/Mapa/" + response.sede + "/" + response.idAndar + "/" + response.mesa;
         },
         function (jqXHR, textStatus, errorThrown) {
             $("#carregar-usuario").val('');

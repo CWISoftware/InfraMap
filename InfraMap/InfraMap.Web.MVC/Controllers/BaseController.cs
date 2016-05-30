@@ -49,17 +49,15 @@ namespace InfraMap.Web.MVC.Controllers
             try
             {
                 var sede = Factory.CriarSedeRepositorio();
-                var andar = Factory.CriarAndarRepositorio();
                 var mesa = Factory.CriarMesaRepositorio();
-                var user = Factory.CriarUsuarioRepositorio();
 
-                var login = user.BuscarPorNome(nome).Login;
-                var mesaDoUsuario = mesa.BuscarMesaPorColaborador(login);
-                var andarDoUsuario = andar.BuscarPorMesa(mesaDoUsuario);
-                var idAndar = andarDoUsuario.Id;
-                var nomeSede = sede.BuscarSedePorAndar(andarDoUsuario).Nome;
+                var nomeSede = "";
+                Dominio.Sede.Andar.Andar andarDoUsuario = null;
+                Dominio.Mesa.Mesa mesaDoUsuario = null;
+                //var mesaDoUsuario = mesa.
+                //var nomeSede = sede.BuscarSedePorAndar(andarDoUsuario).Nome;
 
-                return Json(new { sede = nomeSede, idAndar = idAndar, mesa = mesaDoUsuario.Id });
+                return Json(new { sede = nomeSede, idAndar = andarDoUsuario.Id, mesa = mesaDoUsuario.Id });
             }
             catch (Exception e)
             {

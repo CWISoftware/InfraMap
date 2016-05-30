@@ -67,5 +67,14 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
                 return db.Mesa.Include("MaquinaPessoal").FirstOrDefault(m => m.MaquinaPessoal.EtiquetaServico.ToLower() == etiqueta.ToLower()) != null;
             }
         }
+
+        public Mesa BuscarMesaPorNomeColaborador(string nome)
+        {
+            using (var db = new DataBaseContext())
+            {
+                //TODO: implementar a busca
+                return null;
+            }
+        }
     }
 }

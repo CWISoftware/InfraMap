@@ -236,6 +236,7 @@
     <Content Include="Views\Mapa\CWICG1.cshtml" />
     <Content Include="Views\Mapa\CWISP1.cshtml" />
     <Content Include="Views\Maquina\ListagemMaquinas.cshtml" />
+    <Content Include="Views\Mapa\_RotasCWISL.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

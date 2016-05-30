@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using InfraMap.Dominio.Comum;
+using InfraMap.Dominio.Sede.Andar;
 
 namespace InfraMap.Dominio.Mesa
 {
@@ -14,6 +15,8 @@ namespace InfraMap.Dominio.Mesa
 
         public int? MaquinaPessoal_Id { get; set; }
         public Maquina.MaquinaPessoal MaquinaPessoal { get; set; }
+
+        public Andar Andar { get; set; }
 
         public int? Ramal_Id { get; set; }
         public Ramal.Ramal Ramal { get; set; }

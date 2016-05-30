@@ -100,6 +100,10 @@
     <Compile Include="Migrations\201605132223111_Trocado ponto de rede para logico.Designer.cs">
       <DependentUpon>201605132223111_Trocado ponto de rede para logico.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605271843539_Incluido explicitamente o andar na mesa.cs" />
+    <Compile Include="Migrations\201605271843539_Incluido explicitamente o andar na mesa.Designer.cs">
+      <DependentUpon>201605271843539_Incluido explicitamente o andar na mesa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -164,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605132223111_Trocado ponto de rede para logico.resx">
       <DependentUpon>201605132223111_Trocado ponto de rede para logico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605271843539_Incluido explicitamente o andar na mesa.resx">
+      <DependentUpon>201605271843539_Incluido explicitamente o andar na mesa.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

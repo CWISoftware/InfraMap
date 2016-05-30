@@ -5,5 +5,7 @@
         Andar BuscarPorId(int id);
 
         Andar BuscarPorMesa(Mesa.Mesa mesa);
+
+        Andar BuscarPorNomeColaborador(string nome);
     }
 }
