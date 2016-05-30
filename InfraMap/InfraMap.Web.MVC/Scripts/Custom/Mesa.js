@@ -55,6 +55,14 @@ function RenderPartial(id) {
                         function (response) {
                             if (response.trocar) {
                                 $('#modalTrocarUsuario').modal('show');
+                                $('#mensagemTrocarUsuario').empty().append(response.mensagemException + " Deseja mudá-lo de lugar?");
+
+                                if (response.temRamal || response.temMaquina) {
+                                    $('#caixaEscolhas').removeClass('hide');
+
+                                    if (response.temRamal) $('#temRamal').removeClass('hide');
+                                    if (response.temMaquina) $('#temMaquina').removeClass('hide');
+                                }
                             }
                             else {
                                 RetiraDestaqueMesa();

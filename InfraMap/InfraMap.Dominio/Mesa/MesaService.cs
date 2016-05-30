@@ -46,7 +46,10 @@ namespace InfraMap.Dominio.Mesa
             var mesaColaborador = this.mesaRepositorio.BuscarMesaPorColaborador(colaborador.Login);
             if (mesaColaborador != null)
             {
-                throw new UsuarioEmOutraMesaException("Colaborador " + colaborador.Login + " já está em outra mesa!");
+                var exception = new UsuarioEmOutraMesaException("Colaborador já está na mesa P" + mesaColaborador.Id + "!");
+                exception.Data.Add("TemRamal", mesaColaborador.TemRamal);
+                exception.Data.Add("TemMaquina", mesaColaborador.TemMaquina);
+                throw exception;
             }
 
             mesa.AdicionarColaborador(colaborador);

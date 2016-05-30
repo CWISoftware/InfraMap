@@ -18,9 +18,9 @@ namespace InfraMap.Web.MVC.Controllers
                 var service = Factory.CriarMesaService();
                 service.AdicionarColaborador(id, colaborador);
             }
-            catch (UsuarioEmOutraMesaException)
+            catch (UsuarioEmOutraMesaException e)
             {
-                return Json(new { success = true, trocar = true });
+                return Json(new { success = true, trocar = true, mensagemException = e.Message, temRamal = e.Data["TemRamal"], temMaquina = e.Data["TemMaquina"] });
             }
             catch (Exception e)
             {
