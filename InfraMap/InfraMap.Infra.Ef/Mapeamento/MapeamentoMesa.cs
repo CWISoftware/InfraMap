@@ -15,7 +15,7 @@ namespace InfraMap.Infraestrutura.Ef.Mapeamento
             HasOptional(t => t.Colaborador).WithMany().HasForeignKey(k => k.Colaborador_Id);
             HasOptional(t => t.MaquinaPessoal).WithMany().HasForeignKey(k => k.MaquinaPessoal_Id);
             HasOptional(t => t.Ramal).WithMany().HasForeignKey(k => k.Ramal_Id);
-            HasRequired(t => t.Andar).WithMany().Map(x => x.MapKey("Andar_Id"));
+            HasRequired(t => t.Andar).WithMany(x => x.Mesas).HasForeignKey(k => k.Andar_Id);
             Property(t => t.PontoEletrico).IsRequired().HasMaxLength(50);
             Property(t => t.PontoLogico1).IsRequired().HasMaxLength(50);
             Property(t => t.PontoLogico2).IsOptional().HasMaxLength(50);

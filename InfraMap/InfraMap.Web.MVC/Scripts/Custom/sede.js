@@ -5,9 +5,9 @@ function sedeClick(id) {
     $.ajax({
         type: "GET",
         url: '/Sede/PegarAndaresDasSedes',
-        dataType: "json"
-    }).done(
-        function (json) {
+        dataType: "json",
+        success: function (json) {
+            console.log('sdasd');
             var options = "";
             if (json[id_sede - 1].Andares.length === 1) {
                 $.ajax({
@@ -27,8 +27,9 @@ function sedeClick(id) {
                 $("#dropdown-andar").empty().append(options);
                 $('#modalSede').modal('show');
             }
-        }
-    );
+        },
+        error: function (jqXHR, textStatus, errorThrown) { console.log(jqXHR + ' --- ' + textStatus + ' --- ' + errorThrown) }
+    })
 };
 
 $("#btn-ir").click(function () {

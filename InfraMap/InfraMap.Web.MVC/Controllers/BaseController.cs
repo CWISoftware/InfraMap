@@ -44,18 +44,16 @@ namespace InfraMap.Web.MVC.Controllers
             return string.IsNullOrEmpty(term) ? usuario.Buscar() : usuario.BuscarUsuariosPorLogin(term);
         }
 
-        public JsonResult CarregarMapaDoUsuarioPesquisado(string nome)
+        public JsonResult CarregarMapaDoUsuarioPesquisado(string palavra)
         {
             try
             {
                 var sede = Factory.CriarSedeRepositorio();
                 var mesa = Factory.CriarMesaRepositorio();
 
-                var nomeSede = "";
-                Dominio.Sede.Andar.Andar andarDoUsuario = null;
-                Dominio.Mesa.Mesa mesaDoUsuario = null;
-                //var mesaDoUsuario = mesa.
-                //var nomeSede = sede.BuscarSedePorAndar(andarDoUsuario).Nome;
+                Dominio.Mesa.Mesa mesaDoUsuario = mesa.BuscarMesaPorNomeRamalPatrimonio(palavra);
+                Dominio.Sede.Andar.Andar andarDoUsuario = mesaDoUsuario.Andar;
+                var nomeSede = sede.BuscarSedePorAndar(andarDoUsuario).Nome;
 
                 return Json(new { sede = nomeSede, idAndar = andarDoUsuario.Id, mesa = mesaDoUsuario.Id });
             }

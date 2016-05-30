@@ -16,6 +16,7 @@ namespace InfraMap.Dominio.Mesa
         public int? MaquinaPessoal_Id { get; set; }
         public Maquina.MaquinaPessoal MaquinaPessoal { get; set; }
 
+        public int Andar_Id { get; set; }
         public Andar Andar { get; set; }
 
         public int? Ramal_Id { get; set; }

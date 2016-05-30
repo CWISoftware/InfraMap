@@ -4,7 +4,7 @@
 
     SendsServer(
         "/Base/CarregarMapaDoUsuarioPesquisado",
-        { nome: usuario },
+        { palavra: usuario },
         function (response) {
             window.location.href = "/Mapa/" + response.sede + "/" + response.idAndar + "/" + response.mesa;
         },
@@ -33,3 +33,10 @@ var usuarioAutoComplete = {
     }
 };
 $("#carregar-usuario").easyAutocomplete(usuarioAutoComplete);
+
+$("#carregar-usuario").keypress(function (e) {
+    if (e.which == 13) {
+        console.log('passed');
+        CarregarUsuario();
+    }
+});

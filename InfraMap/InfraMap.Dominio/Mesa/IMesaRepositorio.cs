@@ -22,6 +22,6 @@ namespace InfraMap.Dominio.Mesa
 
         bool TemMaquinaComEtiqueta(string etiqueta);
 
-        Mesa BuscarMesaPorNomeColaborador(string nome);
+        Mesa BuscarMesaPorNomeRamalPatrimonio(string nome);
     }
 }

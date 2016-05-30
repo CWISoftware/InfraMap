@@ -68,12 +68,11 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
             }
         }
 
-        public Mesa BuscarMesaPorNomeColaborador(string nome)
+        public Mesa BuscarMesaPorNomeRamalPatrimonio(string palavra)
         {
             using (var db = new DataBaseContext())
             {
-                //TODO: implementar a busca
-                return null;
+                return db.Mesa.Include(x => x.Colaborador).Include(x => x.Ramal).Include(x => x.MaquinaPessoal).Include(x => x.Andar).FirstOrDefault(m => m.Colaborador.Nome.ToLower() == palavra.ToLower() || m.Ramal.Numero.ToString() == palavra || m.MaquinaPessoal.Patrimonio.ToString() == palavra);
             }
         }
     }

@@ -12,7 +12,7 @@ using InfraMap.Dominio.Sede;
 
 namespace InfraMap.Web.MVC.Controllers
 {
-    [Autorizador]
+    //[Autorizador]
     public class SedeController : Controller
     {
         public ActionResult Index()
@@ -27,6 +27,7 @@ namespace InfraMap.Web.MVC.Controllers
         {
             var repositorioSede = Factory.CriarSedeRepositorio();
             var listaSedes = repositorioSede.BuscarSedesComAndares();
+            
             return Json(listaSedes, JsonRequestBehavior.AllowGet);
         }
 

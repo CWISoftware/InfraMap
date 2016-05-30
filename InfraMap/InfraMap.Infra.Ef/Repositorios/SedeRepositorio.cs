@@ -22,7 +22,7 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
         {
             using (var db = new DataBaseContext())
             {
-                return db.Sede.Include("Andares.Mesas").ToList();
+                return db.Sede.Include("Andares").ToList();
             }
         }
 
