@@ -7,9 +7,11 @@ using System.Web;
 using System.Web.Mvc;
 using InfraMap.Dominio.Mesa.Maquina;
 using InfraMap.Dominio.Mesa;
+using InfraMap.Web.MVC.Seguranca;
 
 namespace InfraMap.Web.MVC.Controllers
 {
+    [Autorizador]
     public class MaquinaController : BaseController
     {
         [HttpGet]
@@ -22,6 +24,97 @@ namespace InfraMap.Web.MVC.Controllers
             };
 
             return View("ListagemMaquinas", model);
+        }
+
+        [HttpGet]
+        public ActionResult AdicionarModeloMaquina()
+        {
+            return View("AdicionarModeloMaquina",new ModeloMaquinaModel());
+        }
+
+        [HttpPost]
+        public ActionResult AdicionarModeloMaquina(ModeloMaquinaModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                if(model.SSD == null && model.HD == null)
+                {
+                    ModelState.AddModelError(String.Empty, "É necessário preencher o hd ou o ssd.");
+                    return View("AdicionarModeloMaquina", model);
+                }
+
+                var modeloRepositorio = Factory.CriarModeloMaquinaRepositorio();
+                var maquinaRepositorio = Factory.CriarMaquinaRepositorio();
+
+                var modeloMaquina = new ModeloMaquina()
+                {
+                    Name = model.Modelo
+                };
+                var newModelo = modeloRepositorio.Adicionar(modeloMaquina);
+
+                var maquina = new Maquina()
+                {
+                    HD = model.HD,
+                    SSD = model.SSD,
+                    MemoriaRamGB1 = model.MemoriaRamGB1,
+                    MemoriaRamGB2 = model.MemoriaRamGB2,
+                    MemoriaRamGB3 = model.MemoriaRamGB3,
+                    MemoriaRamGB4 = model.MemoriaRamGB4,
+                    ModeloMaquina = newModelo,
+                    ModeloMaquina_Id = newModelo.Id,
+                    Processador = model.Processador,
+                    TipoMaquina = TipoMaquina.Padrao
+                };
+
+                maquinaRepositorio.Adicionar(maquina);
+
+                return RedirectToAction("ListarMaquinas");
+            }
+
+            return View("AdicionarModeloMaquina",model);
+        }
+
+        [HttpGet]
+        public ActionResult EditarModeloMaquina(int? id)
+        {
+            var modeloMaquinaRepositorio = Factory.CriarModeloMaquinaRepositorio();
+            Maquina maquina = null;
+            ModeloMaquina modeloEscolhido = new ModeloMaquina();
+            List<ModeloMaquina> modelos = modeloMaquinaRepositorio.BuscarTodos();
+
+            if (id.HasValue)
+            {
+                var maquinaRepositorio = Factory.CriarMaquinaRepositorio();
+                maquina = maquinaRepositorio.BuscarPorIdModelo(id.Value);
+                modeloEscolhido = modelos.FirstOrDefault(m => m.Id == id.Value);
+            }
+
+            var model = new EditaMaquinaModel()
+            {
+                Modelos = modelos,
+                Maquina = maquina,
+                ModeloEscolhido = modeloEscolhido
+            };
+            return View("EditarMaquina",model);
+        }
+
+        [HttpPost]
+        public ActionResult EditarModeloMaquina(EditaMaquinaModel model)
+        {
+            var modeloMaquinaRepositorio = Factory.CriarModeloMaquinaRepositorio();
+            if (ModelState.IsValid)
+            {
+                var maquinaRepositorio = Factory.CriarMaquinaRepositorio();
+
+                var modeloAtual = modeloMaquinaRepositorio.Atualizar(model.ModeloEscolhido);
+                model.Maquina.AdicionarModelo(modeloAtual);
+                maquinaRepositorio.Atualizar(model.Maquina);
+
+                return RedirectToAction("EditarModeloMaquina");
+            }
+
+            model.Modelos = modeloMaquinaRepositorio.BuscarTodos();
+            return View("EditarMaquina", model);
         }
 
         [HttpPost]
@@ -68,7 +161,7 @@ namespace InfraMap.Web.MVC.Controllers
             {
                 if (maquina.BuscarPorIdModelo(listaModelosMaquina[modelo].Id) == null)
                 {
-                    repositorio.Deletar(listaModelosMaquina[modelo]);
+                    repositorio.Deletar(listaModelosMaquina[modelo].Id);
                     listaModelosMaquina.Remove(listaModelosMaquina[modelo]);
                 }
             }
@@ -104,53 +197,6 @@ namespace InfraMap.Web.MVC.Controllers
             maquina.ModeloMaquina = name;
 
             return Json(maquina, JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpGet]
-        public ActionResult ConfigurarMaquina()
-        {
-            try
-            {
-                return View("ConfigurarMaquina");
-            }
-            catch (Exception e)
-            {
-                return ErroTratado(e);
-            }
-        }
-
-        [HttpGet]
-        public ActionResult EditarMaquina()
-        {
-            try
-            {
-                return View("EditarMaquina");
-            }
-            catch (Exception e)
-            {
-                return ErroTratado(e);
-            }
-        }
-
-        [HttpPost]
-        public JsonResult SalvaMaquina(Maquina model)
-        {
-            try
-            {
-                var service = Factory.CriarMaquinaRepositorio();
-
-                var maquinaAdicionada = service.Adicionar(model);
-
-                if (maquinaAdicionada != null)
-                    return Json(new { success = true });
-                else
-                    return ErroTratado(new Exception("Não foi possível salvar o novo modelo"));
-            }
-            catch (Exception e)
-            {
-                return ErroTratado(e);
-            }
-
         }
 
         [HttpPost]
@@ -212,7 +258,7 @@ namespace InfraMap.Web.MVC.Controllers
                 var service = Factory.CriarMaquinaRepositorio();
                 var maquina = service.BuscarPorIdModelo(model.ModeloMaquina_Id.GetValueOrDefault());
                 model.Id = maquina.Id;
-                service.Deletar(model);
+                service.Deletar(model.Id);
 
 
                 return Json(new { success = true });

@@ -1,5 +1,6 @@
 ﻿using System;
 using InfraMap.Dominio.Comum;
+using System.ComponentModel.DataAnnotations;
 
 namespace InfraMap.Dominio.Mesa.Maquina
 {
@@ -14,10 +15,16 @@ namespace InfraMap.Dominio.Mesa.Maquina
 
         public int? SSD { get; set; }
 
-        public int PenteMemoriaRamGB { get; set; }
+        [Required(ErrorMessage = "É necessário preencher o primeiro slot de memória ram")]
+        public int MemoriaRamGB1 { get; set; }
 
-        public int UnidadesMemoriaRam { get; set; }
-        
+        public int? MemoriaRamGB2 { get; set; }
+
+        public int? MemoriaRamGB3 { get; set; }
+
+        public int? MemoriaRamGB4 { get; set; }
+
+        [Required(ErrorMessage = "É necessário uma descrição do processador")]
         public string Processador { get; set; }
 
         public void AdicionarModelo(ModeloMaquina modelo)

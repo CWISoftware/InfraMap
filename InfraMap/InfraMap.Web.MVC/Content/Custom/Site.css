@@ -71,6 +71,10 @@ textarea {
     text-align:center;
 }
 
+.inline-block{
+    display:inline-block;
+}
+
 .col-centered{
     margin: 0 auto;
     float: none;

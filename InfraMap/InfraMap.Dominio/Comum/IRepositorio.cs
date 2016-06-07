@@ -6,9 +6,9 @@ namespace InfraMap.Dominio.Comum
     {
         TEntity Adicionar(TEntity entity);
 
-        void Atualizar(TEntity entity);
+        TEntity Atualizar(TEntity entity);
 
-        void Deletar(TEntity entity);
+        void Deletar(int id);
 
         TEntity BuscarPorId(int id);
 

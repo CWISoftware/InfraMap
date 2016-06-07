@@ -26,34 +26,14 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
             }
         }
 
-        public new void Adicionar(Maquina entity)
+        public new void Atualizar(Maquina entity)
         {
             using (var db = new DataBaseContext())
             {
-                db.Maquina.Add(entity);
-                db.SaveChanges();
-            }
-        }
-
-        public new void Atualizar(Maquina entity)
-         {
-             using (var db = new DataBaseContext())
-             {
-                db.Entry(entity).State = System.Data.Entity.EntityState.Modified;
-                db.ModeloMaquina.Attach(entity.ModeloMaquina);
-                db.Entry(entity.ModeloMaquina).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
-             }
-         }
-
-        public new void Deletar(Maquina entity)
-        {
-            using (var dbContext = new DataBaseContext())
-            {
-                var dbEntity = this.BuscarPorId(entity.Id);
-                dbContext.Maquina.Attach(dbEntity);
-                dbContext.Maquina.Remove(dbEntity);
-                dbContext.SaveChanges();
+               db.Entry(entity).State = System.Data.Entity.EntityState.Modified;
+               db.Maquina.Attach(entity);
+               db.Entry(entity.ModeloMaquina).State = System.Data.Entity.EntityState.Modified;
+               db.SaveChanges();
             }
         }
     }

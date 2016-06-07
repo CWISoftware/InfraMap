@@ -22,8 +22,10 @@ namespace InfraMap.Web.MVC.Helpers
                 HD = model.Hd,
                 SSD = model.Ssd,
                 Processador = model.Processador,
-                PenteMemoriaRamGB = model.PenteMemoriaRamGB,
-                UnidadesMemoriaRam = model.UnidadesMemoriaRam,
+                MemoriaRamGB1 = model.MemoriaRamGB1,
+                MemoriaRamGB2 = model.MemoriaRamGB2,
+                MemoriaRamGB3 = model.MemoriaRamGB3,
+                MemoriaRamGB4 = model.MemoriaRamGB4,
                 TipoMaquina = TipoMaquina.Pessoal,
                 ModeloMaquina_Id = model.IdModeloMaquina
             };

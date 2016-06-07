@@ -1,87 +1,96 @@
-﻿<body onload="CarregaMaquinas()">
-    <div class="body-content" role="document">
-        <div class="label-center margin-bottom-80">
-            <div>
-                <h2>Editar modelo</h2>
-            </div>
-            <div>
-                <div class="form-group">
-                    <h4> Escolha o modelo para editar:</h4>
-                    <select id="dropdown-EditarMaquina" class="form-control col-centered">
-                        <option value="0">Selecione o modelo</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <h4>Modelo: </h4>
-                    <input class="form-control col-centered"
-                           id="EditaModelo"
-                           placeholder="Modelo do computador"
-                           disabled />
-                </div>
-                <div class="form-group">
-                    <h4>Processador:</h4>
-                    <input class="form-control col-centered"
-                           id="Editaprocessador"
-                           placeholder="Descrição do processador"
-                           disabled />
-                </div>
-                <div class="form-group">
-                    <h4>Pentes de Memória RAM:</h4>
-                    <input class="form-control col-centered"
-                           type="number"
-                           min="1"
-                           id="EditaunidadesMemoriaRam"
-                           placeholder="Número de pentes de memória RAM"
-                           oninput="validarEntrada('EditaunidadesMemoriaRam')"
-                           disabled />
-                </div>
-                <div class="form-group">
-                    <h4>Tamanho de cada pente:</h4>
-                    <div class="input-group col-centered" style="width:320px;">
-                        <input class="form-control"
-                               type="number"
-                               min="1"
-                               id="EditapenteMemoriaRamGB"
-                               placeholder="Tamanho de cada pente de memória RAM"
-                               oninput="validarEntrada('EditapenteMemoriaRamGB')"
-                               disabled />
-                        <div class="input-group-addon">GB</div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <h4>Tamanho SSD:</h4>
-                    <div class="input-group col-centered" style="width:320px;">
-                        <input class="form-control"
-                               type="number"
-                               min="1"
-                               id="Editassd"
-                               placeholder="Tamanho do SSD"
-                               oninput="validarEntrada('Editassd')"
-                               disabled />
-                        <div class="input-group-addon">GB</div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <h4>Tamanho HD:</h4>
-                    <div class="input-group col-centered" style="width:320px;">
-                        <input class="form-control"
-                               type="number"
-                               min="1"
-                               id="Editahd"
-                               placeholder="Tamanho do HD"
-                               oninput="validarEntrada('Editahd')"
-                               disabled />
-                        <div class="input-group-addon">GB</div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <button type="button" class="btn btn-default" onclick="GoBack()">Cancelar</button>
-                    <button id="DeletaMaquina" type="button" class="btn btn-danger"> Deletar</button>
-                    <button id="SalvaEdicaoMaquina" type="button" class="btn btn-primary">Salvar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
+﻿@model InfraMap.Web.MVC.Models.EditaMaquinaModel
 
-@Html.Partial("~/Views/Modais/_ModalError.cshtml");
+<div class="body-content">
+    <div class="label-center margin-bottom-80">
+
+        @using (Html.BeginForm("EditarModeloMaquina", "Maquina", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(false)
+
+            <div class="form-group">
+                <h4> Escolha o modelo para editar:</h4>
+                @Html.DropDownList("DropDownModelos", Model.Modelos.Select(x => new SelectListItem() { Text = x.Name, Value = x.Id.ToString(), Selected = (int?)x.Id == Model.ModeloEscolhido.Id }),"Selecione", new { @class = "form-control col-centered", @onchange = "TrocaModeloMaquina(this.value)" })
+            </div>
+
+            <div class="form-group">
+                <h4>Modelo: </h4>
+                @Html.HiddenFor(m => m.ModeloEscolhido.Id)
+                @Html.TextBoxFor(m => m.ModeloEscolhido.Name, new { @class="form-control col-centered", placeholder="Modelo do computador" })
+            </div>
+
+            @Html.HiddenFor(m => m.Maquina.Id)
+            <div class="form-group">
+                <h4>Processador:</h4>
+                @Html.TextBoxFor(m => m.Maquina.Processador, new { @class = "form-control col-centered", placeholder = "Descrição do processador" })
+            </div>
+
+            <div class="form-group">
+                <h4>Pentes de Memória RAM:</h4>
+
+                <div style="width:320px;" class="col-centered">
+                    <div style="width:158px;" class="inline-block">
+                        <label class="inline-block">1:</label>
+                        <div style="width:155px;" class="input-group col-centered">
+                            @Html.TextBoxFor(m => m.Maquina.MemoriaRamGB1, new { placeholder = "Tamanho", type = "number", min = 1, @class = "form-control" })
+                            <div class="input-group-addon">GB</div>
+                        </div>
+                    </div>
+                    <div style="width:158px;" class="inline-block">
+                        <label class="inline-block">2:</label>
+                        <div style="width:155px;" class="input-group col-centered">
+                            @Html.TextBoxFor(m => m.Maquina.MemoriaRamGB2, new { placeholder = "Tamanho", type = "number", min = 1, @class = "form-control" })
+                            <div class="input-group-addon">GB</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="width:320px;" class="col-centered">
+                    <div style="width:158px;" class="inline-block">
+                        <label class="inline-block">3:</label>
+                        <div style="width:155px;" class="input-group col-centered">
+                            @Html.TextBoxFor(m => m.Maquina.MemoriaRamGB3, new { placeholder = "Tamanho", type = "number", min = 1, @class = "form-control" })
+                            <div class="input-group-addon">GB</div>
+                        </div>
+                    </div>
+                    <div style="width:158px;" class="inline-block">
+                        <label class="inline-block">4:</label>
+                        <div style="width:155px;" class="input-group col-centered">
+                            @Html.TextBoxFor(m => m.Maquina.MemoriaRamGB4, new { placeholder = "Tamanho", type = "number", min = 1, @class = "form-control" })
+                            <div class="input-group-addon">GB</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <h4>Tamanho SSD:</h4>
+                <div class="input-group col-centered" style="width:320px;">
+                    @Html.TextBoxFor(m => m.Maquina.SSD, new { type = "number", min = 1, placeholder = "Tamanho do SSD", @class = "form-control" })
+                    <div class="input-group-addon">GB</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4>Tamanho HD:</h4>
+                <div class="input-group col-centered" style="width:320px;">
+                    @Html.TextBoxFor(m => m.Maquina.HD, new { type = "number", min = 1, placeholder = "Tamanho do HD", @class = "form-control" })
+                    <div class="input-group-addon">GB</div>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+        }
+    </div>
+</div>
+
+@Html.Partial("~/Views/Modais/_ModalError.cshtml")
+
+<script>
+    if(@Model.ModeloEscolhido == null){
+        $('div.label-center.margin-bottom-80 :input').not('[name="cancelar"],[name="DropDownModelos"]').prop('disabled', true);
+    }
+</script>

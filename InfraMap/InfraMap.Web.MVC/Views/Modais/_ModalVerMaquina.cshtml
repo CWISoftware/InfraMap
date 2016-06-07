@@ -10,7 +10,7 @@
                 <button type="button" class="btn btn-default pull-right" data-dismiss="modal" onclick="RetiraDestaqueMesa()" id="FechaModal">Fechar</button>
                 <button type="button" class="btn btn-primary pull-right margin-right-5" id="EditarMaquinaPessoal">Editar</button>
                 <button type="button" class="btn btn-default hide pull-right" id="CancelaConfigMaquina">Cancelar</button>
-                <button type="button" class="btn btn-primary hide pull-right margin-right-5" data-dismiss="modal" id="SalvaConfigMaquina">Salvar</button>
+                <button type="button" class="btn btn-primary hide pull-right margin-right-5" id="SalvaConfigMaquina">Salvar</button>
                 <h4 class="modal-title" id="myModalLabel">Máquina:</h4>
             </div>
             <div class="modal-body">
@@ -34,15 +34,42 @@
                     <input class="form-control" id="verprocessador" disabled placeholder="Descrição do processador" />
                 </div>
                 <div class="form-group">
-                    <h4>Pentes de Memória Ram:</h4>
-                    <input class="form-control" type="number" disabled id="verunidadesMemoriaRam" placeholder="Número de pentes de memória ram" />
-                </div>
-                <div class="form-group">
-                    <h4>Tamanho de cada pente:</h4>
-                    <div class="input-group" style="width:320px">
-                        <input class="form-control" style="top:0;" type="number" disabled id="verpenteMemoriaRamGB" placeholder="Tamanho de cada pente de memória ram" />
-                        <div class="input-group-addon">GB</div>
+                    <h4>Pentes de Memória RAM:</h4>
+
+                    <div style="width:320px;">
+                        <div style="width:158px;" class="inline-block">
+                            <label class="inline-block">1:</label>
+                            <div style="width:155px;" class="input-group col-centered">
+                                <input type="number" min="1" class="form-control" placeholder="Tamanho" id="verMemoriaRamGB1" disabled />
+                                <div class="input-group-addon">GB</div>
+                            </div>
+                        </div>
+                        <div style="width:158px;" class="inline-block">
+                            <label class="inline-block">2:</label>
+                            <div style="width:155px;" class="input-group col-centered">
+                                <input type="number" min="1" class="form-control" placeholder="Tamanho" id="verMemoriaRamGB2" disabled />
+                                <div class="input-group-addon">GB</div>
+                            </div>
+                        </div>
                     </div>
+
+                    <div style="width:320px;">
+                        <div style="width:158px;" class="inline-block">
+                            <label class="inline-block">3:</label>
+                            <div style="width:155px;" class="input-group col-centered">
+                                <input type="number" min="1" class="form-control" placeholder="Tamanho" id="verMemoriaRamGB3" disabled />
+                                <div class="input-group-addon">GB</div>
+                            </div>
+                        </div>
+                        <div style="width:158px;" class="inline-block">
+                            <label class="inline-block">4:</label>
+                            <div style="width:155px;" class="input-group col-centered">
+                                <input type="number" min="1" class="form-control" placeholder="Tamanho" id="verMemoriaRamGB4" disabled />
+                                <div class="input-group-addon">GB</div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="form-group">
                     <h4>Tamanho SSD:</h4>

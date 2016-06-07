@@ -12,7 +12,7 @@ using InfraMap.Dominio.Sede;
 
 namespace InfraMap.Web.MVC.Controllers
 {
-    //[Autorizador]
+    [Autorizador]
     public class SedeController : Controller
     {
         public ActionResult Index()

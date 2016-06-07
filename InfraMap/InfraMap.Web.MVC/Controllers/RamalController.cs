@@ -1,4 +1,5 @@
 ﻿using InfraMap.Web.MVC.Helpers;
+using InfraMap.Web.MVC.Seguranca;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Web.Mvc;
 
 namespace InfraMap.Web.MVC.Controllers
 {
+    [Autorizador]
     public class RamalController : BaseController
     {
         [HttpPost]

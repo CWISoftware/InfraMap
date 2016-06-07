@@ -34,8 +34,8 @@
                         }
                         @if (User.IsInRole("INFRA"))
                         {
-                            <li><a class="fa mouse-pointer" id="btn-AdicionarMaquinas">Adicionar novo modelo de máquina</a></li>
-                            <li><a class="fa mouse-pointer" id="btn-EditarMaquinas">Editar modelo de máquina</a></li>
+                            <li>@Html.ActionLink("Adicionar novo modelo de máquina", "AdicionarModeloMaquina", "Maquina", null, new { @class = "fa mouse-pointer" })</li>
+                            <li>@Html.ActionLink("Editar modelo de máquina", "EditarModeloMaquina", "Maquina", null, new { @class = "fa mouse-pointer" })</li>
                             <li>@Html.ActionLink("Listagem de Maquinas","ListarMaquinas","Maquina",null,new { @class= "fa mouse-pointer" })</li>
                             <li role="separator" class="divider"></li>
                         }

@@ -13,26 +13,31 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
         {
             using (var dbContext = new DataBaseContext())
             {
+                dbContext.Set<TEntity>().Attach(entity);
                 dbContext.Set<TEntity>().Add(entity);
                 dbContext.SaveChanges();
                 return entity;
             }
         }
 
-        public void Atualizar(TEntity entity)
+        public TEntity Atualizar(TEntity entity)
         {
             using (var dbContext = new DataBaseContext())
             {
+                dbContext.Set<TEntity>().Attach(entity);
                 dbContext.Entry(entity).State = System.Data.Entity.EntityState.Modified;
                 dbContext.SaveChanges();
+
+                return entity;
             }
         }
 
-        public void Deletar(TEntity entity)
+        public void Deletar(int id)
         {
             using (var dbContext = new DataBaseContext())
             {
-                var dbEntity = this.BuscarPorId(entity.Id);
+                var dbEntity = this.BuscarPorId(id);
+                dbContext.Set<TEntity>().Attach(dbEntity);
                 dbContext.Set<TEntity>().Remove(dbEntity);
                 dbContext.SaveChanges();
             }

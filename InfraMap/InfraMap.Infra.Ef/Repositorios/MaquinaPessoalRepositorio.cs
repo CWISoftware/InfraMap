@@ -20,17 +20,6 @@ namespace InfraMap.Infraestrutura.Ef.Repositorios
             }
         }
 
-        public new void Deletar(MaquinaPessoal entity)
-        {
-            using (var dbContext = new DataBaseContext())
-            {
-                var dbEntity = this.BuscarPorId(entity.Id);
-                dbContext.MaquinaPessoal.Attach(dbEntity);
-                dbContext.MaquinaPessoal.Remove(dbEntity);
-                dbContext.SaveChanges();
-            }
-        }
-
         public int BuscarPorPatrimonio(MaquinaPessoal maquina)
         {
             // se retorna o id da mesa deveria estar no repositorio da mesa, não precisa buscar a maquina já que recebe por parametro

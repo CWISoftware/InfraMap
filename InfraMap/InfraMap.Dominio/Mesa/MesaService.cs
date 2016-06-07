@@ -161,7 +161,7 @@ namespace InfraMap.Dominio.Mesa
             mesa.RemoverRamal();
             this.mesaRepositorio.Atualizar(mesa);
 
-            this.ramalRepositorio.Deletar(ramal);
+            this.ramalRepositorio.Deletar(ramal.Id);
         }
 
         public void SalvarCorDosColaboradores(int[] listaIdColaborador, string gerenteLogin)
